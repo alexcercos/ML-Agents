@@ -1,0 +1,15 @@
+{
+    "measure" : "reward",
+    "thresholds" : [30, 30, 30, 30, 30, 30],
+    "min_lesson_length" : 10,
+    "signal_smoothing" : true, 
+    "parameters" : 
+    {
+        "posicionx" : [0, 0.5, 1.5, 1.5, 4, 6, 6],
+		"xpelota" : [0, 0.5, 1.5, 3, 5, 6, 6],
+		"minz" : [6.3, 5.5, 4.5, -8, -8, -8, -8],
+		"maxz" : [6.3, 6.5, 6.5, 0, 0, 2, 6],
+		"pelotaminz" : [8, 8, 8, 1.5, 1.5, -1, -6],
+		"pelotamaxz" : [8, 8, 8, 8, 8, 8, 8]
+    }
+}
