@@ -231,12 +231,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 50
+    vectorObservationSize: 25
     numStackedVectorObservations: 1
     vectorActionSize: 03000000
     vectorActionDescriptions: []
     vectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: a3ebb738d8939014989c6d6c3684954f, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 1
   m_UseHeuristic: 0
   m_BehaviorName: Imitator

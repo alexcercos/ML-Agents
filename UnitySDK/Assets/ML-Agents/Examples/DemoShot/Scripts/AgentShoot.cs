@@ -22,13 +22,13 @@ public class AgentShoot : Agent
         cameraAgent = GetComponent<CameraMovement>();
         
         lastX = new List<float>();
-        lastY = new List<float>();
+        //lastY = new List<float>();
         //lastClick = new List<float>();
 
         for (int i = 0; i<60; i++)
         {
             lastX.Add(0f);
-            lastY.Add(0f);
+            //lastY.Add(0f);
             //lastClick.Add(0f);
         }
     }
@@ -36,13 +36,13 @@ public class AgentShoot : Agent
     public override void AgentReset()
     {
         lastX = new List<float>();
-        lastY = new List<float>();
+        //lastY = new List<float>();
         //lastClick = new List<float>();
 
         for (int i = 0; i < 60; i++)
         {
             lastX.Add(0f);
-            lastY.Add(0f);
+            //lastY.Add(0f);
             //lastClick.Add(0f);
         }
     }
@@ -54,7 +54,7 @@ public class AgentShoot : Agent
         while (i < 60)
         {
             AddVectorObs(lastX[i]);
-            AddVectorObs(lastY[i]);
+            //AddVectorObs(lastY[i]);
 
             if (i <= 9) i++;
             else if (i <= 39) i += 3;
@@ -74,11 +74,11 @@ public class AgentShoot : Agent
         iClick = vectorAction[2] > 0f;
 
         float oX = cameraAgent.GetX();
-        float oY = cameraAgent.GetY();
+        //float oY = cameraAgent.GetY();
         
 
         float diffX = Mathf.Abs(iX - oX);
-        float diffY = Mathf.Abs(iY - oY);
+        //float diffY = Mathf.Abs(iY - oY);
 
         //recompensas por movimiento
         if (diffX > tolerableRange)
@@ -88,7 +88,7 @@ public class AgentShoot : Agent
         {
             AddReward(Mathf.Clamp(tolerableRange / (diffX + 0.001f), 1f, 10f) / 2000f);
         }
-
+        /*
         if (diffY > tolerableRange)
         {
             AddReward(-diffY / (2000f * tolerableRange));
@@ -96,7 +96,7 @@ public class AgentShoot : Agent
         else
         {
             AddReward(Mathf.Clamp(tolerableRange / (diffY + 0.001f), 1f, 10f) / 2000f);
-        }
+        }*/
 
         //el click no se compara exactamente igual, porque es instantaneo
         //AddReward click
@@ -105,8 +105,8 @@ public class AgentShoot : Agent
         //actualizar listas
         lastX.RemoveAt(59);
         lastX.Insert(0, oX);
-        lastY.RemoveAt(59);
-        lastY.Insert(0, oY);
+        //lastY.RemoveAt(59);
+        //lastY.Insert(0, oY);
         
         //bools
     }
