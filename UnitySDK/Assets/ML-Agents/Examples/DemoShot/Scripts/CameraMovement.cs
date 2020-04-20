@@ -54,7 +54,9 @@ public class CameraMovement : MonoBehaviour
         if (useNeuralNet)
         {
             x = Mathf.Clamp(nnAgent.GetX() / 2f, -1f, 1f); //clamp hasta un maximo posible
-            y = Mathf.Clamp(nnAgent.GetY() / 2f, -1f, 1f);
+            //y = Mathf.Clamp(nnAgent.GetY() / 2f, -1f, 1f);
+
+            y = 0f;
 
             click = nnAgent.GetClick();
         }
