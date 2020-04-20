@@ -81,6 +81,8 @@ public class AgentShoot : Agent
         float diffX = Mathf.Abs(iX - oX);
         //float diffY = Mathf.Abs(iY - oY);
 
+        Debug.Log(diffX);
+
         //recompensas por movimiento
         if (diffX > tolerableRange)
         {
