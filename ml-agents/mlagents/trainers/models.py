@@ -33,18 +33,18 @@ class LearningModel(object):
     def __init__(
         self, m_size, normalize, use_recurrent, brain, seed, stream_names=None
     ):
-        tf.set_random_seed(seed)
+        tf.compat.v1.set_random_seed(seed)
         self.brain = brain
         self.vector_in = None
         self.global_step, self.increment_step, self.steps_to_increment = (
             self.create_global_steps()
         )
         self.visual_in = []
-        self.batch_size = tf.placeholder(shape=None, dtype=tf.int32, name="batch_size")
-        self.sequence_length = tf.placeholder(
+        self.batch_size = tf.compat.v1.placeholder(shape=None, dtype=tf.int32, name="batch_size")
+        self.sequence_length = tf.compat.v1.placeholder(
             shape=None, dtype=tf.int32, name="sequence_length"
         )
-        self.mask_input = tf.placeholder(shape=[None], dtype=tf.float32, name="masks")
+        self.mask_input = tf.compat.v1.placeholder(shape=[None], dtype=tf.float32, name="masks")
         self.mask = tf.cast(self.mask_input, tf.int32)
         self.stream_names = stream_names or []
         self.use_recurrent = use_recurrent
@@ -92,10 +92,10 @@ class LearningModel(object):
         global_step = tf.Variable(
             0, name="global_step", trainable=False, dtype=tf.int32
         )
-        steps_to_increment = tf.placeholder(
+        steps_to_increment = tf.compat.v1.placeholder(
             shape=[], dtype=tf.int32, name="steps_to_increment"
         )
-        increment_step = tf.assign(global_step, tf.add(global_step, steps_to_increment))
+        increment_step = tf.compat.v1.assign(global_step, tf.add(global_step, steps_to_increment))
         return global_step, increment_step, steps_to_increment
 
     @staticmethod
@@ -108,7 +108,7 @@ class LearningModel(object):
         if lr_schedule == LearningRateSchedule.CONSTANT:
             learning_rate = tf.Variable(lr)
         elif lr_schedule == LearningRateSchedule.LINEAR:
-            learning_rate = tf.train.polynomial_decay(
+            learning_rate = tf.compat.v1.train.polynomial_decay(
                 lr, global_step, max_step, 1e-10, power=1.0
             )
         else:
@@ -140,7 +140,7 @@ class LearningModel(object):
         o_size_w = camera_parameters.width
         c_channels = camera_parameters.num_channels
 
-        visual_in = tf.placeholder(
+        visual_in = tf.compat.v1.placeholder(
             shape=[None, o_size_h, o_size_w, c_channels], dtype=tf.float32, name=name
         )
         return visual_in
@@ -152,7 +152,7 @@ class LearningModel(object):
         :param vec_obs_size: Size of stacked vector observation.
         :return:
         """
-        self.vector_in = tf.placeholder(
+        self.vector_in = tf.compat.v1.placeholder(
             shape=[None, self.vec_obs_size], dtype=tf.float32, name=name
         )
         if self.normalize:
@@ -232,7 +232,7 @@ class LearningModel(object):
         :param num_layers: number of hidden layers to create.
         :return: List of hidden layer tensors.
         """
-        with tf.variable_scope(scope):
+        with tf.compat.v1.variable_scope(scope):
             hidden = observation_input
             for i in range(num_layers):
                 hidden = tf.layers.dense(
@@ -264,7 +264,7 @@ class LearningModel(object):
         :param reuse: Whether to re-use the weights within the same scope.
         :return: List of hidden layer tensors.
         """
-        with tf.variable_scope(scope):
+        with tf.compat.v1.variable_scope(scope):
             conv1 = tf.layers.conv2d(
                 image_input,
                 16,
@@ -285,7 +285,7 @@ class LearningModel(object):
             )
             hidden = c_layers.flatten(conv2)
 
-        with tf.variable_scope(scope + "/" + "flat_encoding"):
+        with tf.compat.v1.variable_scope(scope + "/" + "flat_encoding"):
             hidden_flat = LearningModel.create_vector_observation_encoder(
                 hidden, h_size, activation, num_layers, scope, reuse
             )
@@ -310,7 +310,7 @@ class LearningModel(object):
         :param reuse: Whether to re-use the weights within the same scope.
         :return: List of hidden layer tensors.
         """
-        with tf.variable_scope(scope):
+        with tf.compat.v1.variable_scope(scope):
             conv1 = tf.layers.conv2d(
                 image_input,
                 32,
@@ -340,7 +340,7 @@ class LearningModel(object):
             )
             hidden = c_layers.flatten(conv3)
 
-        with tf.variable_scope(scope + "/" + "flat_encoding"):
+        with tf.compat.v1.variable_scope(scope + "/" + "flat_encoding"):
             hidden_flat = LearningModel.create_vector_observation_encoder(
                 hidden, h_size, activation, num_layers, scope, reuse
             )
@@ -367,7 +367,7 @@ class LearningModel(object):
         """
         n_channels = [16, 32, 32]  # channel for each stack
         n_blocks = 2  # number of residual blocks
-        with tf.variable_scope(scope):
+        with tf.compat.v1.variable_scope(scope):
             hidden = image_input
             for i, ch in enumerate(n_channels):
                 hidden = tf.layers.conv2d(
@@ -408,7 +408,7 @@ class LearningModel(object):
             hidden = tf.nn.relu(hidden)
             hidden = c_layers.flatten(hidden)
 
-        with tf.variable_scope(scope + "/" + "flat_encoding"):
+        with tf.compat.v1.variable_scope(scope + "/" + "flat_encoding"):
             hidden_flat = LearningModel.create_vector_observation_encoder(
                 hidden, h_size, activation, num_layers, scope, reuse
             )
@@ -552,7 +552,7 @@ class LearningModel(object):
         lstm_input_state = tf.reshape(input_state, shape=[-1, sequence_length, s_size])
         memory_in = tf.reshape(memory_in[:, :], [-1, m_size])
         half_point = int(m_size / 2)
-        with tf.variable_scope(name):
+        with tf.compat.v1.variable_scope(name):
             rnn_cell = tf.contrib.rnn.BasicLSTMCell(half_point)
             lstm_vector_in = tf.contrib.rnn.LSTMStateTuple(
                 memory_in[:, :half_point], memory_in[:, half_point:]

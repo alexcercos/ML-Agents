@@ -109,10 +109,10 @@ class PPOModel(LearningModel):
             self.act_size[0],
             activation=None,
             kernel_initializer=LearningModel.scaled_init(0.01),
-            reuse=tf.AUTO_REUSE,
+            reuse=tf.compat.v1.AUTO_REUSE,
         )
 
-        self.log_sigma_sq = tf.get_variable(
+        self.log_sigma_sq = tf.compat.v1.get_variable(
             "log_sigma_squared",
             [self.act_size[0]],
             dtype=tf.float32,
@@ -133,14 +133,14 @@ class PPOModel(LearningModel):
         # Compute probability of model output.
         all_probs = (
             -0.5 * tf.square(tf.stop_gradient(self.output_pre) - mu) / sigma_sq
-            - 0.5 * tf.log(2.0 * np.pi)
+            - 0.5 * tf.math.log(2.0 * np.pi)
             - 0.5 * self.log_sigma_sq
         )
 
         self.all_log_probs = tf.identity(all_probs, name="action_probs")
 
         self.entropy = 0.5 * tf.reduce_mean(
-            tf.log(2 * np.pi * np.e) + self.log_sigma_sq
+            tf.math.log(2 * np.pi * np.e) + self.log_sigma_sq
         )
 
         self.create_value_heads(self.stream_names, hidden_value)
@@ -327,10 +327,10 @@ class PPOModel(LearningModel):
         )
         advantage = tf.expand_dims(self.advantage, -1)
 
-        decay_epsilon = tf.train.polynomial_decay(
+        decay_epsilon = tf.compat.v1.train.polynomial_decay(
             epsilon, self.global_step, max_step, 0.1, power=1.0
         )
-        decay_beta = tf.train.polynomial_decay(
+        decay_beta = tf.compat.v1.train.polynomial_decay(
             beta, self.global_step, max_step, 1e-5, power=1.0
         )
 
@@ -341,10 +341,10 @@ class PPOModel(LearningModel):
                 -decay_epsilon,
                 decay_epsilon,
             )
-            v_opt_a = tf.squared_difference(
+            v_opt_a = tf.math.squared_difference(
                 self.returns_holders[name], tf.reduce_sum(head, axis=1)
             )
-            v_opt_b = tf.squared_difference(
+            v_opt_b = tf.math.squared_difference(
                 self.returns_holders[name], clipped_value_estimate
             )
             value_loss = tf.reduce_mean(
@@ -373,6 +373,6 @@ class PPOModel(LearningModel):
         )
 
     def create_ppo_optimizer(self):
-        self.optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate)
+        self.optimizer = tf.compat.v1.train.AdamOptimizer(learning_rate=self.learning_rate)
         self.grads = self.optimizer.compute_gradients(self.loss)
         self.update_batch = self.optimizer.minimize(self.loss)

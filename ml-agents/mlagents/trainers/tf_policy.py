@@ -61,14 +61,14 @@ class TFPolicy(Policy):
         self.model_path = trainer_parameters["model_path"]
         self.keep_checkpoints = trainer_parameters.get("keep_checkpoints", 5)
         self.graph = tf.Graph()
-        config = tf.ConfigProto()
+        config = tf.compat.v1.ConfigProto()
         config.gpu_options.allow_growth = True
         # For multi-GPU training, set allow_soft_placement to True to allow
         # placing the operation into an alternative device automatically
         # to prevent from exceptions if the device doesn't suppport the operation
         # or the device does not exist
         config.allow_soft_placement = True
-        self.sess = tf.Session(config=config, graph=self.graph)
+        self.sess = tf.compat.v1.Session(config=config, graph=self.graph)
         self.saver = None
         if self.use_recurrent:
             self.m_size = trainer_parameters["memory_size"]
@@ -88,8 +88,8 @@ class TFPolicy(Policy):
 
     def _initialize_graph(self):
         with self.graph.as_default():
-            self.saver = tf.train.Saver(max_to_keep=self.keep_checkpoints)
-            init = tf.global_variables_initializer()
+            self.saver = tf.compat.v1.train.Saver(max_to_keep=self.keep_checkpoints)
+            init = tf.compat.v1.global_variables_initializer()
             self.sess.run(init)
 
     def _load_graph(self):
@@ -209,7 +209,7 @@ class TFPolicy(Policy):
         with self.graph.as_default():
             last_checkpoint = self.model_path + "/model-" + str(steps) + ".cptk"
             self.saver.save(self.sess, last_checkpoint)
-            tf.train.write_graph(
+            tf.io.write_graph(
                 self.graph, self.model_path, "raw_graph_def.pb", as_text=False
             )
 

@@ -65,7 +65,7 @@ class TrainerController(object):
         self.sampler_manager = sampler_manager
         self.resampling_interval = resampling_interval
         np.random.seed(training_seed)
-        tf.set_random_seed(training_seed)
+        tf.compat.v1.set_random_seed(training_seed)
 
     def _get_measure_vals(self):
         brain_names_to_measure_vals = {}
@@ -191,7 +191,7 @@ class TrainerController(object):
 
     def start_learning(self, env_manager: EnvManager) -> None:
         self._create_model_path(self.model_path)
-        tf.reset_default_graph()
+        tf.compat.v1.reset_default_graph()
         global_step = 0
         last_brain_names: Set[str] = set()
         try:

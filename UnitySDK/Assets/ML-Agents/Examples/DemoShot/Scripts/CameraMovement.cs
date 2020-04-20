@@ -13,7 +13,7 @@ public class CameraMovement : MonoBehaviour
 
     public IBotMovement botMovement;
     AgentShoot nnAgent;
-    private bool playWithBot = true;
+    //private bool playWithBot = true;
     private bool useNeuralNet = false;
 
     private float x = 0f, y = 0f;
@@ -36,15 +36,23 @@ public class CameraMovement : MonoBehaviour
         //lastPosition = Input.mousePosition;
 
         //Cursor.lockState = CursorLockMode.Locked;
+
+        // Si esta compilado dabe usar el bot
+        #if UNITY_EDITOR
+            useNeuralNet = true;
+        #else
+            useNeuralNet = false;
+        #endif
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Space))
         {
             playWithBot = !playWithBot;
-        }
+        }*/
 
         if(Input.GetKeyDown(KeyCode.N))
         {
@@ -60,13 +68,14 @@ public class CameraMovement : MonoBehaviour
 
             click = nnAgent.GetClick();
         }
-        else if (playWithBot)
+        else //if (playWithBot)
         {
             x = Mathf.Clamp(botMovement.MouseX() / 2f, -1f, 1f); //clamp hasta un maximo posible
             y = Mathf.Clamp(botMovement.MouseY() / 2f, -1f, 1f);
 
             click = botMovement.Click();
         }
+        /*
         else //esta parte esta repetida en heuristic
         {
             x = Mathf.Clamp(Input.GetAxis("Mouse X") / 2f, -1f, 1f); //clamp hasta un maximo posible
@@ -80,7 +89,7 @@ public class CameraMovement : MonoBehaviour
             {
                 click = false;
             }
-        }
+        }*/
         //Vector3 diff = lastPosition - Input.mousePosition;
 
         //lastPosition = Input.mousePosition;

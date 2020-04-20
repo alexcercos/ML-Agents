@@ -1536,7 +1536,7 @@ def convert(
     # Load Tensorflow model
     print("Converting %s to %s" % (source_file, target_file))
     f = open(source_file, "rb")
-    i_model = tf.GraphDef()
+    i_model = tf.compat.v1.GraphDef()
     i_model.ParseFromString(f.read())
 
     if args.verbose:
