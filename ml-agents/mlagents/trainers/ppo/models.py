@@ -80,7 +80,7 @@ class PPOModel(LearningModel):
         )
 
         if self.use_recurrent:
-            self.memory_in = tf.placeholder(
+            self.memory_in = tf.compat.v1.placeholder(
                 shape=[None, self.m_size], dtype=tf.float32, name="recurrent_in"
             )
             _half_point = int(self.m_size / 2)
@@ -121,7 +121,7 @@ class PPOModel(LearningModel):
 
         sigma_sq = tf.exp(self.log_sigma_sq)
 
-        self.epsilon = tf.placeholder(
+        self.epsilon = tf.compat.v1.placeholder(
             shape=[None, self.act_size[0]], dtype=tf.float32, name="epsilon"
         )
         # Clip and scale output to ensure actions are always within [-1, 1] range.
@@ -145,7 +145,7 @@ class PPOModel(LearningModel):
 
         self.create_value_heads(self.stream_names, hidden_value)
 
-        self.all_old_log_probs = tf.placeholder(
+        self.all_old_log_probs = tf.compat.v1.placeholder(
             shape=[None, self.act_size[0]], dtype=tf.float32, name="old_probabilities"
         )
 
@@ -171,7 +171,7 @@ class PPOModel(LearningModel):
         hidden = hidden_streams[0]
 
         if self.use_recurrent:
-            self.prev_action = tf.placeholder(
+            self.prev_action = tf.compat.v1.placeholder(
                 shape=[None, len(self.act_size)], dtype=tf.int32, name="prev_action"
             )
             prev_action_oh = tf.concat(
@@ -183,7 +183,7 @@ class PPOModel(LearningModel):
             )
             hidden = tf.concat([hidden, prev_action_oh], axis=1)
 
-            self.memory_in = tf.placeholder(
+            self.memory_in = tf.compat.v1.placeholder(
                 shape=[None, self.m_size], dtype=tf.float32, name="recurrent_in"
             )
             hidden, memory_out = self.create_recurrent_encoder(
@@ -207,7 +207,7 @@ class PPOModel(LearningModel):
             [branch for branch in policy_branches], axis=1, name="action_probs"
         )
 
-        self.action_masks = tf.placeholder(
+        self.action_masks = tf.compat.v1.placeholder(
             shape=[None, sum(self.act_size)], dtype=tf.float32, name="action_masks"
         )
         output, _, normalized_logits = self.create_discrete_action_masking_layer(
@@ -219,7 +219,7 @@ class PPOModel(LearningModel):
 
         self.create_value_heads(self.stream_names, hidden)
 
-        self.action_holder = tf.placeholder(
+        self.action_holder = tf.compat.v1.placeholder(
             shape=[None, len(policy_branches)], dtype=tf.int32, name="action_holder"
         )
         self.action_oh = tf.concat(
@@ -231,7 +231,7 @@ class PPOModel(LearningModel):
         )
         self.selected_actions = tf.stop_gradient(self.action_oh)
 
-        self.all_old_log_probs = tf.placeholder(
+        self.all_old_log_probs = tf.compat.v1.placeholder(
             shape=[None, sum(self.act_size)], dtype=tf.float32, name="old_probabilities"
         )
         _, _, old_normalized_logits = self.create_discrete_action_masking_layer(
@@ -314,15 +314,15 @@ class PPOModel(LearningModel):
         self.returns_holders = {}
         self.old_values = {}
         for name in value_heads.keys():
-            returns_holder = tf.placeholder(
+            returns_holder = tf.compat.v1.placeholder(
                 shape=[None], dtype=tf.float32, name="{}_returns".format(name)
             )
-            old_value = tf.placeholder(
+            old_value = tf.compat.v1.placeholder(
                 shape=[None], dtype=tf.float32, name="{}_value_estimate".format(name)
             )
             self.returns_holders[name] = returns_holder
             self.old_values[name] = old_value
-        self.advantage = tf.placeholder(
+        self.advantage = tf.compat.v1.placeholder(
             shape=[None], dtype=tf.float32, name="advantages"
         )
         advantage = tf.expand_dims(self.advantage, -1)

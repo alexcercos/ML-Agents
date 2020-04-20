@@ -22,6 +22,8 @@ public class BotNoReaction : IBotMovement
         {
             float angle = objective.eulerAngles.y - transform.rotation.eulerAngles.y;
             if (angle > 180f) angle -= 360f;
+            if (angle < -180f) angle += 360f;
+
 
             //Debug.Log(angle);
             if (Mathf.Abs(angle) < 2f)

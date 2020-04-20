@@ -7,10 +7,10 @@ public class AgentShoot : Agent
 {
     CameraMovement cameraAgent;
 
-    float tolerableRange = 0.05f; //de -1 a 1 es el maximo posible, el rango es positivo>0
+    float tolerableRange = 0.025f; //de -1 a 1 es el maximo posible, el rango es positivo>0
 
     private float iX = 0f, iY = 0f;
-    bool iClick = false;
+    bool iClick = true;
 
     List<float> lastX;
     List<float> lastY;
@@ -67,11 +67,12 @@ public class AgentShoot : Agent
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         //comparar la del bot con la del agente
-
+        
         iX = vectorAction[0];
+        /*
         iY = vectorAction[1];
-
         iClick = vectorAction[2] > 0f;
+        */
 
         float oX = cameraAgent.GetX();
         //float oY = cameraAgent.GetY();
@@ -126,7 +127,7 @@ public class AgentShoot : Agent
         return iY;
     }
 
-    public bool GetClick()
+    public bool GetClick() // Cambiar por probabilidad
     {
         return iClick;
     }
@@ -134,11 +135,11 @@ public class AgentShoot : Agent
 
     public override float[] Heuristic()
     {
-        var action = new float[3];
+        var action = new float[1]; //3
 
         action[0] = Input.GetAxis("Mouse X"); //clamp hasta un maximo posible
-        action[1] = Input.GetAxis("Mouse Y");
-
+        //action[1] = Input.GetAxis("Mouse Y");
+        /*
         if (Input.GetMouseButtonDown(0))
         {
             action[2] = 1f;
@@ -146,7 +147,7 @@ public class AgentShoot : Agent
         else
         {
             action[2] = -1f;
-        }
+        }*/
 
         return action;
     }

@@ -233,10 +233,10 @@ MonoBehaviour:
   m_BrainParameters:
     vectorObservationSize: 25
     numStackedVectorObservations: 1
-    vectorActionSize: 03000000
+    vectorActionSize: 01000000
     vectorActionDescriptions: []
     vectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: b4c7adcc18d8ac347b1dc4f588ee35c8, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 559ad8fdba523884ea3d568a06c28d57, type: 3}
   m_InferenceDevice: 0
   m_UseHeuristic: 0
   m_BehaviorName: Imitator
