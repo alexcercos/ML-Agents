@@ -5,9 +5,11 @@ using MLAgents;
 
 public class AgentShoot : Agent
 {
+    public DebugCanvas graphicCanvas;
+
     CameraMovement cameraAgent;
 
-    float tolerableRange = 0.025f; //de -1 a 1 es el maximo posible, el rango es positivo>0
+    float tolerableRange = 0.002f; //de -1 a 1 es el maximo posible, el rango es positivo>0
 
     private float iX = 0f, iY = 0f;
     bool iClick = true;
@@ -76,20 +78,29 @@ public class AgentShoot : Agent
 
         float oX = cameraAgent.GetX();
         //float oY = cameraAgent.GetY();
-        
 
+        //Debug canvas
+        graphicCanvas.AddBotPoint(iX); // No esta procesado aun
+        graphicCanvas.AddAgentPoint(oX);
+
+        
         float diffX = Mathf.Abs(iX - oX);
         //float diffY = Mathf.Abs(iY - oY);
 
-        Debug.Log(diffX);
+        Debug.Log("iX = " + iX + " -- oX = " + oX + " -- diff = " + diffX);
 
         //recompensas por movimiento
         if (diffX > tolerableRange)
         {
             AddReward(-diffX / (2000f * tolerableRange));
-        } else
+
+            Debug.Log("Neg: "+ (-diffX / (2000f * tolerableRange)));
+        }
+        else
         {
             AddReward(Mathf.Clamp(tolerableRange / (diffX + 0.001f), 1f, 10f) / 2000f);
+
+            Debug.Log("Pos: "+ Mathf.Clamp(tolerableRange / (diffX + 0.001f), 1f, 10f) / 2000f);
         }
         /*
         if (diffY > tolerableRange)
@@ -121,12 +132,12 @@ public class AgentShoot : Agent
 
     public float GetX()
     {
-        return iX;
+        return iX * 2f; // Esta normalizado, para adaptar el agente
     }
 
     public float GetY()
     {
-        return iY;
+        return iY * 2f;
     }
 
     public bool GetClick() // Cambiar por probabilidad

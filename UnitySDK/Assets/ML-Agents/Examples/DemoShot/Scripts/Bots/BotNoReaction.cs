@@ -8,7 +8,11 @@ public class BotNoReaction : IBotMovement
 
     Quaternion objective;
     bool hasObjective = false;
-    float rot = -0.1f;
+    float rot = -0.3f;
+
+    float reactTimeAverage = 0.25f;
+    float reactTimeNext = 0.25f;
+    float timerReact = 0f;
 
     public override bool Click()
     {
@@ -17,8 +21,13 @@ public class BotNoReaction : IBotMovement
 
     public override float MouseX()
     {
-        
-        if (hasObjective)
+        // Imprecision en movimiento continuo
+        if (rot<0)
+            rot = Mathf.Clamp(rot + Random.Range(-0.02f, 0.02f), -0.4f, -0.2f);
+        else
+            rot = Mathf.Clamp(rot + Random.Range(-0.02f, 0.02f), 0.2f, 0.4f);
+
+        if (timerReact>reactTimeNext)
         {
             float angle = objective.eulerAngles.y - transform.rotation.eulerAngles.y;
             if (angle > 180f) angle -= 360f;
@@ -26,13 +35,15 @@ public class BotNoReaction : IBotMovement
 
 
             //Debug.Log(angle);
-            if (Mathf.Abs(angle) < 2f)
+            if (Mathf.Abs(angle) < 1f)
             {
                 hasObjective = false;
                 rot = -rot;
+                timerReact = 0f;
+                reactTimeNext = reactTimeAverage + Random.Range(-reactTimeAverage / 5f, reactTimeAverage / 5f);
             }
             
-            return Mathf.Clamp(angle, -100f, 100f) * CameraMovement.width / (CameraMovement.camAngleHor * CameraMovement.maxSpeed) * Time.deltaTime * 2f;
+            return (Mathf.Clamp(angle, -20f, 20f) + Random.Range(-2f, 2f)) * CameraMovement.width / (CameraMovement.camAngleHor * CameraMovement.maxSpeed) * Time.deltaTime * 20f;
         } else
         {
             return rot;
@@ -58,15 +69,19 @@ public class BotNoReaction : IBotMovement
         if (!hasObjective)
             foreach (Renderer t in scene.GetComponentsInChildren<Renderer>())
             {
-                if (t.isVisible)
+                if (t.isVisible) //worldtoviewcamera
                 {
                     objective = Quaternion.LookRotation(t.transform.position - transform.position, Vector3.up);
-                    hasObjective = true;
+                    hasObjective = true; 
                     //Debug.Log(t.gameObject.name + " visible");
                 } else
                 {
                     //Debug.Log(t.gameObject.name + " NOT visible");
                 }
             }
+        else
+        {
+            timerReact += Time.deltaTime;
+        }
     }
 }
