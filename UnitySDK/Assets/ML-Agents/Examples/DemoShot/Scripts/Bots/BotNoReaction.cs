@@ -23,11 +23,11 @@ public class BotNoReaction : IBotMovement
     {
         // Imprecision en movimiento continuo
         if (rot<0)
-            rot = Mathf.Clamp(rot + Random.Range(-0.02f, 0.02f), -0.4f, -0.2f);
+            rot = Mathf.Clamp(rot + Random.Range(-0.01f, 0.01f), -0.35f, -0.25f);
         else
-            rot = Mathf.Clamp(rot + Random.Range(-0.02f, 0.02f), 0.2f, 0.4f);
+            rot = Mathf.Clamp(rot + Random.Range(-0.01f, 0.01f), 0.25f, 0.35f);
 
-        if (timerReact>reactTimeNext)
+        if (/*timerReact>reactTimeNext*/ hasObjective)
         {
             float angle = objective.eulerAngles.y - transform.rotation.eulerAngles.y;
             if (angle > 180f) angle -= 360f;
@@ -38,7 +38,7 @@ public class BotNoReaction : IBotMovement
             if (Mathf.Abs(angle) < 1f)
             {
                 hasObjective = false;
-                rot = -rot;
+                //rot = -rot;
                 timerReact = 0f;
                 reactTimeNext = reactTimeAverage + Random.Range(-reactTimeAverage / 5f, reactTimeAverage / 5f);
             }

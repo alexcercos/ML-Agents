@@ -9,7 +9,7 @@ public class AgentShoot : Agent
 
     CameraMovement cameraAgent;
 
-    float tolerableRange = 0.002f; //de -1 a 1 es el maximo posible, el rango es positivo>0
+    float tolerableRange = 0.004f; //de -1 a 1 es el maximo posible, el rango es positivo>0
 
     private float iX = 0f, iY = 0f;
     bool iClick = true;
@@ -51,7 +51,7 @@ public class AgentShoot : Agent
 
     public override void CollectObservations()
     {
-        
+        /*
         int i = 0;
         while (i < 60)
         {
@@ -62,7 +62,7 @@ public class AgentShoot : Agent
             else if (i <= 39) i += 3;
             else i += 4;
             //25x2
-        }
+        }*/
     }
 
 
@@ -87,20 +87,17 @@ public class AgentShoot : Agent
         float diffX = Mathf.Abs(iX - oX);
         //float diffY = Mathf.Abs(iY - oY);
 
-        Debug.Log("iX = " + iX + " -- oX = " + oX + " -- diff = " + diffX);
+        //Debug.Log("iX = " + iX + " -- oX = " + oX + " -- diff = " + diffX);
 
         //recompensas por movimiento
         if (diffX > tolerableRange)
         {
             AddReward(-diffX / (2000f * tolerableRange));
-
-            Debug.Log("Neg: "+ (-diffX / (2000f * tolerableRange)));
+            
         }
         else
         {
-            AddReward(Mathf.Clamp(tolerableRange / (diffX + 0.001f), 1f, 10f) / 2000f);
-
-            Debug.Log("Pos: "+ Mathf.Clamp(tolerableRange / (diffX + 0.001f), 1f, 10f) / 2000f);
+            AddReward(Mathf.Clamp(tolerableRange / (diffX + 0.000001f), 1f, 20f) / 2000f);
         }
         /*
         if (diffY > tolerableRange)
@@ -118,7 +115,7 @@ public class AgentShoot : Agent
 
         //actualizar listas
         lastX.RemoveAt(59);
-        lastX.Insert(0, oX);
+        lastX.Insert(0, iX); // En vez de oX, para que no tenga "chuleta"
         //lastY.RemoveAt(59);
         //lastY.Insert(0, oY);
         

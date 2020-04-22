@@ -2302,6 +2302,11 @@ PrefabInstance:
     - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: m_Model
       value: 
+      objectReference: {fileID: 5022602860645237092, guid: 3ac6161abc42dd04fa93f36a4ae7c5ba,
+        type: 3}
+    - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: m_BrainParameters.vectorObservationSize
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2297876485500308130, guid: 866aec7a5971df747bbb175cacf8784e,
         type: 3}
@@ -2327,6 +2332,10 @@ PrefabInstance:
       propertyPath: graphicCanvas
       value: 
       objectReference: {fileID: 1252828196}
+    - target: {fileID: 168162533, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: agentParameters.maxStep
+      value: 3000
+      objectReference: {fileID: 0}
     - target: {fileID: 4612361943311979997, guid: 866aec7a5971df747bbb175cacf8784e,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
