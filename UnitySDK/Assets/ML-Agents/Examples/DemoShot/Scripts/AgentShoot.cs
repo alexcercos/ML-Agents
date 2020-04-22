@@ -89,7 +89,19 @@ public class AgentShoot : Agent
 
         //Debug.Log("iX = " + iX + " -- oX = " + oX + " -- diff = " + diffX);
 
-        //recompensas por movimiento
+        //recompensas por movimiento, 0.5 es el limite de penalizacion maximo
+        if (diffX > tolerableRange)
+        {
+            //linea: f(TR) = 0; f(0.5) = -1     //F(0.7) = -1
+            AddReward(-(Mathf.Min(diffX, 0.5f) - tolerableRange) * 2f / 3000f);
+
+        }
+        else
+        {
+            //Curva parabolica: f(0) = 1; f(TR) = 0
+            AddReward(Mathf.Pow(1f - diffX/tolerableRange, 2) / 3000f);
+        }
+        /*
         if (diffX > tolerableRange)
         {
             AddReward(-diffX / (2000f * tolerableRange));
@@ -99,7 +111,7 @@ public class AgentShoot : Agent
         {
             AddReward(Mathf.Clamp(tolerableRange / (diffX + 0.000001f), 1f, 20f) / 2000f);
         }
-        /*
+        
         if (diffY > tolerableRange)
         {
             AddReward(-diffY / (2000f * tolerableRange));
