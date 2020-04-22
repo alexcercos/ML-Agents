@@ -9,7 +9,7 @@ public class AgentShoot : Agent
 
     CameraMovement cameraAgent;
 
-    float tolerableRange = 0.004f; //de -1 a 1 es el maximo posible, el rango es positivo>0
+    float tolerableRange = 0.1f; //de -1 a 1 es el maximo posible, el rango es positivo>0
 
     private float iX = 0f, iY = 0f;
     bool iClick = true;
@@ -100,6 +100,8 @@ public class AgentShoot : Agent
         {
             //Curva parabolica: f(0) = 1; f(TR) = 0
             AddReward(Mathf.Pow(1f - diffX/tolerableRange, 2) / 3000f);
+
+            //AddReward((1f - diffX / tolerableRange) / 3000f); //lineal
         }
         /*
         if (diffX > tolerableRange)
