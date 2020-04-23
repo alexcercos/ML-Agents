@@ -177,7 +177,11 @@ MonoBehaviour:
     timeScale: 1
     targetFrameRate: 60
   resetParameters:
-    m_ResetParameters: []
+    m_ResetParameters:
+    - key: tolerableRange
+      value: 0.5
+    - key: maximumRange
+      value: 1
 --- !u!1 &131094015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2302,8 +2306,7 @@ PrefabInstance:
     - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 5e555a325f18bd3438bfd0310ded6902,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: m_BrainParameters.vectorObservationSize
       value: 0
@@ -2334,7 +2337,7 @@ PrefabInstance:
       objectReference: {fileID: 1252828196}
     - target: {fileID: 168162533, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: agentParameters.maxStep
-      value: 3000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 4612361943311979997, guid: 866aec7a5971df747bbb175cacf8784e,
         type: 3}

@@ -5,8 +5,12 @@ using MLAgents;
 
 public class ShotAcademy : Academy
 {
+    public static float tolerableRange;
+    public static float maximumRange;
+
     public override void AcademyReset()
     {
-        base.AcademyReset();
+        tolerableRange = resetParameters["tolerableRange"];
+        maximumRange = resetParameters["maximumRange"];
     }
 }

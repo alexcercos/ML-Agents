@@ -9,7 +9,9 @@ public class AgentShoot : Agent
 
     CameraMovement cameraAgent;
 
-    float tolerableRange = 0.1f; //de -1 a 1 es el maximo posible, el rango es positivo>0
+    //float tolerableRange = 0.1f; //de -1 a 1 es el maximo posible, el rango es positivo>0
+
+    float totalSteps = 2000f;
 
     private float iX = 0f, iY = 0f;
     bool iClick = true;
@@ -90,18 +92,22 @@ public class AgentShoot : Agent
         //Debug.Log("iX = " + iX + " -- oX = " + oX + " -- diff = " + diffX);
 
         //recompensas por movimiento, 0.5 es el limite de penalizacion maximo
-        if (diffX > tolerableRange)
+        //if (diffX > tolerableRange)
+        if (diffX > 1f)
         {
-            //linea: f(TR) = 0; f(0.5) = -1     //F(0.7) = -1
-            AddReward(-(Mathf.Min(diffX, 0.5f) - tolerableRange) * 2f / 3000f);
+            // De -1 a -3, con curva
+            AddReward((-1f-Mathf.Pow((Mathf.Min(diffX, 2f) - ShotAcademy.maximumRange) / (2f - ShotAcademy.maximumRange), 2) * 2f)/totalSteps);
+        }
+        else if (diffX > ShotAcademy.tolerableRange)
+        {
+            //linea: f(TR) = 0; f(MR) = -1
+            AddReward(-(Mathf.Min(diffX, ShotAcademy.maximumRange) - ShotAcademy.tolerableRange) / (totalSteps * (ShotAcademy.maximumRange - ShotAcademy.tolerableRange)));
 
         }
         else
         {
-            //Curva parabolica: f(0) = 1; f(TR) = 0
-            AddReward(Mathf.Pow(1f - diffX/tolerableRange, 2) / 3000f);
-
-            //AddReward((1f - diffX / tolerableRange) / 3000f); //lineal
+            //linea: f(0) = 1; f(TR) = 0
+            AddReward((1f - diffX / ShotAcademy.tolerableRange) / totalSteps); 
         }
         /*
         if (diffX > tolerableRange)
