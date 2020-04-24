@@ -93,21 +93,22 @@ public class AgentShoot : Agent
 
         //recompensas por movimiento, 0.5 es el limite de penalizacion maximo
         //if (diffX > tolerableRange)
+        /*
         if (diffX > 1f)
         {
             // De -1 a -3, con curva
             AddReward((-1f-Mathf.Pow((Mathf.Min(diffX, 2f) - ShotAcademy.maximumRange) / (2f - ShotAcademy.maximumRange), 2) * 2f)/totalSteps);
         }
-        else if (diffX > ShotAcademy.tolerableRange)
+        else*/ if (diffX > ShotAcademy.tolerableRange)
         {
-            //linea: f(TR) = 0; f(MR) = -1
-            AddReward(-(Mathf.Min(diffX, ShotAcademy.maximumRange) - ShotAcademy.tolerableRange) / (totalSteps * (ShotAcademy.maximumRange - ShotAcademy.tolerableRange)));
+            AddReward(-40f * (Mathf.Min(diffX, ShotAcademy.maximumRange) - ShotAcademy.tolerableRange) / (totalSteps * (ShotAcademy.maximumRange - ShotAcademy.tolerableRange)));
+            //AddReward(-diffX / (3000f * ShotAcademy.tolerableRange));
 
         }
         else
         {
-            //linea: f(0) = 1; f(TR) = 0
-            AddReward((1f - diffX / ShotAcademy.tolerableRange) / totalSteps); 
+            AddReward(40f * (1f - diffX / ShotAcademy.tolerableRange) / totalSteps);
+            //AddReward(Mathf.Clamp(ShotAcademy.tolerableRange / (diffX + 0.001f), 1f, 10f) / 3000f);
         }
         /*
         if (diffX > tolerableRange)

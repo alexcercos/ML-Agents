@@ -179,7 +179,7 @@ MonoBehaviour:
   resetParameters:
     m_ResetParameters:
     - key: tolerableRange
-      value: 0.5
+      value: 0.01
     - key: maximumRange
       value: 1
 --- !u!1 &131094015
@@ -2306,7 +2306,8 @@ PrefabInstance:
     - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 9ca3a2c0ad0c109458cf692690ad74ff,
+        type: 3}
     - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: m_BrainParameters.vectorObservationSize
       value: 0
@@ -2337,7 +2338,7 @@ PrefabInstance:
       objectReference: {fileID: 1252828196}
     - target: {fileID: 168162533, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: agentParameters.maxStep
-      value: 2000
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 4612361943311979997, guid: 866aec7a5971df747bbb175cacf8784e,
         type: 3}
