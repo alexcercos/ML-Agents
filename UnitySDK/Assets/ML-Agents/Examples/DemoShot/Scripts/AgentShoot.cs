@@ -101,13 +101,13 @@ public class AgentShoot : Agent
         }
         else*/ if (diffX > ShotAcademy.tolerableRange)
         {
-            AddReward(-40f * (Mathf.Min(diffX, ShotAcademy.maximumRange) - ShotAcademy.tolerableRange) / (totalSteps * (ShotAcademy.maximumRange - ShotAcademy.tolerableRange)));
+            AddReward(- 80f * (Mathf.Min(diffX, ShotAcademy.maximumRange) - ShotAcademy.tolerableRange) / (totalSteps * (ShotAcademy.maximumRange - ShotAcademy.tolerableRange)));
             //AddReward(-diffX / (3000f * ShotAcademy.tolerableRange));
 
         }
         else
         {
-            AddReward(40f * (1f - diffX / ShotAcademy.tolerableRange) / totalSteps);
+            AddReward(80f * (1f - diffX / ShotAcademy.tolerableRange) / totalSteps);
             //AddReward(Mathf.Clamp(ShotAcademy.tolerableRange / (diffX + 0.001f), 1f, 10f) / 3000f);
         }
         /*
