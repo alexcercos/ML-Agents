@@ -38,7 +38,7 @@ public class BotNoReaction : IBotMovement
             if (Mathf.Abs(angle) < 1f)
             {
                 hasObjective = false;
-                //rot = -rot;
+                rot = -rot;
                 timerReact = 0f;
                 reactTimeNext = reactTimeAverage + Random.Range(-reactTimeAverage / 5f, reactTimeAverage / 5f);
             }

@@ -24,26 +24,22 @@ default:
             gamma: 0.99
 
 Imitator:
-    batch_size: 32
+    batch_size: 1024
     normalize: false
-    num_epoch: 3
-    num_layers: 1
+    num_epoch: 5
+    num_layers: 2
     hidden_units: 256
     learning_rate: 2.5e-4
     learning_rate_schedule: linear
     beta: 5.0e-3
-    buffer_size: 256
+    buffer_size: 8192
     max_steps: 5.0e6
     summary_freq: 1000
-    time_horizon: 5
+    time_horizon: 256
     reward_signals:
         extrinsic:
             strength: 1.0
             gamma: 0.9
-        curiosity:
-            strength: 0.01
-            gamma: 0.99
-            encoding_size: 256
 
 FutGoalie:
     max_steps: 5.0e8
