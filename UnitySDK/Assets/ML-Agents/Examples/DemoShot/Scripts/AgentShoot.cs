@@ -21,6 +21,9 @@ public class AgentShoot : Agent
 
     List<float> lastClick; //pensar en hacer con probabilidad en vez de bools
 
+    // lista movimientos reales para rewards (avg-std)
+    List<float> realX;
+
     private void Start()
     {
         cameraAgent = GetComponent<CameraMovement>();
@@ -89,17 +92,13 @@ public class AgentShoot : Agent
         float diffX = Mathf.Abs(iX - oX);
         //float diffY = Mathf.Abs(iY - oY);
 
-        //Debug.Log("iX = " + iX + " -- oX = " + oX + " -- diff = " + diffX);
+        // Recompensas con desviacion tipica
 
-        //recompensas por movimiento, 0.5 es el limite de penalizacion maximo
+
+        //recompensas por movimiento lineales
         //if (diffX > tolerableRange)
         /*
-        if (diffX > 1f)
-        {
-            // De -1 a -3, con curva
-            AddReward((-1f-Mathf.Pow((Mathf.Min(diffX, 2f) - ShotAcademy.maximumRange) / (2f - ShotAcademy.maximumRange), 2) * 2f)/totalSteps);
-        }
-        else*/ if (diffX > ShotAcademy.tolerableRange)
+        if (diffX > ShotAcademy.tolerableRange)
         {
             AddReward(- 40f * (Mathf.Min(diffX, ShotAcademy.maximumRange) - ShotAcademy.tolerableRange) / (totalSteps * (ShotAcademy.maximumRange - ShotAcademy.tolerableRange)));
             //AddReward(-diffX / (3000f * ShotAcademy.tolerableRange));
@@ -109,25 +108,6 @@ public class AgentShoot : Agent
         {
             AddReward(40f * (1f - diffX / ShotAcademy.tolerableRange) / totalSteps);
             //AddReward(Mathf.Clamp(ShotAcademy.tolerableRange / (diffX + 0.001f), 1f, 10f) / 3000f);
-        }
-        /*
-        if (diffX > tolerableRange)
-        {
-            AddReward(-diffX / (2000f * tolerableRange));
-            
-        }
-        else
-        {
-            AddReward(Mathf.Clamp(tolerableRange / (diffX + 0.000001f), 1f, 20f) / 2000f);
-        }
-        
-        if (diffY > tolerableRange)
-        {
-            AddReward(-diffY / (2000f * tolerableRange));
-        }
-        else
-        {
-            AddReward(Mathf.Clamp(tolerableRange / (diffY + 0.001f), 1f, 10f) / 2000f);
         }*/
 
         //el click no se compara exactamente igual, porque es instantaneo
@@ -181,5 +161,37 @@ public class AgentShoot : Agent
         }*/
 
         return action;
+    }
+
+
+
+    public float Average(ref List<float> previousMoves)
+    {
+        float avg = 0f;
+        foreach (float f in previousMoves)
+        {
+            avg += f;
+        }
+
+        return avg / previousMoves.Count;
+    }
+
+    public float StdDeviationX(ref List<float> previousMoves, float average)
+    {
+        float std = 0f;
+        foreach (float f in previousMoves)
+        {
+            std += Mathf.Pow(f - average, 2);
+        }
+
+        return std / previousMoves.Count;
+    }
+
+    // Positiva = dentro de la desviacion tipica; Negativa = fuera (incoherente)
+    public float Coherence(float avg, float std, float move)
+    {
+        float dist = Mathf.Abs(avg - move);
+
+        return (std - dist)/std;
     }
 }
