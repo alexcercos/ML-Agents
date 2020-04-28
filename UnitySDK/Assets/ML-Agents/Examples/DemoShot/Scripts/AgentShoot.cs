@@ -13,7 +13,9 @@ public class AgentShoot : Agent
 
     float totalSteps = 2000f;
 
-    private float iX = 0f, iY = 0f;
+    //private float iX = 0f, iY = 0f;
+
+    private float maxX = 0f, minX = 0f;
     bool iClick = true;
 
     List<float> lastX;
@@ -29,14 +31,19 @@ public class AgentShoot : Agent
         cameraAgent = GetComponent<CameraMovement>();
         
         lastX = new List<float>();
+
         //lastY = new List<float>();
         //lastClick = new List<float>();
+
+        realX = new List<float>();
 
         for (int i = 0; i<60; i++)
         {
             lastX.Add(0f);
             //lastY.Add(0f);
             //lastClick.Add(0f);
+
+            realX.Add(0f);
         }
     }
 
@@ -74,26 +81,60 @@ public class AgentShoot : Agent
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         //comparar la del bot con la del agente
-        
-        iX = vectorAction[0];
+
+        //iX = vectorAction[0];
         /*
         iY = vectorAction[1];
         iClick = vectorAction[2] > 0f;
         */
 
+        maxX = vectorAction[0];
+        minX = vectorAction[1];
+
         float oX = cameraAgent.GetX();
         //float oY = cameraAgent.GetY();
 
         //Debug canvas
-        graphicCanvas.AddBotPoint(iX); // No esta procesado aun
+        //graphicCanvas.AddBotPoint(iX); // No esta procesado aun             //CANVAS 2 PUNTOS
         graphicCanvas.AddAgentPoint(oX);
 
-        
-        float diffX = Mathf.Abs(iX - oX);
+        graphicCanvas.AddBotPointDown(minX);
+        graphicCanvas.AddBotPointUp(maxX);
+
+
+        //float diffX = Mathf.Abs(iX - oX);
         //float diffY = Mathf.Abs(iY - oY);
+
 
         // Recompensas con desviacion tipica
 
+        float average = Average(ref realX);
+        float stDesv = StdDeviation(ref realX, average);
+
+        float coherence = Coherence(average, stDesv, oX);
+
+        float reward = 0f;
+
+        if (minX > maxX) // No se permite
+        {
+            reward = -100f;
+        }
+        else if (oX > maxX ||oX < minX) // Fuera de la estimacion
+        {
+            float factor = PunishFactor(coherence);
+            float relPunish = RelativePunish(maxX, minX, oX, stDesv);
+
+            reward = -(-1f + Mathf.Pow(1f + factor, relPunish));
+        }
+        else // Dentro de la estimacion
+        {
+            float factor = RewardFactor(coherence);
+            float relReward = RelativeReward(maxX, minX, oX, stDesv);
+
+            reward = -1f + Mathf.Pow(1f + factor, relReward); 
+        }
+
+        AddReward(reward / 1000f); // se le puede restar un parametro de exigencia
 
         //recompensas por movimiento lineales
         //if (diffX > tolerableRange)
@@ -116,7 +157,10 @@ public class AgentShoot : Agent
 
         //actualizar listas
         lastX.RemoveAt(59);
-        lastX.Insert(0, iX); // En vez de oX, para que no tenga "chuleta"
+        lastX.Insert(0, Mathf.Lerp(minX, maxX, Random.Range(0f, 1f))); // En vez de oX, para que no tenga "chuleta"
+
+        realX.RemoveAt(59);
+        realX.Insert(0, oX);
         //lastY.RemoveAt(59);
         //lastY.Insert(0, oY);
         
@@ -130,12 +174,12 @@ public class AgentShoot : Agent
 
     public float GetX()
     {
-        return iX * 2f; // Esta normalizado, para adaptar el agente
+        return Random.Range(minX, maxX) * 2f; // Esta normalizado, para adaptar el agente
     }
 
     public float GetY()
     {
-        return iY * 2f;
+        return 0f * 2f;
     }
 
     public bool GetClick() // Cambiar por probabilidad
@@ -146,10 +190,10 @@ public class AgentShoot : Agent
 
     public override float[] Heuristic()
     {
-        var action = new float[1]; //3
+        var action = new float[2]; //3
 
         action[0] = Input.GetAxis("Mouse X"); //clamp hasta un maximo posible
-        //action[1] = Input.GetAxis("Mouse Y");
+        action[1] = Input.GetAxis("Mouse Y");
         /*
         if (Input.GetMouseButtonDown(0))
         {
@@ -176,7 +220,7 @@ public class AgentShoot : Agent
         return avg / previousMoves.Count;
     }
 
-    public float StdDeviationX(ref List<float> previousMoves, float average)
+    public float StdDeviation(ref List<float> previousMoves, float average)
     {
         float std = 0f;
         foreach (float f in previousMoves)
@@ -193,5 +237,33 @@ public class AgentShoot : Agent
         float dist = Mathf.Abs(avg - move);
 
         return (std - dist)/std;
+    }
+
+    public float RewardFactor(float coherence)
+    {
+        return 1f - Mathf.Pow(2, coherence - 1);
+    }
+
+    public float PunishFactor(float coherence)
+    {
+        return Mathf.Pow(2, coherence - 1);
+    }
+
+    public float RelativeReward(float max, float min, float result, float std)
+    {
+        float avgDist = (Mathf.Abs(max - result) + Mathf.Abs(min - result)) / 2f;
+
+        float difference = Mathf.Max(avgDist - std, 0f);
+        
+        return 1f / (difference + 0.25f) + 1f;
+    }
+
+    public float RelativePunish(float max, float min, float result, float std)
+    {
+        float avgDist = (Mathf.Abs(max - result) + Mathf.Abs(min - result)) / 2f;
+
+        float difference = Mathf.Max(avgDist - std, 0f);
+
+        return -1f / (difference - 2.25f) + 1f;
     }
 }
