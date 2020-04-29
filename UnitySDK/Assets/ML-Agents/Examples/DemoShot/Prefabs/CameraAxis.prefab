@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
-    maxStep: 3000
+    maxStep: 1000
     resetOnDone: 1
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_BrainParameters:
     vectorObservationSize: 25
     numStackedVectorObservations: 1
-    vectorActionSize: 01000000
+    vectorActionSize: 02000000
     vectorActionDescriptions: []
     vectorActionSpaceType: 1
   m_Model: {fileID: 0}
@@ -212,7 +212,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4485411416023498081}
   - component: {fileID: 4612361943311979997}
-  - component: {fileID: 4850690003652678949}
   m_Layer: 0
   m_Name: RenderTargetCamera
   m_TagString: Untagged
@@ -277,11 +276,3 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4850690003652678949
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9126188454700956438}
-  m_Enabled: 1

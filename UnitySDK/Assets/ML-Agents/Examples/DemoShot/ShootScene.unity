@@ -823,7 +823,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1252828199}
   - component: {fileID: 1252828198}
-  - component: {fileID: 1252828197}
   - component: {fileID: 1252828196}
   m_Layer: 14
   m_Name: GraphCamera
@@ -847,14 +846,6 @@ MonoBehaviour:
   agentLine: {fileID: 526653415}
   botLineUp: {fileID: 1390772800}
   botLineDown: {fileID: 1623330375}
---- !u!81 &1252828197
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252828195}
-  m_Enabled: 1
 --- !u!20 &1252828198
 Camera:
   m_ObjectHideFlags: 0
@@ -1667,13 +1658,5 @@ PrefabInstance:
       propertyPath: graphicCanvas
       value: 
       objectReference: {fileID: 1252828196}
-    - target: {fileID: 168162533, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
-      propertyPath: agentParameters.maxStep
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
-      propertyPath: m_BrainParameters.vectorActionSize.Array.data[0]
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}

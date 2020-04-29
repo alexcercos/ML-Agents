@@ -50,12 +50,14 @@ public class AgentShoot : Agent
     public override void AgentReset()
     {
         lastX = new List<float>();
+        realX = new List<float>();
         //lastY = new List<float>();
         //lastClick = new List<float>();
 
         for (int i = 0; i < 60; i++)
         {
             lastX.Add(0f);
+            realX.Add(0f);
             //lastY.Add(0f);
             //lastClick.Add(0f);
         }
@@ -113,9 +115,45 @@ public class AgentShoot : Agent
 
         float coherence = Coherence(average, stDesv, oX);
 
-        float reward = 0f;
+        float agentStd = (maxX - minX); // debe dar positivo, sino recibe -100
 
-        if (minX > maxX) // No se permite
+        float reward = 0f;
+        if (minX > maxX)
+        {
+            reward = -500f;
+        }
+        else
+        {
+            float precision = RelativePointsByDistance(minX, maxX, oX);
+
+            float rewardFactor = 0f;
+
+            if (precision>0f)
+            {
+                rewardFactor = RewardFactor(coherence);
+            }
+            else
+            {
+                rewardFactor = PunishFactor(coherence);
+            }
+
+            float stdRelation = DeviationFactor(stDesv, agentStd);
+            
+
+            reward = precision * rewardFactor * stdRelation;
+
+            Debug.Log("reward " + reward);
+            Debug.Log("RF " + rewardFactor);
+            Debug.Log("Prec " + precision);
+            Debug.Log("std " + stdRelation);
+        }
+
+        
+
+        AddReward(reward / 1000f); // Poner aqui exigencia
+
+        /*
+        if (minX > maxX) // No se permite maximo y minimo invertidos
         {
             reward = -100f;
         }
@@ -124,14 +162,14 @@ public class AgentShoot : Agent
             float factor = PunishFactor(coherence);
             float relPunish = RelativePunish(maxX, minX, oX, stDesv);
 
-            reward = -(-1f + Mathf.Pow(1f + factor, relPunish));
+            reward = -(-1f + Mathf.Pow(1f + factor, relPunish)) * 20f;
         }
         else // Dentro de la estimacion
         {
             float factor = RewardFactor(coherence);
             float relReward = RelativeReward(maxX, minX, oX, stDesv);
 
-            reward = -1f + Mathf.Pow(1f + factor, relReward); 
+            reward = (-1f + Mathf.Pow(1f + factor, relReward)) * 20f; 
         }
 
         AddReward(reward / 1000f); // se le puede restar un parametro de exigencia
@@ -216,8 +254,10 @@ public class AgentShoot : Agent
         {
             avg += f;
         }
-
-        return avg / previousMoves.Count;
+        if (previousMoves.Count > 0)
+            return avg / previousMoves.Count;
+        else
+            return 0f;
     }
 
     public float StdDeviation(ref List<float> previousMoves, float average)
@@ -228,18 +268,81 @@ public class AgentShoot : Agent
             std += Mathf.Pow(f - average, 2);
         }
 
-        return std / previousMoves.Count;
+        if (previousMoves.Count > 0)
+            return std / previousMoves.Count;
+        else
+            return 0.001f;
     }
 
     // Positiva = dentro de la desviacion tipica; Negativa = fuera (incoherente)
+    // 0 si el punto esta en linea con la desviacion tipica
     public float Coherence(float avg, float std, float move)
     {
         float dist = Mathf.Abs(avg - move);
 
+        std = Mathf.Max(0.001f, std);
+
         return (std - dist)/std;
     }
 
+    /// <summary>
+    /// Acierto del agente al envolver el punto de forma centrada
+    /// Usa la formula 1-x^2
+    /// </summary>
+    /// <param name="min">Linea minima del agente</param>
+    /// <param name="max">Linea maxima del agente</param>
+    /// <param name="point">Punto que ha dado el bot a imitar</param>
+    /// <returns>Puntuacion por precision</returns>
+    public float RelativePointsByDistance(float min, float max, float point)
+    {
+        float center = (min + max) / 2f;
+
+        float radius = Mathf.Abs(max - min) / 2f;
+
+        float precision = Mathf.Min(Mathf.Abs(center - point) / radius, 6f);
+
+        return 1f - Mathf.Pow(precision, 2);
+    }
+
+    /// <summary>
+    /// Factor de recompensa en funcion de la coherencia del punto con su desviacion estandar
+    /// Usa la formula 2^(x-1)
+    /// </summary>
+    /// <param name="coherence">Coherencia del punto (menor que 1)</param>
+    /// <returns>Factor de recompensa</returns>
     public float RewardFactor(float coherence)
+    {
+        coherence = Mathf.Max(coherence, -5f);
+        return Mathf.Pow(2, - coherence);
+    }
+
+    /// <summary>
+    /// Factor de penalizacion en funcion de la coherencia del punto con su desviacion estandar
+    /// Usa la formula 1/(x + 0.25) + 0.2
+    /// </summary>
+    /// <param name="coherence">Coherencia del punto (menor que 1)</param>
+    /// <returns>Factor de castigo</returns>
+    public float PunishFactor(float coherence)
+    {
+        return 1f / (1.25f - coherence) + 0.2f;
+    }
+
+    /// <summary>
+    /// Factor multiplicador de la relacion entre la std original y la estimada
+    /// </summary>
+    /// <param name="std">Desviacion estandar del bot</param>
+    /// <param name="agentStd">Desviacion estandar del agente (max-min)</param>
+    /// <returns>Relacion entre std y agentStd</returns>
+    public float DeviationFactor(float std, float agentStd)
+    {
+        std = Mathf.Max(0.0001f, std);
+        agentStd = Mathf.Max(0.0001f, std);
+
+        return std / agentStd;
+    }
+
+    /*
+    public float RewardFactor(float coherence) //0-1
     {
         return 1f - Mathf.Pow(2, coherence - 1);
     }
@@ -254,8 +357,11 @@ public class AgentShoot : Agent
         float avgDist = (Mathf.Abs(max - result) + Mathf.Abs(min - result)) / 2f;
 
         float difference = Mathf.Max(avgDist - std, 0f);
-        
-        return 1f / (difference + 0.25f) + 1f;
+
+        std = Mathf.Max(std, 0.001f);
+
+        //return 1f / (difference + 0.25f) + 1f;
+        return -Mathf.Log((difference / std) / 2 + 0.01f) * 2f - 0.5f;
     }
 
     public float RelativePunish(float max, float min, float result, float std)
@@ -264,6 +370,10 @@ public class AgentShoot : Agent
 
         float difference = Mathf.Max(avgDist - std, 0f);
 
-        return -1f / (difference - 2.25f) + 1f;
-    }
+
+        std = Mathf.Max(std, 1f); // Para que no haya castigos positivos
+
+        //return -1f / (difference - 2.25f) + 1f;
+        return Mathf.Pow(2, difference / std + 1) - 4;
+    }*/
 }
