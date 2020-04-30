@@ -1,0 +1,11 @@
+{
+    "measure" : "reward",
+    "thresholds" : [0, 0, 0, 0],
+    "min_lesson_length" : 3,
+    "signal_smoothing" : true, 
+    "parameters" : 
+    {
+        "tolerableRange" : [0.5, 0.25, 0.1, 0.01, 0.01],
+		"maximumRange" : [1.0, 1.0, 1.0, 1.0, 0.5]
+    }
+}

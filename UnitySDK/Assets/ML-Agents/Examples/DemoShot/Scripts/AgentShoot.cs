@@ -11,7 +11,7 @@ public class AgentShoot : Agent
 
     //float tolerableRange = 0.1f; //de -1 a 1 es el maximo posible, el rango es positivo>0
 
-    float totalSteps = 2000f;
+    float totalSteps = 1000f;
 
     //private float iX = 0f, iY = 0f;
 
@@ -25,6 +25,12 @@ public class AgentShoot : Agent
 
     // lista movimientos reales para rewards (avg-std)
     List<float> realX;
+
+    float minimumSTD = 0.1f;
+
+    float initWeight = 10f;
+    float loss = 1.25f;
+    float minimum = 0.5f;
 
     private void Start()
     {
@@ -103,6 +109,8 @@ public class AgentShoot : Agent
         graphicCanvas.AddBotPointDown(minX);
         graphicCanvas.AddBotPointUp(maxX);
 
+        
+
 
         //float diffX = Mathf.Abs(iX - oX);
         //float diffY = Mathf.Abs(iY - oY);
@@ -113,9 +121,13 @@ public class AgentShoot : Agent
         float average = Average(ref realX);
         float stDesv = StdDeviation(ref realX, average);
 
+        graphicCanvas.AddAveragePoint(average); //Debug std
+        graphicCanvas.AddStdHighPoint(average + stDesv);
+        graphicCanvas.AddStdLowPoint(average - stDesv);
+
         float coherence = Coherence(average, stDesv, oX);
 
-        float agentStd = (maxX - minX); // debe dar positivo, sino recibe -100
+        float agentStd = (maxX - minX)/2f; // debe dar positivo, sino recibe -100
 
         float reward = 0f;
         if (minX > maxX)
@@ -127,17 +139,19 @@ public class AgentShoot : Agent
             float precision = RelativePointsByDistance(minX, maxX, oX);
 
             float rewardFactor = 0f;
+            float stdRelation = 1f;
 
             if (precision>0f)
             {
                 rewardFactor = RewardFactor(coherence);
+                stdRelation = DeviationFactor(stDesv, agentStd, coherence, true);
             }
             else
             {
                 rewardFactor = PunishFactor(coherence);
+                stdRelation = DeviationFactor(stDesv, agentStd, coherence, false);
             }
-
-            float stdRelation = DeviationFactor(stDesv, agentStd);
+            
             
 
             reward = precision * rewardFactor * stdRelation;
@@ -150,7 +164,7 @@ public class AgentShoot : Agent
 
         
 
-        AddReward(reward / 1000f); // Poner aqui exigencia
+        AddReward((reward - ShotAcademy.exigency) / totalSteps);
 
         /*
         if (minX > maxX) // No se permite maximo y minimo invertidos
@@ -250,12 +264,19 @@ public class AgentShoot : Agent
     public float Average(ref List<float> previousMoves)
     {
         float avg = 0f;
+        float total = 0f;
+
+        float weight = initWeight;
+
         foreach (float f in previousMoves)
         {
-            avg += f;
+            avg += (f * weight);
+            total += weight;
+
+            weight = Mathf.Max(minimum, weight / loss);
         }
-        if (previousMoves.Count > 0)
-            return avg / previousMoves.Count;
+        if (total > 0)
+            return avg / total;
         else
             return 0f;
     }
@@ -263,15 +284,22 @@ public class AgentShoot : Agent
     public float StdDeviation(ref List<float> previousMoves, float average)
     {
         float std = 0f;
+        float total = 0f;
+
+        float weight = initWeight;
+
         foreach (float f in previousMoves)
         {
-            std += Mathf.Pow(f - average, 2);
+            std += Mathf.Pow(f - average, 2) * weight;
+            total += weight;
+
+            weight = Mathf.Max(minimum, weight / loss);
         }
 
-        if (previousMoves.Count > 0)
-            return std / previousMoves.Count;
+        if (total > 0)
+            return std / total + minimumSTD;
         else
-            return 0.001f;
+            return minimumSTD;
     }
 
     // Positiva = dentro de la desviacion tipica; Negativa = fuera (incoherente)
@@ -329,16 +357,34 @@ public class AgentShoot : Agent
 
     /// <summary>
     /// Factor multiplicador de la relacion entre la std original y la estimada
+    /// Utiliza la formula (x-1)^3+1
     /// </summary>
     /// <param name="std">Desviacion estandar del bot</param>
     /// <param name="agentStd">Desviacion estandar del agente (max-min)</param>
     /// <returns>Relacion entre std y agentStd</returns>
-    public float DeviationFactor(float std, float agentStd)
+    public float DeviationFactor(float std, float agentStd, float coherence, bool isReward)
     {
-        std = Mathf.Max(0.0001f, std);
-        agentStd = Mathf.Max(0.0001f, std);
+        std = Mathf.Max(0.000001f, std);
+        agentStd = Mathf.Max(0.000001f, agentStd);
 
-        return std / agentStd;
+        float stdRelation = Mathf.Min(std / agentStd, 1000f);
+
+
+        if (stdRelation >= 1f) // El factor solo se aplica si el std de la red es mayor al del bot
+        {
+            return 1f;
+        }
+
+        float coherenceFactor = Mathf.Pow(2f, 1f - coherence);
+
+        if (isReward)
+        {
+            return Mathf.Pow(stdRelation - 1, 3) / coherenceFactor + 1;
+        }
+        else
+        {
+            return -(5 * Mathf.Pow(stdRelation - 1, 3)) / coherenceFactor + 1;
+        }
     }
 
     /*

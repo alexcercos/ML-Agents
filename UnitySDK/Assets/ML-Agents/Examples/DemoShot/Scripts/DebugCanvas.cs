@@ -8,9 +8,17 @@ public class DebugCanvas : MonoBehaviour
     public LineRenderer botLineUp;
     public LineRenderer botLineDown;
 
+    public LineRenderer stdLowLine;
+    public LineRenderer stdHighLine;
+    public LineRenderer avgLine;
+
     private Vector3[] agentPoints;
     private Vector3[] botPointsUp;
     private Vector3[] botPointsDown;
+
+    private Vector3[] stdLowPoints;
+    private Vector3[] stdHighPoints;
+    private Vector3[] avgPoints;
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +27,17 @@ public class DebugCanvas : MonoBehaviour
         botPointsUp = new Vector3[0];
         botPointsDown = new Vector3[0];
 
+        stdLowPoints = new Vector3[0];
+        stdHighPoints = new Vector3[0];
+        avgPoints = new Vector3[0];
+
         agentLine.SetPositions(agentPoints);
         botLineUp.SetPositions(botPointsUp);
         botLineDown.SetPositions(botPointsDown);
+
+        stdLowLine.SetPositions(stdLowPoints);
+        stdHighLine.SetPositions(stdHighPoints);
+        avgLine.SetPositions(avgPoints);
     }
 
     // Update is called once per frame
@@ -32,103 +48,66 @@ public class DebugCanvas : MonoBehaviour
 
     public void AddAgentPoint(float point)
     {
-        if (agentPoints.Length < 100)
-        {
-            Vector3[] newPoints = new Vector3[agentPoints.Length + 1];
-
-            newPoints[0] = new Vector3(point * 20f, -50f, 0f);
-
-            for (int i = 0; i < agentPoints.Length; i++)
-            {
-                newPoints[i + 1] = new Vector3(agentPoints[i].x, agentPoints[i].y + 1f, 0f);
-            }
-            agentPoints = newPoints;
-
-            agentLine.positionCount = agentPoints.Length;
-            agentLine.SetPositions(agentPoints);
-        } 
-        else
-        {
-            Vector3[] newPoints = new Vector3[agentPoints.Length];
-
-            newPoints[0] = new Vector3(point * 20f, -50f, 0f);
-
-            for (int i = 0; i < agentPoints.Length-1; i++)
-            {
-                newPoints[i + 1] = new Vector3(agentPoints[i].x, agentPoints[i].y + 1f, 0f);
-            }
-            agentPoints = newPoints;
-
-            agentLine.positionCount = agentPoints.Length;
-            agentLine.SetPositions(agentPoints);
-        }
+        AddLinePoint(ref agentLine, ref agentPoints, new Vector3(point * 20f, -50f, -1f));
     }
 
     public void AddBotPointUp(float point)
     {
-        if (botPointsUp.Length < 100)
-        {
-            Vector3[] newPoints = new Vector3[botPointsUp.Length + 1];
-
-            newPoints[0] = new Vector3(point * 20f, -50f, 0f);
-
-            for (int i = 0; i < botPointsUp.Length; i++)
-            {
-                newPoints[i + 1] = new Vector3(botPointsUp[i].x, botPointsUp[i].y + 1f, 0f);
-            }
-            botPointsUp = newPoints;
-
-            botLineUp.positionCount = botPointsUp.Length;
-            botLineUp.SetPositions(botPointsUp);
-        }
-        else
-        {
-            Vector3[] newPoints = new Vector3[botPointsUp.Length];
-
-            newPoints[0] = new Vector3(point * 20f, -50f, 0f);
-
-            for (int i = 0; i < botPointsUp.Length - 1; i++)
-            {
-                newPoints[i + 1] = new Vector3(botPointsUp[i].x, botPointsUp[i].y + 1f, 0f);
-            }
-            botPointsUp = newPoints;
-
-            botLineUp.positionCount = botPointsUp.Length;
-            botLineUp.SetPositions(botPointsUp);
-        }
+        AddLinePoint(ref botLineUp, ref botPointsUp, new Vector3(point * 20f, -50f, 0f));
     }
 
     public void AddBotPointDown(float point)
     {
-        if (botPointsDown.Length < 100)
+        AddLinePoint(ref botLineDown, ref botPointsDown, new Vector3(point * 20f, -50f, 0f));
+    }
+
+    public void AddStdLowPoint(float point)
+    {
+        AddLinePoint(ref stdLowLine, ref stdLowPoints, new Vector3(point * 20f, -50f, 0.5f));
+    }
+
+    public void AddStdHighPoint(float point)
+    {
+        AddLinePoint(ref stdHighLine, ref stdHighPoints, new Vector3(point * 20f, -50f, 0.5f));
+    }
+
+    public void AddAveragePoint(float point)
+    {
+        AddLinePoint(ref avgLine, ref avgPoints, new Vector3(point * 20f, -50f, 0.5f));
+    }
+
+
+    private void AddLinePoint(ref LineRenderer line, ref Vector3[] listPoints, Vector3 point)
+    {
+        if (listPoints.Length < 100)
         {
-            Vector3[] newPoints = new Vector3[botPointsDown.Length + 1];
+            Vector3[] newPoints = new Vector3[listPoints.Length + 1];
 
-            newPoints[0] = new Vector3(point * 20f, -50f, 0f);
+            newPoints[0] = point;
 
-            for (int i = 0; i < botPointsDown.Length; i++)
+            for (int i = 0; i < listPoints.Length; i++)
             {
-                newPoints[i + 1] = new Vector3(botPointsDown[i].x, botPointsDown[i].y + 1f, 0f);
+                newPoints[i + 1] = new Vector3(listPoints[i].x, listPoints[i].y + 1f, listPoints[i].z);
             }
-            botPointsDown = newPoints;
+            listPoints = newPoints;
 
-            botLineDown.positionCount = botPointsDown.Length;
-            botLineDown.SetPositions(botPointsDown);
+            line.positionCount = listPoints.Length;
+            line.SetPositions(listPoints);
         }
         else
         {
-            Vector3[] newPoints = new Vector3[botPointsDown.Length];
+            Vector3[] newPoints = new Vector3[listPoints.Length];
 
-            newPoints[0] = new Vector3(point * 20f, -50f, 0f);
+            newPoints[0] = point;
 
-            for (int i = 0; i < botPointsDown.Length - 1; i++)
+            for (int i = 0; i < listPoints.Length - 1; i++)
             {
-                newPoints[i + 1] = new Vector3(botPointsDown[i].x, botPointsDown[i].y + 1f, 0f);
+                newPoints[i + 1] = new Vector3(listPoints[i].x, listPoints[i].y + 1f, listPoints[i].z);
             }
-            botPointsDown = newPoints;
+            listPoints = newPoints;
 
-            botLineDown.positionCount = botPointsDown.Length;
-            botLineDown.SetPositions(botPointsDown);
+            line.positionCount = listPoints.Length;
+            line.SetPositions(listPoints);
         }
     }
 }
