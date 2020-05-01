@@ -177,9 +177,7 @@ MonoBehaviour:
     timeScale: 1
     targetFrameRate: 60
   resetParameters:
-    m_ResetParameters:
-    - key: exigency
-      value: 0
+    m_ResetParameters: []
 --- !u!1 &201447022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,5 +2038,10 @@ PrefabInstance:
       propertyPath: graphicCanvas
       value: 
       objectReference: {fileID: 1252828196}
+    - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: c289a7e9cc341434bbfbfd2567f5a70a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}

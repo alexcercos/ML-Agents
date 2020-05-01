@@ -32,6 +32,8 @@ public class AgentShoot : Agent
     float loss = 1.25f;
     float minimum = 0.5f;
 
+    const float AU_PROP = 0.618034f;
+
     private void Start()
     {
         cameraAgent = GetComponent<CameraMovement>();
@@ -96,8 +98,8 @@ public class AgentShoot : Agent
         iClick = vectorAction[2] > 0f;
         */
 
-        maxX = vectorAction[0];
-        minX = vectorAction[1];
+        maxX = Mathf.Clamp(vectorAction[0], -1f, 1f);
+        minX = Mathf.Clamp(vectorAction[1], -1f, 1f);
 
         float oX = cameraAgent.GetX();
         //float oY = cameraAgent.GetY();
@@ -132,10 +134,11 @@ public class AgentShoot : Agent
         float reward = 0f;
         if (minX > maxX)
         {
-            reward = -500f;
+            reward = -150f;
         }
         else
         {
+            /*
             float precision = RelativePointsByDistance(minX, maxX, oX);
 
             float rewardFactor = 0f;
@@ -151,20 +154,26 @@ public class AgentShoot : Agent
                 rewardFactor = PunishFactor(coherence);
                 stdRelation = DeviationFactor(stDesv, agentStd, coherence, false);
             }
-            
-            
 
-            reward = precision * rewardFactor * stdRelation;
+            reward = precision * rewardFactor * stdRelation;*/
 
-            Debug.Log("reward " + reward);
-            Debug.Log("RF " + rewardFactor);
-            Debug.Log("Prec " + precision);
-            Debug.Log("std " + stdRelation);
+            if (coherence>0f) // Movimiento coherente, solo penaliza
+            {
+                float punish = DistanceToStDeviations(minX, maxX, stDesv, average); //relativo al std
+
+                reward = -20f * punish * coherence;
+            }
+            else
+            {
+                float precision = RelativePointsByDistance(minX, maxX, oX);
+
+                reward = 100f * precision * (-coherence);
+            }
         }
 
         
 
-        AddReward((reward - ShotAcademy.exigency) / totalSteps);
+        AddReward(reward / totalSteps);
 
         /*
         if (minX > maxX) // No se permite maximo y minimo invertidos
@@ -315,7 +324,7 @@ public class AgentShoot : Agent
 
     /// <summary>
     /// Acierto del agente al envolver el punto de forma centrada
-    /// Usa la formula 1-x^2
+    /// Solo para movimientos incoherentes
     /// </summary>
     /// <param name="min">Linea minima del agente</param>
     /// <param name="max">Linea maxima del agente</param>
@@ -329,9 +338,27 @@ public class AgentShoot : Agent
 
         float precision = Mathf.Min(Mathf.Abs(center - point) / radius, 6f);
 
-        return 1f - Mathf.Pow(precision, 2);
+        return 1f / (precision + AU_PROP) - AU_PROP;
+        //1/(x+0.618034)-0.618034
     }
 
+    /// <summary>
+    /// Acierto del agente en las desviaciones estandar
+    /// Usado en movimientos coherentes
+    /// </summary>
+    /// <param name="min"></param>
+    /// <param name="max"></param>
+    /// <param name="std"></param>
+    /// <param name="avg"></param>
+    /// <returns></returns>
+    public float DistanceToStDeviations(float min, float max, float std, float avg)
+    {
+        float minDist = Mathf.Abs(min - (avg - std));
+        float maxDist = Mathf.Abs(max - (avg + std));
+
+        return (minDist + maxDist) / (2f * std);
+    }
+    /*
     /// <summary>
     /// Factor de recompensa en funcion de la coherencia del punto con su desviacion estandar
     /// Usa la formula 2^(x-1)
@@ -353,7 +380,7 @@ public class AgentShoot : Agent
     public float PunishFactor(float coherence)
     {
         return 1f / (1.25f - coherence) + 0.2f;
-    }
+    }*/
 
     /// <summary>
     /// Factor multiplicador de la relacion entre la std original y la estimada

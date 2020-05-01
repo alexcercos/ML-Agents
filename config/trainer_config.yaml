@@ -30,11 +30,11 @@ Imitator:
     num_layers: 1
     hidden_units: 256
     learning_rate: 2.0e-3
-    learning_rate_schedule: constant
-    beta: 5.0e-3
+    learning_rate_schedule: linear
+    beta: 8.0e-3
     buffer_size: 8192
     epsilon: 0.3
-    max_steps: 5.0e6
+    max_steps: 6.0e5
     summary_freq: 1000
     time_horizon: 5
     reward_signals:
@@ -42,8 +42,8 @@ Imitator:
             strength: 1.0
             gamma: 0.8
         curiosity:
-            strength: 0.01
-            gamma: 0.9
+            strength: 0.1
+            gamma: 0.8
             encoding_size: 128
 
 FutGoalie:

@@ -5,10 +5,10 @@ using MLAgents;
 
 public class ShotAcademy : Academy
 {
-    public static float exigency;
+    //public static float exigency;
 
     public override void AcademyReset()
     {
-        exigency = resetParameters["exigency"];
+        //exigency = resetParameters["exigency"];
     }
 }
