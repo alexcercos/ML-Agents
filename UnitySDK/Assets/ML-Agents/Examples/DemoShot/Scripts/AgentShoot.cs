@@ -64,6 +64,8 @@ public class AgentShoot : Agent
 
     public override void AgentReset()
     {
+        //lastMaxX = 0f;
+        //lastMinX = 0f;
         lastX = new List<float>();
         realX = new List<float>();
         //lastY = new List<float>();
@@ -168,14 +170,21 @@ public class AgentShoot : Agent
             {
                 float punish = DistanceToStDeviations(minX, maxX, stDesv, average); //relativo al std
 
+                //Debug.Log("punish= " + punish);
+
                 reward = -20f * punish * coherence;
             }
             else
             {
                 float precision = RelativePointsByDistance(minX, maxX, oX);
 
+                //Debug.Log("precision= " + precision);
+
                 reward = 125f * precision * (-coherence);
+                
             }
+            //Debug.Log("coherence= " + coherence);
+            //Debug.Log("reward= " + reward);
         }
 
         
@@ -263,40 +272,43 @@ public class AgentShoot : Agent
         //action[0] = Input.GetAxis("Mouse X"); //clamp hasta un maximo posible
         //action[1] = Input.GetAxis("Mouse Y");
 
+        oX = cameraAgent.GetX();
 
         // DEMO RECORDER
+
+        float newMax = Mathf.Lerp(average + stDesv, lastMaxX, 0.9f);
+
+        if (newMax < oX)
+        {
+            action[0] = oX + stDesv / 2f;
+        }
+        else if (newMax > oX + stDesv)
+        {
+            action[0] = Mathf.Lerp(oX + stDesv, newMax, 0.5f);
+        }
+        else
+        {
+            action[0] = newMax;
+        }
+        lastMaxX = action[0];
+
 
         float newMin = Mathf.Lerp(average - stDesv, lastMinX, 0.9f);
 
         if (newMin > oX)
         {
-            action[0] = oX - stDesv / 2f;
+            action[1] = oX - stDesv / 2f;
         }
         else if (newMin < oX - stDesv)
         {
-            action[0] = Mathf.Lerp(oX - stDesv, newMin, 0.5f);
+            action[1] = Mathf.Lerp(oX - stDesv, newMin, 0.5f);
         }
         else
         {
-            action[0] = newMin;
+            action[1] = newMin;
         }
-        lastMinX = action[0];
+        lastMinX = action[1];
 
-        float newMax = Mathf.Lerp(average + stDesv, lastMaxX, 0.9f);
-        
-        if (newMax < oX)
-        {
-            action[1] = oX + stDesv / 2f;
-        }
-        else if (newMax > oX + stDesv)
-        {
-            action[1] = Mathf.Lerp(oX + stDesv, newMax, 0.5f);
-        }
-        else
-        {
-            action[1] = newMax;
-        }
-        lastMaxX = action[1];
         /*
         if (Input.GetMouseButtonDown(0))
         {
