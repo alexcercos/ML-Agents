@@ -14,7 +14,7 @@ public class CameraMovement : MonoBehaviour
     public IBotMovement botMovement;
     AgentShoot nnAgent;
     //private bool playWithBot = true;
-    private bool useNeuralNet = false;
+    public bool useNeuralNet = false;
 
     private float x = 0f, y = 0f;
     bool click = false;
@@ -38,9 +38,7 @@ public class CameraMovement : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
 
         // Si esta compilado dabe usar el bot
-        #if UNITY_EDITOR
-            useNeuralNet = true;
-        #else
+        #if UNITY_STANDALONE
             useNeuralNet = false;
         #endif
     }

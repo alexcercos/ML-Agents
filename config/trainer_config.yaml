@@ -29,22 +29,24 @@ Imitator:
     num_epoch: 5
     num_layers: 1
     hidden_units: 256
-    learning_rate: 2.0e-3
+    learning_rate: 5.0e-4
     learning_rate_schedule: linear
     beta: 8.0e-3
     buffer_size: 8192
     epsilon: 0.3
     max_steps: 6.0e5
     summary_freq: 1000
-    time_horizon: 5
+    time_horizon: 64
+    pretraining:
+        demo_path: demos/MyStdDevDemo.demo
+        strength: 0.5
+        steps: 20000
     reward_signals:
-        extrinsic:
+        gail:
             strength: 1.0
-            gamma: 0.8
-        curiosity:
-            strength: 0.1
-            gamma: 0.8
+            gamma: 0.99
             encoding_size: 128
+            demo_path: demos/MyStdDevDemo.demo
 
 FutGoalie:
     max_steps: 5.0e8

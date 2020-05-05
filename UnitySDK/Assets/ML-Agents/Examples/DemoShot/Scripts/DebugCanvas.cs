@@ -63,17 +63,17 @@ public class DebugCanvas : MonoBehaviour
 
     public void AddStdLowPoint(float point)
     {
-        AddLinePoint(ref stdLowLine, ref stdLowPoints, new Vector3(point * 20f, -50f, 0.5f));
+        AddLinePoint(ref stdLowLine, ref stdLowPoints, new Vector3(point * 20f, -50f, 0.6f));
     }
 
     public void AddStdHighPoint(float point)
     {
-        AddLinePoint(ref stdHighLine, ref stdHighPoints, new Vector3(point * 20f, -50f, 0.5f));
+        AddLinePoint(ref stdHighLine, ref stdHighPoints, new Vector3(point * 20f, -50f, 0.6f));
     }
 
     public void AddAveragePoint(float point)
     {
-        AddLinePoint(ref avgLine, ref avgPoints, new Vector3(point * 20f, -50f, 0.5f));
+        AddLinePoint(ref avgLine, ref avgPoints, new Vector3(point * 20f, -50f, 0.6f));
     }
 
 
