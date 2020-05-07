@@ -138,7 +138,7 @@ public class AgentShoot : Agent
 
         float coherence = Coherence(average, stDesv, oX);
 
-        float agentStd = (maxX - minX)/2f; // debe dar positivo, sino recibe -100
+        //float agentStd = (maxX - minX)/2f; // debe dar positivo, sino recibe -100
 
         float reward = 0f;
         if (minX > maxX)
@@ -147,7 +147,25 @@ public class AgentShoot : Agent
         }
         else
         {
+            // Recompensas lineales simples
+
+            // Si son positivas estan correctas, sino no han encerrado el punto
             /*
+            float maxDist = maxX - oX;
+            float minDist = oX - minX;
+
+            if (maxDist < 0f || minDist < 0f) // Solo puede ser una de las 2, sino estaria invertido
+            {
+                reward = (-1f -Mathf.Min(minDist, maxDist)) * 50f;
+            }
+            else
+            {
+                reward = (1f - maxDist - minDist) * 50f; // Positivo, hasta 1
+            }*/
+
+            /*
+            // Recompensas por precision
+
             float precision = RelativePointsByDistance(minX, maxX, oX);
 
             float rewardFactor = 0f;
@@ -166,6 +184,8 @@ public class AgentShoot : Agent
 
             reward = precision * rewardFactor * stdRelation;*/
 
+            
+            // Recompensas por coherencia
             if (coherence>0f) // Movimiento coherente, solo penaliza
             {
                 float punish = DistanceToStDeviations(minX, maxX, stDesv, average); //relativo al std
@@ -185,6 +205,7 @@ public class AgentShoot : Agent
             }
             //Debug.Log("coherence= " + coherence);
             //Debug.Log("reward= " + reward);
+            
         }
 
         

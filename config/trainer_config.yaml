@@ -25,33 +25,34 @@ default:
 
 Imitator:
     batch_size: 1024
-    normalize: false
-    num_epoch: 5
-    num_layers: 1
+    beta: 5.0e-3
+    buffer_size: 8192
+    epsilon: 0.2
     hidden_units: 256
     learning_rate: 2.0e-3
     learning_rate_schedule: linear
-    beta: 8.0e-3
-    buffer_size: 8192
-    epsilon: 0.3
     max_steps: 6.0e5
+    normalize: true
+    num_epoch: 6
+    num_layers: 1
     summary_freq: 1000
     time_horizon: 64
+    pretraining:
+        demo_path: demos/LongStdDDemo.demo
+        strength: 0.8
+        steps: 20000
     reward_signals:
         extrinsic:
             strength: 1.0
-            gamma: 0.8
+            gamma: 0.99
         curiosity:
-            strength: 0.1
-            gamma: 0.8
+            strength: 0.01
+            gamma: 0.99
             encoding_size: 128
         gail:
             strength: 0.01
-            gamma: 0.95
-            learning_rate: 0.0005
-            encoding_size: 64
-            use_vail: true
-            use_actions: true
+            gamma: 0.99
+            encoding_size: 128
             demo_path: demos/LongStdDDemo.demo
 
 FutGoalie:
