@@ -82,7 +82,7 @@ public class AgentShoot : Agent
 
     public override void CollectObservations()
     {
-        
+        /*
         int i = 0;
         while (i < 60)
         {
@@ -93,7 +93,7 @@ public class AgentShoot : Agent
             else if (i <= 39) i += 3;
             else i += 4;
             //25x2
-        }
+        }*/
     }
 
 
