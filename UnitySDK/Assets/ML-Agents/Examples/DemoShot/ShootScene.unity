@@ -2041,7 +2041,8 @@ PrefabInstance:
     - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: c3cedd29a8e41ba44be7c7f596beaac2,
+        type: 3}
     - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: m_UseHeuristic
       value: 0
@@ -2064,7 +2065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1967386025, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: demonstrationName
-      value: NoObsDemo
+      value: IndDemo
       objectReference: {fileID: 0}
     - target: {fileID: 1967386025, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: m_Enabled

@@ -34,7 +34,7 @@ Imitator:
     init_entcoef: 1.0
     learning_rate: 4.0e-4
     learning_rate_schedule: constant
-    max_steps: 6.0e5
+    max_steps: 6.0e6
     memory_size: 256
     normalize: true
     num_update: 1
@@ -47,7 +47,7 @@ Imitator:
     use_recurrent: false
     vis_encode_type: simple
     pretraining:
-        demo_path: demos/NoObsDemo.demo
+        demo_path: demos/IndDemo.demo
         strength: 0.4
         steps: 20000
     reward_signals:
@@ -63,7 +63,7 @@ Imitator:
             gamma: 0.99
             encoding_size: 128
             use_actions: true
-            demo_path: demos/NoObsDemo.demo
+            demo_path: demos/IndDemo.demo
 
 FoodCollector:
     normalize: false

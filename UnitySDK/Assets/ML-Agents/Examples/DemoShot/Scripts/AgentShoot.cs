@@ -137,80 +137,13 @@ public class AgentShoot : Agent
         graphicCanvas.AddStdLowPoint(average - stDesv);
 
         float coherence = Coherence(average, stDesv, oX);
-
-        //float agentStd = (maxX - minX)/2f; // debe dar positivo, sino recibe -100
-
-        float reward = 0f;
-        if (minX > maxX)
-        {
-            reward = -200f;
-        }
-        else
-        {
-            // Recompensas lineales simples
-
-            // Si son positivas estan correctas, sino no han encerrado el punto
-            /*
-            float maxDist = maxX - oX;
-            float minDist = oX - minX;
-
-            if (maxDist < 0f || minDist < 0f) // Solo puede ser una de las 2, sino estaria invertido
-            {
-                reward = (-1f -Mathf.Min(minDist, maxDist)) * 50f;
-            }
-            else
-            {
-                reward = (1f - maxDist - minDist) * 50f; // Positivo, hasta 1
-            }*/
-
-            /*
-            // Recompensas por precision
-
-            float precision = RelativePointsByDistance(minX, maxX, oX);
-
-            float rewardFactor = 0f;
-            float stdRelation = 1f;
-
-            if (precision>0f)
-            {
-                rewardFactor = RewardFactor(coherence);
-                stdRelation = DeviationFactor(stDesv, agentStd, coherence, true);
-            }
-            else
-            {
-                rewardFactor = PunishFactor(coherence);
-                stdRelation = DeviationFactor(stDesv, agentStd, coherence, false);
-            }
-
-            reward = precision * rewardFactor * stdRelation;*/
-
-            
-            // Recompensas por coherencia
-            if (coherence>0f) // Movimiento coherente, solo penaliza
-            {
-                float punish = DistanceToStDeviations(minX, maxX, stDesv, average); //relativo al std
-
-                //Debug.Log("punish= " + punish);
-
-                reward = -20f * punish * coherence;
-            }
-            else
-            {
-                float precision = RelativePointsByDistance(minX, maxX, oX);
-
-                //Debug.Log("precision= " + precision);
-
-                reward = 125f * precision * (-coherence);
-                
-            }
-            //Debug.Log("coherence= " + coherence);
-            //Debug.Log("reward= " + reward);
-            
-        }
-
         
+        if (!ReversedPunish(minX, maxX, -200f))
+        {
+            RewardsCoherence(minX, maxX, stDesv, average, coherence, oX, 125f, -20f);
+        }
 
-        AddReward(reward / totalSteps);
+        RewardsLinearIndividual(minX, maxX, oX);
 
         /*
         if (minX > maxX) // No se permite maximo y minimo invertidos
@@ -343,7 +276,113 @@ public class AgentShoot : Agent
         return action;
     }
 
+    public bool ReversedPunish(float minimumX, float maximumX, float punish)
+    {
+        if (minimumX > maximumX)
+        {
+            AddReward(punish / totalSteps);
+            return true;
+        }
 
+        return false;
+    }
+
+    public void RewardsCoherence(float minimumX, float maximumX, float stDesvistion, float avg, float coherence, float oX, float rFactor, float pFactor)
+    {
+        float reward = 0f;
+
+        if (coherence > 0f) // Movimiento coherente, solo penaliza
+        {
+            float punish = DistanceToStDeviations(minimumX, maximumX, stDesvistion, avg); //relativo al std
+
+            //Debug.Log("punish= " + punish);
+
+            reward = pFactor * punish * coherence;
+        }
+        else
+        {
+            float precision = RelativePointsByDistance(minimumX, maximumX, oX);
+
+            //Debug.Log("precision= " + precision);
+
+            reward = rFactor * precision * (-coherence);
+
+        }
+        //Debug.Log("coherence= " + coherence);
+        //Debug.Log("reward= " + reward);
+
+        AddReward(reward / totalSteps);
+    }
+    
+    public void RewardsLinearIndividual(float minimumX, float maximumX, float originalX)
+    {
+        float relMin = originalX - minimumX;
+        float relMax = maximumX - originalX;
+
+        if (relMin > 0f)
+            AddReward(2f * (1f - relMin) / totalSteps);
+        else
+            AddReward(2f * relMin / totalSteps);
+
+        if (relMax > 0f)
+            AddReward(2f * (1f - relMax) / totalSteps);
+        else
+            AddReward(2f * relMax / totalSteps);
+    }
+
+    public void RewardsLinearSimple(float minimumX, float maximumX, float originalX, float factor)
+    {
+        
+        float reward = 0f;
+
+        // Recompensas lineales simples
+
+        // Si son positivas estan correctas, sino no han encerrado el punto
+
+        float maxDist = maximumX - originalX;
+        float minDist = originalX - minimumX;
+
+        if (maxDist < 0f || minDist < 0f) // Solo puede ser una de las 2, sino estaria invertido
+        {
+            reward = (-1f - Mathf.Min(minDist, maxDist)) * factor;
+        }
+        else
+        {
+            reward = (1f - maxDist - minDist) * factor; // Positivo, hasta 1
+        }
+        
+        AddReward(reward / totalSteps);
+    }
+
+    public void RewardsPrecision(float maximumX, float minimumX, float coherence, float std)
+    {
+        float agentStd = (maxX - minX) / 2f;
+
+        float reward = 0f;
+
+        // Recompensas por precision
+
+        float precision = RelativePointsByDistance(minX, maxX, oX);
+
+        float rewardFactor = 0f;
+        float stdRelation = 1f;
+
+        if (precision > 0f)
+        {
+            rewardFactor = RewardFactor(coherence);
+            stdRelation = DeviationFactor(std, agentStd, coherence, true);
+        }
+        else
+        {
+            rewardFactor = PunishFactor(coherence);
+            stdRelation = DeviationFactor(std, agentStd, coherence, false);
+        }
+
+        reward = precision * rewardFactor * stdRelation;
+        
+
+        AddReward(reward / totalSteps);
+    }
 
     public float Average(ref List<float> previousMoves)
     {
@@ -489,7 +528,7 @@ public class AgentShoot : Agent
         }
     }
 
-    /*
+    
     public float RewardFactor(float coherence) //0-1
     {
         return 1f - Mathf.Pow(2, coherence - 1);
@@ -499,7 +538,7 @@ public class AgentShoot : Agent
     {
         return Mathf.Pow(2, coherence - 1);
     }
-
+    /*
     public float RelativeReward(float max, float min, float result, float std)
     {
         float avgDist = (Mathf.Abs(max - result) + Mathf.Abs(min - result)) / 2f;
