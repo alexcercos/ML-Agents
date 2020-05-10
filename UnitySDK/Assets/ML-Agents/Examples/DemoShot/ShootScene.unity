@@ -2038,10 +2038,18 @@ PrefabInstance:
       propertyPath: graphicCanvas
       value: 
       objectReference: {fileID: 1252828196}
+    - target: {fileID: 168162533, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: visualObservations
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 168162533, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: receiveObservations
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: c3cedd29a8e41ba44be7c7f596beaac2,
+      objectReference: {fileID: 5022602860645237092, guid: 4ac968ca6deedee46ba48c53d7d19d92,
         type: 3}
     - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: m_UseHeuristic
@@ -2059,9 +2067,13 @@ PrefabInstance:
       propertyPath: m_BrainParameters.vectorObservationSize
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: m_BrainParameters.vectorActionSize.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1967386025, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: record
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1967386025, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: demonstrationName
@@ -2091,5 +2103,10 @@ PrefabInstance:
       propertyPath: renderTexture
       value: 
       objectReference: {fileID: 8400000, guid: e530950839451c544aecb1ecab8532c5, type: 2}
+    - target: {fileID: 2108969470825062746, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: useNeuralNet
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}

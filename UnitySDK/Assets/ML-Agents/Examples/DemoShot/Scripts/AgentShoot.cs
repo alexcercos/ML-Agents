@@ -15,6 +15,8 @@ public class AgentShoot : Agent
 
     //private float iX = 0f, iY = 0f;
 
+    public bool receiveObservations = false;
+
     private float maxX = 0f, minX = 0f;
     bool iClick = true;
 
@@ -82,18 +84,20 @@ public class AgentShoot : Agent
 
     public override void CollectObservations()
     {
-        /*
-        int i = 0;
-        while (i < 60)
+        if (receiveObservations)
         {
-            AddVectorObs(lastX[i]);
-            //AddVectorObs(lastY[i]);
+            int i = 0;
+            while (i < 60)
+            {
+                AddVectorObs(lastX[i]);
+                //AddVectorObs(lastY[i]);
 
-            if (i <= 9) i++;
-            else if (i <= 39) i += 3;
-            else i += 4;
-            //25x2
-        }*/
+                if (i <= 9) i++;
+                else if (i <= 39) i += 3;
+                else i += 4;
+                //25x2
+            }
+        }
     }
 
 
@@ -108,7 +112,15 @@ public class AgentShoot : Agent
         */
 
         maxX = Mathf.Clamp(vectorAction[0], -1f, 1f);
-        minX = Mathf.Clamp(vectorAction[1], -1f, 1f);
+        if (vectorAction.Length == 1)
+        {
+            minX = Mathf.Clamp(vectorAction[0], -1f, 1f);
+        }
+        else
+        {
+            minX = Mathf.Clamp(vectorAction[1], -1f, 1f);
+        }
+        
 
         oX = cameraAgent.GetX();
         //float oY = cameraAgent.GetY();
@@ -189,6 +201,8 @@ public class AgentShoot : Agent
         //actualizar listas
         lastX.RemoveAt(59);
         lastX.Insert(0, Mathf.Lerp(minX, maxX, Random.Range(0f, 1f))); // En vez de oX, para que no tenga "chuleta"
+
+        //lastX.Insert(0, oX);
 
         realX.RemoveAt(59);
         realX.Insert(0, oX);
