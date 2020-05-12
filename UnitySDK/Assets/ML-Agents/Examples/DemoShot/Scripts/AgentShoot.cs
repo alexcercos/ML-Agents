@@ -66,7 +66,7 @@ public class AgentShoot : Agent
 
     public override void AgentReset()
     {
-
+        /*
         lastX = new List<float>();
         realX = new List<float>();
 
@@ -75,7 +75,7 @@ public class AgentShoot : Agent
         {
             lastX.Add(0f);
             realX.Add(0f);
-        }
+        }*/
     }
 
     public override void CollectObservations()

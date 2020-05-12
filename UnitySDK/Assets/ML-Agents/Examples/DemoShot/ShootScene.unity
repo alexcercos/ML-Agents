@@ -1185,7 +1185,7 @@ MonoBehaviour:
   plane: {fileID: 5849416173771831978, guid: 031889c783b069548aba743d4a787c43, type: 3}
   maxPlanes: 8
   timeBetweenSpawn: 1.5
-  minDist: 30
+  minDist: 45
   maxDist: 200
 --- !u!1 &1252828195
 GameObject:
@@ -1980,7 +1980,7 @@ GameObject:
   - component: {fileID: 1914669178}
   - component: {fileID: 1914669177}
   m_Layer: 5
-  m_Name: RawImage (1)
+  m_Name: RawImagePast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2023,7 +2023,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 2475454c2b7ecaf4c813e852204484b9, type: 2}
+  m_Texture: {fileID: 8400000, guid: fc487f1fc0f32d34390540ef9a8dd6e0, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -2109,5 +2109,21 @@ PrefabInstance:
       propertyPath: graphicCanvas
       value: 
       objectReference: {fileID: 1252828196}
+    - target: {fileID: 168162533, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: receiveObservations
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 168162533, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: demoHeuristic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: m_BrainParameters.vectorObservationSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967386025, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: record
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
