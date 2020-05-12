@@ -21,18 +21,18 @@ public class AgentShoot : Agent
     bool iClick = true;
 
     List<float> lastX;
-    List<float> lastY;
+    //List<float> lastY;
 
-    List<float> lastClick; //pensar en hacer con probabilidad en vez de bools
+    //List<float> lastClick; //pensar en hacer con probabilidad en vez de bools
 
     // lista movimientos reales para rewards (avg-std)
     List<float> realX;
 
     float minimumSTD = 0.1f;
 
-    float initWeight = 10f;
-    float loss = 1.25f;
-    float minimum = 0.5f;
+    public float initWeight = 10f;
+    public float loss = 1.25f;
+    public float minimum = 0.5f;
 
     const float AU_PROP = 0.618034f;
 
@@ -40,8 +40,12 @@ public class AgentShoot : Agent
     float stDesv = 0f;
     float oX = 0f;
 
+    public float stdMultiplier = 3f;
+
     float lastMaxX = 0f;
     float lastMinX = 0f;
+
+    public bool demoHeuristic = true;
 
     private void Start()
     {
@@ -49,16 +53,12 @@ public class AgentShoot : Agent
         
         lastX = new List<float>();
 
-        //lastY = new List<float>();
-        //lastClick = new List<float>();
 
         realX = new List<float>();
 
         for (int i = 0; i<60; i++)
         {
             lastX.Add(0f);
-            //lastY.Add(0f);
-            //lastClick.Add(0f);
 
             realX.Add(0f);
         }
@@ -66,19 +66,15 @@ public class AgentShoot : Agent
 
     public override void AgentReset()
     {
-        //lastMaxX = 0f;
-        //lastMinX = 0f;
+
         lastX = new List<float>();
         realX = new List<float>();
-        //lastY = new List<float>();
-        //lastClick = new List<float>();
+
 
         for (int i = 0; i < 60; i++)
         {
             lastX.Add(0f);
             realX.Add(0f);
-            //lastY.Add(0f);
-            //lastClick.Add(0f);
         }
     }
 
@@ -105,13 +101,9 @@ public class AgentShoot : Agent
     {
         //comparar la del bot con la del agente
 
-        //iX = vectorAction[0];
-        /*
-        iY = vectorAction[1];
-        iClick = vectorAction[2] > 0f;
-        */
 
         maxX = Mathf.Clamp(vectorAction[0], -1f, 1f);
+
         if (vectorAction.Length == 1)
         {
             minX = Mathf.Clamp(vectorAction[0], -1f, 1f);
@@ -123,23 +115,16 @@ public class AgentShoot : Agent
         
 
         oX = cameraAgent.GetX();
-        //float oY = cameraAgent.GetY();
+
 
         //Debug canvas
-        //graphicCanvas.AddBotPoint(iX); // No esta procesado aun             //CANVAS 2 PUNTOS
+
         graphicCanvas.AddAgentPoint(oX);
 
         graphicCanvas.AddBotPointDown(minX);
         graphicCanvas.AddBotPointUp(maxX);
 
-        
-
-
-        //float diffX = Mathf.Abs(iX - oX);
-        //float diffY = Mathf.Abs(iY - oY);
-
-
-        // Recompensas con desviacion tipica
+        // Recompensas
 
         average = Average(ref realX);
         stDesv = StdDeviation(ref realX, average);
@@ -157,48 +142,9 @@ public class AgentShoot : Agent
 
         RewardsLinearIndividual(minX, maxX, oX);
 
-        /*
-        if (minX > maxX) // No se permite maximo y minimo invertidos
-        {
-            reward = -100f;
-        }
-        else if (oX > maxX ||oX < minX) // Fuera de la estimacion
-        {
-            float factor = PunishFactor(coherence);
-            float relPunish = RelativePunish(maxX, minX, oX, stDesv);
-
-            reward = -(-1f + Mathf.Pow(1f + factor, relPunish)) * 20f;
-        }
-        else // Dentro de la estimacion
-        {
-            float factor = RewardFactor(coherence);
-            float relReward = RelativeReward(maxX, minX, oX, stDesv);
-
-            reward = (-1f + Mathf.Pow(1f + factor, relReward)) * 20f; 
-        }
-
-        AddReward(reward / 1000f); // se le puede restar un parametro de exigencia
-
-        //recompensas por movimiento lineales
-        //if (diffX > tolerableRange)
-        /*
-        if (diffX > ShotAcademy.tolerableRange)
-        {
-            AddReward(- 40f * (Mathf.Min(diffX, ShotAcademy.maximumRange) - ShotAcademy.tolerableRange) / (totalSteps * (ShotAcademy.maximumRange - ShotAcademy.tolerableRange)));
-            //AddReward(-diffX / (3000f * ShotAcademy.tolerableRange));
-
-        }
-        else
-        {
-            AddReward(40f * (1f - diffX / ShotAcademy.tolerableRange) / totalSteps);
-            //AddReward(Mathf.Clamp(ShotAcademy.tolerableRange / (diffX + 0.001f), 1f, 10f) / 3000f);
-        }*/
-
-        //el click no se compara exactamente igual, porque es instantaneo
-        //AddReward click
-
 
         //actualizar listas
+
         lastX.RemoveAt(59);
         lastX.Insert(0, Mathf.Lerp(minX, maxX, Random.Range(0f, 1f))); // En vez de oX, para que no tenga "chuleta"
 
@@ -206,10 +152,8 @@ public class AgentShoot : Agent
 
         realX.RemoveAt(59);
         realX.Insert(0, oX);
-        //lastY.RemoveAt(59);
-        //lastY.Insert(0, oY);
-        
-        //bools
+
+
     }
 
     public override void AgentOnDone()
@@ -237,45 +181,50 @@ public class AgentShoot : Agent
     {
         var action = new float[2]; //3
 
-        //action[0] = Input.GetAxis("Mouse X"); //clamp hasta un maximo posible
-        //action[1] = Input.GetAxis("Mouse Y");
-
-        oX = cameraAgent.GetX();
-
-        // DEMO RECORDER
-
-        float newMax = Mathf.Lerp(average + stDesv, lastMaxX, 0.9f);
-
-        if (newMax < oX)
+        if (!demoHeuristic)
         {
-            action[0] = oX + stDesv / 2f;
-        }
-        else if (newMax > oX + stDesv)
-        {
-            action[0] = Mathf.Lerp(oX + stDesv, newMax, 0.5f);
+            action[0] = Input.GetAxis("Mouse X"); //clamp hasta un maximo posible
+            action[1] = Input.GetAxis("Mouse Y");
         }
         else
         {
-            action[0] = newMax;
-        }
-        lastMaxX = action[0];
+            oX = cameraAgent.GetX();
+
+            // DEMO RECORDER
+
+            float newMax = Mathf.Lerp(average + stDesv, lastMaxX, 0.9f);
+
+            if (newMax < oX)
+            {
+                action[0] = oX + stDesv / 2f;
+            }
+            else if (newMax > oX + stDesv)
+            {
+                action[0] = Mathf.Lerp(oX + stDesv, newMax, 0.5f);
+            }
+            else
+            {
+                action[0] = newMax;
+            }
+            lastMaxX = action[0];
 
 
-        float newMin = Mathf.Lerp(average - stDesv, lastMinX, 0.9f);
+            float newMin = Mathf.Lerp(average - stDesv, lastMinX, 0.9f);
 
-        if (newMin > oX)
-        {
-            action[1] = oX - stDesv / 2f;
+            if (newMin > oX)
+            {
+                action[1] = oX - stDesv / 2f;
+            }
+            else if (newMin < oX - stDesv)
+            {
+                action[1] = Mathf.Lerp(oX - stDesv, newMin, 0.5f);
+            }
+            else
+            {
+                action[1] = newMin;
+            }
+            lastMinX = action[1];
         }
-        else if (newMin < oX - stDesv)
-        {
-            action[1] = Mathf.Lerp(oX - stDesv, newMin, 0.5f);
-        }
-        else
-        {
-            action[1] = newMin;
-        }
-        lastMinX = action[1];
 
         /*
         if (Input.GetMouseButtonDown(0))
@@ -301,7 +250,7 @@ public class AgentShoot : Agent
         return false;
     }
 
-    public void RewardsCoherence(float minimumX, float maximumX, float stDesvistion, float avg, float coherence, float oX, float rFactor, float pFactor)
+    public void RewardsCoherence(float minimumX, float maximumX, float stDesvistion, float avg, float coherence, float originalX, float rFactor, float pFactor)
     {
         float reward = 0f;
 
@@ -315,7 +264,7 @@ public class AgentShoot : Agent
         }
         else
         {
-            float precision = RelativePointsByDistance(minimumX, maximumX, oX);
+            float precision = RelativePointsByDistance(minimumX, maximumX, originalX);
 
             //Debug.Log("precision= " + precision);
 
@@ -398,6 +347,46 @@ public class AgentShoot : Agent
         AddReward(reward / totalSteps);
     }
 
+    public void RewardsTolerableRange(float difference, float tolerableRange, float maxRange)
+    {
+        if (difference > tolerableRange)
+        {
+            //Lineales
+            AddReward(-40f * (Mathf.Min(difference, tolerableRange) - tolerableRange) / (totalSteps * (maxRange - tolerableRange)));
+            //No lineales
+            //AddReward(-diffX / (3000f * tolerableRange));
+
+        }
+        else
+        {
+            //Lineales
+            AddReward(40f * (1f - difference / tolerableRange) / totalSteps);
+            //No lineales
+            //AddReward(Mathf.Clamp(tolerableRange / (difference + 0.001f), 1f, 10f) / 3000f);
+        }
+    }
+
+    public void RewardsStdExponential(float originalX, float minimumX, float maximumX, float stDesvistion, float avg, float coherence, float mulFactor)
+    {
+        float reward;
+        if (originalX > maximumX || originalX < minimumX) // Fuera de la estimacion
+        {
+            float factor = PunishFactor(coherence);
+            float relPunish = RelativePunish(maximumX, minimumX, originalX, stDesvistion);
+
+            reward = -(-1f + Mathf.Pow(1f + factor, relPunish)) * mulFactor; //mulFactor=20
+        }
+        else // Dentro de la estimacion
+        {
+            float factor = RewardFactor(coherence);
+            float relReward = RelativeReward(maximumX, minimumX, originalX, stDesvistion);
+
+            reward = (-1f + Mathf.Pow(1f + factor, relReward)) * mulFactor;
+        }
+
+        AddReward(reward / totalSteps);
+    }
+
     public float Average(ref List<float> previousMoves)
     {
         float avg = 0f;
@@ -427,7 +416,7 @@ public class AgentShoot : Agent
 
         foreach (float f in previousMoves)
         {
-            std += Mathf.Pow(f - average, 2) * weight;
+            std += Mathf.Pow(f - average, 2) * weight * stdMultiplier;
             total += weight;
 
             weight = Mathf.Max(minimum, weight / loss);
@@ -552,7 +541,7 @@ public class AgentShoot : Agent
     {
         return Mathf.Pow(2, coherence - 1);
     }
-    /*
+    
     public float RelativeReward(float max, float min, float result, float std)
     {
         float avgDist = (Mathf.Abs(max - result) + Mathf.Abs(min - result)) / 2f;
@@ -576,5 +565,5 @@ public class AgentShoot : Agent
 
         //return -1f / (difference - 2.25f) + 1f;
         return Mathf.Pow(2, difference / std + 1) - 4;
-    }*/
+    }
 }
