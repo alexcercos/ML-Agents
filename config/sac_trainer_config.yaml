@@ -47,7 +47,7 @@ Imitator:
     use_recurrent: false
     vis_encode_type: simple
     pretraining:
-        demo_path: demos/IndDemo.demo
+        demo_path: demos/Frames20Demo.demo
         strength: 0.4
         steps: 20000
     reward_signals:
@@ -63,7 +63,7 @@ Imitator:
             gamma: 0.99
             encoding_size: 128
             use_actions: true
-            demo_path: demos/IndDemo.demo
+            demo_path: demos/Frames20Demo.demo
 
 FoodCollector:
     normalize: false

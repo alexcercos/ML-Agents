@@ -2109,21 +2109,9 @@ PrefabInstance:
       propertyPath: graphicCanvas
       value: 
       objectReference: {fileID: 1252828196}
-    - target: {fileID: 168162533, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
-      propertyPath: receiveObservations
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 168162533, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
-      propertyPath: demoHeuristic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
-      propertyPath: m_BrainParameters.vectorObservationSize
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 1967386025, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: record
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}

@@ -17,7 +17,7 @@ public class RenderTController : MonoBehaviour
         {
             if (previousFrames[i]==null)
             {
-                previousFrames[i] = new RenderTexture(16, 16, current.depth);
+                previousFrames[i] = new RenderTexture(current.width, current.height, current.depth);
             }
         }
     }

@@ -42,8 +42,8 @@ public class AgentShoot : Agent
 
     public float stdMultiplier = 3f;
 
-    float lastMaxX = 0f;
-    float lastMinX = 0f;
+
+    public float threshold = 0.01f;
 
     public bool demoHeuristic = true;
 
@@ -192,38 +192,12 @@ public class AgentShoot : Agent
 
             // DEMO RECORDER
 
-            float newMax = Mathf.Lerp(average + stDesv, lastMaxX, 0.9f);
-
-            if (newMax < oX)
-            {
-                action[0] = oX + stDesv / 2f;
-            }
-            else if (newMax > oX + stDesv)
-            {
-                action[0] = Mathf.Lerp(oX + stDesv, newMax, 0.5f);
-            }
-            else
-            {
-                action[0] = newMax;
-            }
-            lastMaxX = action[0];
+            //0=max 1= min
 
 
-            float newMin = Mathf.Lerp(average - stDesv, lastMinX, 0.9f);
+            action[0] = (average + stDesv < oX + threshold) ? oX + threshold : average + stDesv;
+            action[1] = (average - stDesv > oX - threshold) ? oX - threshold : average - stDesv;
 
-            if (newMin > oX)
-            {
-                action[1] = oX - stDesv / 2f;
-            }
-            else if (newMin < oX - stDesv)
-            {
-                action[1] = Mathf.Lerp(oX - stDesv, newMin, 0.5f);
-            }
-            else
-            {
-                action[1] = newMin;
-            }
-            lastMinX = action[1];
         }
 
         /*
