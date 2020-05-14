@@ -101,6 +101,7 @@ public class AgentShoot : Agent
     {
         //comparar la del bot con la del agente
 
+        bool stdAgent = false;
 
         maxX = Mathf.Clamp(vectorAction[0], -1f, 1f);
 
@@ -110,6 +111,7 @@ public class AgentShoot : Agent
         }
         else
         {
+            stdAgent = true;
             minX = Mathf.Clamp(vectorAction[1], -1f, 1f);
         }
         
@@ -122,7 +124,8 @@ public class AgentShoot : Agent
         graphicCanvas.AddAgentPoint(oX);
 
         graphicCanvas.AddBotPointDown(minX);
-        graphicCanvas.AddBotPointUp(maxX);
+        if (stdAgent)
+            graphicCanvas.AddBotPointUp(maxX);
 
         // Recompensas
 
@@ -134,13 +137,17 @@ public class AgentShoot : Agent
         graphicCanvas.AddStdLowPoint(average - stDesv);
 
         float coherence = Coherence(average, stDesv, oX);
-        
+        /*
         if (!ReversedPunish(minX, maxX, -200f))
         {
             RewardsCoherence(minX, maxX, stDesv, average, coherence, oX, 125f, -20f);
         }
 
-        RewardsLinearIndividual(minX, maxX, oX);
+        RewardsLinearIndividual(minX, maxX, oX);*/
+
+        float difference = Mathf.Abs(minX - oX);
+
+        RewardsTolerableRange(difference, 0.05f, 1f);
 
 
         //actualizar listas
@@ -179,12 +186,12 @@ public class AgentShoot : Agent
 
     public override float[] Heuristic()
     {
-        var action = new float[2]; //3
+        var action = new float[1]; //3
 
         if (!demoHeuristic)
         {
             action[0] = Input.GetAxis("Mouse X"); //clamp hasta un maximo posible
-            action[1] = Input.GetAxis("Mouse Y");
+            //action[1] = Input.GetAxis("Mouse Y");
         }
         else
         {
@@ -194,9 +201,10 @@ public class AgentShoot : Agent
 
             //0=max 1= min
 
+            action[0] = oX;
 
-            action[0] = (average + stDesv < oX + threshold) ? oX + threshold : average + stDesv;
-            action[1] = (average - stDesv > oX - threshold) ? oX - threshold : average - stDesv;
+            //action[0] = (average + stDesv < oX + threshold) ? oX + threshold : average + stDesv;
+            //action[1] = (average - stDesv > oX - threshold) ? oX - threshold : average - stDesv;
 
         }
 
