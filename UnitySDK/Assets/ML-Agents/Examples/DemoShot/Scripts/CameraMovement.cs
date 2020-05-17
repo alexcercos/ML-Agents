@@ -148,4 +148,9 @@ public class CameraMovement : MonoBehaviour
     {
         return click;
     }
+
+    public float GetBotX()
+    {
+        return Mathf.Clamp(botMovement.MouseX() / 2f, -1f, 1f);
+    }
 }

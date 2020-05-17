@@ -1,0 +1,95 @@
+% ==============================================================================
+% This file is part of the "LaTeX template for writing the Final Degree Work
+% report". It has been developed to aid the students of the Bachelor's Degree in
+% Video Game Design and Development at the Jaume I University.
+%
+% (c) 2019 Sergio Barrachina Mir and José Vte. Martí Avilés
+%
+% The template can be used and distributed under the next license:
+%  Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)
+%  http://creativecommons.org/licenses/by-nc-sa/3.0/
+%  http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode
+%
+% Atom editor configuration follows:
+% !TEX root = ./report.tex
+% !TeX spellcheck = en-US
+% ==============================================================================
+
+\chapter{Source code}
+\label{sec:codigo_fuente}
+
+If your work is related to computer science and you have developed an application, you can show parts of the source code of that application in some sections of the memory and in one or several appendices. It is advisable to only show in the main part of the report those source code fragments on which you want to discuss concrete aspects of the implementation. The full source  code of the application, if you want to include it as part of the report, should be arranged in one or several appendices.
+
+One of the options available in \LaTeX{} to show snippets of code is the ``\texttt{listings}'' package.\footnote{\emph{The Listings Package}, \url{http://www.ctan.org/pkg/listings}.} This package allows you to change the font used to represent different parts of the code, such as reserved words, comments and text strings.
+
+To show how the ``\texttt{listings}'' package can be used, the source code of the ``Hello World!'' program is shown in several programming languages.\footnote{The source codes have been copied from \href{http://www.roesler-ac.de/wolfram/hello.htm}{The Hello World Collection}, where you can see ``Hello World!'' implementations in more than 400 programming languages.} The source code of the first example is in the tex file of this appendix, while the rest are read directly from their respective source files (this is the recommended way of doing it).
+
+Since source codes in~C, C++, Java and Python languages are going to be
+shown, in the file ``\texttt{report\_header.tex}'' of this template, the
+languages C, C++, Java and Python have been loaded using the command
+``\verb|\lstloadlanguages{C, C++, Java, Python}|''.
+
+
+% Nota: El párrafo anterior debería haberse hecho con:
+%
+% \lstset{language=[LaTeX]TeX}
+% ``\lstinline|\lstloadlanguages{C, C++, Java, Python}|''.
+%
+% El problema es que, al menos con la configuración actual, declarar
+% el lenguaje TeX, variante LaTeX, da un error de directiva ilegal al
+% utilizar los lenguajes C o C++.
+
+In the case a different computer language has been used on the work, it will be necessary to modify that line to indicate which language should be loaded. The list of supported languages can be found in the \href{http://mirrors.ctan.org/macros/latex/contrib/listings/listings.pdf}{listings package documentation}.
+
+\clearpage % Required by the template, remove if not required
+\subsection*{Hello world! in C}
+
+\lstset{language=C}
+
+\begin{scalefont}{.8} % Escala el tamaño de letra al 80%
+  \begin{lstlisting}
+/* Hello World in C, Ansi-style */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+  puts("Hello World!");
+  return EXIT_SUCCESS;
+}
+  \end{lstlisting}
+\end{scalefont}
+
+
+\subsection*{Hello world! in C++}
+
+\lstset{language=C++}
+
+\begin{scalefont}{.8} % Escala el tamaño de letra al 80%
+  \lstinputlisting{src/hello_world.cc}
+\end{scalefont}
+
+
+\subsection*{Hello world! in Java}
+
+\lstset{language=Java}
+
+\begin{scalefont}{.8} % Escala el tamaño de letra al 80%
+  \lstinputlisting{src/hello_world.java}
+\end{scalefont}
+
+
+\subsection*{Hello world! in Python}
+
+\lstset{language=python}
+
+\begin{scalefont}{.8} % Escala el tamaño de letra al 80%
+  \lstinputlisting{src/hello_world.py}
+\end{scalefont}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "memoria"
+%%% End:

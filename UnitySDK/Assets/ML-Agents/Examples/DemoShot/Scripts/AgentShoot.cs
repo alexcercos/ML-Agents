@@ -116,7 +116,7 @@ public class AgentShoot : Agent
         }
         
 
-        oX = cameraAgent.GetX();
+        oX = cameraAgent.GetBotX(); // Se usa para recompensas solo
 
 
         //Debug canvas
@@ -195,7 +195,7 @@ public class AgentShoot : Agent
         }
         else
         {
-            oX = cameraAgent.GetX();
+            oX = cameraAgent.GetX(); // Para asegurar que devuelve la del bot, aunque juegue el agente
 
             // DEMO RECORDER
 

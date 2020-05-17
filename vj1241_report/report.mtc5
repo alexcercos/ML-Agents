@@ -1,0 +1,11 @@
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {4.1}Game Development}{\reset@font\mtcSfont 13}{section.4.1}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {4.2}Reactive Behaviors}{\reset@font\mtcSfont 14}{section.4.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.1}Unnecessary actions}{\reset@font\mtcSSfont 14}{subsection.4.2.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.2}Rewards based in tolerable range}{\reset@font\mtcSSfont 14}{subsection.4.2.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.3}Determinism of the behavior}{\reset@font\mtcSSfont 15}{subsection.4.2.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.4}Movement memory}{\reset@font\mtcSSfont 16}{subsection.4.2.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.5}Rewards based in standard deviation}{\reset@font\mtcSSfont 17}{subsection.4.2.5}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.6}Rewards based in movement coherence}{\reset@font\mtcSSfont 19}{subsection.4.2.6}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.7}PPO hyperparameters}{\reset@font\mtcSSfont 20}{subsection.4.2.7}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.8}Training with Soft-Actor Critic (SAC)}{\reset@font\mtcSSfont 20}{subsection.4.2.8}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.9}SAC hyperparameters}{\reset@font\mtcSSfont 22}{subsection.4.2.9}}

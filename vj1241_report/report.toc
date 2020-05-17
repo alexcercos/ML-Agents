@@ -1,0 +1,38 @@
+\babel@toc {english}{}
+\contentsline {chapter}{Contents}{v}{section*.3}%
+\contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Work Motivation}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Objectives}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Environment and Initial State}{2}{section.1.3}%
+\contentsline {chapter}{\chapternumberline {2}Planning and resources evaluation}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Planning}{4}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Simple game creation}{4}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}NPC Behavior}{5}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Obtaining the Dataset}{5}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Neural network model and training}{6}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Analysis of results}{7}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}Framework standardization}{7}{subsection.2.1.6}%
+\contentsline {section}{\numberline {2.2}Resource Evaluation}{7}{section.2.2}%
+\contentsline {chapter}{\chapternumberline {3}System Analysis and Design}{9}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Requirement Analysis}{9}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Functional Requirements}{9}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Non-functional Requirements}{10}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}System Design}{10}{section.3.2}%
+\contentsline {section}{\numberline {3.3}System Architecture}{11}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Interface Design}{11}{section.3.4}%
+\contentsline {chapter}{\chapternumberline {4}Work Development and Results}{13}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Game Development}{13}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Reactive Behaviors}{14}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Unnecessary actions}{14}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Rewards based in tolerable range}{14}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Determinism of the behavior}{15}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Movement memory}{16}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Rewards based in standard deviation}{17}{subsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.2.6}Rewards based in movement coherence}{19}{subsection.4.2.6}%
+\contentsline {subsection}{\numberline {4.2.7}PPO hyperparameters}{20}{subsection.4.2.7}%
+\contentsline {subsection}{\numberline {4.2.8}Training with Soft-Actor Critic (SAC)}{20}{subsection.4.2.8}%
+\contentsline {subsection}{\numberline {4.2.9}SAC hyperparameters}{22}{subsection.4.2.9}%
+\contentsline {chapter}{\chapternumberline {5}Conclusions and Future Work}{23}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conclusions}{23}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Future work}{24}{section.5.2}%
+\contentsline {chapter}{Bibliography}{25}{chapter*.21}%

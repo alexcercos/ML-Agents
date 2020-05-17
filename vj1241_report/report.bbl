@@ -1,0 +1,26 @@
+\begin{thebibliography}{1}
+
+\bibitem{livingstone}
+D.~Livingstone.
+\newblock {\em Turing's test and believable AI in games.}
+\newblock Computers in Entertainment (CIE), 4(1), 6., 2006.
+
+\bibitem{nakano}
+Hoshino~J. Nakano~A., Tanaka~A.
+\newblock {\em Imitating the Behavior of Human Players in Action Games.}
+\newblock ICEC 2006. Lecture Notes in Computer Science, vol 4161. Springer,
+  Berlin, Heidelberg, 2006.
+
+\bibitem{ppopolicy}
+OpenAI.
+\newblock Proximal policy optimization.
+\newblock https://openai.com/blog/openai-baselines-ppo.
+\newblock Accessed: 2020-04-25.
+
+\bibitem{mlagents}
+Unity.
+\newblock Ml agents documentation.
+\newblock https://github.com/Unity-Technologies/ml-agents.
+\newblock Accessed: 2019-11-22.
+
+\end{thebibliography}

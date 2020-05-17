@@ -1,0 +1,115 @@
+% ==============================================================================
+% This file is part of the "LaTeX template for writing the Final Degree Work
+% report". It has been developed to aid the students of the Bachelor's Degree in
+% Video Game Design and Development at the Jaume I University.
+%
+% This template is an adaptation of the "Plantilla LaTeX para la redacción de la
+% memoria del trabajo de fin de grado", (c) 2011-13 Sergio Barrachina Mir.
+%
+% (c) 2019 Sergio Barrachina Mir and José Vte. Martí Avilés
+%
+% The template can be used and distributed under the next license:
+%  Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)
+%  http://creativecommons.org/licenses/by-nc-sa/3.0/
+%  http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode
+%
+% Atom editor configuration follows:
+% !TeX spellcheck = en-US
+% ==============================================================================
+
+\documentclass[11pt,a4paper,twoside,openright,final]{memoir}
+\input{report_header}
+
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Title, author, director, subject and keyworks
+%----------------------------------------------------------------------
+\title{Imitating Reactive Human Behaviours\\ in Games Using Neural Networks}
+
+\author{Manuel Alejandro Cercós Pérez}
+
+\newcommand{\director}{Luis Amable García Fernández.} % Doctora Jane Doe
+
+\hypersetup{%
+  pdftitle={LaTeX template for writing the Final Degree Work report},
+  pdfauthor={Manuel Alejandro Cercós Pérez},
+  pdfsubject={Imitating Reactive Human Behaviours in Games Using Neural Networks},
+  pdfkeywords={Final Degree Work report, LaTeX template},
+}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Course and degree names
+%----------------------------------------------------------------------
+\newcommand{\course}{Final Degree Work}
+\newcommand{\degree}{Bachelor's Degree in\\ Video Game Design and Development}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Document
+%----------------------------------------------------------------------
+\begin{document}
+
+%----------------------------------------------------------------------
+\frontmatter
+
+\pagenumbering{Alph}
+\maketitle
+\thispagestyle{empty}
+
+\include{dedicatory}
+
+% Restart page counter and back to roman
+\setcounter{page}{1}
+\pagenumbering{roman}
+
+\include{acknowledgments}
+
+
+\include{abstract}
+
+\dominitoc{}
+
+\setcounter{tocdepth}{2}
+\tableofcontents{}
+\adjustmtc{}
+
+% Figures index
+% (uncomment the next three lines to include it)
+% \cleardoublepage{}
+% \listoffigures{}
+% \adjustmtc{}
+
+% Table index
+% (uncomment the next three lines to include it)
+% \cleardoublepage{}
+% \listoftables{}
+% \adjustmtc{}
+
+%----------------------------------------------------------------------
+\mainmatter
+
+\include{chap01_introduction}
+\include{chap02_planning}
+\include{chap03_analysis}
+\include{chap04_development}
+\include{chap05_conclusions}
+
+% bibliography
+\bibliographystyle{plain}
+\bibliography{report}
+
+
+%----------------------------------------------------------------------
+%\appendix{}
+%\include{appendA_others}
+%\include{appendB_source_code}
+
+%----------------------------------------------------------------------
+\backmatter
+
+\end{document}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
