@@ -2111,10 +2111,14 @@ PrefabInstance:
       objectReference: {fileID: 1252828196}
     - target: {fileID: 168162533, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: demoHeuristic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 168162533, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: receiveObservations
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 168162533, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: stdMultiplier
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1967386025, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
@@ -2123,7 +2127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1967386025, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: demonstrationName
-      value: BCDemo
+      value: QueueDemo
       objectReference: {fileID: 0}
     - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: m_Model
@@ -2142,5 +2146,15 @@ PrefabInstance:
       propertyPath: useNeuralNet
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4725097534939035458, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: saveImg
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725097534939035458, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: defaultTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 01621a842a4327f4d85795ebacadd69c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}

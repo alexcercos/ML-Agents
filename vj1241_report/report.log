@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.8)  17 MAY 2020 02:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.8)  18 MAY 2020 09:41
 entering extended mode
 **./report.tex
 (report.tex
@@ -1289,12 +1289,12 @@ File: img/exampleDet.png Graphic file (type png)
 Package pdftex.def Info: img/exampleDet.png  used on input line 94.
 (pdftex.def)             Requested size: 376.42575pt x 291.92159pt.
  [16 <./img/exampleDet.png>]
-<img/graphsMemory.png, id=385, 174.6525pt x 143.78719pt>
+<img/graphsMemory.png, id=386, 174.6525pt x 143.78719pt>
 File: img/graphsMemory.png Graphic file (type png)
 <use img/graphsMemory.png>
 Package pdftex.def Info: img/graphsMemory.png  used on input line 111.
 (pdftex.def)             Requested size: 209.12683pt x 172.17955pt.
-<img/graphSTD.png, id=387, 73.02281pt x 75.28125pt>
+<img/graphSTD.png, id=388, 73.02281pt x 75.28125pt>
 File: img/graphSTD.png Graphic file (type png)
 <use img/graphSTD.png>
 Package pdftex.def Info: img/graphSTD.png  used on input line 126.
@@ -1325,17 +1325,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 123--129
  []
 
 [17 <./img/graphsMemory.png>]
-<img/stdPrecision.png, id=394, 570.63188pt x 365.86688pt>
+<img/stdPrecision.png, id=395, 570.63188pt x 365.86688pt>
 File: img/stdPrecision.png Graphic file (type png)
 <use img/stdPrecision.png>
 Package pdftex.def Info: img/stdPrecision.png  used on input line 138.
 (pdftex.def)             Requested size: 125.47737pt x 80.45187pt.
-<img/stdFactors.png, id=395, 569.87906pt x 210.03468pt>
+<img/stdFactors.png, id=396, 569.87906pt x 210.03468pt>
 File: img/stdFactors.png Graphic file (type png)
 <use img/stdFactors.png>
 Package pdftex.def Info: img/stdFactors.png  used on input line 145.
 (pdftex.def)             Requested size: 125.47737pt x 46.24301pt.
-<img/stdDevfactor.png, id=396, 392.96812pt x 463.7325pt>
+<img/stdDevfactor.png, id=397, 392.96812pt x 463.7325pt>
 File: img/stdDevfactor.png Graphic file (type png)
 <use img/stdDevfactor.png>
 Package pdftex.def Info: img/stdDevfactor.png  used on input line 152.
@@ -1349,7 +1349,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 153--153
 Package wrapfig Warning: Collision between wrapping environments on input line 
 160.
 
-<img/graphsSTDrew.png, id=397, 71.51718pt x 143.78719pt>
+<img/graphsSTDrew.png, id=398, 71.51718pt x 143.78719pt>
 File: img/graphsSTDrew.png Graphic file (type png)
 <use img/graphsSTDrew.png>
 Package pdftex.def Info: img/graphsSTDrew.png  used on input line 162.
@@ -1398,7 +1398,7 @@ Package wrapfig Warning: Stationary wrapfigure forced to float on input line 17
 Package wrapfig Warning: Stationary wrapfigure forced to float on input line 17
 6.
 
-<img/graphsCoherence.png, id=411, 167.12437pt x 142.28156pt>
+<img/graphsCoherence.png, id=412, 167.12437pt x 142.28156pt>
 File: img/graphsCoherence.png Graphic file (type png)
 <use img/graphsCoherence.png>
 Package pdftex.def Info: img/graphsCoherence.png  used on input line 193.
@@ -1413,7 +1413,7 @@ Overfull \hbox (4.03209pt too wide) in paragraph at lines 209--236
  [] 
  []
 
-<img/PpoSac.png, id=424, 371.13657pt x 264.23718pt>
+<img/PpoSac.png, id=425, 371.13657pt x 264.23718pt>
 File: img/PpoSac.png Graphic file (type png)
 <use img/PpoSac.png>
 Package pdftex.def Info: img/PpoSac.png  used on input line 246.
@@ -1421,7 +1421,7 @@ Package pdftex.def Info: img/PpoSac.png  used on input line 246.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<img/graphSacPpo.png, id=426, 167.12437pt x 142.28156pt>
+<img/graphSacPpo.png, id=427, 167.12437pt x 142.28156pt>
 File: img/graphSacPpo.png Graphic file (type png)
 <use img/graphSacPpo.png>
 Package pdftex.def Info: img/graphSacPpo.png  used on input line 255.
@@ -1511,9 +1511,9 @@ fonts/type1/public/lm/lmr12.pfb><C:/Users/alexc/AppData/Local/Programs/MiKTeX 2
 eX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Users/alexc/AppData/Local/Programs/Mi
 KTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/alexc/AppData/Local/Program
 s/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on report.pdf (36 pages, 858343 bytes).
+Output written on report.pdf (36 pages, 858996 bytes).
 PDF statistics:
- 553 PDF objects out of 1000 (max. 8388607)
+ 554 PDF objects out of 1000 (max. 8388607)
  100 named destinations out of 1000 (max. 500000)
  407 words of extra memory for PDF output out of 10000 (max. 10000000)
 

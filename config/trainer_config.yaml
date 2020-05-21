@@ -38,7 +38,7 @@ Imitator:
     summary_freq: 1000
     time_horizon: 64
     pretraining:
-        demo_path: demos/OneLineMem.demo
+        demo_path: demos/QueueDemo.demo
         strength: 0.5
         steps: 20000
     reward_signals:
@@ -53,7 +53,7 @@ Imitator:
             strength: 0.01
             gamma: 0.99
             encoding_size: 128
-            demo_path: demos/OneLineMem.demo
+            demo_path: demos/QueueDemo.demo
 
 FutGoalie:
     max_steps: 5.0e8

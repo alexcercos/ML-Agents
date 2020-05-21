@@ -30,9 +30,9 @@ public class AgentShoot : Agent
 
     float minimumSTD = 0.1f;
 
-    public float initWeight = 10f;
-    public float loss = 1.25f;
-    public float minimum = 0.5f;
+    public float initWeight = 1f;
+    public float loss = 1f;
+    public float minimum = 1f;
 
     const float AU_PROP = 0.618034f;
 
@@ -42,8 +42,12 @@ public class AgentShoot : Agent
 
     public float stdMultiplier = 3f;
 
+    public float waitForImpulse = 0.25f;
 
-    public float threshold = 0.01f;
+    Queue<MoveInfo> realImpulse;
+    Queue<MoveInfo> agentImpulse;
+
+    //public float threshold = 0.01f;
 
     public bool demoHeuristic = true;
 
@@ -52,7 +56,7 @@ public class AgentShoot : Agent
         cameraAgent = GetComponent<CameraMovement>();
         
         lastX = new List<float>();
-
+        
 
         realX = new List<float>();
 
@@ -62,6 +66,9 @@ public class AgentShoot : Agent
 
             realX.Add(0f);
         }
+
+        realImpulse = new Queue<MoveInfo>();
+        agentImpulse = new Queue<MoveInfo>();
     }
 
     public override void AgentReset()
@@ -136,19 +143,11 @@ public class AgentShoot : Agent
         graphicCanvas.AddStdHighPoint(average + stDesv);
         graphicCanvas.AddStdLowPoint(average - stDesv);
 
-        float coherence = Coherence(average, stDesv, oX);
-        /*
-        if (!ReversedPunish(minX, maxX, -200f))
-        {
-            RewardsCoherence(minX, maxX, stDesv, average, coherence, oX, 125f, -20f);
-        }
+        
+        //RewardsInsideRange(average + stDesv, average - stDesv, maxX, 1f, 10f);
 
-        RewardsLinearIndividual(minX, maxX, oX);*/
-
-        float difference = Mathf.Abs(minX - oX);
-
-        RewardsTolerableRange(difference, 0.05f, 1f);
-
+        RewardsAfterImpulse(maxX, oX, ref realImpulse, ref agentImpulse, average, stDesv, 150f, 10f);
+        
 
         //actualizar listas
 
@@ -195,7 +194,7 @@ public class AgentShoot : Agent
         }
         else
         {
-            oX = cameraAgent.GetX(); // Para asegurar que devuelve la del bot, aunque juegue el agente
+            oX = cameraAgent.GetBotX(); // Para asegurar que devuelve la del bot, aunque juegue el agente
 
             // DEMO RECORDER
 
@@ -369,6 +368,77 @@ public class AgentShoot : Agent
         AddReward(reward / totalSteps);
     }
 
+    public void RewardsInsideRange(float maximum, float minimum, float move, float mulFactor, float punFactor)
+    {
+        // Maximo y minimo son avg +- std
+
+        if (move <= maximum && move >=minimum)
+        {
+            AddReward(1f * mulFactor / totalSteps);
+        }
+        else
+        {
+            float outside = Mathf.Max(move - maximum, minimum - move); // Distancia absoluta
+
+            AddReward(-outside * punFactor / totalSteps);
+        }
+    }
+
+    public void RewardsAfterImpulse(float move, float originalX, ref Queue<MoveInfo> impulseReal, ref Queue<MoveInfo> impulseAgent, float averageMove, float std, float rewardFactor, float punishFactor)
+    {
+        if (move > averageMove + std || move < average - std)
+        {
+            impulseAgent.Enqueue(new MoveInfo(Time.frameCount, move));
+        }
+        if (originalX > averageMove + std || originalX < average - std)
+        {
+            impulseAgent.Enqueue(new MoveInfo(Time.frameCount, originalX));
+        }
+
+        while (impulseReal.Count > 0 && impulseAgent.Count > 0)
+        {
+            // Los 2 tienen, se comparan directamente
+            MoveInfo original = impulseReal.Dequeue();
+            MoveInfo agent = impulseAgent.Dequeue();
+
+            float timeDiff = (original.frame - agent.frame) * Time.deltaTime;
+            float relativeReward = Mathf.Exp(-5f * Mathf.Pow(timeDiff, 2f)) - 0.05f; //Gauss
+
+            float difference = 0f;
+            float diffFactor = 0f;
+            if (Mathf.Sign(original.move) == Mathf.Sign(agent.move)) // Distinto sentido no da recompensa
+            {
+                difference = Mathf.Abs(original.move - agent.move);
+
+                diffFactor = Mathf.Pow(2f, 0.5f - 5 * difference);
+            }
+
+            AddReward(relativeReward * rewardFactor * diffFactor / totalSteps);
+        }
+
+        while (impulseReal.Count > 0 && Mathf.Abs(impulseReal.Peek().frame - Time.frameCount) * Time.deltaTime > waitForImpulse)
+        {
+            // Hay movimientos y ya ha pasado su tiempo maximo, no se recompensan
+
+            MoveInfo thisMove = impulseReal.Dequeue();
+
+            float outside = Mathf.Max(thisMove.move - (averageMove + std), (averageMove - std) - thisMove.move); // Distancia absoluta
+
+            AddReward(-outside * punishFactor / totalSteps);
+        }
+
+        while (impulseAgent.Count > 0 && Mathf.Abs(impulseAgent.Peek().frame - Time.frameCount) * Time.deltaTime > waitForImpulse)
+        {
+            // Hay movimientos y ya ha pasado su tiempo maximo, no se recompensan
+
+            MoveInfo thisMove = impulseAgent.Dequeue();
+
+            float outside = Mathf.Max(thisMove.move - (averageMove + std), (averageMove - std) - thisMove.move); // Distancia absoluta
+
+            AddReward(-outside * punishFactor / totalSteps);
+        }
+    }
+
     public float Average(ref List<float> previousMoves)
     {
         float avg = 0f;
@@ -405,7 +475,7 @@ public class AgentShoot : Agent
         }
 
         if (total > 0)
-            return std / total + minimumSTD;
+            return Mathf.Sqrt(std / total);
         else
             return minimumSTD;
     }
@@ -541,11 +611,23 @@ public class AgentShoot : Agent
         float avgDist = (Mathf.Abs(max - result) + Mathf.Abs(min - result)) / 2f;
 
         float difference = Mathf.Max(avgDist - std, 0f);
-
-
+        
         std = Mathf.Max(std, 1f); // Para que no haya castigos positivos
 
         //return -1f / (difference - 2.25f) + 1f;
         return Mathf.Pow(2, difference / std + 1) - 4;
+    }
+    
+}
+
+public struct MoveInfo
+{
+    public int frame;
+    public float move;
+
+    public MoveInfo(int f, float m)
+    {
+        frame = f;
+        move = m;
     }
 }
