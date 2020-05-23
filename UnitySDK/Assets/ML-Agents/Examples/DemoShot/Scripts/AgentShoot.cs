@@ -146,7 +146,7 @@ public class AgentShoot : Agent
         
         //RewardsInsideRange(average + stDesv, average - stDesv, maxX, 1f, 10f);
 
-        RewardsAfterImpulse(maxX, oX, ref realImpulse, ref agentImpulse, average, stDesv, 150f, 10f);
+        RewardsAfterImpulse(maxX, oX, ref realImpulse, ref agentImpulse, average, stDesv, 2000f, 500f, 1500f);
         
 
         //actualizar listas
@@ -384,7 +384,7 @@ public class AgentShoot : Agent
         }
     }
 
-    public void RewardsAfterImpulse(float move, float originalX, ref Queue<MoveInfo> impulseReal, ref Queue<MoveInfo> impulseAgent, float averageMove, float std, float rewardFactor, float punishFactor)
+    public void RewardsAfterImpulse(float move, float originalX, ref Queue<MoveInfo> impulseReal, ref Queue<MoveInfo> impulseAgent, float averageMove, float std, float rewardFactor, float failFactor, float missFactor)
     {
         if (move > averageMove + std || move < average - std)
         {
@@ -405,7 +405,8 @@ public class AgentShoot : Agent
             float relativeReward = Mathf.Exp(-5f * Mathf.Pow(timeDiff, 2f)) - 0.05f; //Gauss
 
             float difference = 0f;
-            float diffFactor = 0f;
+            float diffFactor = -1f;
+
             if (Mathf.Sign(original.move) == Mathf.Sign(agent.move)) // Distinto sentido no da recompensa
             {
                 difference = Mathf.Abs(original.move - agent.move);
@@ -414,6 +415,18 @@ public class AgentShoot : Agent
             }
 
             AddReward(relativeReward * rewardFactor * diffFactor / totalSteps);
+
+            if (impulseAgent.Peek().frame > agent.frame + 1)
+            {
+                // Eliminar movimiento completo restante del original
+
+                while (impulseReal.Peek().frame == original.frame + 1)
+                {
+                    original = impulseReal.Dequeue();
+
+                    // No se penaliza
+                }
+            }
         }
 
         while (impulseReal.Count > 0 && Mathf.Abs(impulseReal.Peek().frame - Time.frameCount) * Time.deltaTime > waitForImpulse)
@@ -424,18 +437,18 @@ public class AgentShoot : Agent
 
             float outside = Mathf.Max(thisMove.move - (averageMove + std), (averageMove - std) - thisMove.move); // Distancia absoluta
 
-            AddReward(-outside * punishFactor / totalSteps);
+            AddReward(-outside * missFactor / totalSteps);
         }
 
         while (impulseAgent.Count > 0 && Mathf.Abs(impulseAgent.Peek().frame - Time.frameCount) * Time.deltaTime > waitForImpulse)
         {
-            // Hay movimientos y ya ha pasado su tiempo maximo, no se recompensan
+            // Ha hecho un movimiento a destiempo
 
             MoveInfo thisMove = impulseAgent.Dequeue();
 
             float outside = Mathf.Max(thisMove.move - (averageMove + std), (averageMove - std) - thisMove.move); // Distancia absoluta
 
-            AddReward(-outside * punishFactor / totalSteps);
+            AddReward(-outside * failFactor / totalSteps);
         }
     }
 
