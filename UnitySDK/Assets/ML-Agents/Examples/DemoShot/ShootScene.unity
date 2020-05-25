@@ -2127,12 +2127,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1967386025, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: demonstrationName
-      value: QueueDemo
+      value: UniformDemo
       objectReference: {fileID: 0}
     - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 829ded615dda17d428f6a399d200e297,
+        type: 3}
     - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: m_BrainParameters.vectorActionSize.Array.data[0]
       value: 1
@@ -2144,7 +2145,7 @@ PrefabInstance:
     - target: {fileID: 2108969470825062746, guid: 866aec7a5971df747bbb175cacf8784e,
         type: 3}
       propertyPath: useNeuralNet
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4725097534939035458, guid: 866aec7a5971df747bbb175cacf8784e,
         type: 3}

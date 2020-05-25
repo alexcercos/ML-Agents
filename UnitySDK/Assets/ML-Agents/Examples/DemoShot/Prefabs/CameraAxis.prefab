@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ebac9178eb12840865e8b21d7e7188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultTexture: {fileID: 0}
   current: {fileID: 8400000, guid: e530950839451c544aecb1ecab8532c5, type: 2}
   previousFrames:
   - {fileID: 0}
@@ -126,6 +127,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 8400000, guid: fc487f1fc0f32d34390540ef9a8dd6e0, type: 2}
+  saveImg: 0
 --- !u!1 &2108969470825062726
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +140,7 @@ GameObject:
   - component: {fileID: 2108969470825062744}
   - component: {fileID: 2108969470825062745}
   - component: {fileID: 2108969470825062746}
+  - component: {fileID: 7439163743339422872}
   - component: {fileID: 8654713390943226240}
   - component: {fileID: 168162533}
   - component: {fileID: 168162534}
@@ -247,9 +250,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41fb4bae743a4f4cb6664b2576b68d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botMovement: {fileID: 8654713390943226240}
+  botMovement: {fileID: 7439163743339422872}
   useNeuralNet: 1
---- !u!114 &8654713390943226240
+--- !u!114 &7439163743339422872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -257,6 +260,18 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108969470825062726}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6b9b3489506fe46bebe65be02c3c6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8654713390943226240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108969470825062726}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 684d2a237f1582c4db1b40d56f083ac1, type: 3}
   m_Name: 
@@ -285,7 +300,7 @@ MonoBehaviour:
   loss: 1
   minimum: 1
   stdMultiplier: 3
-  threshold: 0.01
+  waitForImpulse: 0.25
   demoHeuristic: 1
 --- !u!114 &168162534
 MonoBehaviour:

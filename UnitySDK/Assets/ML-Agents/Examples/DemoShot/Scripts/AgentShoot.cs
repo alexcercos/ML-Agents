@@ -139,14 +139,14 @@ public class AgentShoot : Agent
         average = Average(ref realX);
         stDesv = StdDeviation(ref realX, average);
 
-        graphicCanvas.AddAveragePoint(average); //Debug std
+        //graphicCanvas.AddAveragePoint(average); //Debug std
         graphicCanvas.AddStdHighPoint(average + stDesv);
         graphicCanvas.AddStdLowPoint(average - stDesv);
 
         
         //RewardsInsideRange(average + stDesv, average - stDesv, maxX, 1f, 10f);
 
-        RewardsAfterImpulse(maxX, oX, ref realImpulse, ref agentImpulse, average, stDesv, 2000f, 500f, 1500f);
+        RewardsAfterImpulse(maxX, oX, ref realImpulse, ref agentImpulse, average, stDesv, 250f, 250f, 5000f);
         
 
         //actualizar listas
@@ -454,6 +454,9 @@ public class AgentShoot : Agent
 
     public float Average(ref List<float> previousMoves)
     {
+        // Para el bot uniforme
+        return -0.15f;
+
         float avg = 0f;
         float total = 0f;
 
@@ -474,6 +477,9 @@ public class AgentShoot : Agent
 
     public float StdDeviation(ref List<float> previousMoves, float average)
     {
+        // Para el bot uniforme
+        return 0.02f;
+
         float std = 0f;
         float total = 0f;
 
