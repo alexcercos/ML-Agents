@@ -2132,7 +2132,7 @@ PrefabInstance:
     - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 829ded615dda17d428f6a399d200e297,
+      objectReference: {fileID: 5022602860645237092, guid: bf6e440968798df4fbb5e3d5f795eefa,
         type: 3}
     - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
       propertyPath: m_BrainParameters.vectorActionSize.Array.data[0]

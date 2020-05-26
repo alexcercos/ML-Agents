@@ -143,11 +143,12 @@ public class AgentShoot : Agent
         graphicCanvas.AddStdHighPoint(average + stDesv);
         graphicCanvas.AddStdLowPoint(average - stDesv);
 
-        
+
         //RewardsInsideRange(average + stDesv, average - stDesv, maxX, 1f, 10f);
 
-        RewardsAfterImpulse(maxX, oX, ref realImpulse, ref agentImpulse, average, stDesv, 250f, 250f, 5000f);
-        
+        //RewardsAfterImpulse(maxX, oX, ref realImpulse, ref agentImpulse, average, stDesv, 250f, 250f, 5000f);
+
+        RewardsLinearOne(maxX, oX, average, stDesv, 100f, 10f);
 
         //actualizar listas
 
@@ -450,6 +451,30 @@ public class AgentShoot : Agent
 
             AddReward(-outside * failFactor / totalSteps);
         }
+    }
+
+    public void RewardsLinearOne(float move, float original, float average, float std, float rewardFactor, float punishFactor)
+    {
+        // Para entrenamientos con una accion, puntua impulsos y penaliza coherentes
+        float reward = 0f;
+
+        if (original > average - std && original < average + std) // Movimiento coherente, solo penaliza
+        {
+            float punish = 2f - Mathf.Abs(original - move);
+            
+
+            reward = -punishFactor * punish;
+        }
+        else
+        {
+            float precision = 2f - Mathf.Abs(original - move);
+            
+
+            reward = rewardFactor * precision;
+
+        }
+
+        AddReward(reward / totalSteps);
     }
 
     public float Average(ref List<float> previousMoves)

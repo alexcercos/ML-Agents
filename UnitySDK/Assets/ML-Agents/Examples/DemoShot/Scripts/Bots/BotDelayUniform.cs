@@ -38,7 +38,7 @@ public class BotDelayUniform : IBotMovement
             if (Mathf.Abs(angle) < 1f)
             {
                 hasObjective = false;
-                closest = 2.0f;
+                closest = 0.5f;
                 //rot = -rot;
                 timerReact = 0f;
             }
@@ -78,7 +78,8 @@ public class BotDelayUniform : IBotMovement
         else
         {
             hasObjective = false;
-            closest = 2.0f;
+            closest = 0.5f;
+            timerReact = 0f;
             foreach (Renderer t in scene.GetComponentsInChildren<Renderer>())
             {
                 Vector3 screenPos = Camera.main.WorldToViewportPoint(t.transform.position);
