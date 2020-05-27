@@ -15,7 +15,7 @@ public class AgentShoot : Agent
 
     //private float iX = 0f, iY = 0f;
 
-    public bool receiveObservations = false;
+    public ObservationsType receiveObservations = ObservationsType.NONE;
 
     private float maxX = 0f, minX = 0f;
     bool iClick = true;
@@ -87,7 +87,7 @@ public class AgentShoot : Agent
 
     public override void CollectObservations()
     {
-        if (receiveObservations)
+        if (receiveObservations == ObservationsType.PREVIOUS25)
         {
             int i = 0;
             while (i < 60)
@@ -100,6 +100,10 @@ public class AgentShoot : Agent
                 else i += 4;
                 //25x2
             }
+        }
+        else if (receiveObservations == ObservationsType.LAST)
+        {
+            AddVectorObs(lastX[0]);
         }
     }
 
@@ -674,4 +678,9 @@ public struct MoveInfo
         frame = f;
         move = m;
     }
+}
+
+public enum ObservationsType
+{
+    PREVIOUS25, LAST, NONE
 }

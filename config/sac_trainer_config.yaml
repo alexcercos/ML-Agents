@@ -30,24 +30,24 @@ Imitator:
     batch_size: 128
     buffer_size: 200000
     buffer_init_steps: 5000
-    hidden_units: 256
+    hidden_units: 128
     init_entcoef: 1.0
     learning_rate: 4.0e-4
     learning_rate_schedule: constant
     max_steps: 6.0e6
-    memory_size: 256
+    memory_size: 32
     normalize: true
     num_update: 1
     train_interval: 5
-    num_layers: 1
+    num_layers: 2
     time_horizon: 64
     sequence_length: 128
     summary_freq: 1000
     tau: 0.005
-    use_recurrent: false
+    use_recurrent: true
     vis_encode_type: simple
     pretraining:
-        demo_path: demos/QueueDemo.demo
+        demo_path: demos/UniformNoRT1Demo.demo
         strength: 0.4
         steps: 20000
     reward_signals:
@@ -63,7 +63,7 @@ Imitator:
             gamma: 0.99
             encoding_size: 128
             use_actions: true
-            demo_path: demos/QueueDemo.demo
+            demo_path: demos/UniformNoRT1Demo.demo
 
 FoodCollector:
     normalize: false

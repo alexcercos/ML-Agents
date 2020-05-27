@@ -24,7 +24,7 @@ Imitator:
     num_layers: 3
     sequence_length: 128
     memory_size: 32
-    demo_path: ./demos/UniformDemo.demo
+    demo_path: ./demos/NoRT25Demo.demo
 
 Hallway:
     trainer: offline_bc

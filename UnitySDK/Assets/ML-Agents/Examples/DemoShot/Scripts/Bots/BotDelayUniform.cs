@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BotDelayUniform : IBotMovement
 {
-    public Transform scene;
+    Transform scene;
 
     GameObject gameObjective;
     Quaternion objective;
