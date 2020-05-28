@@ -471,7 +471,7 @@ public class AgentShoot : Agent
         }
         else
         {
-            float precision = 2f - Mathf.Abs(original - move);
+            float precision = 0.2f - Mathf.Abs(original - move);
             
 
             reward = rewardFactor * precision;

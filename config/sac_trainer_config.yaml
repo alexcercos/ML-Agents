@@ -39,7 +39,7 @@ Imitator:
     normalize: true
     num_update: 1
     train_interval: 5
-    num_layers: 2
+    num_layers: 4
     time_horizon: 64
     sequence_length: 128
     summary_freq: 1000
@@ -64,6 +64,7 @@ Imitator:
             encoding_size: 128
             use_actions: true
             demo_path: demos/UniformNoRT1Demo.demo
+
 
 FoodCollector:
     normalize: false
