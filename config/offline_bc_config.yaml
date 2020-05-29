@@ -21,10 +21,10 @@ Imitator:
     use_recurrent: true
     hidden_units: 128
     learning_rate: 1.0e-5
-    num_layers: 3
+    num_layers: 2
     sequence_length: 128
     memory_size: 32
-    demo_path: ./demos/NoRT25Demo.demo
+    demo_path: ./demos/UniformNoRT1Demo.demo
 
 Hallway:
     trainer: offline_bc

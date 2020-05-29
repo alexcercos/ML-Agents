@@ -464,15 +464,15 @@ public class AgentShoot : Agent
 
         if (original > average - std && original < average + std) // Movimiento coherente, solo penaliza
         {
-            float punish = 2f - Mathf.Abs(original - move);
+            float punish = Mathf.Pow(Mathf.Min(Mathf.Abs(original - move), 1f), 2);
             
 
             reward = -punishFactor * punish;
         }
         else
         {
-            float precision = 0.2f - Mathf.Abs(original - move);
-            
+            float precision = Mathf.Pow(1f - Mathf.Min(Mathf.Abs(original - move), 1f), 2);
+
 
             reward = rewardFactor * precision;
 

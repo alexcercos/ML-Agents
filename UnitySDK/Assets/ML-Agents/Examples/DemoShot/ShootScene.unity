@@ -2134,6 +2134,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
+      objectReference: {fileID: 5022602860645237092, guid: a2bcbe8807d21904c87b2b3ef55def60,
+        type: 3}
+    - target: {fileID: 4416147798560193589, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: useNeuralNet
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4606740364015851469, guid: afa7be1ca8456374d841ef083dc4cc31, type: 3}
