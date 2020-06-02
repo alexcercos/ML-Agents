@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2108969470140002148}
   - component: {fileID: 4725097534939035458}
   m_Layer: 0
-  m_Name: CameraAxis
+  m_Name: RTCameraAxis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,7 +141,6 @@ GameObject:
   - component: {fileID: 2108969470825062745}
   - component: {fileID: 2108969470825062746}
   - component: {fileID: 7439163743339422872}
-  - component: {fileID: 8654713390943226240}
   - component: {fileID: 168162533}
   - component: {fileID: 168162534}
   - component: {fileID: 1967386025}
@@ -264,19 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6b9b3489506fe46bebe65be02c3c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8654713390943226240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2108969470825062726}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 684d2a237f1582c4db1b40d56f083ac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noise: 0.3
+  debug: 0
 --- !u!114 &168162533
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -38,9 +38,10 @@ public class CameraMovement : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
 
         // Si esta compilado dabe usar el bot
+        /*
         #if UNITY_STANDALONE
             useNeuralNet = false;
-        #endif
+        #endif*/
     }
 
     // Update is called once per frame

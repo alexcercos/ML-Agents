@@ -32,14 +32,14 @@ Imitator:
     buffer_init_steps: 5000
     hidden_units: 128
     init_entcoef: 1.0
-    learning_rate: 4.0e-4
+    learning_rate: 5.0e-4
     learning_rate_schedule: constant
     max_steps: 6.0e6
     memory_size: 32
     normalize: true
     num_update: 1
     train_interval: 5
-    num_layers: 2
+    num_layers: 3
     time_horizon: 64
     sequence_length: 128
     summary_freq: 1000
@@ -47,15 +47,15 @@ Imitator:
     use_recurrent: true
     vis_encode_type: simple
     pretraining:
-        demo_path: demos/UniformNoRT1Demo.demo
+        demo_path: demos/R0N02.demo
         strength: 0.4
         steps: 20000
     reward_signals:
         extrinsic:
-            strength: 1.5
+            strength: 1.0
             gamma: 0.99
         curiosity:
-            strength: 0.03
+            strength: 0.1
             gamma: 0.99
             encoding_size: 128
         gail:
@@ -63,7 +63,7 @@ Imitator:
             gamma: 0.99
             encoding_size: 128
             use_actions: true
-            demo_path: demos/UniformNoRT1Demo.demo
+            demo_path: demos/R0N02.demo
 
 
 FoodCollector:

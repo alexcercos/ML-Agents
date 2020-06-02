@@ -14,7 +14,8 @@ public class BotDelayUniform : IBotMovement
 
     float rot = -0.3f;
 
-    float reactTime = 0.2f;
+    public float reactTime = 0.2f;
+    public float noise = 0.0f;
 
     float timerReact = 0f;
 
@@ -43,11 +44,11 @@ public class BotDelayUniform : IBotMovement
                 timerReact = 0f;
             }
 
-            return Mathf.Clamp(angle, -15f, 15f) * CameraMovement.width / (CameraMovement.camAngleHor * CameraMovement.maxSpeed) * Time.deltaTime * 40f;
+            return Mathf.Clamp(angle, -15f, 15f) * CameraMovement.width / (CameraMovement.camAngleHor * CameraMovement.maxSpeed) * Time.deltaTime * 40f + Random.Range(-noise/2f, noise/2f);
         }
         else
         {
-            return rot;
+            return rot + Random.Range(-noise * 2f, noise * 2f);
         }
     }
 

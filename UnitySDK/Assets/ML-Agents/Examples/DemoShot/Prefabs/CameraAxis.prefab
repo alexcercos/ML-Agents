@@ -166,7 +166,7 @@ MonoBehaviour:
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
   graphicCanvas: {fileID: 0}
-  receiveObservations: 0
+  receiveObservations: 2
   initWeight: 1
   loss: 1
   minimum: 1

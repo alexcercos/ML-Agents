@@ -92,7 +92,8 @@ public class AgentShoot : Agent
             int i = 0;
             while (i < 60)
             {
-                AddVectorObs(lastX[i]);
+                AddVectorObs(realX[i]); //cambio para usar la informacion real, interpolar luego
+                //AddVectorObs(lastX[i]);
                 //AddVectorObs(lastY[i]);
 
                 if (i <= 9) i++;
@@ -147,12 +148,9 @@ public class AgentShoot : Agent
         graphicCanvas.AddStdHighPoint(average + stDesv);
         graphicCanvas.AddStdLowPoint(average - stDesv);
 
+        //RewardsLinearOne(maxX, oX, average, stDesv, 250f, 50f);
 
-        //RewardsInsideRange(average + stDesv, average - stDesv, maxX, 1f, 10f);
-
-        //RewardsAfterImpulse(maxX, oX, ref realImpulse, ref agentImpulse, average, stDesv, 250f, 250f, 5000f);
-
-        RewardsLinearOne(maxX, oX, average, stDesv, 100f, 10f);
+        RewardsTolerableRange(Mathf.Abs(oX - maxX), 0.05f, 1f);
 
         //actualizar listas
 
@@ -338,7 +336,7 @@ public class AgentShoot : Agent
         if (difference > tolerableRange)
         {
             //Lineales
-            AddReward(-40f * (Mathf.Min(difference, tolerableRange) - tolerableRange) / (totalSteps * (maxRange - tolerableRange)));
+            AddReward(-40f * (Mathf.Min(difference, maxRange) - tolerableRange) / (totalSteps * (maxRange - tolerableRange)));
             //No lineales
             //AddReward(-diffX / (3000f * tolerableRange));
 
