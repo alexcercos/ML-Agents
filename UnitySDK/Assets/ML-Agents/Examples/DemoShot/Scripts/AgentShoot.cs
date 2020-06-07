@@ -34,13 +34,24 @@ public class AgentShoot : Agent
     public float loss = 1f;
     public float minimum = 1f;
 
+    public float stdMultiplier = 3f;
+
     const float AU_PROP = 0.618034f;
 
     float average = 0f;
     float stDesv = 0f;
+    float averageSquared = 0f;
+    float varianza = 0f;
+    
     float oX = 0f;
 
-    public float stdMultiplier = 3f;
+    float moveCount = 0f;
+
+
+    public float PunFactor = 100f;
+    public float RewFactor = 100f;
+
+    
 
     public float waitForImpulse = 0.25f;
 
@@ -141,16 +152,22 @@ public class AgentShoot : Agent
 
         // Recompensas
 
-        average = Average(ref realX);
-        stDesv = StdDeviation(ref realX, average);
+        //average = Average(ref realX);
+        //stDesv = StdDeviation(ref realX, average);
 
-        //graphicCanvas.AddAveragePoint(average); //Debug std
+        graphicCanvas.AddAveragePoint(average); //Debug std
         graphicCanvas.AddStdHighPoint(average + stDesv);
         graphicCanvas.AddStdLowPoint(average - stDesv);
 
-        //RewardsLinearOne(maxX, oX, average, stDesv, 250f, 50f);
+        //RewardsTolerableRange(Mathf.Abs(oX - maxX), 0.05f, 1f);
 
-        RewardsTolerableRange(Mathf.Abs(oX - maxX), 0.05f, 1f);
+        //RewardsInsideRange(oX + 0.05f, oX - 0.05f, maxX, 50f, 200f);
+
+        RewardsStdCoherenceIndividual(maxX, oX, average, stDesv, RewFactor, PunFactor);
+
+        DynamicAverageAndStd(ref moveCount, ref average, ref stDesv, ref varianza, ref averageSquared, oX);
+
+        //Debug.Log("Move " + moveCount + ": " + oX + ". Average = " + average + ", deviation = " + stDesv + ", variance = " + varianza + ", avg.sq = " + averageSquared);
 
         //actualizar listas
 
@@ -161,8 +178,6 @@ public class AgentShoot : Agent
 
         realX.RemoveAt(59);
         realX.Insert(0, oX);
-
-
     }
 
     public override void AgentOnDone()
@@ -377,7 +392,7 @@ public class AgentShoot : Agent
 
         if (move <= maximum && move >=minimum)
         {
-            AddReward(1f * mulFactor / totalSteps);
+            AddReward(mulFactor / totalSteps);
         }
         else
         {
@@ -479,11 +494,66 @@ public class AgentShoot : Agent
         AddReward(reward / totalSteps);
     }
 
+    public void RewardsStdCoherenceIndividual(float move, float original, float average, float std, float rewFactor, float punFactor)
+    {
+
+        float dist = Mathf.Abs(move - original);
+
+        float coherence = Coherence(average, std, original);
+
+        float reward = 0f;
+
+        if (coherence >= 0f) //coherente solo penaliza
+        {
+            if (dist > std / 2f) // <std no penaliza
+            {
+                reward = (dist - std / 2f) * (-punFactor) * coherence;
+            }
+        }
+        else
+        {
+            float moveValue = 1f - 2 * dist / (Mathf.Abs(original - average)); //1 si dist = 0, 0 si esta a mitad camino entre la media y el movimiento y -1 si esta sobre la media 
+
+            if (moveValue > 0f)
+            {
+                reward = moveValue * rewFactor * (-coherence);
+            }
+            else if (moveValue > -1f)
+            {
+                reward = 0f;
+            }
+            else //hace lo contrario
+            {
+                reward = moveValue * punFactor;
+            }
+        }
+
+        AddReward(reward / totalSteps);
+    }
+
+    public void DynamicAverageAndStd(ref float moveCount, ref float average, ref float std, ref float varz, ref float avgSqrd, float move)
+    {
+        float newAverage = (move + moveCount * average) / (moveCount + 1f);
+        
+
+        if (moveCount < 1f)
+        {
+            varz = 0f;
+        }
+        else
+        {
+            varz = varz + Mathf.Pow(average, 2) - Mathf.Pow(newAverage, 2) - (avgSqrd - Mathf.Pow(move, 2)) / (moveCount + 1f);
+        }
+
+        avgSqrd = (Mathf.Pow(move, 2) + moveCount * avgSqrd) / (moveCount + 1f);
+
+        std = Mathf.Sqrt(varz);
+        average = newAverage;
+        moveCount += 1f;
+    }
+
     public float Average(ref List<float> previousMoves)
     {
-        // Para el bot uniforme
-        return -0.15f;
-
         float avg = 0f;
         float total = 0f;
 
@@ -504,9 +574,6 @@ public class AgentShoot : Agent
 
     public float StdDeviation(ref List<float> previousMoves, float average)
     {
-        // Para el bot uniforme
-        return 0.02f;
-
         float std = 0f;
         float total = 0f;
 

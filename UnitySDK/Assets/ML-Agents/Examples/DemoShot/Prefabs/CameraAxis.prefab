@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botMovement: {fileID: 5129854562543368695}
-  useNeuralNet: 1
+  useNeuralNet: 0
 --- !u!114 &5129854562543368695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
+  reactTime: 0.2
+  noise: 0
 --- !u!114 &2309747964293392778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,11 +168,13 @@ MonoBehaviour:
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
   graphicCanvas: {fileID: 0}
-  receiveObservations: 2
+  receiveObservations: 1
   initWeight: 1
   loss: 1
   minimum: 1
   stdMultiplier: 1
+  PunFactor: 100
+  RewFactor: 25
   waitForImpulse: 0.25
   demoHeuristic: 1
 --- !u!114 &2309747964293392777
@@ -186,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 0
+    vectorObservationSize: 1
     numStackedVectorObservations: 1
     vectorActionSize: 01000000
     vectorActionDescriptions: []
@@ -225,7 +229,7 @@ MonoBehaviour:
   sensorName: RenderTextureSensor
   width: 20
   height: 20
-  grayscale: 1
+  grayscale: 0
 --- !u!1 &6821655484502566521
 GameObject:
   m_ObjectHideFlags: 0

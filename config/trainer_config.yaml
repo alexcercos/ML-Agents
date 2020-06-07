@@ -37,7 +37,7 @@ Imitator:
     num_layers: 1
     summary_freq: 1000
     time_horizon: 64
-    use_recurrent: true
+    use_recurrent: false
     sequence_length: 128
     memory_size: 32
     reward_signals:

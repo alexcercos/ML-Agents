@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botMovement: {fileID: 7439163743339422872}
-  useNeuralNet: 1
+  useNeuralNet: 0
 --- !u!114 &7439163743339422872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
+  reactTime: 0
+  noise: 0.05
 --- !u!114 &168162533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +284,7 @@ MonoBehaviour:
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
   graphicCanvas: {fileID: 0}
-  receiveObservations: 0
+  receiveObservations: 1
   initWeight: 1
   loss: 1
   minimum: 1
@@ -302,9 +304,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 0
+    vectorObservationSize: 1
     numStackedVectorObservations: 1
-    vectorActionSize: 02000000
+    vectorActionSize: 01000000
     vectorActionDescriptions: []
     vectorActionSpaceType: 1
   m_Model: {fileID: 0}
