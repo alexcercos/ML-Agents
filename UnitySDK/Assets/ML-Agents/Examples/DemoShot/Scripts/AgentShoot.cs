@@ -28,13 +28,16 @@ public class AgentShoot : Agent
     // lista movimientos reales para rewards (avg-std)
     List<float> realX;
 
+    [Range(0.0f, 1.0f)]
+    public float observationBotAgent = 1f;
+
     float minimumSTD = 0.1f;
 
-    public float initWeight = 1f;
-    public float loss = 1f;
-    public float minimum = 1f;
+    //public float initWeight = 1f;
+    //public float loss = 1f;
+    //public float minimum = 1f;
 
-    public float stdMultiplier = 3f;
+    //public float stdMultiplier = 3f;
 
     const float AU_PROP = 0.618034f;
 
@@ -103,7 +106,8 @@ public class AgentShoot : Agent
             int i = 0;
             while (i < 60)
             {
-                AddVectorObs(realX[i]); //cambio para usar la informacion real, interpolar luego
+                AddVectorObs(Mathf.Lerp(realX[i], lastX[i], observationBotAgent));
+                //AddVectorObs(realX[i]); //cambio para usar la informacion real, interpolar luego
                 //AddVectorObs(lastX[i]);
                 //AddVectorObs(lastY[i]);
 
@@ -115,7 +119,7 @@ public class AgentShoot : Agent
         }
         else if (receiveObservations == ObservationsType.LAST)
         {
-            AddVectorObs(lastX[0]);
+            AddVectorObs(Mathf.Lerp(realX[0], lastX[0], observationBotAgent));
         }
     }
 
@@ -507,24 +511,44 @@ public class AgentShoot : Agent
         {
             if (dist > std / 2f) // <std no penaliza
             {
-                reward = (dist - std / 2f) * (-punFactor) * coherence;
+                //reward = (dist - std / 2f) * (-punFactor) * coherence; // (dist - std / 2f)
+                float fx;
+                if (std > 0f)
+                {
+                    //reward = Mathf.Min(1f / Mathf.Pow(2, -(dist - std / 2f) / (std / 2f)) -1f, 30f) * (-punFactor) * coherence;
+
+                    fx = (dist - std / 2f) / (std / 2f);
+                    
+                }
+                else
+                {
+                    fx = dist;
+                    //reward = 1f / Mathf.Pow(2, -dist) * (-punFactor) * coherence;
+                }
+
+
+                reward = (1f + Mathf.Pow(Mathf.Min(fx, 1f) - 1f, 5) + fx) * (-punFactor) * coherence;
+            }
+            else
+            {
+                reward = (std / 2f - dist) * rewFactor * coherence; //recompensa menor
             }
         }
         else
         {
             float moveValue = 1f - 2 * dist / (Mathf.Abs(original - average)); //1 si dist = 0, 0 si esta a mitad camino entre la media y el movimiento y -1 si esta sobre la media 
 
-            if (moveValue > 0f)
+            if (moveValue > 0.5f) //0
             {
                 reward = moveValue * rewFactor * (-coherence);
             }
-            else if (moveValue > -1f)
+            else if (moveValue > -0.5f) //-1
             {
                 reward = 0f;
             }
             else //hace lo contrario
             {
-                reward = moveValue * punFactor;
+                reward = moveValue * punFactor; //penalizacion mayor
             }
         }
 
@@ -557,14 +581,15 @@ public class AgentShoot : Agent
         float avg = 0f;
         float total = 0f;
 
-        float weight = initWeight;
+        float weight = 1f;
+        //float weight = initWeight;
 
         foreach (float f in previousMoves)
         {
             avg += (f * weight);
             total += weight;
 
-            weight = Mathf.Max(minimum, weight / loss);
+            //weight = Mathf.Max(minimum, weight / loss);
         }
         if (total > 0)
             return avg / total;
@@ -577,14 +602,15 @@ public class AgentShoot : Agent
         float std = 0f;
         float total = 0f;
 
-        float weight = initWeight;
+        float weight = 1f;
+        //float weight = initWeight;
 
         foreach (float f in previousMoves)
         {
-            std += Mathf.Pow(f - average, 2) * weight * stdMultiplier;
+            std += Mathf.Pow(f - average, 2) /** weight * stdMultiplier*/;
             total += weight;
 
-            weight = Mathf.Max(minimum, weight / loss);
+            //weight = Mathf.Max(minimum, weight / loss);
         }
 
         if (total > 0)

@@ -44,12 +44,8 @@ Imitator:
     sequence_length: 128
     summary_freq: 1000
     tau: 0.005
-    use_recurrent: true
+    use_recurrent: false
     vis_encode_type: simple
-    pretraining:
-        demo_path: demos/R0N02.demo
-        strength: 0.4
-        steps: 20000
     reward_signals:
         extrinsic:
             strength: 1.0
@@ -58,12 +54,7 @@ Imitator:
             strength: 0.1
             gamma: 0.99
             encoding_size: 128
-        gail:
-            strength: 0.03
-            gamma: 0.99
-            encoding_size: 128
-            use_actions: true
-            demo_path: demos/R0N02.demo
+
 
 
 FoodCollector:

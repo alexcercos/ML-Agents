@@ -26,15 +26,15 @@ default:
 Imitator:
     batch_size: 1024
     beta: 5.0e-3
-    buffer_size: 8192
+    buffer_size: 4096
     epsilon: 0.2
     hidden_units: 256
-    learning_rate: 2.5e-4
-    learning_rate_schedule: linear
+    learning_rate: 1.5e-4
+    learning_rate_schedule: constant
     max_steps: 6.0e5
     normalize: false
     num_epoch: 6
-    num_layers: 1
+    num_layers: 3
     summary_freq: 1000
     time_horizon: 64
     use_recurrent: false
@@ -43,9 +43,9 @@ Imitator:
     reward_signals:
         extrinsic:
             strength: 1.0
-            gamma: 0.99
+            gamma: 0.8
         curiosity:
-            strength: 0.01
+            strength: 0.02
             gamma: 0.99
             encoding_size: 128
 

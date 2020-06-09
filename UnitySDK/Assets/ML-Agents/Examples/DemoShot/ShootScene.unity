@@ -263,7 +263,17 @@ PrefabInstance:
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: RewFactor
-      value: 50
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: observationBotAgent
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: PunFactor
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8138455702859188159, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -275,6 +285,12 @@ PrefabInstance:
       propertyPath: height
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 2309747964293392777, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 880d660e77216334d978177c896ad695,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7be1ca8456374d841ef083dc4cc31, type: 3}
 --- !u!1 &201447022
