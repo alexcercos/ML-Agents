@@ -167,7 +167,7 @@ public class AgentShoot : Agent
 
         //RewardsInsideRange(oX + 0.05f, oX - 0.05f, maxX, 50f, 200f);
 
-        RewardsStdCoherenceIndividual(maxX, oX, average, stDesv, RewFactor, PunFactor);
+        RewardsStdChIndividualAverage(maxX, oX, average, stDesv, RewFactor, PunFactor, 0.5f);
 
         DynamicAverageAndStd(ref moveCount, ref average, ref stDesv, ref varianza, ref averageSquared, oX);
 
@@ -555,8 +555,77 @@ public class AgentShoot : Agent
         AddReward(reward / totalSteps);
     }
 
+    public void RewardsStdChIndividualAverage(float move, float original, float average, float std, float rewFactor, float punFactor, float propCoherent)
+    {
+        //Usan la media como referencia para recompensas coherentes, en vez de la distancia
+        float dist = Mathf.Abs(move - original);
+
+        float distToAvg = Mathf.Abs(move - average);
+
+        float coherence = Coherence(average, std, original);
+
+        float reward = 0f;
+
+        if (coherence >= 0f) //coherente solo penaliza
+        {
+            if (distToAvg > std /*/ 2f*/) // <std no penaliza
+            {
+                //reward = (dist - std / 2f) * (-punFactor) * coherence; // (dist - std / 2f)
+                float fx;
+                if (std > 0f)
+                {
+                    //reward = Mathf.Min(1f / Mathf.Pow(2, -(dist - std / 2f) / (std / 2f)) -1f, 30f) * (-punFactor) * coherence;
+
+                    fx = (dist - std /*/ 2f*/) / (std /*/ 2f*/);
+
+                }
+                else
+                {
+                    fx = dist;
+                    //reward = 1f / Mathf.Pow(2, -dist) * (-punFactor) * coherence;
+                }
+
+
+                reward = (1f + Mathf.Pow(Mathf.Min(fx, 1f) - 1f, 5) + fx) * (-punFactor) * coherence;
+            }
+            else
+            {
+                reward = rewFactor * propCoherent * (1f - coherence); //recompensa menor
+            }
+        }
+        else
+        {
+            float moveValue = 1f - 2 * dist / (Mathf.Abs(original - average)); //1 si dist = 0, 0 si esta a mitad camino entre la media y el movimiento y -1 si esta sobre la media 
+
+            if (moveValue > 0.5f) //0
+            {
+                reward = moveValue * rewFactor * (-coherence);
+            }
+            else if (moveValue > -0.5f) //-1
+            {
+                reward = 0f;
+            }
+            else //hace lo contrario
+            {
+                reward = moveValue * punFactor; //penalizacion mayor
+            }
+        }
+
+        AddReward(reward / totalSteps);
+    }
+
     public void DynamicAverageAndStd(ref float moveCount, ref float average, ref float std, ref float varz, ref float avgSqrd, float move)
     {
+        //smooth
+        if (move > average + std)
+        {
+            move = Mathf.Lerp(average + std, move, 0.6f);
+        }
+        else if (move < average - std)
+        {
+            move = Mathf.Lerp(average - std, move, 0.6f);
+        }
+
         float newAverage = (move + moveCount * average) / (moveCount + 1f);
         
 
