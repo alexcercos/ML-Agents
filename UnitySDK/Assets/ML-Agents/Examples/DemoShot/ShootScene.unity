@@ -248,12 +248,12 @@ PrefabInstance:
     - target: {fileID: 5129854562543368695, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: reactTime
-      value: 0.1
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5129854562543368695, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: noise
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -275,6 +275,11 @@ PrefabInstance:
       propertyPath: PunFactor
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: demoHeuristic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8138455702859188159, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: width
@@ -289,6 +294,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416147798560193591, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: m_FOVAxisMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921954876427749554, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: m_FOVAxisMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7be1ca8456374d841ef083dc4cc31, type: 3}
@@ -1262,6 +1277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1234502302}
+  - component: {fileID: 1234502304}
   - component: {fileID: 1234502303}
   m_Layer: 0
   m_Name: Scene
@@ -1291,16 +1307,37 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234502301}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b20a64c846f2ab46bf9333329bf0abb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   plane: {fileID: 5849416173771831978, guid: 031889c783b069548aba743d4a787c43, type: 3}
-  maxPlanes: 8
+  maxPlanes: 6
   timeBetweenSpawn: 1.5
   minDist: 45
   maxDist: 200
+--- !u!114 &1234502304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234502301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40860ad847a3b024abb25a4f4debb383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plane: {fileID: 5849416173771831978, guid: 031889c783b069548aba743d4a787c43, type: 3}
+  cameraYAxis: {fileID: 1540598416}
+  timeBetweenSpawn: 1.5
+  minDist: 45
+  maxDist: 200
+  commonCase: 0.25
+  inLeftCase: 0.25
+  inRightCase: 0.25
+  consecutiveCase: 0.25
 --- !u!1 &1252828195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,19 +1782,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ebac9178eb12840865e8b21d7e7188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultTexture: {fileID: 0}
   current: {fileID: 8400000, guid: e530950839451c544aecb1ecab8532c5, type: 2}
+  renderQueue: []
   previousFrames:
-  - {fileID: 8400000, guid: 6af61f0897613a94e8b6fe00be455338, type: 2}
-  - {fileID: 8400000, guid: 91cfbe866dbfe21499f16ad1ad15cb63, type: 2}
-  - {fileID: 8400000, guid: 89776616e72b3a5469efd07ff96c5d07, type: 2}
-  - {fileID: 8400000, guid: 1d91f8ff0efab8346a6343a7423832b5, type: 2}
-  - {fileID: 8400000, guid: 2475454c2b7ecaf4c813e852204484b9, type: 2}
-  - {fileID: 8400000, guid: f5d78888df4b71746af577598dd63583, type: 2}
-  - {fileID: 8400000, guid: 51455905166ebfd4db666e9c3f92c27d, type: 2}
-  - {fileID: 8400000, guid: d7e3bec0ec4acad488f843def6c481bc, type: 2}
-  - {fileID: 8400000, guid: f0d07fd139470c24fa1a72e4fe694828, type: 2}
+  - position: 0
+    frame: {fileID: 8400000, guid: 6af61f0897613a94e8b6fe00be455338, type: 2}
+  - position: 1
+    frame: {fileID: 8400000, guid: 91cfbe866dbfe21499f16ad1ad15cb63, type: 2}
+  - position: 2
+    frame: {fileID: 8400000, guid: 89776616e72b3a5469efd07ff96c5d07, type: 2}
+  - position: 3
+    frame: {fileID: 8400000, guid: 1d91f8ff0efab8346a6343a7423832b5, type: 2}
+  - position: 4
+    frame: {fileID: 8400000, guid: 2475454c2b7ecaf4c813e852204484b9, type: 2}
+  - position: 5
+    frame: {fileID: 8400000, guid: f5d78888df4b71746af577598dd63583, type: 2}
+  - position: 6
+    frame: {fileID: 8400000, guid: 51455905166ebfd4db666e9c3f92c27d, type: 2}
+  - position: 7
+    frame: {fileID: 8400000, guid: d7e3bec0ec4acad488f843def6c481bc, type: 2}
+  - position: 8
+    frame: {fileID: 8400000, guid: f0d07fd139470c24fa1a72e4fe694828, type: 2}
   saveImg: 0
+--- !u!4 &1540598416 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4416147797132243467, guid: afa7be1ca8456374d841ef083dc4cc31,
+    type: 3}
+  m_PrefabInstance: {fileID: 141189557}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1623330373
 GameObject:
   m_ObjectHideFlags: 0
@@ -2327,7 +2379,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: fc487f1fc0f32d34390540ef9a8dd6e0, type: 2}
+  m_Texture: {fileID: 8400000, guid: f0d07fd139470c24fa1a72e4fe694828, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
