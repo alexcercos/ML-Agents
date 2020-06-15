@@ -31,7 +31,17 @@
 \BOOKMARK [2][-]{subsection.4.2.7}{PPO hyperparameters}{section.4.2}% 31
 \BOOKMARK [2][-]{subsection.4.2.8}{Training with Soft-Actor Critic \(SAC\)}{section.4.2}% 32
 \BOOKMARK [2][-]{subsection.4.2.9}{SAC hyperparameters}{section.4.2}% 33
-\BOOKMARK [0][-]{chapter.5}{Conclusions and Future Work}{}% 34
-\BOOKMARK [1][-]{section.5.1}{Conclusions}{chapter.5}% 35
-\BOOKMARK [1][-]{section.5.2}{Future work}{chapter.5}% 36
-\BOOKMARK [0][-]{chapter*.21}{Bibliography}{}% 37
+\BOOKMARK [1][-]{section.4.3}{Reaction time}{chapter.4}% 34
+\BOOKMARK [2][-]{subsection.4.3.1}{Render Textures}{section.4.3}% 35
+\BOOKMARK [2][-]{subsection.4.3.2}{Reward systems}{section.4.3}% 36
+\BOOKMARK [2][-]{subsection.4.3.3}{PPO vs. SAC}{section.4.3}% 37
+\BOOKMARK [2][-]{subsection.4.3.4}{Behavioral cloning}{section.4.3}% 38
+\BOOKMARK [2][-]{subsection.4.3.5}{Recurrent memory}{section.4.3}% 39
+\BOOKMARK [2][-]{subsection.4.3.6}{Rare situations}{section.4.3}% 40
+\BOOKMARK [2][-]{subsection.4.3.7}{Complexity of the task}{section.4.3}% 41
+\BOOKMARK [0][-]{chapter.5}{Conclusions and Future Work}{}% 42
+\BOOKMARK [1][-]{section.5.1}{Conclusions}{chapter.5}% 43
+\BOOKMARK [1][-]{section.5.2}{Future work}{chapter.5}% 44
+\BOOKMARK [0][-]{chapter*.24}{Bibliography}{}% 45
+\BOOKMARK [0][-]{appendix.A}{Dynamic average}{}% 46
+\BOOKMARK [0][-]{appendix.B}{Dynamic standard deviation}{}% 47

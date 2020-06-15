@@ -16,6 +16,9 @@ public class BotDelayUniform : IBotMovement
 
     public float reactTime = 0.2f;
     public float noise = 0.0f;
+    public float tempNoise = 0.0f; //se suma
+
+    float nextReact = 0.0f;
 
     float timerReact = 0f;
 
@@ -28,7 +31,7 @@ public class BotDelayUniform : IBotMovement
 
     public override float MouseX()
     {
-        if (timerReact > reactTime)
+        if (timerReact > nextReact)
         {
             float angle = objective.eulerAngles.y - transform.rotation.eulerAngles.y;
             if (angle > 180f) angle -= 360f;
@@ -42,6 +45,7 @@ public class BotDelayUniform : IBotMovement
                 closest = 0.5f;
                 //rot = -rot;
                 timerReact = 0f;
+                nextReact = reactTime + Random.Range(0f, tempNoise);
             }
 
             return Mathf.Clamp(angle, -15f, 15f) * CameraMovement.width / (CameraMovement.camAngleHor * CameraMovement.maxSpeed) * Time.deltaTime * 40f + Random.Range(-noise/2f, noise/2f);
@@ -62,6 +66,7 @@ public class BotDelayUniform : IBotMovement
     {
         objective = transform.rotation;
         scene = GameObject.Find("Scene").transform;
+        nextReact = reactTime + Random.Range(0f, tempNoise);
     }
 
 
@@ -81,6 +86,7 @@ public class BotDelayUniform : IBotMovement
             hasObjective = false;
             closest = 0.5f;
             timerReact = 0f;
+            nextReact = reactTime + Random.Range(0f, tempNoise);
             foreach (Renderer t in scene.GetComponentsInChildren<Renderer>())
             {
                 Vector3 screenPos = Camera.main.WorldToViewportPoint(t.transform.position);

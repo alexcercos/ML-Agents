@@ -106,30 +106,32 @@ The classes Academy, Agent, DemoRecorder and Sensor are provided by the ML Agent
   \label{fig:architecture}
 \end{figure}
 
+ML Agents works using an environment in Unity to train neural networks. The networks are trained in a python program (executed using the command line) that communicates with that environment. In the environment, there will be a controller that allows either the NPC or the trained agent to play the game. A graph will be displayed in the UI to see live how well the agent is performing.
+
 \section{Interface Design}
 
 To acknowledge how well is the neural net adapting to the bot movement, the guesses of the bot are displayed in a real time graph alongside the bot's real move. There is also a centered sight to better see how the bot behaves. Figure~\ref{fig:uicomp} shows a complete game window while training.
 
 The graph displays 3 main lines (see Figure~\ref{fig:uigraph}): the red one is the move made by the bot, the blue and green ones are the highest and lowest guess of the bot (since the bot's movements are not perfect, these two lines can vary from being almost touching to being really wide). Other 3 lines in the back display the weighted average move and its standard deviation.
 
-The image at the bottom left is what the neural network receives as input. It helps verify that everything works correctly (Figure ~\ref{fig:uivision}).
-\begin{figure}[b]
+The image at the bottom left is what the neural network receives as input. It helps verify that everything works correctly (Figure ~\ref{fig:uivision}): if the agent action and the NPC action look similar, then it's very likely that the agent would perform well~\footnote{Even though sometimes the agent can look like the NPC that imitates during training, when playing it can behave differently depending on the observations it receives. In section ~\ref{sec:movememory} there is an example on why this phenomenon can happen. }.
+\begin{figure}[h]
   \centering
 		\includegraphics[width=.9\textwidth]{img/uiComplete.png}
   \caption{Complete screen of the game}
   \label{fig:uicomp}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
     \centering
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[h]{0.3\textwidth}
         \includegraphics[width=\textwidth]{img/uiGraph.png}
         \caption{Move Graph}
         \label{fig:uigraph}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[h]{0.3\textwidth}
         \includegraphics[width=\textwidth]{img/uiVision.png}
         \caption{Input Vision}
         \label{fig:uivision}

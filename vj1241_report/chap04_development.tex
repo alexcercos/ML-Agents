@@ -21,7 +21,9 @@
 
 \bigskip{}
 
-In this section, we will detail the development of the project starting from the game creation, and then describing each step of increased complexity of the behaviour to imitate, as well as the results obtained in each step.
+In this section, we will detail the development of the project starting from the game creation, and then describing each step of increased complexity of the behaviour to imitate, as well as the results obtained in each step. 
+
+To avoid confusion, we will refer to the programmed behaviors that we want to imitate as ``bot'' or ``NPC'', and the generated neural networks that have to learn to imitate that bot will be called ``AI'' or ``agent''.
 
 \section{Game Development}
 
@@ -47,11 +49,11 @@ At this first step, the bot will only move in the Y axis, and it will be conside
 In the following subsections, some training related issues will be taken into account. At first, we will train our models using Proximal Policy Optimization (PPO)~\cite{ppopolicy}.
 
 \subsection{Unnecessary actions}
-It is important not to add more actions than needed, since they would slow down the training process considerably. Even though the agent can move in X and Y and perform clicks, since the bot only moves using the Y axis any other action would add much noise to the agent. 
+It is important not to add more actions than needed, since they would slow down the training process considerably. Even though it is possible to move in X and Y and perform clicks, since the bot only moves using the Y axis any additional action would add much noise to the AI. 
 
-That is caused because when training the agent is overfitted with demonstrations with Y movements of exactly 0, and when that AI is playing any slight up or down movement would go inside untrained cases, and then causing unexpected behaviors.
+That is caused because when training the AI is overfitted with demonstrations with Y movements of exactly 0, and when that AI is playing any slight up or down movement would go inside untrained cases, and then causing unexpected behaviors.
 
-Therefore, in this case the neural network would only have 1 action output.
+Therefore, in this case the neural network would only have 1 action output: the X axis movement.
 
 \subsection{Rewards based in tolerable range}
 
@@ -99,6 +101,7 @@ In some special cases, when a new target spawns nearer to the sight than the cur
 This issue is solved by making the bot behavior deterministic or adding a movement memory.
 
 \subsection{Movement memory}
+\label{sec:movememory}
 
 In order to prepare the bot to have reaction times, 25 previous moves distributed in the last 2 seconds are added as observations. What move is added as observation is critical.
 
@@ -297,3 +300,66 @@ These parameters were the ones used when training with SAC:
 		\hline
 	\end{tabular}
 \end{center}
+
+%-----------------------------------------------
+%-----------------------------------------------
+%-----------------------------------------------
+
+\pagebreak
+
+\section{Reaction time}
+
+In this section we will cover the development of bots with a behavior similar to the one presented in last section, but with delayed reactions: when the bot sees a target, it does not react instantly, but takes a few milliseconds to perform the action. This adds more complexity to the behavior and to the neural network, since it needs to receive information from previous frames (Moreover, the reaction time may not be exactly the same every time).
+
+Even though the AIs with actions based in standard deviation (2 outputs to encapsulate a noised movement, see ~\ref{sec:stdrew}) did well modelling imprecise movements, we won't use this method in this section. That's because not only it would add more complexity to the task, but it could add much noise when moves are uncertain (if a bot reacts at 0.1-0.3 seconds, the AI would try to encapsulate a possible jump in all that range, and then if a random point in between was chosen as action each frame, the bot would not do a perfect impulsive movement. Instead, it would do a strange vibration). This feature will be solved with better reward systems (see section ~\ref{sec:rtrewsys}).
+
+\subsection{Render Textures}
+
+In order to provide the agent past observations, render textures must be used (Camera observations aren't useful in this context since they cannot provide past frames as input). ML Agents allows to provide multiple visual inputs (see ~\ref{fig:rendersens}), but they must follow these requirements:
+
+\begin{itemize}
+ \item Each render texture must have the same width and height~\footnote{This requirement also applies when only using one render texture (at least in this ML Agents version)}
+ \item All render textures must be the same size
+ \item All render textures must be either grayscale or not, but there must not be render textures of each type
+ \item The minimum size is 20x20 pixels
+ \item Each visual input must have an unique name (We use ``RenderTarget for the current'' frame and ``FrameXXX'' for past frames)
+ \item Each visual input's render texture should not change in execution time~\footnote{Since there are multiple components of the same type, they cannot be changed reliably in real time}
+\end{itemize}
+
+\begin{figure}[h]
+  \centering
+		\includegraphics[width=.6\textwidth]{img/rendersensor.png}
+  \caption{Example of a Render Sensor component.}
+  \label{fig:rendersens}
+\end{figure}
+
+With these restrictions, there are two reasonable methods to manage render textures in Unity:
+
+The first method consists in creating a Render Texture array with the desired frames in the N-1 position of the array (last frame in position 0, the 5th frame before in position 4...). The current frame isn't included in the array since it is rendered directly from a virtual camera. The missing positions in the array must be filled with other Render Textures, even though the neural network would not receive them as input. Then, when a frame ends each render target copies the next frame (iterating the array backwards), until the current frame is rendered over the render texture at the position 0.
+This method is not very optimal and has some errors at the start (render textures appear empty until frame N, being N the size of the render textures array) but allows to personalize easily which frames we want to provide as input to the neural network. Also, sometimes the copying of frames can overlap (frame N is being drawn on frame N+1, but before ending the process the frame N-1 starts being drawn over frame N).
+
+Other more optimal and safe~\footnote{Even though this method is safer, it is important to ensure that the render textures that won't be used again are deleted. Not doing so will cause the memory to overflow, and the environment to stop without apparent errors.} method is using a list to store previous frames like a queue (see Figure ~\ref{fig:renderqueue} to visualize how it is executed): after each frame, a copy of the current rendered frame is saved at the start of the list, and the last is deleted if it exceeds the last frame provided as input. Then, for each frame that the network receives as input, the corresponding frame in the list is copied over it. With this method, each frame in the list isn't modified after being copied from the original.
+
+\begin{figure}[h]
+  \centering
+		\includegraphics[width=.9\textwidth]{img/renderqueue.png}
+  \caption{Render Queue: see that frame 2 isn't used as input for the neural network. Red arrows mean that the frame (or Render Texture) at the start is copied over the Render Texture at the end.}
+  \label{fig:renderqueue}
+\end{figure}
+
+\subsection{Reward systems}
+\label{sec:rtrewsys}
+
+
+
+\subsubsection{Dynamic average and standard deviation}
+
+\subsection{PPO vs. SAC}
+
+\subsection{Behavioral cloning}
+
+\subsection{Recurrent memory} %lo de que se desvia por el input
+
+\subsection{Rare situations}
+
+\subsection{Complexity of the task}

@@ -22,6 +22,8 @@
 \bigskip{}
 
 The following tasks would be performed iteratively (see Figure~\ref{fig:tasks}):
+First, a simple game will be developed to serve as an example case for the model. 
+Then, different pre-programmed NPC behaviors will be used as training examples. Using ML Agents, a neural network will be trained to imitate that NPC. The results obtained in each training session will be analized to extract conclusions on why the trained network performs well or not. Then, we will start again with other NPC or neural network structures, until we gather enough data to extract conclusions and standardize a general model.
 
 \begin{figure}
   \centering
@@ -38,6 +40,9 @@ The following tasks would be performed iteratively (see Figure~\ref{fig:tasks}):
   \caption{Initial planning}
   \label{fig:planchart}
 \end{figure}
+
+The simple game programming is expected to take 10 hours of work. Then, several neural networks will be trained iteratively and analyzed. At the end, we expect to standardize a framework for more complex behaviors.
+The memory will be written during all the process.
 
 \subsection{Simple game creation}
 
@@ -58,8 +63,9 @@ Like in most shooters, the enemies would have a fixed shape, but the size they l
 The player, when moving the mouse, would move the camera by way of rotation: the sight remains static in the center of the image but the rest of the elements move in the opposite direction of the mouse movement. In the case of vertical movements, the rotation has stops at the zenith and nadir angles, so that you cannot see “upside down”.
 
 \subsection{NPC Behavior}
+\label{sec:npcbehavior}
 
-Within the same game, a very simple NPC will be programmed with sensors (rays or colliders) that can play games from the previous game in random conditions. There are many parameters that could define the behavior of different bots, some examples are:
+Within the same game, a very simple NPC will be programmed with sensors (rays or colliders) that can play games from the previously described game in random conditions. There are many parameters that could define the behavior of different bots, some examples are:
 \begin{itemize}
  \item Reaction time
  \item Speed to which the mouse moves
@@ -89,7 +95,7 @@ In addition, at this point it will be necessary to make decisions such as the si
 
 \subsection{Neural network model and training}
 
-Training the neural networks is what takes most of the time. This process includes tuning parameters, designing and balancing rewards and the training itself. In this part of the process some methods to model the behaviours of each agent are designed, and the implications of any specific case.
+Training the neural networks is what takes most of the time. This process includes tuning parameters, designing and balancing rewards and the training itself. In this part of the process some methods to model the behaviors of the NPCs described in section ~\ref{sec:npcbehavior} are designed. We will also take into account the implications of any specific case.
 
 The proposed neural network, in simple terms, is a classification network: it receives images (and previous actions) as input and returns the action (or actions) to be performed in the current frame.
 
@@ -110,7 +116,7 @@ If they seem similar, we would make graphs with the actions performed in time (x
 
 \subsection{Framework standardization}
 
-In the case that we succeed in obtaining similar behaviors (for one or more agents with different behaviors), the next step would be to standardize this method to be able to apply it to more complex games, in which the image has many more elements or there are many more actions available. We would discuss issues such as the feasibility of the model, the accuracy of the results, the cost of training in other cases, the differences between the neural networks in each case (number of layers and neurons per layer) or specific cases in which the model, if they were given.
+In the case that we succeed in obtaining similar behaviors (for one or more agents with different behaviors), the next step would be to standardize this method to be able to apply it to more complex games, in which the image has many more elements or there are many more actions available. In that step we would discuss issues such as the feasibility of the model, the accuracy of the results, the cost of training in other cases, the differences between the neural networks in each case (number of layers and neurons per layer) or specific cases in which the model, if they were given.
 
 Also, whether the trained agents imitate the behaviours well or not, we would discuss why that techniques do or do not solve well the imitation problem and what could be done to improve the results.
 

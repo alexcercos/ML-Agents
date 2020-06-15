@@ -10,10 +10,12 @@ A level-1 auxiliary file: chap03_analysis.aux
 A level-1 auxiliary file: chap04_development.aux
 A level-1 auxiliary file: chap05_conclusions.aux
 The style file: plain.bst
+A level-1 auxiliary file: appendA_average.aux
+A level-1 auxiliary file: appendB_std.aux
 Database file #1: report.bib
 You've used 4 entries,
             2118 wiz_defined-function locations,
-            523 strings with 4636 characters,
+            525 strings with 4670 characters,
 and the built_in function-call counts, 876 in all, are:
 = -- 80
 > -- 28

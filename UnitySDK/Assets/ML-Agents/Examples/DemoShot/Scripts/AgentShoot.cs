@@ -167,7 +167,7 @@ public class AgentShoot : Agent
 
         //RewardsInsideRange(oX + 0.05f, oX - 0.05f, maxX, 50f, 200f);
 
-        RewardsStdChIndividualAverage(maxX, oX, average, stDesv, RewFactor, PunFactor, 0.5f);
+        RewardsStdChIndividualAverage(maxX, oX, average, stDesv, RewFactor, PunFactor, 0.0f);
 
         DynamicAverageAndStd(ref moveCount, ref average, ref stDesv, ref varianza, ref averageSquared, oX);
 
@@ -590,7 +590,7 @@ public class AgentShoot : Agent
             }
             else
             {
-                reward = rewFactor * propCoherent * (1f - coherence); //recompensa menor
+                reward = rewFactor * propCoherent; //recompensa menor
             }
         }
         else

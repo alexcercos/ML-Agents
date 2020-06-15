@@ -18,13 +18,13 @@ Imitator:
     summary_freq: 1000
     max_steps: 5.0e4
     batches_per_epoch: 10
-    use_recurrent: true
+    use_recurrent: false
     hidden_units: 128
     learning_rate: 1.0e-5
-    num_layers: 2
+    num_layers: 4
     sequence_length: 128
     memory_size: 32
-    demo_path: ./demos/UniformNoRT1Demo.demo
+    demo_path: ./demos/R001N015T014.demo
 
 Hallway:
     trainer: offline_bc

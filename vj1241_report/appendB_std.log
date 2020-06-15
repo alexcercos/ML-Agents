@@ -1,0 +1,378 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.8)  14 JUN 2020 01:01
+entering extended mode
+**D:/Documents/ml-agents-master/vj1241_report/appendB_std.tex
+(D:/Documents/ml-agents-master/vj1241_report/appendB_std.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-04-06>
+! Undefined control sequence.
+l.18 \chapter
+             {Dynamic standard deviation}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 \chapter{D
+               ynamic standard deviation}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no D in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no v in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no v in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no e in font nullfont!
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 19.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 19.
+! Undefined control sequence.
+\@footnotetext ...tins {\reset@font \footnotesize 
+                                                  \interlinepenalty \interfo...
+l.19 ...ed taking the square root of the variance}
+                                                   formula:
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@footnotetext ...}\color@begingroup \@makefntext 
+                                                  {\rule \z@ \footnotesep \i...
+l.19 ...ed taking the square root of the variance}
+                                                   formula:
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (13.8889pt too wide) in paragraph at lines 19--19
+[][]\OT1/cmr/m/n/10 We
+ []
+
+
+Overfull \hbox (13.94446pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 use
+ []
+
+
+Overfull \hbox (19.75005pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 vari-
+ []
+
+
+Overfull \hbox (19.44447pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 ance
+ []
+
+
+Overfull \hbox (11.66669pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 in-
+ []
+
+
+Overfull \hbox (22.83337pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 stead
+ []
+
+
+Overfull \hbox (8.05559pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 of
+ []
+
+
+Overfull \hbox (21.72226pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 stan-
+ []
+
+
+Overfull \hbox (20.02783pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 dard
+ []
+
+
+Overfull \hbox (13.33334pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 de-
+ []
+
+
+Overfull \hbox (11.38892pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 vi-
+ []
+
+
+Overfull \hbox (8.33334pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 a-
+ []
+
+
+Overfull \hbox (17.22227pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 tion
+ []
+
+
+Overfull \hbox (8.88892pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 to
+ []
+
+
+Overfull \hbox (18.38892pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 sim-
+ []
+
+
+Overfull \hbox (19.44452pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 plify
+ []
+
+
+Overfull \hbox (13.88892pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 the
+ []
+
+
+Overfull \hbox (23.61115pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 equa-
+ []
+
+
+Overfull \hbox (23.9445pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 tions:
+ []
+
+
+Overfull \hbox (13.88892pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 the
+ []
+
+
+Overfull \hbox (21.72226pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 stan-
+ []
+
+
+Overfull \hbox (20.02783pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 dard
+ []
+
+
+Overfull \hbox (13.33334pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 de-
+ []
+
+
+Overfull \hbox (11.38892pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 vi-
+ []
+
+
+Overfull \hbox (8.33334pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 a-
+ []
+
+
+Overfull \hbox (17.22227pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 tion
+ []
+
+
+Overfull \hbox (15.00003pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 can
+ []
+
+
+Overfull \hbox (10.2778pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 be
+ []
+
+
+Overfull \hbox (13.88892pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 ob-
+ []
+
+
+Overfull \hbox (27.22229pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 tained
+ []
+
+
+Overfull \hbox (17.50005pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 tak-
+ []
+
+
+Overfull \hbox (13.33337pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 ing
+ []
+
+
+Overfull \hbox (13.88892pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 the
+ []
+
+
+Overfull \hbox (28.13893pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 square
+ []
+
+
+Overfull \hbox (18.08339pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 root
+ []
+
+
+Overfull \hbox (8.05559pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 of
+ []
+
+
+Overfull \hbox (13.88892pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 the
+ []
+
+
+Overfull \hbox (19.75005pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 vari-
+ []
+
+
+Overfull \hbox (19.44447pt too wide) in paragraph at lines 19--19
+\OT1/cmr/m/n/10 ance| 
+ []
+
+Missing character: There is no f in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no : in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 18--21
+[]
+ []
+
+
+Overfull \hbox (4.48613pt too wide) in paragraph at lines 18--21
+[]
+ []
+
+
+Overfull \hbox (92.39706pt too wide) in paragraph at lines 18--21
+[]$ 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 \noindent
+              
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (234.00133pt too wide) in paragraph at lines 22--30
+$[]$ 
+ []
+
+
+Overfull \hbox (310.98845pt too wide) in paragraph at lines 22--30
+[]$ 
+ []
+
+
+Overfull \hbox (402.89102pt too wide) in paragraph at lines 22--30
+[]$ 
+ []
+
+
+Overfull \hbox (461.63078pt too wide) in paragraph at lines 22--30
+[]$ 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.31 \noindent
+              
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+)
+! Emergency stop.
+<*> ...agents-master/vj1241_report/appendB_std.tex
+                                                  
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 22 strings out of 481005
+ 570 string characters out of 2900857
+ 240427 words of memory out of 3000000
+ 15921 multiletter control sequences out of 15000+200000
+ 532338 words of font info for 24 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 24i,5n,15p,274b,90s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!

@@ -190,6 +190,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraAxis
       objectReference: {fileID: 0}
+    - target: {fileID: 4416147797132243466, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4416147797132243467, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -248,12 +253,17 @@ PrefabInstance:
     - target: {fileID: 5129854562543368695, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: reactTime
-      value: 0.08
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5129854562543368695, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: noise
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5129854562543368695, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: tempNoise
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -278,7 +288,7 @@ PrefabInstance:
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: demoHeuristic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8138455702859188159, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -294,7 +304,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 27bbd342500538e45963ba663f000645,
+        type: 3}
     - target: {fileID: 4416147798560193591, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: m_FOVAxisMode
@@ -304,6 +315,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FOVAxisMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416147798560193589, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: useNeuralNet
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309747964675207366, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: record
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309747964675207366, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: demonstrationName
+      value: R001N015T014
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7be1ca8456374d841ef083dc4cc31, type: 3}
@@ -1268,6 +1294,12 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!4 &1215945336 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2108969470140002148, guid: 866aec7a5971df747bbb175cacf8784e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3902778872287103238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1234502301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,14 +1362,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plane: {fileID: 5849416173771831978, guid: 031889c783b069548aba743d4a787c43, type: 3}
-  cameraYAxis: {fileID: 1540598416}
-  timeBetweenSpawn: 1.5
+  cameraYAxis: {fileID: 1215945336}
+  timeBetweenSpawn: 2
   minDist: 45
   maxDist: 200
-  commonCase: 0.25
-  inLeftCase: 0.25
-  inRightCase: 0.25
-  consecutiveCase: 0.25
+  commonCase: 1
+  inLeftCase: 0
+  inRightCase: 0
+  consecutiveCase: 0
 --- !u!1 &1252828195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1425,7 +1457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252828195}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -50}
+  m_LocalPosition: {x: 0, y: -6, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 941000589}
@@ -1804,12 +1836,6 @@ MonoBehaviour:
   - position: 8
     frame: {fileID: 8400000, guid: f0d07fd139470c24fa1a72e4fe694828, type: 2}
   saveImg: 0
---- !u!4 &1540598416 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4416147797132243467, guid: afa7be1ca8456374d841ef083dc4cc31,
-    type: 3}
-  m_PrefabInstance: {fileID: 141189557}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1623330373
 GameObject:
   m_ObjectHideFlags: 0
@@ -2394,3 +2420,98 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914669175}
   m_CullTransparentMesh: 0
+--- !u!1001 &3902778872287103238
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2108969470140002149, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: m_Name
+      value: RTCameraAxis
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108969470140002148, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108969470140002148, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108969470140002148, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108969470140002148, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108969470140002148, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108969470140002148, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108969470140002148, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108969470140002148, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108969470140002148, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108969470140002148, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108969470140002148, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108969470825062746, guid: 866aec7a5971df747bbb175cacf8784e,
+        type: 3}
+      propertyPath: useNeuralNet
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 168162533, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: graphicCanvas
+      value: 
+      objectReference: {fileID: 1252828196}
+    - target: {fileID: 168162533, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: receiveObservations
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: a2bcbe8807d21904c87b2b3ef55def60,
+        type: 3}
+    - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: m_BrainParameters.vectorActionSize.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 168162534, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}
+      propertyPath: m_BrainParameters.vectorObservationSize
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 866aec7a5971df747bbb175cacf8784e, type: 3}

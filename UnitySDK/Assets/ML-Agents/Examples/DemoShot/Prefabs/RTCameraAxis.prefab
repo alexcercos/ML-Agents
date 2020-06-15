@@ -44,89 +44,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ebac9178eb12840865e8b21d7e7188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultTexture: {fileID: 0}
   current: {fileID: 8400000, guid: e530950839451c544aecb1ecab8532c5, type: 2}
+  renderQueue: []
   previousFrames:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: 2475454c2b7ecaf4c813e852204484b9, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: 94fa5a8c79cfa2b46ba1ab134b1e6197, type: 2}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: 8b726abb4c1b7fe4099e8308915887d0, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: 65c3a18cfe59fb54bb02f61ff71ad287, type: 2}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: e324327dbe8ff474d808774762ec01f9, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: 02381a0111feb9e4cae1d844b353b129, type: 2}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: 57cf32b007fecd74a8c3580482687f0d, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: e2163f617700845438fd275755f59419, type: 2}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: 123ba56bc9b79d349a48dd9a2d893368, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: 17b8baff268077647a7b20da4f23f73a, type: 2}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: ddbbafe08f24cdd4ebe64317dd9a2785, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: d409fc26063502f4e976af941ac5a547, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: 2e96f4d3441d3ef40ad4ecce8aff0876, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: f6526720874cd754faaeb8df2437d9e2, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: 00981bd990572154d97d9532967c8308, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: b7f688c8088c982419f6b84867e79d37, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: 89fb30a45f8f26943bd1ab03a427a3a0, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: 80de81d6409438646be3972e919e38bb, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8400000, guid: fc487f1fc0f32d34390540ef9a8dd6e0, type: 2}
+  - position: 4
+    frame: {fileID: 8400000, guid: 2475454c2b7ecaf4c813e852204484b9, type: 2}
+  - position: 9
+    frame: {fileID: 8400000, guid: 94fa5a8c79cfa2b46ba1ab134b1e6197, type: 2}
+  - position: 11
+    frame: {fileID: 8400000, guid: 8b726abb4c1b7fe4099e8308915887d0, type: 2}
+  - position: 14
+    frame: {fileID: 8400000, guid: 65c3a18cfe59fb54bb02f61ff71ad287, type: 2}
+  - position: 16
+    frame: {fileID: 8400000, guid: e324327dbe8ff474d808774762ec01f9, type: 2}
+  - position: 19
+    frame: {fileID: 8400000, guid: 02381a0111feb9e4cae1d844b353b129, type: 2}
+  - position: 21
+    frame: {fileID: 8400000, guid: 57cf32b007fecd74a8c3580482687f0d, type: 2}
+  - position: 24
+    frame: {fileID: 8400000, guid: e2163f617700845438fd275755f59419, type: 2}
+  - position: 26
+    frame: {fileID: 8400000, guid: 123ba56bc9b79d349a48dd9a2d893368, type: 2}
+  - position: 29
+    frame: {fileID: 8400000, guid: 17b8baff268077647a7b20da4f23f73a, type: 2}
+  - position: 31
+    frame: {fileID: 8400000, guid: ddbbafe08f24cdd4ebe64317dd9a2785, type: 2}
+  - position: 34
+    frame: {fileID: 8400000, guid: d409fc26063502f4e976af941ac5a547, type: 2}
+  - position: 39
+    frame: {fileID: 8400000, guid: 2e96f4d3441d3ef40ad4ecce8aff0876, type: 2}
+  - position: 44
+    frame: {fileID: 8400000, guid: f6526720874cd754faaeb8df2437d9e2, type: 2}
+  - position: 49
+    frame: {fileID: 8400000, guid: 00981bd990572154d97d9532967c8308, type: 2}
+  - position: 54
+    frame: {fileID: 8400000, guid: b7f688c8088c982419f6b84867e79d37, type: 2}
+  - position: 59
+    frame: {fileID: 8400000, guid: 89fb30a45f8f26943bd1ab03a427a3a0, type: 2}
+  - position: 69
+    frame: {fileID: 8400000, guid: 80de81d6409438646be3972e919e38bb, type: 2}
+  - position: 79
+    frame: {fileID: 8400000, guid: fc487f1fc0f32d34390540ef9a8dd6e0, type: 2}
   saveImg: 0
 --- !u!1 &2108969470825062726
 GameObject:
@@ -266,6 +224,7 @@ MonoBehaviour:
   debug: 0
   reactTime: 0
   noise: 0.05
+  tempNoise: 0
 --- !u!114 &168162533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,10 +244,9 @@ MonoBehaviour:
     numberOfActionsBetweenDecisions: 1
   graphicCanvas: {fileID: 0}
   receiveObservations: 1
-  initWeight: 1
-  loss: 1
-  minimum: 1
-  stdMultiplier: 3
+  observationBotAgent: 1
+  PunFactor: 100
+  RewFactor: 100
   waitForImpulse: 0.25
   demoHeuristic: 1
 --- !u!114 &168162534
