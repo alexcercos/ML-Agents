@@ -16,6 +16,9 @@
 % ==============================================================================
 
 \chapter{Dynamic average}
+
+\label{app:average}
+
 Starting from the average formula:
 $ {\displaystyle \frac1n\sum_{i=1}^{n}x_i=a_n} $\\\\
 
@@ -32,3 +35,7 @@ $ {\displaystyle \sum_{i=1}^{n}x_i-n\cdot a_n=\sum_{i=1}^{n}x_i+x_{n+1}-(n+1)\cd
 $ {\displaystyle (n+1)\cdot a_{n+1}=x_{n+1}+n\cdot a_n} $\\\\
 \noindent
 $ {\displaystyle a_{n+1}=\frac{x_{n+1}+n\cdot a_n}{n+1}} $\\\\
+
+\vspace{5mm}
+
+Then, it has been proven that the average of N+1 elements can be obtained with cost O(1) knowing the average of N elements and the new element.

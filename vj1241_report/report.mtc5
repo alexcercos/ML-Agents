@@ -1,20 +1,24 @@
 {\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {4.1}Game Development}{\reset@font\mtcSfont 13}{section.4.1}}
 {\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {4.2}Reactive Behaviors}{\reset@font\mtcSfont 14}{section.4.2}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.1}Unnecessary actions}{\reset@font\mtcSSfont 14}{subsection.4.2.1}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.2}Rewards based in tolerable range}{\reset@font\mtcSSfont 14}{subsection.4.2.2}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.3}Determinism of the behavior}{\reset@font\mtcSSfont 16}{subsection.4.2.3}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.4}Movement memory}{\reset@font\mtcSSfont 17}{subsection.4.2.4}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.5}Rewards based in standard deviation}{\reset@font\mtcSSfont 17}{subsection.4.2.5}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.6}Rewards based in movement coherence}{\reset@font\mtcSSfont 19}{subsection.4.2.6}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.7}PPO hyperparameters}{\reset@font\mtcSSfont 20}{subsection.4.2.7}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.8}Training with Soft-Actor Critic (SAC)}{\reset@font\mtcSSfont 20}{subsection.4.2.8}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.9}SAC hyperparameters}{\reset@font\mtcSSfont 21}{subsection.4.2.9}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.1}Training with Proximal Policy Optimization (PPO)}{\reset@font\mtcSSfont 14}{subsection.4.2.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.2}Unnecessary actions}{\reset@font\mtcSSfont 14}{subsection.4.2.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.3}Rewards based in tolerable range}{\reset@font\mtcSSfont 14}{subsection.4.2.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.4}Determinism of the behavior}{\reset@font\mtcSSfont 15}{subsection.4.2.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.5}Movement memory}{\reset@font\mtcSSfont 16}{subsection.4.2.5}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.6}Rewards based in standard deviation}{\reset@font\mtcSSfont 17}{subsection.4.2.6}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.7}Rewards based in movement coherence}{\reset@font\mtcSSfont 19}{subsection.4.2.7}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.8}PPO hyperparameters}{\reset@font\mtcSSfont 20}{subsection.4.2.8}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.9}Training with Soft-Actor Critic (SAC)}{\reset@font\mtcSSfont 20}{subsection.4.2.9}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.2.10}SAC hyperparameters}{\reset@font\mtcSSfont 21}{subsection.4.2.10}}
 {\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {4.3}Reaction time}{\reset@font\mtcSfont 23}{section.4.3}}
 {\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.1}Render Textures}{\reset@font\mtcSSfont 23}{subsection.4.3.1}}
 {\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.2}Reward systems}{\reset@font\mtcSSfont 24}{subsection.4.3.2}}
-{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Dynamic average and standard deviation}{\reset@font\mtcSSSfont 24}{section*.23}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.3}PPO vs. SAC}{\reset@font\mtcSSfont 24}{subsection.4.3.3}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.4}Behavioral cloning}{\reset@font\mtcSSfont 24}{subsection.4.3.4}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.5}Recurrent memory}{\reset@font\mtcSSfont 24}{subsection.4.3.5}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.6}Rare situations}{\reset@font\mtcSSfont 24}{subsection.4.3.6}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.7}Complexity of the task}{\reset@font\mtcSSfont 24}{subsection.4.3.7}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Tolerable range}{\reset@font\mtcSSSfont 24}{section*.23}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Rewards after impulse}{\reset@font\mtcSSSfont 25}{section*.25}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Rewards based in coherence and standard deviation}{\reset@font\mtcSSSfont 26}{section*.27}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Dynamic average and standard deviation}{\reset@font\mtcSSSfont 27}{section*.29}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.3}PPO vs. SAC}{\reset@font\mtcSSfont 29}{subsection.4.3.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.4}Behavioral cloning}{\reset@font\mtcSSfont 29}{subsection.4.3.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.5}Recurrent memory}{\reset@font\mtcSSfont 30}{subsection.4.3.5}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.6}Rare situations}{\reset@font\mtcSSfont 31}{subsection.4.3.6}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.7}Complexity of the task}{\reset@font\mtcSSfont 32}{subsection.4.3.7}}

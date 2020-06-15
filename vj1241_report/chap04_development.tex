@@ -46,7 +46,12 @@ The first human behavior we would analize is reactions, which can be defined as 
 
 At this first step, the bot will only move in the Y axis, and it will be considered that is always clicking (so the targets would be destroyed whenever the sight touches them).
 
-In the following subsections, some training related issues will be taken into account. At first, we will train our models using Proximal Policy Optimization (PPO)~\cite{ppopolicy}.
+\subsection{Training with Proximal Policy Optimization (PPO)}
+\label{sec:trainingPPO}
+
+Proximal Policy Optimization~\cite{ppopolicy} is the first and most simple reinforcement learning algorithm  provided by ML Agents~\cite{mlagents}. It uses a neural network to approximate the ideal function that maps an agent's observation to the best action it can take in a given state. Also, it is the fastest algorithm of all provided by ML Agents.
+
+In the following subsections, some training related issues will be taken into account. At first, we will train our models using this policy (PPO).
 
 \subsection{Unnecessary actions}
 It is important not to add more actions than needed, since they would slow down the training process considerably. Even though it is possible to move in X and Y and perform clicks, since the bot only moves using the Y axis any additional action would add much noise to the AI. 
@@ -56,6 +61,7 @@ That is caused because when training the AI is overfitted with demonstrations wi
 Therefore, in this case the neural network would only have 1 action output: the X axis movement.
 
 \subsection{Rewards based in tolerable range}
+\label{sec:tolrange}
 
 \begin{wrapfigure}{r}{0.35\textwidth}
     \centering
@@ -191,7 +197,7 @@ Since last reward system didn't make the agent learn correctly, we need to chang
 
 Rewards based on movement coherence are a simplification of the reward system exposed on section ~\ref{sec:stdrew}, where coherent moves can only punish and incoherent moves can only give rewards. These motivates the agent to receive the least punishments by enclosing coherent moves, but also to take profit of potential rewards of incoherent moves. 
 
-\begin{wrapfigure}[11]{rH}{0.4\textwidth}
+\begin{wrapfigure}[13]{rH}{0.4\textwidth}
     \centering
     \includegraphics[width=0.4\textwidth]{img/graphsCoherence.png}
 		\caption{Coherence-based models with and different learning rate: left=2e-3, right=8e-3}
@@ -239,8 +245,9 @@ To sum up, the trained models that got decent performance had the following hype
 \end{center}
 
 \subsection{Training with Soft-Actor Critic (SAC)}
+\label{sec:trainingSAC}
 
-Soft-Actor Critic is the second reinforcement learning policy provided in ML-Agents~\cite{mlagents}. It is characterized for being more sample-efficient and can learn from past experiences. However, it also executes slower, so the time needed to train a model is very similar both with PPO and SAC. Also, its training steps can be increased more easily since the learning rate is recommended to be constant (its Q function converges naturally).
+Soft-Actor Critic~\cite{sacpolicy} is the second reinforcement learning policy provided in ML-Agents. It is characterized for being more sample-efficient and can learn from past experiences. However, it also executes slower, so the time needed to train a model is very similar both with PPO and SAC. Also, its training steps can be increased more easily since the learning rate is recommended to be constant (its Q function converges naturally).
 
 To compare new methods with SAC and PPO, we've added simple linear rewards that affect the maximum and minimum individually, in addition to rewards based in movement coherence. These give reinforcement signals when one of the lines is well positioned, even when the cummulative reward is negative. In Figure~\ref{fig:pposac} you can see a cumulative reward comparison between an agent trained with SAC and other agent trained using PPO, with rewards based in coherence (see section~\ref{sec:cohrew}): SAC converges to a higher reward than PPO with much less steps.
 
@@ -322,7 +329,7 @@ In order to provide the agent past observations, render textures must be used (C
  \item All render textures must be the same size
  \item All render textures must be either grayscale or not, but there must not be render textures of each type
  \item The minimum size is 20x20 pixels
- \item Each visual input must have an unique name (We use ``RenderTarget for the current'' frame and ``FrameXXX'' for past frames)
+ \item Each visual input must have an unique name (We use ``RenderTarget'' for the current frame and ``FrameXXX'' for past frames)
  \item Each visual input's render texture should not change in execution time~\footnote{Since there are multiple components of the same type, they cannot be changed reliably in real time}
 \end{itemize}
 
@@ -350,16 +357,192 @@ Other more optimal and safe~\footnote{Even though this method is safer, it is im
 \subsection{Reward systems}
 \label{sec:rtrewsys}
 
+In this section, we've worked using 3 reward systems: tolerable range rewards, reward based in coherence and standard deviation and rewards after impulse.
 
+\subsubsection{Tolerable range}
+
+This reward system is the same that was described in section ~\ref{sec:tolrange}. With delayed reactions, this system is only effective if they are uniform: all reactions must occur at the same time. If not, the neural network would consider that is not worth the risk of doing an impulse if that had high punishments (See Figure ~\ref{fig:punDelay} to see an example of a high punishment when doing a correct impulse if the bot has non uniform reaction times).
+
+With this method, the AI learned to do impulses correctly (even some that came from the right side, which is an exception case) but it didn't adapt well to the average movement: it had much more noise than the bot in default moves (See Figure ~\ref{fig:timeTR}).
+
+\begin{figure}[h]
+  \centering
+		\includegraphics[width=.6\textwidth]{img/timeTR.png}
+  \caption{AI trained with tolerable range rewards. It adapts well to the impulses but not so much to the normal movement.}
+  \label{fig:timeTR}
+\end{figure}
+
+\subsubsection{Rewards after impulse}
+
+This reward system uses 2 queues, one for the AI and other for the bot. Whenever one of them does an impulse, instead of giving a score to the moves, they are stored in a queue. Then, when the other one does another impulse it is compared with the first's movement (either the AI or the bot can do the impulse first). If one of them did an impulse but the other didn't, after some time the AI would be penalized (either by missing an impulse or by doing impulses when it shouldn't).
+
+The results obtained using this reward system were not very good: the agents didn't learn to do impulses at all. Since the rewards are given after both impulses are completed, the AI can get confused about when to do an impulse and how~\footnote{It is important to use large (0.99-0.995) gamma values for the rewards in this method: a big gamma parameter means that the agent looks for future rewards.}. Even though, this method is still the easiest way to model temporal noise, and with better balanced rewards it should perform well (See Figure ~\ref{fig:punDelay}).
+
+\begin{figure}[h]
+  \centering
+		\includegraphics[width=.3\textwidth]{img/punDelay.png}
+  \caption{Case when the AI would receive a double punishment when doing an impulse: if not using 2 queues, the agent would have a big punish even though the impulse was correct (the bot can react at either moment)}
+  \label{fig:punDelay}
+\end{figure}
+
+\subsubsection{Rewards based in coherence and standard deviation}
+\label{sec:rewchstd}
+
+Like Tolerable Range rewards, this method has been applied to uniform reaction times. In our test cases, we have used reaction times between 1 and 8 frames of difference, and used as input for the AI the last 10 consecutive frames. This method is similar to the one explained in section ~\ref{sec:cohrew}, but applied to one action instead of two (the expected move instead the maximum-minimum guesses).
+
+This method differentiates between coherent and incoherent moves: when the bot's movement is coherent (it is inside the average$\pm$standard deviation range), the AI receives a consistent reward (either a constant or 0) if its move is also outside that range, if not, it receives a punish that gets higher when the relative distance to that range increases. When the bot's movement is incoherent (impulse) there are 3 options:
+
+\begin{wrapfigure}{rH}{0.2\textwidth}
+    \centering
+    \includegraphics[width=0.2\textwidth]{img/graphRTstd.png}
+		\caption{Model trained with 0.1 seconds of reaction time using this method}
+		\label{fig:graphRTstd}
+\end{wrapfigure}
+
+\begin{itemize}
+ \item If the AI move is closer to the bot's move than to the average, it receives a high reward (higher when closer)
+ \item If the AI move is closer to the average move but between the average and the movement made, it doesn't receive any reward or punish
+ \item If the AI move is in the opposite direction, it receives a punish
+\end{itemize}
+
+Using this method we have obtained the better results until this point (see Figure ~\ref{fig:graphRTstd}), still, it has more problems imitating the exception cases (for example, when a target appears at the opposite side). 
+
+The quality of this results is very dependent on the precision of the average and the standard deviation. In section ~\ref{sec:dynamicstd} we explain how both of them were improved to get better results.
 
 \subsubsection{Dynamic average and standard deviation}
+\label{sec:dynamicstd}
+
+At this point, to calculate the average and the standard deviation we were considering the last 60 moves. Each frame, the last move was deleted, the new one added to the list; then both the average and the standard deviation were updated. Using this amount of values was correct in some cases, but when some consecutive impulses happened they lost precision (see Figure~\ref{fig:stdVariations}), thus spoiling the reward system.
+
+To add precision more values are needed, but too much values would be highly inefficient. To solve both of these problems, we use dynamic averages and dynamic standard deviations. Dynamic parameters are calculated using available previous information to avoid recalculating both values each frame: instead, when adding a new value, we use the last average (and standard deviation) and incorporate the new value to obtain the new average (or standard deviation). Both of them have O(1) computational cost (each frame) instead of O(N).
+
+The dynamic average formula is the following:
+
+\vspace{5mm}
+
+$ {\displaystyle a_{n+1}=\frac{x_{n+1}+n\cdot a_n}{n+1}} $\\\\
+
+Where we obtain the average for the next frame ($a_{n+1}$) from the last average ($a_{n}$), the new move value ($x_{n+1}$) and the amount of moves that have been used to calculate $a_{n}$ (n). Even though the formula can be obtained intuitively, the calculations used are explained at Appendix~\ref{app:average}.
+
+\vspace{5mm}
+
+The calculations needed to obtain the standard deviation $\sigma_{n+1}$ of the next frame require the last standard deviation $\sigma_{n}$, the new and old averages ($a_{n}$, $a_{n+1}$), the new move value ($x_{n+1}$), the amount of moves (n), and the average of all the moves squared ($\frac{\sum_{i=1}^{n}x_i^2}{n}$). This last parameter can be easily tracked using the dynamic averages explained above. 
+
+The formula (see Appendix~\ref{app:stddyn}) for the dynamic standard deviation~\footnote{In the formula, the variance is used instead of the standard deviation to simplify the calculations, but we use only the standard deviation value} is the following:
+
+\vspace{5mm}
+
+$ {\displaystyle v_{n+1} = v_n + a_n^2-a_{n+1}^2 - \frac{\frac{\sum_{i=1}^{n}x_i^2}{n} - x_{n+1}^2}{n+1} } $\\\\
+
+\noindent
+The standard deviation is obtained taking the square root of the variance (v): $\sigma_n=\sqrt{v_n}$
+
+Even though these two formulas stabilize both values, the standard deviation fails enclosing the noise of the coherent movement (it should be smaller) when there is a relatively big amount of impulses. To adapt better to the coherent movement, we interpolate the values of the moves outside of the standard deviation range~\footnote{Smoothing values may not be statistically correct for a standard deviation, but since the objective is to differentiate between Coherent and incoherent moves it is valid for our purpose}. The best interpolation parameter for the real move and its closer standard deviation was 0.4 (0.4·move + 0.6·standard deviation). Smaller interpolation parameters still made the range too big, and bigger interpolation parameters caused the standard deviation to increase too slowly~\footnote{The ideal interpolation parameter is approximately 0.4, however other parameters could work better with different amounts of noise. Still, this value works well in most of the cases.} (a parameter of 1 would cause the standard deviation to stay at value 0). See Figure~\ref{fig:stdVariations} to view a comparation between smoothed dynamic standard deviation, pure dynamic standard deviation and the non dynamic one.
+
+\begin{figure}[h]
+  \centering
+		\includegraphics[width=.6\textwidth]{img/stdVariations.png}
+  \caption{Standard variations and average of the same bot using last 60 values (left), dynamic values (mid) and dynamic values smoothed by a 0.6 interpolation (right)}
+  \label{fig:stdVariations}
+\end{figure}
 
 \subsection{PPO vs. SAC}
 
+As we said in section~\ref{sec:rewchstd}, it is possible to model a correct behavior using a reward system based in standard deviations and movement coherence. However, it is important to clarify that all of those good results were obtained using PPO.
+
+Even though SAC was more effective modeling non delayed reactive behaviors (see~\ref{sec:trainingSAC}), PPO performed better with delayed reactions. This could be caused because how both algorithms work and because unbalanced rewards:
+
+PPO tends to optimize the agent to have the highest rewards in each situation, but SAC optimizes it to have an overall higher reward. Agents trained with SAC tend to the average move, not doing any impulse. PPO follows the impulses since approaching them gives a potentially higher reward in that situation. Still, SAC models had better scores just by not exposing themselves to the punishments of failing coherent moves (which were higher than the punishments of failing an impulse). In Figure ~\ref{fig:rtsacppo} you can see a comparison between both methods using the same reward conditions.
+
+\begin{figure}[h]
+  \centering
+		\includegraphics[width=.6\textwidth]{img/rtSACvsPPO.png}
+  \caption{Comparison between an agent trained with SAC (left) and other trained using PPO (right). The bots in both cases have a reaction time of 0.1 seconds and 0.15 units of noise}
+  \label{fig:rtsacppo}
+\end{figure}
+
+At this point, even though PPO performs better, both methods still fail at performing some impulses, when targets appear at the right side, or when two consecutive targets appear at the same time, and they don't adapt to noised reaction times (at least with the reward system exposed until this section).
+
 \subsection{Behavioral cloning}
+
+\begin{wrapfigure}{rH}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.2\textwidth]{img/bcTNoise.png}
+		\caption{Model trained with BC in 2000 steps. The bot's impulses appear deformed because the agent is the one playing the game}
+		\label{fig:bcTNoise}
+\end{wrapfigure}
+
+
+Behavioral Cloning is the simplest algorithm provided by ML Agents: it directly copies the actions given in a demo (which can be recorded in the editor). However, it has its limitations: since it doesn't depend on environment rewards, the programmer cannot modify its behavior with reinforcement learning. Also, depending on the task, agents trained using these methods can have chaotic behaviors.
+
+\begin{wrapfigure}[17]{rH}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.2\textwidth]{img/bcTNovertrain.png}
+		\caption{Model trained with BC in 7000 steps}
+		\label{fig:bcTNovertrain}
+\end{wrapfigure}
+
+When trained with simple cases (in section~\ref{sec:spawner}, we treat how the rare cases were suppressed from the training), they perform really well. Also, the agents can model temporal noise effectively. The agent in Figure~\ref{fig:bcTNoise} is a simple case at the extreme: it receives the last 9 frames (and the current) as input and the bot can perform an impulse at each one of those frames (from 0.01s to 0.15s). The agent usually does the impulse at the average reaction time of the bot. It is worth noting that when the agent performs more or less correctly it's better to stop training, else it usually loses precision (see Figure~\ref{fig:bcTNovertrain}).
+
+In the next 3 subsections, we will explain some problems that appeared when using behavioral cloning, and how they were solved.
 
 \subsection{Recurrent memory} %lo de que se desvia por el input
 
-\subsection{Rare situations}
+Recurrent neural network are a feature that allow agents to have memory and remember past observations. They have the advantage of being optimized to ``choose'' what to remember, at the cost of giving less control to the user. Also, its training is much slower, and they have worse performance when infering.
 
-\subsection{Complexity of the task}
+A combination of past render targets, past moves and recurrent memory can obtain good models (even in some rare cases), but the resulting neural network is so heavy that the frame rate drops from roughly 70 fps to 25 fps. Even though it can perform most of the impulses, it usually has some strange artifacts (extra impulses) in its behavior (See Figure ~\ref{fig:recb}).
+
+One problem~\footnote{According to the ML Agents documentation, recurrent memory is not recommended for continuous action spaces, which we are using} that appears when using recurrent networks with simpler inputs is that they are not foolproof: whenever they receive an unexpected input (in most of its inputs), its behavior can become chaotic. In figure~\ref{fig:recc} you can see an example of this problem: the neural network appeared to have trained well, but when it received an empty input for the past moves (at the start, all previous moves are 0), when they were returned by the recurrent memory, the agent became chaotic.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[h]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{img/recurrentBrute.png}
+        \caption{20 visual inputs and 25 past moves}
+        \label{fig:recb}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[h]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{img/recurrentCaos.png}
+        \caption{1 visual input and 25 past moves}
+        \label{fig:recc}
+    \end{subfigure}
+		\caption{Agents trained with recurrent memory and behavioral cloning}
+\end{figure}
+
+In conclusion, recurrent neural networks are not recommended for this problem: behavioral cloning can adapt to the movement without them, and the training sessions and performance become much slower.
+
+\subsection{Rare situations} %spawner
+\label{sec:spawner}
+
+As the game was programmed, targets spawn randomly at the stage. Since they can appear at any point, this provokes some situations that happen rarely: for instance, with the bots we have been using most targets appear by entering the screen in the left side (the bot moves continuously in that direction). However, some targets can spawn at its right side in a way that they can be seen, this happens approximately 1 in 12 times (the bot has a field of view of almost 60º). In figure~\ref{fig:spawncases} you can see some examples of some types of situations that appear in game.
+
+\begin{figure}[h]
+  \centering
+		\includegraphics[width=.6\textwidth]{img/spawncases.png}
+  \caption{Some of the different situations the neural network can encounter in the game}
+  \label{fig:spawncases}
+\end{figure}
+
+Those rarer cases often suppose a harder task to solve by the neural network, but with temporal delays sometimes they cause the problem to be too complex to be approximated by the neural network (see Section~\ref{sec:complex}). Also, when they appear less times, they are learned slowly or not at all.
+
+To improve the performance of the network, we can generate some rare cases in purpose: instead of spawning targets randomly, they can be spawned in the right side of the field of view, or two targets can be spawned next to each other, etc. Then, how often each case occurs can be adjusted manually.
+
+This method was intended to make the agents learn faster, however it served to prove that the structure of the neural network was not enough to solve this problem.
+
+\subsection{Complexity of the task} 
+\label{sec:complex}
+
+\begin{wrapfigure}{rH}{0.25\textwidth}
+    \centering
+    \includegraphics[width=0.2\textwidth]{img/complexity.png}
+		\caption{Neural network that has diverged}
+		\label{fig:complexity}
+\end{wrapfigure}
+
+Sometimes a task is too complex to solve by one neural network structure, with behavioral cloning is easy to detect this problem~\cite{xor}. These problems need more internal layers (and more training time) to be solved. For instance, the problem developed in this section (delayed reactions) needed at least 3 layers (with any policy) to be solved. When spawning rare cases more often, some agents that usually didn't learn the exceptions didn't also learn the common cases: the complexity to perform correctly each case was too high for 3 layers.
+
+
+When using behavioral cloning this phenomenon occurs like this: the neural network starts adapting to the most common cases (but fails the least common), then the more time it is left training, the worse starts doing the common cases until the model diverges (Figure~\ref{fig:complexity}) and it starts showing strange behaviors. Sometimes it may cycle around all the process, but it would never learn.
+

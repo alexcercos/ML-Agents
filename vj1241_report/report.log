@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.8)  15 JUN 2020 03:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.8)  15 JUN 2020 20:36
 entering extended mode
 **D:/Documents/ml-agents-master/vj1241_report/report.tex
 (D:/Documents/ml-agents-master/vj1241_report/report.tex
@@ -1032,7 +1032,7 @@ Package minitoc(hints) Warning: W0023
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-<img/logo-universitat-jaume-i.png, id=191, 120.45pt x 119.7273pt>
+<img/logo-universitat-jaume-i.png, id=195, 120.45pt x 119.7273pt>
 File: img/logo-universitat-jaume-i.png Graphic file (type png)
 <use img/logo-universitat-jaume-i.png>
 Package pdftex.def Info: img/logo-universitat-jaume-i.png  used on input line 6
@@ -1067,7 +1067,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 61.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 61.
-<img/by-nc-sa-eu.pdf, id=194, 96.36pt x 33.726pt>
+<img/by-nc-sa-eu.pdf, id=198, 96.36pt x 33.726pt>
 File: img/by-nc-sa-eu.pdf Graphic file (type pdf)
 <use img/by-nc-sa-eu.pdf>
 Package pdftex.def Info: img/by-nc-sa-eu.pdf  used on input line 61.
@@ -1171,16 +1171,13 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 20.
 
-(report.mtc2)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [1
+(report.mtc2) [1
 
 
 
 ]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
-0.
+2.
 
 ("C:\Users\alexc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ts1lmr.fd"
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1194,12 +1191,12 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 \openout4 = `report.mtc'.
 
  (report.mtc3)
-<img/taskGraph.png, id=315, 465.23813pt x 213.79875pt>
+<img/taskGraph.png, id=320, 465.23813pt x 213.79875pt>
 File: img/taskGraph.png Graphic file (type png)
 <use img/taskGraph.png>
 Package pdftex.def Info: img/taskGraph.png  used on input line 30.
 (pdftex.def)             Requested size: 376.42575pt x 172.99008pt.
-<img/ganttChart.png, id=316, 606.01407pt x 134.75343pt>
+<img/ganttChart.png, id=321, 606.01407pt x 134.75343pt>
 File: img/ganttChart.png Graphic file (type png)
 <use img/ganttChart.png>
 Package pdftex.def Info: img/ganttChart.png  used on input line 39.
@@ -1209,7 +1206,7 @@ Package pdftex.def Info: img/ganttChart.png  used on input line 39.
 
 
 ]
-<img/inGame.png, id=324, 720.44156pt x 405.01312pt>
+<img/inGame.png, id=329, 720.44156pt x 405.01312pt>
 File: img/inGame.png Graphic file (type png)
 <use img/inGame.png>
 Package pdftex.def Info: img/inGame.png  used on input line 55.
@@ -1238,29 +1235,29 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 
 ]
-<img/classDiagram.png, id=371, 822.82407pt x 627.84563pt>
+<img/classDiagram.png, id=376, 822.82407pt x 627.84563pt>
 File: img/classDiagram.png Graphic file (type png)
 <use img/classDiagram.png>
 Package pdftex.def Info: img/classDiagram.png  used on input line 91.
 (pdftex.def)             Requested size: 334.60422pt x 255.31073pt.
  [10 <./img/classDiagram.png>]
-<img/systemArchitecture.png, id=379, 450.18187pt x 244.66406pt>
+<img/systemArchitecture.png, id=384, 450.18187pt x 244.66406pt>
 File: img/systemArchitecture.png Graphic file (type png)
 <use img/systemArchitecture.png>
 Package pdftex.def Info: img/systemArchitecture.png  used on input line 104.
 (pdftex.def)             Requested size: 334.60422pt x 181.85867pt.
-<img/uiComplete.png, id=385, 963.6pt x 541.27219pt>
+<img/uiComplete.png, id=390, 963.6pt x 541.27219pt>
 File: img/uiComplete.png Graphic file (type png)
 <use img/uiComplete.png>
 Package pdftex.def Info: img/uiComplete.png  used on input line 120.
 (pdftex.def)             Requested size: 376.42575pt x 211.44218pt.
  [11 <./img/systemArchitecture.png>]
-<img/uiGraph.png, id=394, 152.82094pt x 152.06813pt>
+<img/uiGraph.png, id=399, 152.82094pt x 152.06813pt>
 File: img/uiGraph.png Graphic file (type png)
 <use img/uiGraph.png>
 Package pdftex.def Info: img/uiGraph.png  used on input line 128.
 (pdftex.def)             Requested size: 125.47737pt x 124.85909pt.
-<img/uiVision.png, id=395, 91.09032pt x 85.06781pt>
+<img/uiVision.png, id=400, 91.09032pt x 85.06781pt>
 File: img/uiVision.png Graphic file (type png)
 <use img/uiVision.png>
 Package pdftex.def Info: img/uiVision.png  used on input line 135.
@@ -1278,125 +1275,112 @@ Package pdftex.def Info: img/uiVision.png  used on input line 135.
 
 
 ]
-<img/rewTR.png, id=412, 409.53pt x 380.17032pt>
+<img/rewTR.png, id=418, 409.53pt x 380.17032pt>
 File: img/rewTR.png Graphic file (type png)
 <use img/rewTR.png>
-Package pdftex.def Info: img/rewTR.png  used on input line 62.
+Package pdftex.def Info: img/rewTR.png  used on input line 68.
 (pdftex.def)             Requested size: 146.39133pt x 135.89825pt.
- [14 <./img/rewTR.png>]
-<img/graphsTR.png, id=424, 264.99pt x 142.28156pt>
+ [14]
+<img/graphsTR.png, id=428, 264.99pt x 142.28156pt>
 File: img/graphsTR.png Graphic file (type png)
 <use img/graphsTR.png>
-Package pdftex.def Info: img/graphsTR.png  used on input line 82.
+Package pdftex.def Info: img/graphsTR.png  used on input line 88.
 (pdftex.def)             Requested size: 376.42575pt x 202.13022pt.
 
-Underfull \vbox (badness 2165) has occurred while \output is active []
 
- [15 <./img/graphsTR.png>]
-<img/exampleDet.png, id=434, 368.87813pt x 286.06876pt>
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[15 <./img/rewTR.png>]
+<img/exampleDet.png, id=439, 368.87813pt x 286.06876pt>
 File: img/exampleDet.png Graphic file (type png)
 <use img/exampleDet.png>
-Package pdftex.def Info: img/exampleDet.png  used on input line 96.
+Package pdftex.def Info: img/exampleDet.png  used on input line 102.
 (pdftex.def)             Requested size: 376.42575pt x 291.92159pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [16 <./img/exampleDet.png>]
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 <img/graphsMemory.png, id=441, 174.6525pt x 143.78719pt>
 File: img/graphsMemory.png Graphic file (type png)
 <use img/graphsMemory.png>
-Package pdftex.def Info: img/graphsMemory.png  used on input line 114.
+Package pdftex.def Info: img/graphsMemory.png  used on input line 120.
 (pdftex.def)             Requested size: 209.12683pt x 172.17955pt.
- [17 <./img/graphsMemory.png>]
-<img/graphSTD.png, id=448, 73.02281pt x 75.28125pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[16 <./img/graphsTR.png>]
+<img/graphSTD.png, id=449, 73.02281pt x 75.28125pt>
 File: img/graphSTD.png Graphic file (type png)
 <use img/graphSTD.png>
-Package pdftex.def Info: img/graphSTD.png  used on input line 129.
+Package pdftex.def Info: img/graphSTD.png  used on input line 135.
 (pdftex.def)             Requested size: 83.64944pt x 86.24422pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 136--136
 []\T1/lmr/m/n/10.95 Figure 4.5:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 136--136
 \T1/lmr/m/n/10.95 and stan-dard
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 136--136
 \T1/lmr/m/n/10.95 de-vi-a-tions of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--130
+Underfull \hbox (badness 10000) in paragraph at lines 136--136
 \T1/lmr/m/n/10.95 an ir-reg-u-lar
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--132
+Underfull \hbox (badness 10000) in paragraph at lines 132--138
 \T1/lmr/m/n/10.95 how co-her-ent is a move in a given con-text.
  []
 
-<img/stdPrecision.png, id=449, 570.63188pt x 365.86688pt>
+
+Underfull \vbox (badness 3826) has occurred while \output is active []
+
+ [17 <./img/exampleDet.png>]
+<img/stdPrecision.png, id=456, 570.63188pt x 365.86688pt>
 File: img/stdPrecision.png Graphic file (type png)
 <use img/stdPrecision.png>
-Package pdftex.def Info: img/stdPrecision.png  used on input line 141.
+Package pdftex.def Info: img/stdPrecision.png  used on input line 147.
 (pdftex.def)             Requested size: 125.47737pt x 80.45187pt.
-<img/stdFactors.png, id=450, 569.87906pt x 210.03468pt>
+<img/stdFactors.png, id=457, 569.87906pt x 210.03468pt>
 File: img/stdFactors.png Graphic file (type png)
 <use img/stdFactors.png>
-Package pdftex.def Info: img/stdFactors.png  used on input line 148.
+Package pdftex.def Info: img/stdFactors.png  used on input line 154.
 (pdftex.def)             Requested size: 125.47737pt x 46.24301pt.
-<img/stdDevfactor.png, id=451, 392.96812pt x 463.7325pt>
+<img/stdDevfactor.png, id=458, 392.96812pt x 463.7325pt>
 File: img/stdDevfactor.png Graphic file (type png)
 <use img/stdDevfactor.png>
-Package pdftex.def Info: img/stdDevfactor.png  used on input line 155.
+Package pdftex.def Info: img/stdDevfactor.png  used on input line 161.
 (pdftex.def)             Requested size: 125.47737pt x 148.07193pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--156
+Underfull \hbox (badness 10000) in paragraph at lines 162--162
 \T1/lmr/m/n/10 by Pow(2,(1-coherence)),
  []
 
 
 Package wrapfig Warning: Collision between wrapping environments on input line 
-163.
+169.
 
-<img/graphsSTDrew.png, id=452, 71.51718pt x 143.78719pt>
+<img/graphsSTDrew.png, id=459, 71.51718pt x 143.78719pt>
 File: img/graphsSTDrew.png Graphic file (type png)
 <use img/graphsSTDrew.png>
-Package pdftex.def Info: img/graphsSTDrew.png  used on input line 165.
+Package pdftex.def Info: img/graphsSTDrew.png  used on input line 171.
 (pdftex.def)             Requested size: 83.64944pt x 168.18205pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
+Underfull \hbox (badness 10000) in paragraph at lines 172--172
 []\T1/lmr/m/n/10.95 Figure 4.7:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
+Underfull \hbox (badness 10000) in paragraph at lines 172--172
 |\T1/lmr/m/n/10.95 Trained model
  []
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 17
-0.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 17
-3.
-
-
-Underfull \vbox (badness 3954) has occurred while \output is active []
-
- [18 <./img/stdPrecision.png> <./img/stdFactors.png> <./img/stdDevfactor.png> <
-./img/graphSTD.png>]
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 17
-4.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 17
-5.
 
 
 Package wrapfig Warning: Stationary wrapfigure forced to float on input line 17
@@ -1404,82 +1388,257 @@ Package wrapfig Warning: Stationary wrapfigure forced to float on input line 17
 
 
 Package wrapfig Warning: Stationary wrapfigure forced to float on input line 17
-7.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 17
-8.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 17
 9.
 
-<img/graphsCoherence.png, id=467, 167.12437pt x 142.28156pt>
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
+0.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
+1.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
+2.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
+3.
+
+[18 <./img/graphsMemory.png> <./img/graphSTD.png>]
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
+4.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
+5.
+
+[19 <./img/stdPrecision.png> <./img/stdFactors.png> <./img/stdDevfactor.png> <.
+/img/graphsSTDrew.png>]
+<img/graphsCoherence.png, id=479, 167.12437pt x 142.28156pt>
 File: img/graphsCoherence.png Graphic file (type png)
 <use img/graphsCoherence.png>
-Package pdftex.def Info: img/graphsCoherence.png  used on input line 196.
+Package pdftex.def Info: img/graphsCoherence.png  used on input line 202.
 (pdftex.def)             Requested size: 167.2989pt x 142.44185pt.
-[19 <./img/graphsSTDrew.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 232--233
+
+Underfull \hbox (badness 10000) in paragraph at lines 238--239
 []|\T1/lmr/m/n/10.95 0.0005 (not
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 212--239
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 218--245
  [] 
  []
 
 [20 <./img/graphsCoherence.png>]
-<img/PpoSac.png, id=484, 371.13657pt x 264.23718pt>
+<img/PpoSac.png, id=491, 371.13657pt x 264.23718pt>
 File: img/PpoSac.png Graphic file (type png)
 <use img/PpoSac.png>
-Package pdftex.def Info: img/PpoSac.png  used on input line 249.
+Package pdftex.def Info: img/PpoSac.png  used on input line 256.
 (pdftex.def)             Requested size: 250.95476pt x 178.67494pt.
-<img/graphSacPpo.png, id=486, 167.12437pt x 142.28156pt>
+<img/graphSacPpo.png, id=493, 167.12437pt x 142.28156pt>
 File: img/graphSacPpo.png Graphic file (type png)
 <use img/graphSacPpo.png>
-Package pdftex.def Info: img/graphSacPpo.png  used on input line 258.
+Package pdftex.def Info: img/graphSacPpo.png  used on input line 265.
 (pdftex.def)             Requested size: 250.95476pt x 213.6693pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 269--302
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 276--309
  [] 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [21 <./img/PpoSac.png>]
+[21 <./img/PpoSac.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [22 <./img/graphSacPpo.png>]
-<img/rendersensor.png, id=504, 405.76593pt x 98.61844pt>
+<img/rendersensor.png, id=511, 405.76593pt x 98.61844pt>
 File: img/rendersensor.png Graphic file (type png)
 <use img/rendersensor.png>
-Package pdftex.def Info: img/rendersensor.png  used on input line 331.
+Package pdftex.def Info: img/rendersensor.png  used on input line 338.
 (pdftex.def)             Requested size: 250.95476pt x 60.9938pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [23]
-<img/renderqueue.png, id=514, 471.26062pt x 401.24907pt>
+<img/renderqueue.png, id=521, 471.26062pt x 401.24907pt>
 File: img/renderqueue.png Graphic file (type png)
 <use img/renderqueue.png>
-Package pdftex.def Info: img/renderqueue.png  used on input line 345.
+Package pdftex.def Info: img/renderqueue.png  used on input line 352.
 (pdftex.def)             Requested size: 376.42575pt x 320.50375pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [24 <./img/rendersensor.png>] [25 <./img/renderqueue.png>]
+<img/timeTR.png, id=525, 156.585pt x 144.54pt>
+File: img/timeTR.png Graphic file (type png)
+<use img/timeTR.png>
+Package pdftex.def Info: img/timeTR.png  used on input line 370.
+(pdftex.def)             Requested size: 250.95476pt x 231.65906pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[24 <./img/rendersensor.png>]
+<img/punDelay.png, id=538, 73.02281pt x 47.42719pt>
+File: img/punDelay.png Graphic file (type png)
+<use img/punDelay.png>
+Package pdftex.def Info: img/punDelay.png  used on input line 383.
+(pdftex.def)             Requested size: 125.47737pt x 81.50296pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[25 <./img/renderqueue.png>] [26 <./img/timeTR.png> <./img/punDelay.png>]
+<img/graphRTstd.png, id=554, 72.27pt x 145.29282pt>
+File: img/graphRTstd.png Graphic file (type png)
+<use img/graphRTstd.png>
+Package pdftex.def Info: img/graphRTstd.png  used on input line 397.
+(pdftex.def)             Requested size: 83.64944pt x 168.17839pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 398--398
+[]\T1/lmr/m/n/10.95 Figure 4.15:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 398--398
+|\T1/lmr/m/n/10.95 Model trained
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 398--398
+\T1/lmr/m/n/10.95 with 0.1 sec-
+ []
+
+
+Underfull \hbox (badness 3872) in paragraph at lines 398--398
+\T1/lmr/m/n/10.95 time us-ing this
+ []
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 40
+3.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 40
+4.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 40
+5.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 423--424
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 423--424
+
+ []
+
+[27 <./img/graphRTstd.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 435--436
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 435--436
+
+ []
+
+<img/stdVariations.png, id=577, 232.61906pt x 142.28156pt>
+File: img/stdVariations.png Graphic file (type png)
+<use img/stdVariations.png>
+Package pdftex.def Info: img/stdVariations.png  used on input line 444.
+(pdftex.def)             Requested size: 250.95476pt x 153.50113pt.
+[28 <./img/stdVariations.png>]
+Overfull \hbox (14.35803pt too wide) in paragraph at lines 453--454
+[]\T1/lmr/m/n/10.95 Even though SAC was more ef-fec-tive mod-el-ing non de-laye
+d re-ac-tive be-hav-iors (see [][]4.2.9[][]),
+ []
+
+<img/rtSACvsPPO.png, id=592, 171.64125pt x 143.03438pt>
+File: img/rtSACvsPPO.png Graphic file (type png)
+<use img/rtSACvsPPO.png>
+Package pdftex.def Info: img/rtSACvsPPO.png  used on input line 459.
+(pdftex.def)             Requested size: 250.95476pt x 209.12743pt.
+<img/bcTNoise.png, id=593, 72.27pt x 143.78719pt>
+File: img/bcTNoise.png Graphic file (type png)
+<use img/bcTNoise.png>
+Package pdftex.def Info: img/bcTNoise.png  used on input line 470.
+(pdftex.def)             Requested size: 83.64944pt x 166.43562pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 471--471
+[]\T1/lmr/m/n/10.95 Figure 4.18: |Model
+ []
+
+
+Underfull \hbox (badness 7504) in paragraph at lines 471--471
+\T1/lmr/m/n/10.95 the agent is the one
+ []
+
+[29 <./img/rtSACvsPPO.png>]
+
+Package wrapfig Warning: Collision between wrapping environments on input line 
+478.
+
+<img/bcTNovertrain.png, id=599, 70.76437pt x 143.78719pt>
+File: img/bcTNovertrain.png Graphic file (type png)
+<use img/bcTNovertrain.png>
+Package pdftex.def Info: img/bcTNovertrain.png  used on input line 480.
+(pdftex.def)             Requested size: 83.64944pt x 169.98334pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 481--481
+[]\T1/lmr/m/n/10.95 Figure 4.19: |Model
+ []
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 48
+5.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 48
+7.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 48
+9.
+
+[30 <./img/bcTNoise.png> <./img/bcTNovertrain.png>]
+<img/recurrentBrute.png, id=615, 73.02281pt x 145.29282pt>
+File: img/recurrentBrute.png Graphic file (type png)
+<use img/recurrentBrute.png>
+Package pdftex.def Info: img/recurrentBrute.png  used on input line 500.
+(pdftex.def)             Requested size: 125.47737pt x 249.6837pt.
+<img/recurrentCaos.png, id=616, 70.76437pt x 143.78719pt>
+File: img/recurrentCaos.png Graphic file (type png)
+<use img/recurrentCaos.png>
+Package pdftex.def Info: img/recurrentCaos.png  used on input line 507.
+(pdftex.def)             Requested size: 125.47737pt x 254.9816pt.
+<img/spawncases.png, id=618, 456.20438pt x 395.22656pt>
+File: img/spawncases.png Graphic file (type png)
+<use img/spawncases.png>
+Package pdftex.def Info: img/spawncases.png  used on input line 523.
+(pdftex.def)             Requested size: 250.95476pt x 217.40543pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[31 <./img/recurrentBrute.png> <./img/recurrentCaos.png>]
+<img/complexity.png, id=626, 76.78688pt x 151.3153pt>
+File: img/complexity.png Graphic file (type png)
+<use img/complexity.png>
+Package pdftex.def Info: img/complexity.png  used on input line 539.
+(pdftex.def)             Requested size: 83.64944pt x 164.8496pt.
+ [32 <./img/spawncases.png> <./img/complexity.png>]) [33]
 \openout2 = `chap05_conclusions.aux'.
 
-
-(chap05_conclusions.tex [26
+ (chap05_conclusions.tex [34
 
 
 
@@ -1491,121 +1650,112 @@ LaTeX Warning: `h' float specifier changed to `ht'.
  (report.mtc6))
 Underfull \vbox (badness 4291) has occurred while \output is active []
 
- [27]
-[28] (report.bbl
+ [35]
+[36] (report.bbl
 bibitemlist
-) [29
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--9
+[]\T1/lmr/m/n/10.95 Jayesh Bapu Ahire.  The xor prob-lem in neu-ral net-works.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--9
+\T1/lmr/m/n/10.95 https://medium.com/jayeshbahire/the-xor-problem-in-neural-net
+works-
+ []
+
+) [37
 
 
 ]
 \openout2 = `appendA_average.aux'.
 
- (appendA_average.tex [30
+ (appendA_average.tex [38
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 19--21
+Underfull \hbox (badness 10000) in paragraph at lines 22--24
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--21
-
- []
-
-)
-Underfull \hbox (badness 10000) in paragraph at lines 25--108
+Underfull \hbox (badness 10000) in paragraph at lines 22--24
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--108
+Underfull \hbox (badness 10000) in paragraph at lines 28--38
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--108
+Underfull \hbox (badness 10000) in paragraph at lines 28--38
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--108
+Underfull \hbox (badness 10000) in paragraph at lines 28--38
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--108
+Underfull \hbox (badness 10000) in paragraph at lines 28--38
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--108
+Underfull \hbox (badness 10000) in paragraph at lines 28--38
 
  []
 
-[31]
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--38
+
+ []
+
+) [39]
 \openout2 = `appendB_std.aux'.
 
- (appendB_std.tex [32
+ (appendB_std.tex [40
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 19--21
+Underfull \hbox (badness 10000) in paragraph at lines 23--25
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--21
+Underfull \hbox (badness 10000) in paragraph at lines 23--25
 
  []
 
 
-Overfull \hbox (8.54109pt too wide) in paragraph at lines 37--41
+Overfull \hbox (8.54109pt too wide) in paragraph at lines 43--47
 [] 
  []
 
 
-Overfull \hbox (38.84698pt too wide) in paragraph at lines 47--51
+Overfull \hbox (38.84698pt too wide) in paragraph at lines 53--57
 [] 
  []
 
 
-Overfull \hbox (73.83215pt too wide) in paragraph at lines 52--56
+Overfull \hbox (73.83215pt too wide) in paragraph at lines 58--62
 [] 
  []
 
 
-Overfull \hbox (4.94662pt too wide) in paragraph at lines 57--61
+Overfull \hbox (4.94662pt too wide) in paragraph at lines 63--67
 [] 
  []
 
 
-Overfull \hbox (16.23961pt too wide) in paragraph at lines 62--66
+Overfull \hbox (16.23961pt too wide) in paragraph at lines 68--72
 [] 
  []
 
-[33]
-Underfull \hbox (badness 10000) in paragraph at lines 82--84
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 82--84
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 85--87
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 85--87
-
- []
-
-
+[41]
 Underfull \hbox (badness 10000) in paragraph at lines 88--90
 
  []
@@ -1635,7 +1785,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--96
 
  []
 
-) [34]
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--99
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--99
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--102
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--102
+
+ []
+
+) [42]
 Package minitoc Info: I0009
 (minitoc)             Listing minitoc auxiliary files. 
 (minitoc)             Creating the report.maf file.
@@ -1664,7 +1834,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 114.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 114.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 114.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 1DCC9713B7F96AEC47B083E1A2B96158;3210.
+(rerunfilecheck)             Checksum: C455542899745E6FB50B0ED087DE1F19;3315.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1672,18 +1842,18 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 114.
  ) 
 Here is how much of TeX's memory you used:
- 16625 strings out of 481005
- 253896 string characters out of 2900857
+ 16747 strings out of 481005
+ 256028 string characters out of 2900857
  741045 words of memory out of 3000000
- 31697 multiletter control sequences out of 15000+200000
+ 31779 multiletter control sequences out of 15000+200000
  612877 words of font info for 71 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,13n,46p,923b,505s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,13n,46p,1340b,505s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.en
 c}{C:/Users/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathi
 t.enc}{C:/Users/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-m
-athsy.enc}{C:/Users/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/
-lm-mathex.enc}{C:/Users/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips
+athex.enc}{C:/Users/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/
+lm-mathsy.enc}{C:/Users/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips
 /lm/lm-ec.enc}{C:/Users/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips
 /lm/lm-ts1.enc} <C:\Users\alexc\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknapp
 en/ec/dpi600\ecxc2074.pk><C:/Users/alexc/AppData/Local/Programs/MiKTeX 2.9/font
@@ -1702,9 +1872,9 @@ ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Users/alexc
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/a
 lexc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/U
 sers/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
-Output written on report.pdf (44 pages, 938215 bytes).
+Output written on report.pdf (52 pages, 1071852 bytes).
 PDF statistics:
- 699 PDF objects out of 1000 (max. 8388607)
- 126 named destinations out of 1000 (max. 500000)
- 497 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 810 PDF objects out of 1000 (max. 8388607)
+ 155 named destinations out of 1000 (max. 500000)
+ 560 words of extra memory for PDF output out of 10000 (max. 10000000)
 

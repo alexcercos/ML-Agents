@@ -1,5 +1,12 @@
 \begin{thebibliography}{1}
 
+\bibitem{xor}
+Jayesh~Bapu Ahire.
+\newblock The xor problem in neural networks.
+\newblock
+  https://medium.com/jayeshbahire/the-xor-problem-in-neural-networks-50006411840b/.
+\newblock Accessed: 2020-06-14.
+
 \bibitem{livingstone}
 D.~Livingstone.
 \newblock {\em Turing's test and believable AI in games.}
@@ -16,6 +23,13 @@ OpenAI.
 \newblock Proximal policy optimization.
 \newblock https://openai.com/blog/openai-baselines-ppo.
 \newblock Accessed: 2020-04-25.
+
+\bibitem{sacpolicy}
+Berkeley Artificial~Intelligence Research.
+\newblock Soft actor critic—deep reinforcement learning with real-world
+  robots.
+\newblock https://bair.berkeley.edu/blog/2018/12/14/sac/.
+\newblock Accessed: 2020-05-07.
 
 \bibitem{mlagents}
 Unity.
