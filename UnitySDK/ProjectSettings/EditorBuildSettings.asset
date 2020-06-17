@@ -5,27 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/ML-Agents/Examples/3DBall/Scenes/3DBall.unity
-    guid: b9ac0cbf961bf4dacbfa0aa9c0d60aaa
-  - enabled: 0
-    path: Assets/ML-Agents/Examples/3DBallEjercicios/3DBallEjercicios.unity
-    guid: fa764df572e1a944487db96395f4beb7
-  - enabled: 0
-    path: Assets/ML-Agents/Examples/CuboX/CuboX.unity
-    guid: de788b65b15c7694291a8e8d64aea22b
-  - enabled: 0
-    path: Assets/ML-Agents/Examples/Soccer/Scenes/SoccerTwos.unity
-    guid: f8055e5dfa04643559678426a82225c1
-  - enabled: 0
-    path: Assets/ML-Agents/Examples/0-Futbol/Scenes/GoalieTraining.unity
-    guid: f4d51e6dd3c463d41bebf472c0fbf884
-  - enabled: 0
-    path: Assets/ML-Agents/Examples/0-Futbol/Scenes/StrikerTraining.unity
-    guid: b3a95bdd789162641930edb17fb91fd1
-  - enabled: 0
-    path: Assets/ML-Agents/Examples/0-Futbol/Scenes/Futbol.unity
-    guid: 285538440a3525742bf635845bade872
   - enabled: 1
     path: Assets/ML-Agents/DemoShot/ShootScene.unity
     guid: 05f97c6f4141ca54c8a8e11fc20215ed

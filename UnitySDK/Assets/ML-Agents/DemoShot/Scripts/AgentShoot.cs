@@ -7,11 +7,12 @@ public class AgentShoot : Agent
 {
     public DebugCanvas graphicCanvas;
 
-    public bool agentRange = false;
+    //public bool agentRange = false;
+    public AgentType agentType = AgentType.CLICKONLY;
 
     CameraMovement cameraAgent;
 
-    //float tolerableRange = 0.1f; //de -1 a 1 es el maximo posible, el rango es positivo>0
+    public float tolerableRange = 0.1f; //de -1 a 1 es el maximo posible, el rango es positivo>0
 
     float totalSteps = 1000f;
 
@@ -23,15 +24,19 @@ public class AgentShoot : Agent
 
     private float agY = 0f;
 
-    bool iClick = true;
+    private float iClick = 0f; //click por defecto
+    private float lastClick = 0f;
+
+    //bool iClick = true;
 
     List<float> lastX;
-    //List<float> lastY;
+    List<float> lastY;
 
     //List<float> lastClick; //pensar en hacer con probabilidad en vez de bools
 
     // lista movimientos reales para rewards (avg-std)
     List<float> realX;
+    List<float> realY;
 
     [Range(0.0f, 1.0f)]
     public float observationBotAgent = 1f;
@@ -52,46 +57,53 @@ public class AgentShoot : Agent
     float varianza = 0f;
     
     float oX = 0f;
+    float oY = 0f;
 
     float moveCount = 0f;
 
 
-    public float PunFactor = 100f;
-    public float RewFactor = 100f;
+    public float PunFactor = 10f;
+    public float RewFactor = 10f;
 
     
 
-    public float waitForImpulse = 0.25f;
+    /*public*/ float waitForImpulse = 0.25f;
 
-    Queue<MoveInfo> realImpulse;
-    Queue<MoveInfo> agentImpulse;
+    //Queue<MoveInfo> realImpulse;
+    //Queue<MoveInfo> agentImpulse;
 
     //public float threshold = 0.01f;
 
     public bool demoHeuristic = true;
+    public bool showStd = true;
 
     private void Start()
     {
         cameraAgent = GetComponent<CameraMovement>();
         
         lastX = new List<float>();
-        
+        lastY = new List<float>();
+
 
         realX = new List<float>();
+        realY = new List<float>();
 
         for (int i = 0; i<60; i++)
         {
             lastX.Add(0f);
-
+            lastY.Add(0f);
             realX.Add(0f);
+            realY.Add(0f);
         }
 
-        realImpulse = new Queue<MoveInfo>();
-        agentImpulse = new Queue<MoveInfo>();
+        //realImpulse = new Queue<MoveInfo>();
+        //agentImpulse = new Queue<MoveInfo>();
     }
 
     public override void AgentReset()
     {
+        //hacer aleatoria la rotacion al resetear
+
         /*
         lastX = new List<float>();
         realX = new List<float>();
@@ -112,9 +124,8 @@ public class AgentShoot : Agent
             while (i < 60)
             {
                 AddVectorObs(Mathf.Lerp(realX[i], lastX[i], observationBotAgent));
-                //AddVectorObs(realX[i]); //cambio para usar la informacion real, interpolar luego
-                //AddVectorObs(lastX[i]);
-                //AddVectorObs(lastY[i]);
+
+
 
                 if (i <= 9) i++;
                 else if (i <= 39) i += 3;
@@ -126,6 +137,21 @@ public class AgentShoot : Agent
         {
             AddVectorObs(Mathf.Lerp(realX[0], lastX[0], observationBotAgent));
         }
+        else if (receiveObservations == ObservationsType.BOTH10FIRST) //en los 2 ejes (ordenados)
+        {
+            int i = 0;
+            while (i < 10)
+            {
+                AddVectorObs(Mathf.Lerp(realX[i], lastX[i], observationBotAgent));
+                i++;
+            }
+            i = 0;
+            while (i < 10)
+            {
+                AddVectorObs(Mathf.Lerp(realY[i], lastY[i], observationBotAgent));
+                i++;
+            }
+        }
     }
 
 
@@ -133,66 +159,99 @@ public class AgentShoot : Agent
     {
         //comparar la del bot con la del agente
 
-        maxX = Mathf.Clamp(vectorAction[0], -1f, 1f);
-
-        if (vectorAction.Length == 1)
-        {
-            minX = maxX;
-        }
-        else
-        {
-            if (agentRange)
-            {
-                minX = Mathf.Clamp(vectorAction[1], -1f, 1f);
-            }
-            else
-            {
-                minX = maxX;
-                agY = Mathf.Clamp(vectorAction[1], -1f, 1f);
-            }
-            
-        }
-        
-
         oX = cameraAgent.GetBotX(); // Se usa para recompensas solo
 
+        oY = cameraAgent.GetBotY();
 
-        //Debug canvas
+        if (agentType == AgentType.IMPULSE)     //1 accion
+        {
+            maxX = Mathf.Clamp(vectorAction[0], -1f, 1f);
+            minX = maxX;
 
-        graphicCanvas.AddAgentPoint(oX);
+            graphicCanvas.AddBotPoint(oX);
+            graphicCanvas.AddAgentPointDown(minX);
 
-        graphicCanvas.AddBotPointDown(minX);
-        if (agentRange)
-            graphicCanvas.AddBotPointUp(maxX);
+            if (showStd)
+            {
+                graphicCanvas.AddAveragePoint(average); //Debug std
+                graphicCanvas.AddStdHighPoint(average + stDesv);
+                graphicCanvas.AddStdLowPoint(average - stDesv);
+            }
+        }
+        else if (agentType == AgentType.RANGE)      //2 acciones (X)
+        {
+            maxX = Mathf.Clamp(vectorAction[0], -1f, 1f);
+            minX = Mathf.Clamp(vectorAction[1], -1f, 1f);
 
-        // Recompensas
+            graphicCanvas.AddBotPoint(oX);
+            graphicCanvas.AddAgentPointDown(minX);
+            graphicCanvas.AddAgentPointUp(maxX);
 
-        //average = Average(ref realX);
-        //stDesv = StdDeviation(ref realX, average);
+            if (showStd)
+            {
+                graphicCanvas.AddAveragePoint(average); //Debug std
+                graphicCanvas.AddStdHighPoint(average + stDesv);
+                graphicCanvas.AddStdLowPoint(average - stDesv);
+            }
+        }
+        else if (agentType == AgentType.TWO_AXIS)   //2 acciones (X,Y)
+        {
+            maxX = Mathf.Clamp(vectorAction[0], -1f, 1f);
+            minX = maxX;
+            agY = Mathf.Clamp(vectorAction[1], -1f, 1f);
+        }
+        else if (agentType == AgentType.CLICKONLY) //1 accion (click)
+        {
+            minX = oX;
+            maxX = oX;
+            agY = oY;
+            //click float
+            iClick = Mathf.Clamp(vectorAction[0], -1f, 1f);
 
-        graphicCanvas.AddAveragePoint(average); //Debug std
-        graphicCanvas.AddStdHighPoint(average + stDesv);
-        graphicCanvas.AddStdLowPoint(average - stDesv);
+            graphicCanvas.AddAgentPointDown(iClick); // click (no movimiento)
 
-        //RewardsTolerableRange(Mathf.Abs(oX - maxX), 0.05f, 1f);
+            //Los clicks se procesan por separado
+            /*
+            if (cameraAgent.GetBotClick())
+            {
+                graphicCanvas.AddBotClick();
+            }
 
-        //RewardsInsideRange(oX + 0.05f, oX - 0.05f, maxX, 50f, 200f);
+            if ((iClick >= 0f) && (lastClick < 0f))
+            {
+                graphicCanvas.AddAgentClick();
+            }*/
 
-        RewardsStdChIndividualAverage(maxX, oX, average, stDesv, RewFactor, PunFactor, 0.0f);
+            graphicCanvas.UpdateLines();
+        }
 
-        DynamicAverageAndStd(ref moveCount, ref average, ref stDesv, ref varianza, ref averageSquared, oX);
+        //RewardsStdChIndividualAverage(maxX, oX, average, stDesv, RewFactor, PunFactor, 0.0f);
+        //DynamicAverageAndStd(ref moveCount, ref average, ref stDesv, ref varianza, ref averageSquared, oX);
 
-        //Debug.Log("Move " + moveCount + ": " + oX + ". Average = " + average + ", deviation = " + stDesv + ", variance = " + varianza + ", avg.sq = " + averageSquared);
-
-        //actualizar listas
 
         lastX.RemoveAt(59);
         lastX.Insert(0, Mathf.Lerp(minX, maxX, Random.Range(0f, 1f))); // En vez de oX, para que no tenga "chuleta"
-
-        //lastX.Insert(0, oX);
-
+        
         realX.RemoveAt(59);
         realX.Insert(0, oX);
+
+        lastY.RemoveAt(59);
+        lastY.Insert(0, agY); // En vez de oX, para que no tenga "chuleta"
+
+        realY.RemoveAt(59);
+        realY.Insert(0, oY);
+    }
+
+    public void AgentClickEvent()
+    {
+        graphicCanvas.AddAgentClick();
+
+        ClickRewardsCheatSheet(tolerableRange, PunFactor, RewFactor);
+    }
+
+    public void BotClickEvent()
+    {
+        graphicCanvas.AddBotClick();
     }
 
     public override void AgentOnDone()
@@ -212,7 +271,16 @@ public class AgentShoot : Agent
 
     public bool GetClick() // Cambiar por probabilidad
     {
-        return iClick;
+        if (agentType != AgentType.CLICKONLY) return true;
+
+        bool hasClicked = (iClick > 0f) && (lastClick <= 0f);
+        lastClick = iClick;
+
+        //click event
+        if (hasClicked)
+            AgentClickEvent();
+
+        return hasClicked; //positivo = hace click (en la transicion solo)
     }
 
 
@@ -228,15 +296,33 @@ public class AgentShoot : Agent
         else
         {
             oX = cameraAgent.GetBotX(); // Para asegurar que devuelve la del bot, aunque juegue el agente
+            oY = cameraAgent.GetBotY();
 
             // DEMO RECORDER
 
             //0=max 1= min
 
-            action[0] = oX;
-
-            //action[0] = (average + stDesv < oX + threshold) ? oX + threshold : average + stDesv;
-            //action[1] = (average - stDesv > oX - threshold) ? oX - threshold : average - stDesv;
+            if (agentType == AgentType.IMPULSE)     //1 accion
+            {
+                action[0] = oX;
+            }
+            else if (agentType == AgentType.RANGE)      //2 acciones (X)
+            {
+                action[0] = (average + stDesv < oX + 0.1f) ? oX + 0.1f : average + stDesv;
+                action[1] = (average - stDesv > oX - 0.1f) ? oX - 0.1f : average - stDesv;
+            }
+            else if (agentType == AgentType.TWO_AXIS)   //2 acciones (X,Y)
+            {
+                action[0] = oX;
+                action[1] = oY;
+            }
+            else if (agentType == AgentType.CLICKONLY) //1 accion (click)
+            {
+                if (cameraAgent.GetBotClick())
+                    action[0] = Random.Range(0.1f, 0.3f);
+                else
+                    action[0] = Random.Range(-0.3f, -0.1f);
+            }
 
         }
 
@@ -625,6 +711,15 @@ public class AgentShoot : Agent
         AddReward(reward / totalSteps);
     }
 
+    public void ClickRewardsCheatSheet(float tolerableRange, float punFactor, float rewFactor) // Se llama desde el evento click directamente al agente
+    {
+        float reward = GetComponent<BotOneMove>().GetCheatRewards(tolerableRange, punFactor, rewFactor);
+
+        Debug.Log(reward);
+
+        AddReward(reward);
+    }
+
     public void DynamicAverageAndStd(ref float moveCount, ref float average, ref float std, ref float varz, ref float avgSqrd, float move)
     {
         //smooth
@@ -853,5 +948,10 @@ public struct MoveInfo
 
 public enum ObservationsType
 {
-    PREVIOUS25, LAST, NONE
+    PREVIOUS25, LAST, NONE, BOTH10FIRST
+}
+
+public enum AgentType
+{
+    IMPULSE, RANGE, TWO_AXIS, CLICKONLY
 }

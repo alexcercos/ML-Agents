@@ -25,17 +25,3 @@ Imitator:
     sequence_length: 128
     memory_size: 32
     demo_path: ./demos/R001N015T014.demo
-
-Hallway:
-    trainer: offline_bc
-    max_steps: 5.0e5
-    num_epoch: 5
-    batch_size: 64
-    batches_per_epoch: 5
-    num_layers: 2
-    hidden_units: 128
-    sequence_length: 16
-    use_recurrent: true
-    memory_size: 256
-    sequence_length: 32
-    demo_path: ./demos/ExpertHallway.demo

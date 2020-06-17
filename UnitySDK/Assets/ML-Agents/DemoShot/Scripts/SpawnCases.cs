@@ -14,6 +14,8 @@ public class SpawnCases : MonoBehaviour
     public float minDist = 30f;
     public float maxDist = 400f;
 
+    public float heightDiff = 20f;
+
     float cameraFOV = 60f; //FOV horizontal, comprobado a mano (en realidad es 63.7 pero se desprecia la diferencia)
     
 
@@ -101,7 +103,7 @@ public class SpawnCases : MonoBehaviour
             //if (typeSpawn == ESpawnCase.CONSECUTIVE)
             angle = Random.Range(left - 10f, left - 30f); //por fuera
 
-            GameObject newPlaneExtra = Instantiate(plane, new Vector3(0f, 0f, dist), transform.rotation, transform);
+            GameObject newPlaneExtra = Instantiate(plane, new Vector3(0f, Random.Range(-heightDiff, heightDiff), dist), transform.rotation, transform);
             newPlaneExtra.transform.RotateAround(transform.position, Vector3.up, angle);
 
             angle = angle - Random.Range(0f, cameraFOV / 2f); //Vuelve a spawnear consecutivo
@@ -113,7 +115,7 @@ public class SpawnCases : MonoBehaviour
         
 
 
-        GameObject newPlane = Instantiate(plane, new Vector3(0f, 0f, dist), transform.rotation, transform);
+        GameObject newPlane = Instantiate(plane, new Vector3(0f, Random.Range(-heightDiff, heightDiff), dist), transform.rotation, transform);
         newPlane.transform.RotateAround(transform.position, Vector3.up, angle);
 
     }

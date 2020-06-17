@@ -70,6 +70,8 @@ public class CameraMovement : MonoBehaviour
             //y = 0f;
 
             click = nnAgent.GetClick();
+
+            botMovement.Click(); //para que se muestre
         }
         else //if (playWithBot)
         {
@@ -77,6 +79,8 @@ public class CameraMovement : MonoBehaviour
             y = Mathf.Clamp(botMovement.MouseY() / 2f, -1f, 1f);
 
             click = botMovement.Click();
+
+            nnAgent.GetClick(); //para que se muestre
         }
         /*
         else //esta parte esta repetida en heuristic
@@ -154,8 +158,21 @@ public class CameraMovement : MonoBehaviour
         return click;
     }
 
+    public bool GetBotClick()
+    {
+        if (useNeuralNet)
+            return botMovement.Click();
+        else
+            return click;
+    }
+
     public float GetBotX()
     {
         return Mathf.Clamp(botMovement.MouseX() / 2f, -1f, 1f);
+    }
+
+    public float GetBotY()
+    {
+        return Mathf.Clamp(botMovement.MouseY() / 2f, -1f, 1f);
     }
 }
