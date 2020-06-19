@@ -237,7 +237,7 @@ PrefabInstance:
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: demoHeuristic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -262,7 +262,7 @@ PrefabInstance:
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: tolerableRange
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8138455702859188159, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -774,6 +774,21 @@ PrefabInstance:
       propertyPath: curves.Array.data[2].m_Curve.Array.data[1].tangentMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6085637681797830537, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: moveNoise
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309747964675207366, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: demonstrationName
+      value: Clicker09
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309747964675207366, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: record
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7be1ca8456374d841ef083dc4cc31, type: 3}
 --- !u!1 &126193500
@@ -976,16 +991,6 @@ PrefabInstance:
       propertyPath: useNeuralNet
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4416147798560193591, guid: afa7be1ca8456374d841ef083dc4cc31,
-        type: 3}
-      propertyPath: m_FOVAxisMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6921954876427749554, guid: afa7be1ca8456374d841ef083dc4cc31,
-        type: 3}
-      propertyPath: m_FOVAxisMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2309747964675207366, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: record
@@ -995,6 +1000,16 @@ PrefabInstance:
         type: 3}
       propertyPath: demonstrationName
       value: R001N015T014
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416147798560193591, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: m_FOVAxisMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921954876427749554, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: m_FOVAxisMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7be1ca8456374d841ef083dc4cc31, type: 3}

@@ -12,7 +12,7 @@ public class AgentShoot : Agent
 
     CameraMovement cameraAgent;
 
-    public float tolerableRange = 0.1f; //de -1 a 1 es el maximo posible, el rango es positivo>0
+    public float tolerableRange = 0.05f; //de -1 a 1 es el maximo posible, el rango es positivo>0
 
     float totalSteps = 1000f;
 
@@ -199,6 +199,9 @@ public class AgentShoot : Agent
             maxX = Mathf.Clamp(vectorAction[0], -1f, 1f);
             minX = maxX;
             agY = Mathf.Clamp(vectorAction[1], -1f, 1f);
+
+            graphicCanvas.AddAgentPointDown(minX);
+            graphicCanvas.AddAgentPointUp(agY);
         }
         else if (agentType == AgentType.CLICKONLY) //1 accion (click)
         {
@@ -286,10 +289,29 @@ public class AgentShoot : Agent
 
     public override float[] Heuristic()
     {
-        var action = new float[2]; //3
+        int acts = 0;
+        if (agentType == AgentType.IMPULSE)     //1 accion
+        {
+            acts = 1;
+        }
+        else if (agentType == AgentType.RANGE)      //2 acciones (X)
+        {
+            acts = 2;
+        }
+        else if (agentType == AgentType.TWO_AXIS)   //2 acciones (X,Y)
+        {
+            acts = 2;
+        }
+        else if (agentType == AgentType.CLICKONLY) //1 accion (click)
+        {
+            acts = 1;
+        }
+
+        var action = new float[acts];
 
         if (!demoHeuristic)
         {
+            action = new float[2];
             action[0] = Input.GetAxis("Mouse X"); //clamp hasta un maximo posible
             action[1] = Input.GetAxis("Mouse Y");
         }
@@ -319,22 +341,12 @@ public class AgentShoot : Agent
             else if (agentType == AgentType.CLICKONLY) //1 accion (click)
             {
                 if (cameraAgent.GetBotClick())
-                    action[0] = Random.Range(0.1f, 0.3f);
+                    action[0] = Random.Range(0.2f, 0.7f);
                 else
-                    action[0] = Random.Range(-0.3f, -0.1f);
+                    action[0] = Random.Range(-0.8f, -0.5f);
             }
 
         }
-
-        /*
-        if (Input.GetMouseButtonDown(0))
-        {
-            action[2] = 1f;
-        }
-        else
-        {
-            action[2] = -1f;
-        }*/
 
         return action;
     }
@@ -718,6 +730,11 @@ public class AgentShoot : Agent
         Debug.Log(reward);
 
         AddReward(reward);
+    }
+
+    public void ClickRewardsCheatMissed() // Llamado directamente desde el agente
+    {
+        AddReward(-PunFactor * 2f);
     }
 
     public void DynamicAverageAndStd(ref float moveCount, ref float average, ref float std, ref float varz, ref float avgSqrd, float move)

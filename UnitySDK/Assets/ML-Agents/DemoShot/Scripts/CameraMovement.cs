@@ -18,6 +18,7 @@ public class CameraMovement : MonoBehaviour
 
     private float x = 0f, y = 0f;
     bool click = false;
+    bool botClick = false;
 
     //Vector3 lastPosition;
     // Start is called before the first frame update
@@ -71,7 +72,8 @@ public class CameraMovement : MonoBehaviour
 
             click = nnAgent.GetClick();
 
-            botMovement.Click(); //para que se muestre
+            if (!botClick)
+                botClick = botMovement.Click(); //para que se muestre
         }
         else //if (playWithBot)
         {
@@ -79,6 +81,8 @@ public class CameraMovement : MonoBehaviour
             y = Mathf.Clamp(botMovement.MouseY() / 2f, -1f, 1f);
 
             click = botMovement.Click();
+
+            if (!botClick) botClick = click;
 
             nnAgent.GetClick(); //para que se muestre
         }
@@ -160,10 +164,15 @@ public class CameraMovement : MonoBehaviour
 
     public bool GetBotClick()
     {
-        if (useNeuralNet)
-            return botMovement.Click();
+        if (botClick) //Para garantizar que devuelva el valor en algun momento
+        {
+            botClick = false;
+            return true;
+        }
         else
-            return click;
+        {
+            return false;
+        }
     }
 
     public float GetBotX()

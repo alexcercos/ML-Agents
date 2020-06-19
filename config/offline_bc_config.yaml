@@ -24,4 +24,4 @@ Imitator:
     num_layers: 4
     sequence_length: 128
     memory_size: 32
-    demo_path: ./demos/R001N015T014.demo
+    demo_path: ./demos/Clicker09.demo

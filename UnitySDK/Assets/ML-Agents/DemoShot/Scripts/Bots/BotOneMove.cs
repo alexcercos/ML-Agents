@@ -16,6 +16,8 @@ public class BotOneMove : IBotMovement
     float done = 0f; // para interpolar la funcion (de 0 a 1)
     float last = 0f;
 
+    public float moveNoise = 0.0f;
+
     public List<AnimationCurve> curves;
     //public AnimationCurve shapeX, shapeY;
 
@@ -61,11 +63,12 @@ public class BotOneMove : IBotMovement
 
     public void PerformMove()
     {
-        if (doClic) doClic = false;
+        
         last = done;
         done += 1 / (FPS * time);
 
-        if (done>= timeClic && last < timeClic && !idle)
+        if (doClic) doClic = false;
+        if (done >= timeClic && last < timeClic && !idle)
         {
             doClic = true;
         }
@@ -84,10 +87,12 @@ public class BotOneMove : IBotMovement
             interpY = curves[1].Evaluate(done); //shape Y
         }
 
-        
+        float limitDecay = Mathf.Abs(done - 0.5f) - 0.5f; //en 0 y 1 no hay ruido para asegurar que acaba en el sitio
+        float timeDecay = Mathf.Clamp((time-0.2f)*2f, 0f, 1f); //movimientos cortos sin ruido
 
-        float newX = OutLerp(0f, angleX, interpX);
-        float newY = OutLerp(0f, angleY, interpY); //nuevos angulos
+        float newX = OutLerp(0f, angleX, interpX) + (Random.Range(-moveNoise, moveNoise) * limitDecay * timeDecay);
+        float newY = OutLerp(0f, angleY, interpY) + (Random.Range(-moveNoise, moveNoise) * limitDecay * timeDecay); //nuevos angulos
+        
 
         //xMove = (angleX * CameraMovement.width) / (time * FPS * CameraMovement.maxSpeed * CameraMovement.camAngleHor);
         //yMove = (angleY * CameraMovement.height) / (time * FPS * CameraMovement.maxSpeed * CameraMovement.camAngleVer);
@@ -101,6 +106,9 @@ public class BotOneMove : IBotMovement
 
         if (done >= 1f)
         {
+            if (!idle && !cheatRewardsClicked)
+                agentShoot.ClickRewardsCheatMissed();
+
             cheatRewardsClicked = false;
             perform = false;
             done = 0f;

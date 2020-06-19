@@ -39,7 +39,7 @@ Imitator:
     normalize: true
     num_update: 1
     train_interval: 5
-    num_layers: 4
+    num_layers: 2
     time_horizon: 64
     sequence_length: 128
     summary_freq: 1000
