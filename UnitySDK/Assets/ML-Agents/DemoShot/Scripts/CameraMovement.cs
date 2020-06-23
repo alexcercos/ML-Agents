@@ -74,6 +74,8 @@ public class CameraMovement : MonoBehaviour
 
             if (!botClick)
                 botClick = botMovement.Click(); //para que se muestre
+            else
+                botClick = false;
         }
         else //if (playWithBot)
         {

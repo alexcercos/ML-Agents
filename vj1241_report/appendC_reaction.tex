@@ -1,0 +1,1991 @@
+% ==============================================================================
+% This file is part of the "LaTeX template for writing the Final Degree Work
+% report". It has been developed to aid the students of the Bachelor's Degree in
+% Video Game Design and Development at the Jaume I University.
+%
+% (c) 2019 Sergio Barrachina Mir and José Vte. Martí Avilés
+%
+% The template can be used and distributed under the next license:
+%  Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)
+%  http://creativecommons.org/licenses/by-nc-sa/3.0/
+%  http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode
+%
+% Atom editor configuration follows:
+% !TEX root = ./report.tex
+% !TeX spellcheck = en-US
+% ==============================================================================
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+
+\chapter{Reactive movements}
+\label{app:react}
+
+This appendix contains some notes that were taken when (and after) all training sessions.
+
+Any parameter that does not appear in one training is set to default (see ./config/trainer.config file).
+
+Trained models with green titles are considered good or any improvement in the investigation. Models with red titles are considered failures.
+
+Some of the models have not been saved, either because they don't perform well or they perform in much the same way as another model (agent).
+ 
+\section*{\color{red} 20/4 10:42 (4\textunderscore 20\textunderscore 1042)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256\\
+		\hline
+			learning rate & 5.0e-4 & max steps & 5.0e5\\
+		\hline
+			normalize & false & num layers & 1\\
+		\hline
+			summary freq & 100 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 40x40
+
+Grayscale: false
+
+Observation space size = 25 (eje X)
+
+Action space size = 3
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 51400
+
+Time = 1000s
+
+\vspace{2mm}
+
+It may be necessary to decrease the action vector to only 1 (whichever it is; the clicks are treated as automatic). Improve coherence of movement.
+
+\section*{\color{red} 20/4 13:20 (4\textunderscore 20\textunderscore 1320)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256\\
+		\hline
+			learning rate & 5.0e-4 & max steps & 5.0e5\\
+		\hline
+			normalize & false & num layers & 1\\
+		\hline
+			\textbf{summary freq} & \textbf{1000} & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 40x40
+
+Grayscale: false
+
+Observation space size = 25 (eje X)
+
+\textbf{Action space size = 1}
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 60000
+
+Time = 1200s
+
+\vspace{2mm}
+
+It needs more training, or different parameters. It looks like it's moving in the direction but it's still ``vibrating'' a lot. It may be necessary to think about raytracing instead of a camera.
+
+\section*{\color{red} 20/4 13:57 (4\textunderscore 20\textunderscore 1357)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256\\
+		\hline
+			learning rate & 5.0e-4 & \textbf{max steps} & \textbf{5.0e6}\\
+		\hline
+			normalize & false & num layers & 1\\
+		\hline
+			summary freq & 1000 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 40x40
+
+Grayscale: false
+
+Observation space size = 25 (eje X)
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 170000
+
+Time = 2200s (+)
+
+\vspace{2mm}
+
+Same agent as 4\textunderscore 20\textunderscore 1320 (checkpoint)
+
+\section*{\color{red} 20/4 14:40 (4\textunderscore 20\textunderscore 1440)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256\\
+		\hline
+			learning rate & 5.0e-4 & max steps & 5.0e6\\
+		\hline
+			normalize & false & num layers & 1\\
+		\hline
+			summary freq & 1000 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 40x40
+
+Grayscale: false
+
+Observation space size = 25 (eje X)
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 500000
+
+Time = 6770s (+)
+
+\vspace{2mm}
+
+It seems to have stabilized at a reward of 12,500 - 12,600. 
+
+In reality it stays practically paralyzed, moving very little (almost nothing).
+
+\section*{\color{red} 21/4 12:32 (4\textunderscore 21\textunderscore 1232)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256\\
+		\hline
+			learning rate & 5.0e-4 & max steps & 5.0e6\\
+		\hline
+			normalize & false & num layers & 1\\
+		\hline
+			summary freq & 1000 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{Camera Sensor: 64x64}
+
+Grayscale: false
+
+Observation space size = 25 (eje X)
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 350000
+
+Time = 7530s
+
+\vspace{2mm}
+
+The Bot has been improved with reaction time and more speed. More demanding reward conditions.
+
+The graph seems to show good behavior. Keeps training.
+
+\section*{\color{red} 21/4 14:44 (4\textunderscore 21\textunderscore 1444)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256\\
+		\hline
+			learning rate & 5.0e-4 & max steps & 5.0e6\\
+		\hline
+			normalize & false & num layers & 1\\
+		\hline
+			summary freq & 1000 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25 (eje X)
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = -
+
+Time = -
+
+\vspace{2mm}
+
+Same agent as 4\textunderscore 21\textunderscore 1232.
+
+It doesn't work properly, but if you start the bot the graph works as it should. On the other hand, although the graph follows the same patterns, it stagnates at an amount below (maybe the movement limit). It also causes untrained cases to occur.
+
+\section*{\color{red} 21/4 17:31 (4\textunderscore 21\textunderscore 1731)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256\\
+		\hline
+			learning rate & 5.0e-4 & max steps & 5.0e6\\
+		\hline
+			normalize & false & num layers & 1\\
+		\hline
+			summary freq & 1000 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25 (eje X)
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 310000
+
+Time = 6700s
+
+\vspace{2mm}
+
+Fixed that the agent reads half of the movement value (bug), instead of what the bot actually returned.
+
+I think it uses the previous movements as "cheat sheet" to know what to do, maybe you have to detect the previous movements of the agent to learn or make the agent to move, and the bot to correct.
+
+-I had to interrupt the training because the reaction was coming out of the graph (now it's -2 to 2, instead of 1).
+
+-Another interruption, the vector action only returns normalized, so you have to change the value that happens to the camera (not the other way around).
+
+The graph fits perfectly in the training, but I think it's because you can see what the real bot has done in the previous movement. It may be necessary to add curiosity rewards in following trainings. 
+
+The model seemed to make a good default move, even with a change of direction, but then it tends to turn at full speed without stopping. It should certainly stop reading what the bot does in the last move.
+
+\section*{\color{red} 22/4 10:00 (4\textunderscore 22\textunderscore 1000)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256\\
+		\hline
+			learning rate & 5.0e-4 & max steps & 5.0e6\\
+		\hline
+			normalize & false & num layers & 1\\
+		\hline
+			summary freq & 1000 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & \textbf{extrinsic gamma} & \textbf{0.95}\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25 (eje X)
+
+Action space size = 1
+
+\vspace{2mm}
+
+\textbf{Episode steps = 2000}
+
+Total steps = 41000
+
+Time = 900s
+
+\vspace{2mm}
+
+The previous movements have been changed to those of the agent.
+
+It tends towards chaos.
+
+\section*{\color{red} 22/4 10:31 (4\textunderscore 22\textunderscore 1031)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256\\
+		\hline
+			learning rate & 5.0e-4 & max steps & 5.0e6\\
+		\hline
+			normalize & false & num layers & 1\\
+		\hline
+			summary freq & 1000 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & \textbf{extrinsic gamma} & \textbf{0.9}\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+\textbf{Observation space size = 0}
+
+Action space size = 1
+
+\vspace{2mm}
+
+\textbf{Episode steps = 3000}
+
+Total steps = 185000
+
+Time = 4000s
+
+\vspace{2mm}
+
+All observation other than the camera has been removed. The bot reacts in time 0 now. An idle address has also been removed.
+
+It was on the right track but tends to go into chaos after 1h.
+
+\section*{\color{green} 22/4 11:43 (4\textunderscore 22\textunderscore 1143)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256\\
+		\hline
+			\textbf{learning rate} & \textbf{2.5e-4} & max steps & 5.0e6\\
+		\hline
+			normalize & false & num layers & 1\\
+		\hline
+			summary freq & 1000 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+			\textbf{curiosity strength} & \textbf{0.01} & \textbf{curiosity gamma} & \textbf{0.99}\\
+		\hline
+			\textbf{curiosity encoding size} & \textbf{256} & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 180000
+
+Time = 4100s
+
+\vspace{2mm}
+
+Decreased idle randomness and increased acceptable range.
+ 
+The graph fits well, although with some noise (perhaps out of curiosity), but it also tends to hit the planes that appear on the opposite side (this didn't happen before, it only reacted well to those that appeared in front). In viewport it also seems very similar, and the noise is not so noticeable.
+
+Saved as a checkpoint.
+
+--Note: the behaviour is a bit different because when training the screen is displayed in a 16:9 ratio (instead of 1:1 from the editor), that makes the camera react a bit differently.
+
+\section*{\color{red} 22/4 13:19 (4\textunderscore 22\textunderscore 1319)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256\\
+		\hline
+			learning rate & 2.5e-4 & max steps & 5.0e6\\
+		\hline
+			normalize & false & num layers & 1\\
+		\hline
+			summary freq & 1000 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+			curiosity strength & 0.01 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 256 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 256000
+
+Time = 1500s (+)
+
+\vspace{2mm}
+
+Correct the proportion in the build. Actually, as the render target's camera goes out from the agent's one, it doesn't cause problems. However the isVisible should be changed in relation to that camera.
+
+It tends again to chaos.
+
+\section*{\color{green} 22/4 13:52 (4\textunderscore 22\textunderscore 1352)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256\\
+		\hline
+			\textbf{learning rate} & \textbf{1.0e-4} & max steps & 5.0e6\\
+		\hline
+			normalize & false & num layers & 1\\
+		\hline
+			summary freq & 1000 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 373000
+
+Time = 8050s
+
+\vspace{2mm}
+
+Before training the reward is increased by being in range.
+
+VERY slow training, consider setting a ``learning rate schedule'' so that the learning rate goes from more to less (but it may already be by default, you would have to decrease the number of training steps).
+
+It seems more or less stable (like the previous one achieved).
+
+\section*{\color{red} 22/4 16:15 (4\textunderscore 22\textunderscore 1615)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & \textbf{hidden units} & \textbf{128}\\
+		\hline
+			\textbf{learning rate} & \textbf{1.0e-3} & \textbf{learning rate schedule} & \textbf{linear}\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			\textbf{num layers} & \textbf{2} & summary freq & 1000\\
+		\hline
+			time horizon & 5 & extrinsic strength & 1.0\\
+		\hline
+			extrinsic gamma & 0.9 & &\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 50000
+
+Time = 1075s
+
+\vspace{2mm}
+
+Learning rate added (so that it can be changed explicitly) The steps are now determined. The structure of the network has also been changed.
+
+It has reached a reward of -0.313, maybe for increasing the number of layers.
+
+\section*{\color{red} 22/4 16:15 (4\textunderscore 22\textunderscore 1615)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & \textbf{hidden units} & \textbf{256}\\
+		\hline
+			learning rate & 1.0e-3 & learning rate schedule & linear\\
+		\hline
+			\textbf{max steps} & \textbf{5.0e5} & normalize & false\\
+		\hline
+			\textbf{num layers} & \textbf{1} & summary freq & 1000\\
+		\hline
+			time horizon & 5 & extrinsic strength & 1.0\\
+		\hline
+			extrinsic gamma & 0.9 & &\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 100000
+
+Time = 2160s
+
+\vspace{2mm}
+
+It may be necessary to lower the initial learning rate to increase the effectiveness of the training. In the first 50,000 steps it makes very little progress (from -.524 to -.415). 
+
+In the end it reaches -.353.
+
+\section*{\color{red} 22/4 17:19 (4\textunderscore 22\textunderscore 1719)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			\textbf{batch size} & \textbf{1024} & beta & 5.0e-3 \\ 
+		\hline
+			\textbf{buffer size} & \textbf{4096} & hidden units & 256 \\
+		\hline
+			\textbf{learning rate} & \textbf{2.0e-4} & \textbf{learning rate schedule} & \textbf{constant}\\
+		\hline
+			\textbf{max steps} & \textbf{2.0e5} & normalize & false\\
+		\hline
+			\textbf{num epoch} & \textbf{5} & num layers & 1\\
+		\hline
+			 summary freq & 1000 & \textbf{time horizon} & \textbf{8}\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 25000
+
+Time = 540s
+
+\vspace{2mm}
+
+Several changes to adapt the network to continuous space. Constant Learning Rate to check when it converges (or diverges)
+Does not converge after 25000 steps.
+
+\section*{\color{red} 22/4 17:54 (4\textunderscore 22\textunderscore 1754)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 4096 & hidden units & 256 \\
+		\hline
+			\textbf{learning rate} & \textbf{1.0e-4} & learning rate schedule & constant\\
+		\hline
+			\textbf{max steps} & \textbf{2.0e6} & normalize & false\\
+		\hline
+			\textbf{num epoch} & \textbf{3} & num layers & 1\\
+		\hline
+			 summary freq & 1000 & \textbf{time horizon} & \textbf{32}\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 115000
+
+Time = 2420s
+
+\vspace{2mm}
+
+Long training to try to get it stabilized. 
+
+--It doesn't stabilize after 100,000 steps, I think it has a bigger problem with how the rewards are given. I'll turn them into linear.
+
+\section*{\color{red} 22/4 18:42 (4\textunderscore 22\textunderscore 1842)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 4096 & hidden units & 256 \\
+		\hline
+			\textbf{learning rate} & \textbf{5.0e-4} & \textbf{learning rate schedule} & \textbf{linear}\\
+		\hline
+			max steps & 2.0e6 & normalize & false\\
+		\hline
+			num epoch & 3 & num layers & 1\\
+		\hline
+			 summary freq & 1000 & time horizon & 32\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 61000
+
+Time = 1200s
+
+\vspace{2mm}
+
+It shows no sign of stabilizing, so the range of success may still be very demanding.
+
+To save time in converging to the original bot function, I have thought to use learning curriculum that determines the thresholds of the rewards, making them smaller and smaller. 
+
+\section*{\color{red} 23/4 10:49 (4\textunderscore 23\textunderscore 1049)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 4096 & hidden units & 256 \\
+		\hline
+			learning rate & 5.0e-4 & learning rate schedule & linear\\
+		\hline
+			max steps & 2.0e6 & normalize & false\\
+		\hline
+			num epoch & 3 & num layers & 1\\
+		\hline
+			 summary freq & 1000 & time horizon & 32\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 116000
+
+Time = 2400s
+
+\vspace{2mm}
+
+Training with curriculum. Still having trouble converging.
+
+\section*{\color{red} 23/4 12:46 (4\textunderscore 23\textunderscore 1246)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			\textbf{batch size} & \textbf{32} & beta & 5.0e-3 \\ 
+		\hline
+			\textbf{buffer size} & \textbf{256} & hidden units & 256 \\
+		\hline
+			\textbf{learning rate} & \textbf{3.0e-4} & learning rate schedule & linear\\
+		\hline
+			\textbf{max steps} & \textbf{1.0e6} & normalize & false\\
+		\hline
+			num epoch & 3 & num layers & 1\\
+		\hline
+			 summary freq & 1000 & \textbf{time horizon} & \textbf{5}\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+\textbf{Episode steps = 2000}
+
+Total steps = 394000
+
+Time = 8500s
+
+\vspace{2mm}
+
+Increased the minimum reward to pass the level. Changes in variables until a stable one is achieved.
+
+It manages to stabilize the idle movement (after quite a while) but doesn't do impulses well.
+
+\section*{\color{red} 23/4 15:51 (4\textunderscore 23\textunderscore 1551)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			\textbf{batch size} & \textbf{1024} & beta & 5.0e-3 \\ 
+		\hline
+			\textbf{buffer size} & \textbf{4096} & hidden units & 256 \\
+		\hline
+			\textbf{learning rate} & \textbf{5.0e-4} & learning rate schedule & linear\\
+		\hline
+			max steps & 1.0e6 & normalize & false\\
+		\hline
+			num epoch & 3 & num layers & 1\\
+		\hline
+			 summary freq & 1000 & \textbf{time horizon} & \textbf{8}\\
+		\hline
+			extrinsic strength & 1.0 & \textbf{extrinsic gamma} & \textbf{0.8}\\
+		\hline
+			\textbf{curiosity strength} & \textbf{0.05} & \textbf{curiosity gamma} & \textbf{0.9}\\
+		\hline
+			\textbf{curiosity encoding size} & \textbf{128} & &\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 2000
+
+Total steps = 453000
+
+Time = 7300s
+
+\vspace{2mm}
+
+Added penalty for out of range (beyond maximumRange) and curiosity. Also the extrinsic gamma is lowered to make the present (at this time) count more.
+
+Reaches level 2 with 0.4 reward but shows no improvement. The reward range may need to be increased.
+
+\section*{\color{red} 23/4 19:15 (4\textunderscore 23\textunderscore 1915)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & \textbf{beta} & \textbf{5.0e-4} \\ 
+		\hline
+			buffer size & 4096 & hidden units & 256 \\
+		\hline
+			\textbf{learning rate} & \textbf{1.0e-3} & learning rate schedule & linear\\
+		\hline
+			max steps & 1.0e6 & normalize & false\\
+		\hline
+			num epoch & 3 & \textbf{num layers} & \textbf{2}\\
+		\hline
+			 summary freq & 1000 & \textbf{time horizon} & \textbf{2048}\\
+		\hline
+			extrinsic strength & 1.0 & \textbf{extrinsic gamma} & \textbf{0.9}\\
+		\hline
+			curiosity strength & 0.05 & curiosity gamma & 0.9\\
+		\hline
+			curiosity encoding size & 128 & &\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 2000
+
+Total steps = 760000
+
+Time = 16700s
+
+\vspace{2mm}
+
+Training by watching tensorboard. Test with 2 layers, it's probably slower.
+
+The training is too slow, although the graphs seem to have correct progression. The cause may be the form of the reward function or the fact that it had a higher range before (up to -120).
+
+\section*{\color{green} 24/4 10:26 (4\textunderscore 24\textunderscore 1026)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			\textbf{batch size} & \textbf{32} & \textbf{beta} & \textbf{5.0e-3} \\ 
+		\hline
+			\textbf{buffer size} & \textbf{256} & hidden units & 256 \\
+		\hline
+			\textbf{learning rate} & \textbf{2.5e-4} & learning rate schedule & linear\\
+		\hline
+			\textbf{max steps} & \textbf{5.0e6} & normalize & false\\
+		\hline
+			num epoch & 3 & \textbf{num layers} & \textbf{1}\\
+		\hline
+			 summary freq & 1000 & \textbf{time horizon} & \textbf{5}\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+			\textbf{curiosity strength} & \textbf{0.01} & \textbf{curiosity gamma} & \textbf{0.99}\\
+		\hline
+			\textbf{curiosity encoding size} & \textbf{256} & &\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+\textbf{Episode steps = 3000}
+
+Total steps = 112000
+
+Time = 2400s
+
+\vspace{2mm}
+
+Training with old reward functions (TR=0.005), and with the old parameters In 1500-2000s it starts to get reasonably close. The graphs don't show any strange behaviour, but the rewards are always negative (the network should break in 180k-200k steps, now it is at 100k). The model is correct.
+
+\section*{\color{green} 24/4 16:00 (4\textunderscore 24\textunderscore 1600)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256 \\
+		\hline
+			learning rate & 2.5e-4 & learning rate schedule & linear\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			num epoch & 3 & num layers & 1\\
+		\hline
+			 summary freq & 1000 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+			curiosity strength & 0.01 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 256 & &\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 435000
+
+Time = 10000s
+
+\vspace{2mm}
+
+Training with the same parameters and without curriculum (with TR=0.01, MR=1). Using linear rewards but multiplied by 40. 
+
+From 80000 steps or a little earlier you can see that it adapts to the form (except for some transitions between jumps). 
+
+At 150000 steps it almost acts like one of the previous models: it goes from -16 to -2 reward and the graphs don't show anything strange.
+
+At 190000 steps first positive reward (0.340).
+
+At 275,000 steps the idle stages are virtually out of noise. However, it can be seen that the network does not fit well when there are more than 2 targets at once, this may be because of how the bot algorithm prioritizes them and the fact that the network still has no memory. The reward is 3.
+
+Afterwards, the reward increases steadily because it adapts to the idle with more precision, but the more time goes by the less I am convinced about how it adapts to some impulses (it may be due to underfitting, since it doesn't have the memory installed yet either in image or in movements).
+
+Putting it in Unity is less convincing because it doesn't follow the same movement if it's executed autonomously (it's smoothed out even more, the impulses are slower).
+
+In the following tests: increase the learning-rate and put the values normalized; in another one increase even more the multiplication factor. Changing the shape of the function may improve (or worsen) the learning curve. After the 2 tests, it would be convenient to put the movement memory back (25 previous values).
+
+\section*{\color{red} 24/4 19:35 (4\textunderscore 24\textunderscore 1935)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256 \\
+		\hline
+			\textbf{learning rate} & \textbf{1.0e-3} & learning rate schedule & linear\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			num epoch & 3 & num layers & 1\\
+		\hline
+			 summary freq & 1000 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+			curiosity strength & 0.01 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 256 & &\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 190000
+
+Time = 4300s
+
+\vspace{2mm}
+
+Standardized rewards, but learning rate multiplied by 40.
+
+1.0e-2 is too much learning rate, it starts at the extremes. 5.0e-3 too. 2.5e-3 seems stable at the start but becomes unsettled on the first pass.
+
+1.0e-3 seems to be the stable maximum, which is 4 times more than the previous one.
+
+It doesn't seem to be as effective, in 100000 steps it doesn't catch the jumps well, even if the reward increases from -0.43 to -0.2
+
+\section*{\color{green} 24/4 21:30 (4\textunderscore 24\textunderscore 2130)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256 \\
+		\hline
+			\textbf{learning rate} & \textbf{2.5e-4} & learning rate schedule & linear\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			num epoch & 3 & num layers & 1\\
+		\hline
+			 summary freq & 1000 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+			curiosity strength & 0.01 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 256 & &\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 366000
+
+Time = 8400s
+
+\vspace{2mm}
+
+Reward multiplied by 80, parameters of 4\textunderscore 24\textunderscore 1600. 
+
+Similar results are obtained as when multiplied by 40.
+
+In this case you get to 0 at 196000, and to -4 at about 150000 (practically the same proportion).
+
+It would be advisable to adjust the learning curriculum again with these rewards (or those of *40) and check whether or not it is faster. Then add the movement memory again.
+
+\section*{\color{green} 25/4 19:15 (4\textunderscore 25\textunderscore 1915)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256 \\
+		\hline
+			learning rate & 2.5e-4 & learning rate schedule & linear\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			num epoch & 3 & num layers & 1\\
+		\hline
+			 summary freq & 1000 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+			curiosity strength & 0.01 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 256 & &\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 305000
+
+Time = 7000s
+
+\vspace{2mm}
+
+Training as 4\textunderscore 24\textunderscore 1600 but with curriculum (adapted, TR from 0.5 to 0.01) It should approach the form in 80000 steps and have positive reward (in the last level) at 190000 to equal the training without curriculum.
+
+In the end it seems to work similarly with less restrictive parameters, but as the minimum conditions are unbalanced it has not passed the first level (behaving almost the same). A next training will be done by setting the 0 of limits to overcome levels.
+
+Probably the curriculum can be used to increase the restrictions, but this requires more observations.
+
+The parameter of curiosity is of no use to me.
+
+\section*{\color{red} 26/4 14:21 (4\textunderscore 26\textunderscore 1421)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 32 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 256 & hidden units & 256 \\
+		\hline
+			learning rate & 2.5e-4 & learning rate schedule & linear\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			num epoch & 3 & num layers & 1\\
+		\hline
+			 summary freq & 1000 & time horizon & 5\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+			curiosity strength & 0.01 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 256 & &\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+\textbf{Observation space size = 25}
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 573000
+
+Time = 13200s
+
+\vspace{2mm}
+
+Training without curriculum, with the 25 added observations (from the agent). The change of direction has also been activated, to see if it learns the context.
+
+The reward is stagnant over -10 from the 160000 steps. The graph shows how it oscillates over the center. For future models it may be necessary to increase the complexity of the training and the network. Another way is to make the network in control and the bot indicate how to act.
+
+\section*{\color{green} 26/4 18:15 (4\textunderscore 26\textunderscore 1815)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			\textbf{batch size} & \textbf{1024} & beta & 5.0e-3 \\ 
+		\hline
+			\textbf{buffer size} & \textbf{8192} & hidden units & 256 \\
+		\hline
+			learning rate & 2.5e-4 & learning rate schedule & linear\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			\textbf{num epoch} & \textbf{5} & \textbf{num layers} & \textbf{2}\\
+		\hline
+			 summary freq & 1000 & \textbf{time horizon} & \textbf{256}\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 763000
+
+Time = 16750s
+
+\vspace{2mm}
+
+It should improve accuracy, but be much slower.
+
+Idea: put as previous values of movement the average between the bot and the agent.
+
+The graph recognizes impulses very well, but the idle oscillates between 0 with quite a lot of noise. This must be because the network doesn't remember the previous images, and doesn't distinguish when to change direction. The growth is much slower and it stagnates again on the same level of reward. This could be solved by pre-recording the image or simplifying the algorithm in cases where more than one target appears.
+
+\section*{\color{red} 27/4 10:35 (4\textunderscore 27\textunderscore 1035)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 8192 & hidden units & 256 \\
+		\hline
+			learning rate & 2.5e-4 & learning rate schedule & linear\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			num epoch & 5 & num layers & 2\\
+		\hline
+			 summary freq & 1000 & time horizon & 256\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 132000
+
+Time = 2900s
+
+\vspace{2mm}
+
+Improved bot so that it always chooses the closest target, at the moment the change of direction is removed. In this one we are going to use curriculum to see if it improves the learning speed.
+
+The curriculum doesn't seem effective, after almost 3000s it has only reached -14 of reward (from the easy level).
+
+\section*{\color{red} 27/4 11:23 (4\textunderscore 27\textunderscore 1123)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 8192 & hidden units & 256 \\
+		\hline
+			learning rate & 2.5e-4 & learning rate schedule & linear\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			num epoch & 5 & num layers & 2\\
+		\hline
+			 summary freq & 1000 & time horizon & 256\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 366000
+
+Time = 8000s
+
+\vspace{2mm}
+
+Same model as before but without curriculum. Similar result, it stagnates at -10.
+
+\section*{\color{red} 27/4 13:39 (4\textunderscore 27\textunderscore 1339)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 8192 & hidden units & 256 \\
+		\hline
+			learning rate & 2.5e-4 & learning rate schedule & linear\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			num epoch & 5 & num layers & 2\\
+		\hline
+			 summary freq & 1000 & \textbf{time horizon} & \textbf{32}\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 303000
+
+Time = 6600s
+
+\vspace{2mm}
+
+Tests with different parameters: time horizon (from 256 to 32) does not seem to change anything.
+
+\section*{\color{green} 27/4 15:33 (4\textunderscore 27\textunderscore 1533)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 8192 & \textbf{hidden units} & \textbf{64} \\
+		\hline
+			\textbf{learning rate} & \textbf{5.0e-4} & \textbf{learning rate schedule} & \textbf{constant}\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			\textbf{num epoch} & \textbf{3} & \textbf{num layers} & \textbf{3}\\
+		\hline
+			 summary freq & 1000 & \textbf{time horizon} & \textbf{256}\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 3000
+
+Total steps = 942000
+
+Time = 19900s
+
+\vspace{2mm}
+
+Different network architecture. It has more layers but fewer units per layer.
+
+It's close to the shape but still has a lot of noise, plus it's very slow. The curiosity parameter may need to be retrieved and add more observations. After many hours it gets to -6 reward.
+
+It may also be possible to reduce the length of each episode.
+
+\section*{\color{red} 28/4 18:00 (4\textunderscore 28\textunderscore 1800)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 8192 & \textbf{hidden units} & \textbf{128} \\
+		\hline
+			\textbf{learning rate} & \textbf{4.0e-4} & learning rate schedule & constant\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			num epoch & 3 & \textbf{num layers} & \textbf{2}\\
+		\hline
+			 summary freq & 1000 & time horizon & 256\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+			\textbf{curiosity strength} & \textbf{0.05} & \textbf{curiosity gamma} & \textbf{0.99}\\
+		\hline
+			\textbf{curiosity encoding size} & \textbf{256} &  & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25
+
+\textbf{Action space size = 2}
+
+\vspace{2mm}
+
+\textbf{Episode steps = 1000}
+
+Total steps = 74000
+
+Time = 1550s
+
+\vspace{2mm}
+
+Drastic changes in rewards (factors and standard deviations). Now returns 2 values in vector action (the expected maximum and minimum).
+
+With this test I know that the model can set the maximum and minimum. Incomplete.
+
+\section*{\color{red} 28/4 18:33 (4\textunderscore 28\textunderscore 1833)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 8192 & hidden units & 128 \\
+		\hline
+			learning rate & 4.0e-4 & learning rate schedule & constant\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			num epoch & 3 & num layers & 2\\
+		\hline
+			 summary freq & 1000 & time horizon & 256\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+			curiosity strength & 0.05 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 256 &  & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 360000
+
+Time = 7600s
+
+\vspace{2mm}
+
+Same test as before, but longer. It manages to wrap the movement but with too wide a range.
+
+\section*{\color{red} 29/4 10:34 (4\textunderscore 29\textunderscore 1034)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & \textbf{beta} & \textbf{1.0e-2} \\ 
+		\hline
+			buffer size & 8192 & \textbf{hidden units} & \textbf{256} \\
+		\hline
+			\textbf{learning rate} & \textbf{6.0e-4} & \textbf{learning rate schedule} & \textbf{linear}\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			\textbf{num epoch} & \textbf{10} & num layers & 2\\
+		\hline
+			 summary freq & 1000 & \textbf{time horizon} & \textbf{512}\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+			curiosity strength & 0.05 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 256 &  & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 226000
+
+Time = 5400s
+
+\vspace{2mm}
+
+The reward now takes into account the relationship between standard deviations.
+
+Like the previous one, it stagnates at a certain point (this time at -1, but with similar behavior). 
+
+\section*{\color{red} 29/4 12:09 (4\textunderscore 29\textunderscore 1209)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 1.0e-2 \\ 
+		\hline
+			buffer size & 8192 & hidden units & 256 \\
+		\hline
+			\textbf{learning rate} & \textbf{2.0e-5} & learning rate schedule & linear\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			num epoch & 10 & num layers & 2\\
+		\hline
+			 summary freq & 1000 & time horizon & 512\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.9\\
+		\hline
+			curiosity strength & 0.05 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 256 &  & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 200000
+
+Time = 4700s
+
+\vspace{2mm}
+
+Same training but with a lower learning rate (and scores multiplied by 20). Doesn't seem to advance too far so it's not saved.
+
+\section*{\color{red} 29/4 13:34 (4\textunderscore 29\textunderscore 1334)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & \textbf{beta} & \textbf{5.0e-3} \\ 
+		\hline
+			buffer size & 8192 & hidden units & 256 \\
+		\hline
+			\textbf{learning rate} & \textbf{5.0e-5} & \textbf{learning rate schedule} & \textbf{constant}\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			num epoch & 10 & num layers & 2\\
+		\hline
+			 summary freq & 1000 & time horizon & 512\\
+		\hline
+			extrinsic strength & 1.0 & \textbf{extrinsic gamma} & \textbf{0.8}\\
+		\hline
+			\textbf{curiosity strength} & \textbf{0.1} & \textbf{curiosity gamma} & \textbf{0.9}\\
+		\hline
+			\textbf{curiosity encoding size} & \textbf{128} &  & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 297000
+
+Time = 7920s
+
+\vspace{2mm}
+
+For some reason the 2 curves end up below the bot value, and it doesn't get much of a penalty. There must be some mistake in the rewards that allows him not to learn properly and still increase the reward.
+
+\section*{\color{red} 29/4 18:27 (4\textunderscore 29\textunderscore 1827)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 8192 & hidden units & 256 \\
+		\hline
+			\textbf{learning rate} & \textbf{5.0e-4} & learning rate schedule & constant\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			\textbf{num epoch} & \textbf{5} & num layers & 2\\
+		\hline
+			summary freq & 1000 & time horizon & 512\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			\textbf{curiosity strength} & \textbf{0.01} & curiosity gamma & 0.9\\
+		\hline
+			curiosity encoding size & 128 &  & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 265000
+
+Time = 6200s
+
+\vspace{2mm}
+
+The reward rises to positive but stabilizes at +12 after 130,000 steps. It reaches a positive reward at 90000.
+
+The network learns quickly to separate the maximum and minimum but with very wide ranges. It would be necessary to increase the requirement by penalizing more neutral scores (and perhaps vary how each reward factor affects it).
+
+\section*{\color{red} 30/4 10:43 (4\textunderscore 30\textunderscore 1043)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 8192 & hidden units & 256 \\
+		\hline
+			learning rate & 5.0e-4 & learning rate schedule & constant\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			num epoch & 5 & num layers & 2\\
+		\hline
+			summary freq & 1000 & time horizon & 512\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.01 & curiosity gamma & 0.9\\
+		\hline
+			curiosity encoding size & 128 &  & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 317000
+
+Time = 7440s
+
+\vspace{2mm}
+
+Training with curriculum. It has the parameter ``requirement'', which makes that when the reward reaches 0.5, 1 is subtracted from future rewards so that it must adjust the graph more. It has several levels until subtracting 25 points (it goes from 1 to 1).
+
+There are several levels of the curriculum that go up too fast, they should be compressed into less. On the other hand, I have found that it is necessary to use a weighted average to make it react correctly to impulses.
+
+\section*{\color{red} 30/4 13:16 (4\textunderscore 30\textunderscore 1316)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 8192 & hidden units & 256 \\
+		\hline
+			learning rate & 5.0e-4 & learning rate schedule & constant\\
+		\hline
+			max steps & 5.0e6 & normalize & false\\
+		\hline
+			num epoch & 5 & num layers & 2\\
+		\hline
+			summary freq & 1000 & time horizon & 512\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.01 & curiosity gamma & 0.9\\
+		\hline
+			curiosity encoding size & 128 &  & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 265000
+
+Time = 6215s
+
+\vspace{2mm}
+
+Same training but with several errors corrected (such as the relationship between stds or some score limits), in addition to having added a weighted mean and a minimum standard deviation. The learning curriculum levels should be adjusted later.
+
+The network stagnates over 0, it does not get past the first level. It should learn to adjust the lines.
+
+\section*{\color{red} 30/4 15:12 (4\textunderscore 30\textunderscore 1512)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 8192 & \textbf{epsilon} & \textbf{0.3} \\
+		\hline
+		  hidden units & 256 & \textbf{learning rate} & \textbf{1.0e-3}\\
+		\hline
+			learning rate schedule & constant & max steps & 5.0e6\\
+		\hline
+			normalize & false & num epoch & 5\\
+		\hline
+			\textbf{num layers} & \textbf{1} & summary freq & 1000\\
+		\hline
+			\textbf{time horizon} & \textbf{5} & &\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.01 & curiosity gamma & 0.9\\
+		\hline
+			curiosity encoding size & 128 &  & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Camera Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 25
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 128000
+
+Time = 3050s
+
+\vspace{2mm}
+
+Tests with different parameters. It learns faster but it gets stuck again. This seems to have its cause in the fact that if the agent estimates a very large range in relation to the deviation of the bot even though the reward is decreased, the punishment is also decreased. To adjust this phenomenon I thought to change the deviation ratio parameter to another factor that will also depend on coherence (using clipped cubic functions).
+
+It may be necessary to combine learning with behavioral cloning at first.
+
+%30

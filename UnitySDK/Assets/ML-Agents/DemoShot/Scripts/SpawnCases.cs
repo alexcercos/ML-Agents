@@ -11,6 +11,8 @@ public class SpawnCases : MonoBehaviour
     public float timeBetweenSpawn = 2.0f;
     float timeElapsed = 0f;
 
+    public int maxPlanes = 3;
+
     public float minDist = 30f;
     public float maxDist = 400f;
 
@@ -52,7 +54,7 @@ public class SpawnCases : MonoBehaviour
     {
         timeElapsed += Time.deltaTime;
 
-        if (timeElapsed > timeBetweenSpawn)
+        if (timeElapsed > timeBetweenSpawn && transform.childCount < maxPlanes)
         {
             float rand = Random.Range(0f, 1f);
 

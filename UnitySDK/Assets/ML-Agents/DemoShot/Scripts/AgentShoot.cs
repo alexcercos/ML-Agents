@@ -7,6 +7,8 @@ public class AgentShoot : Agent
 {
     public DebugCanvas graphicCanvas;
 
+    public GameObject agentDecal, botDecal;
+
     //public bool agentRange = false;
     public AgentType agentType = AgentType.CLICKONLY;
 
@@ -76,6 +78,7 @@ public class AgentShoot : Agent
 
     public bool demoHeuristic = true;
     public bool showStd = true;
+    public bool clickDiscrete = true;
 
     private void Start()
     {
@@ -137,7 +140,7 @@ public class AgentShoot : Agent
         {
             AddVectorObs(Mathf.Lerp(realX[0], lastX[0], observationBotAgent));
         }
-        else if (receiveObservations == ObservationsType.BOTH10FIRST) //en los 2 ejes (ordenados)
+        else if (receiveObservations == ObservationsType.BOTH10FIRST || receiveObservations == ObservationsType.BOTH10_CLICK) //en los 2 ejes (ordenados)
         {
             int i = 0;
             while (i < 10)
@@ -151,6 +154,11 @@ public class AgentShoot : Agent
                 AddVectorObs(Mathf.Lerp(realY[i], lastY[i], observationBotAgent));
                 i++;
             }
+        }
+
+        if (receiveObservations == ObservationsType.BOTH10_CLICK) //ultimo clic (21 obs)
+        {
+            AddVectorObs(lastClick);
         }
     }
 
@@ -208,8 +216,14 @@ public class AgentShoot : Agent
             minX = oX;
             maxX = oX;
             agY = oY;
+            
             //click float
-            iClick = Mathf.Clamp(vectorAction[0], -1f, 1f);
+            if (clickDiscrete)
+                iClick = Mathf.FloorToInt(vectorAction[0]);
+            else
+                iClick = Mathf.Clamp(vectorAction[0], -1f, 1f);
+
+
 
             graphicCanvas.AddAgentPointDown(iClick); // click (no movimiento)
 
@@ -243,11 +257,16 @@ public class AgentShoot : Agent
 
         realY.RemoveAt(59);
         realY.Insert(0, oY);
+
     }
+
+    
 
     public void AgentClickEvent()
     {
         graphicCanvas.AddAgentClick();
+
+        Instantiate(agentDecal, transform.position + transform.forward * 40f, Quaternion.identity);
 
         ClickRewardsCheatSheet(tolerableRange, PunFactor, RewFactor);
     }
@@ -255,6 +274,8 @@ public class AgentShoot : Agent
     public void BotClickEvent()
     {
         graphicCanvas.AddBotClick();
+
+        Instantiate(botDecal, transform.position + transform.forward * 35f, Quaternion.identity);
     }
 
     public override void AgentOnDone()
@@ -277,7 +298,14 @@ public class AgentShoot : Agent
         if (agentType != AgentType.CLICKONLY) return true;
 
         bool hasClicked = (iClick > 0f) && (lastClick <= 0f);
-        lastClick = iClick;
+
+        if (clickDiscrete)
+        {
+            if (iClick <= 0f) lastClick = Random.Range(-1f, 0f);
+            else lastClick = Random.Range(0.001f, 1f);
+        }
+        else
+            lastClick = iClick;
 
         //click event
         if (hasClicked)
@@ -314,6 +342,8 @@ public class AgentShoot : Agent
             action = new float[2];
             action[0] = Input.GetAxis("Mouse X"); //clamp hasta un maximo posible
             action[1] = Input.GetAxis("Mouse Y");
+
+            
         }
         else
         {
@@ -725,16 +755,17 @@ public class AgentShoot : Agent
 
     public void ClickRewardsCheatSheet(float tolerableRange, float punFactor, float rewFactor) // Se llama desde el evento click directamente al agente
     {
-        float reward = GetComponent<BotOneMove>().GetCheatRewards(tolerableRange, punFactor, rewFactor);
+        //float reward = GetComponent<BotOneMove>().GetCheatRewards(tolerableRange, punFactor, rewFactor);
+        float reward = GetComponent<BotPrecision>().GetCheatRewards(tolerableRange, punFactor, rewFactor);
 
-        Debug.Log(reward);
+        //Debug.Log(reward);
 
         AddReward(reward);
     }
 
     public void ClickRewardsCheatMissed() // Llamado directamente desde el agente
     {
-        AddReward(-PunFactor * 2f);
+        AddReward(-PunFactor * 5f);
     }
 
     public void DynamicAverageAndStd(ref float moveCount, ref float average, ref float std, ref float varz, ref float avgSqrd, float move)
@@ -965,7 +996,7 @@ public struct MoveInfo
 
 public enum ObservationsType
 {
-    PREVIOUS25, LAST, NONE, BOTH10FIRST
+    PREVIOUS25, LAST, NONE, BOTH10FIRST, BOTH10_CLICK
 }
 
 public enum AgentType

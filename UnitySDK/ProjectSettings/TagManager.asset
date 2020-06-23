@@ -30,6 +30,7 @@ TagManager:
   - purpleAgent
   - purpleGoal
   - Objetivo
+  - decal
   layers:
   - Default
   - TransparentFX
@@ -46,7 +47,7 @@ TagManager:
   - strikerWall
   - striker
   - invisibleUI
-  - 
+  - decals
   - 
   - 
   - 

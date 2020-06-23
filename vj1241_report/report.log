@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.8)  15 JUN 2020 20:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.8)  23 JUN 2020 12:01
 entering extended mode
 **D:/Documents/ml-agents-master/vj1241_report/report.tex
 (D:/Documents/ml-agents-master/vj1241_report/report.tex
@@ -858,6 +858,25 @@ Package caption Info: wrapfig package is loaded.
 \c@subfigure=\count330
 \c@subtable=\count331
 )
+("C:\Users\alexc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xcolor\xcolor.sty"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Users\alexc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\color
+.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 709.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
 ("C:\Users\alexc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3backend\l3backen
 d-pdfmode.def"
 File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
@@ -869,25 +888,26 @@ File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
 
 LaTeX Warning: Label `fig:graphTR' multiply defined.
 
-) (chap05_conclusions.aux) (appendA_average.aux) (appendB_std.aux))
+) (chap05_conclusions.aux) (appendA_average.aux) (appendB_std.aux)
+(appendC_reaction.aux))
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -958,7 +978,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-Package hyperref Info: Link coloring ON on input line 54.
+Package hyperref Info: Link coloring ON on input line 55.
 
 ("C:\Users\alexc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\nameref.s
 ty"
@@ -976,10 +996,10 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 Redoing nameref's sectioning
 Redoing nameref's label
-LaTeX Info: Redefining \nameref on input line 54.
-LaTeX Info: Redefining \ref on input line 54.
-LaTeX Info: Redefining \pageref on input line 54.
-LaTeX Info: Redefining \nameref on input line 54.
+LaTeX Info: Redefining \nameref on input line 55.
+LaTeX Info: Redefining \ref on input line 55.
+LaTeX Info: Redefining \pageref on input line 55.
+LaTeX Info: Redefining \nameref on input line 55.
 (report.out) (report.out)
 \@outlinefile=\write5
 \openout5 = `report.out'.
@@ -1032,47 +1052,50 @@ Package minitoc(hints) Warning: W0023
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-<img/logo-universitat-jaume-i.png, id=195, 120.45pt x 119.7273pt>
+<img/logo-universitat-jaume-i.png, id=43, 120.45pt x 119.7273pt>
 File: img/logo-universitat-jaume-i.png Graphic file (type png)
 <use img/logo-universitat-jaume-i.png>
 Package pdftex.def Info: img/logo-universitat-jaume-i.png  used on input line 6
-1.
+2.
 (pdftex.def)             Requested size: 99.58464pt x 98.98996pt.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 6
-1.
+2.
 ("C:\Users\alexc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 6
-1.
+2.
 
 ("C:\Users\alexc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-61.
+62.
 
 ("C:\Users\alexc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-61.
+62.
 
 ("C:\Users\alexc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 61.
+(Font)              <12> on input line 62.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 61.
+(Font)              <8> on input line 62.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 61.
-<img/by-nc-sa-eu.pdf, id=198, 96.36pt x 33.726pt>
+(Font)              <6> on input line 62.
+
+
+Package xcolor Warning: Incompatible color definition on input line 62.
+
+<img/by-nc-sa-eu.pdf, id=46, 96.36pt x 33.726pt>
 File: img/by-nc-sa-eu.pdf Graphic file (type pdf)
 <use img/by-nc-sa-eu.pdf>
-Package pdftex.def Info: img/by-nc-sa-eu.pdf  used on input line 61.
+Package pdftex.def Info: img/by-nc-sa-eu.pdf  used on input line 62.
 (pdftex.def)             Requested size: 77.08807pt x 26.98082pt.
-
 [1
 
 
@@ -1089,7 +1112,14 @@ universitat-jaume-i.png> <./img/by-nc-sa-eu.pdf>] [2]
  (acknowledgments.tex
 LaTeX Font Info:    Font shape `T1/lmr/bx/sc' in size <20.74> not available
 (Font)              Font shape `T1/cmr/bx/sc' tried instead on input line 18.
- [1
+
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
+Package xcolor Warning: Incompatible color definition on input line 26.
+
+[1
 
 
 
@@ -1099,7 +1129,11 @@ LaTeX Font Info:    Font shape `T1/lmr/bx/sc' in size <20.74> not available
 ])
 \openout2 = `abstract.aux'.
 
- (abstract.tex [3
+ (abstract.tex
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+[3
 
 
 
@@ -1107,7 +1141,7 @@ LaTeX Font Info:    Font shape `T1/lmr/bx/sc' in size <20.74> not available
 
 ])
 Package minitoc Info: I0024
-(minitoc)             PREPARING MINITOCS FROM report.toc on input line 74.
+(minitoc)             PREPARING MINITOCS FROM report.toc on input line 75.
 Package minitoc Info: I0033
 (minitoc)             Writing report.mtc1.
 \openout4 = `report.mtc1'.
@@ -1144,11 +1178,18 @@ Package minitoc Info: I0033
 (minitoc)             Writing report.mtc9.
 \openout4 = `report.mtc9'.
 
- (report.toc
+Package minitoc Info: I0033
+(minitoc)             Writing report.mtc10.
+\openout4 = `report.mtc10'.
+
+
+
+Package xcolor Warning: Incompatible color definition on input line 78.
+
+(report.toc
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 2.
-
-[5
+ [5
 
 ]) [6]
 \openout2 = `chap01_introduction.aux'.
@@ -1160,6 +1201,12 @@ LaTeX Font Info:    Trying to load font information for T1+lmss on input line 1
 ("C:\Users\alexc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\t1lmss.fd"
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
 \openout4 = `report.mtc'.
 
 \openout4 = `report.mtc'.
@@ -1170,7 +1217,6 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 20.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 20.
-
 (report.mtc2) [1
 
 
@@ -1186,17 +1232,23 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 \openout2 = `chap02_planning.aux'.
 
  (chap02_planning.tex
-\openout4 = `report.mtc'.
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18.
 
 \openout4 = `report.mtc'.
 
- (report.mtc3)
-<img/taskGraph.png, id=320, 465.23813pt x 213.79875pt>
+\openout4 = `report.mtc'.
+
+(report.mtc3)
+<img/taskGraph.png, id=208, 465.23813pt x 213.79875pt>
 File: img/taskGraph.png Graphic file (type png)
 <use img/taskGraph.png>
 Package pdftex.def Info: img/taskGraph.png  used on input line 30.
 (pdftex.def)             Requested size: 376.42575pt x 172.99008pt.
-<img/ganttChart.png, id=321, 606.01407pt x 134.75343pt>
+<img/ganttChart.png, id=209, 606.01407pt x 134.75343pt>
 File: img/ganttChart.png Graphic file (type png)
 <use img/ganttChart.png>
 Package pdftex.def Info: img/ganttChart.png  used on input line 39.
@@ -1206,7 +1258,7 @@ Package pdftex.def Info: img/ganttChart.png  used on input line 39.
 
 
 ]
-<img/inGame.png, id=329, 720.44156pt x 405.01312pt>
+<img/inGame.png, id=217, 720.44156pt x 405.01312pt>
 File: img/inGame.png Graphic file (type png)
 <use img/inGame.png>
 Package pdftex.def Info: img/inGame.png  used on input line 55.
@@ -1226,38 +1278,44 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 
 (chap03_analysis.tex
-\openout4 = `report.mtc'.
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18.
 
 \openout4 = `report.mtc'.
 
- (report.mtc4) [9
+\openout4 = `report.mtc'.
+
+(report.mtc4) [9
 
 
 
 ]
-<img/classDiagram.png, id=376, 822.82407pt x 627.84563pt>
+<img/classDiagram.png, id=264, 822.82407pt x 627.84563pt>
 File: img/classDiagram.png Graphic file (type png)
 <use img/classDiagram.png>
 Package pdftex.def Info: img/classDiagram.png  used on input line 91.
 (pdftex.def)             Requested size: 334.60422pt x 255.31073pt.
  [10 <./img/classDiagram.png>]
-<img/systemArchitecture.png, id=384, 450.18187pt x 244.66406pt>
+<img/systemArchitecture.png, id=272, 450.18187pt x 244.66406pt>
 File: img/systemArchitecture.png Graphic file (type png)
 <use img/systemArchitecture.png>
 Package pdftex.def Info: img/systemArchitecture.png  used on input line 104.
 (pdftex.def)             Requested size: 334.60422pt x 181.85867pt.
-<img/uiComplete.png, id=390, 963.6pt x 541.27219pt>
+<img/uiComplete.png, id=278, 963.6pt x 541.27219pt>
 File: img/uiComplete.png Graphic file (type png)
 <use img/uiComplete.png>
 Package pdftex.def Info: img/uiComplete.png  used on input line 120.
 (pdftex.def)             Requested size: 376.42575pt x 211.44218pt.
  [11 <./img/systemArchitecture.png>]
-<img/uiGraph.png, id=399, 152.82094pt x 152.06813pt>
+<img/uiGraph.png, id=287, 152.82094pt x 152.06813pt>
 File: img/uiGraph.png Graphic file (type png)
 <use img/uiGraph.png>
 Package pdftex.def Info: img/uiGraph.png  used on input line 128.
 (pdftex.def)             Requested size: 125.47737pt x 124.85909pt.
-<img/uiVision.png, id=400, 91.09032pt x 85.06781pt>
+<img/uiVision.png, id=288, 91.09032pt x 85.06781pt>
 File: img/uiVision.png Graphic file (type png)
 <use img/uiVision.png>
 Package pdftex.def Info: img/uiVision.png  used on input line 135.
@@ -1265,23 +1323,30 @@ Package pdftex.def Info: img/uiVision.png  used on input line 135.
 ) [12 <./img/uiComplete.png> <./img/uiGraph.png> <./img/uiVision.png>]
 \openout2 = `chap04_development.aux'.
 
- (chap04_development.tex
-\openout4 = `report.mtc'.
+
+(chap04_development.tex
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18.
 
 \openout4 = `report.mtc'.
 
- (report.mtc5) [13
+\openout4 = `report.mtc'.
+
+(report.mtc5) [13
 
 
 
 ]
-<img/rewTR.png, id=418, 409.53pt x 380.17032pt>
+<img/rewTR.png, id=306, 409.53pt x 380.17032pt>
 File: img/rewTR.png Graphic file (type png)
 <use img/rewTR.png>
 Package pdftex.def Info: img/rewTR.png  used on input line 68.
 (pdftex.def)             Requested size: 146.39133pt x 135.89825pt.
  [14]
-<img/graphsTR.png, id=428, 264.99pt x 142.28156pt>
+<img/graphsTR.png, id=316, 264.99pt x 142.28156pt>
 File: img/graphsTR.png Graphic file (type png)
 <use img/graphsTR.png>
 Package pdftex.def Info: img/graphsTR.png  used on input line 88.
@@ -1291,7 +1356,7 @@ Package pdftex.def Info: img/graphsTR.png  used on input line 88.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [15 <./img/rewTR.png>]
-<img/exampleDet.png, id=439, 368.87813pt x 286.06876pt>
+<img/exampleDet.png, id=327, 368.87813pt x 286.06876pt>
 File: img/exampleDet.png Graphic file (type png)
 <use img/exampleDet.png>
 Package pdftex.def Info: img/exampleDet.png  used on input line 102.
@@ -1300,7 +1365,7 @@ Package pdftex.def Info: img/exampleDet.png  used on input line 102.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<img/graphsMemory.png, id=441, 174.6525pt x 143.78719pt>
+<img/graphsMemory.png, id=329, 174.6525pt x 143.78719pt>
 File: img/graphsMemory.png Graphic file (type png)
 <use img/graphsMemory.png>
 Package pdftex.def Info: img/graphsMemory.png  used on input line 120.
@@ -1309,7 +1374,7 @@ Package pdftex.def Info: img/graphsMemory.png  used on input line 120.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [16 <./img/graphsTR.png>]
-<img/graphSTD.png, id=449, 73.02281pt x 75.28125pt>
+<img/graphSTD.png, id=337, 73.02281pt x 75.28125pt>
 File: img/graphSTD.png Graphic file (type png)
 <use img/graphSTD.png>
 Package pdftex.def Info: img/graphSTD.png  used on input line 135.
@@ -1343,17 +1408,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 132--138
 Underfull \vbox (badness 3826) has occurred while \output is active []
 
  [17 <./img/exampleDet.png>]
-<img/stdPrecision.png, id=456, 570.63188pt x 365.86688pt>
+<img/stdPrecision.png, id=344, 570.63188pt x 365.86688pt>
 File: img/stdPrecision.png Graphic file (type png)
 <use img/stdPrecision.png>
 Package pdftex.def Info: img/stdPrecision.png  used on input line 147.
 (pdftex.def)             Requested size: 125.47737pt x 80.45187pt.
-<img/stdFactors.png, id=457, 569.87906pt x 210.03468pt>
+<img/stdFactors.png, id=345, 569.87906pt x 210.03468pt>
 File: img/stdFactors.png Graphic file (type png)
 <use img/stdFactors.png>
 Package pdftex.def Info: img/stdFactors.png  used on input line 154.
 (pdftex.def)             Requested size: 125.47737pt x 46.24301pt.
-<img/stdDevfactor.png, id=458, 392.96812pt x 463.7325pt>
+<img/stdDevfactor.png, id=346, 392.96812pt x 463.7325pt>
 File: img/stdDevfactor.png Graphic file (type png)
 <use img/stdDevfactor.png>
 Package pdftex.def Info: img/stdDevfactor.png  used on input line 161.
@@ -1367,7 +1432,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 162--162
 Package wrapfig Warning: Collision between wrapping environments on input line 
 169.
 
-<img/graphsSTDrew.png, id=459, 71.51718pt x 143.78719pt>
+<img/graphsSTDrew.png, id=347, 71.51718pt x 143.78719pt>
 File: img/graphsSTDrew.png Graphic file (type png)
 <use img/graphsSTDrew.png>
 Package pdftex.def Info: img/graphsSTDrew.png  used on input line 171.
@@ -1417,7 +1482,7 @@ Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
 
 [19 <./img/stdPrecision.png> <./img/stdFactors.png> <./img/stdDevfactor.png> <.
 /img/graphsSTDrew.png>]
-<img/graphsCoherence.png, id=479, 167.12437pt x 142.28156pt>
+<img/graphsCoherence.png, id=367, 167.12437pt x 142.28156pt>
 File: img/graphsCoherence.png Graphic file (type png)
 <use img/graphsCoherence.png>
 Package pdftex.def Info: img/graphsCoherence.png  used on input line 202.
@@ -1433,12 +1498,12 @@ Overfull \hbox (4.03209pt too wide) in paragraph at lines 218--245
  []
 
 [20 <./img/graphsCoherence.png>]
-<img/PpoSac.png, id=491, 371.13657pt x 264.23718pt>
+<img/PpoSac.png, id=379, 371.13657pt x 264.23718pt>
 File: img/PpoSac.png Graphic file (type png)
 <use img/PpoSac.png>
 Package pdftex.def Info: img/PpoSac.png  used on input line 256.
 (pdftex.def)             Requested size: 250.95476pt x 178.67494pt.
-<img/graphSacPpo.png, id=493, 167.12437pt x 142.28156pt>
+<img/graphSacPpo.png, id=381, 167.12437pt x 142.28156pt>
 File: img/graphSacPpo.png Graphic file (type png)
 <use img/graphSacPpo.png>
 Package pdftex.def Info: img/graphSacPpo.png  used on input line 265.
@@ -1456,7 +1521,7 @@ Overfull \hbox (4.03209pt too wide) in paragraph at lines 276--309
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [22 <./img/graphSacPpo.png>]
-<img/rendersensor.png, id=511, 405.76593pt x 98.61844pt>
+<img/rendersensor.png, id=399, 405.76593pt x 98.61844pt>
 File: img/rendersensor.png Graphic file (type png)
 <use img/rendersensor.png>
 Package pdftex.def Info: img/rendersensor.png  used on input line 338.
@@ -1466,7 +1531,7 @@ Package pdftex.def Info: img/rendersensor.png  used on input line 338.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [23]
-<img/renderqueue.png, id=521, 471.26062pt x 401.24907pt>
+<img/renderqueue.png, id=409, 471.26062pt x 401.24907pt>
 File: img/renderqueue.png Graphic file (type png)
 <use img/renderqueue.png>
 Package pdftex.def Info: img/renderqueue.png  used on input line 352.
@@ -1475,7 +1540,7 @@ Package pdftex.def Info: img/renderqueue.png  used on input line 352.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<img/timeTR.png, id=525, 156.585pt x 144.54pt>
+<img/timeTR.png, id=413, 156.585pt x 144.54pt>
 File: img/timeTR.png Graphic file (type png)
 <use img/timeTR.png>
 Package pdftex.def Info: img/timeTR.png  used on input line 370.
@@ -1484,7 +1549,7 @@ Package pdftex.def Info: img/timeTR.png  used on input line 370.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [24 <./img/rendersensor.png>]
-<img/punDelay.png, id=538, 73.02281pt x 47.42719pt>
+<img/punDelay.png, id=426, 73.02281pt x 47.42719pt>
 File: img/punDelay.png Graphic file (type png)
 <use img/punDelay.png>
 Package pdftex.def Info: img/punDelay.png  used on input line 383.
@@ -1494,7 +1559,7 @@ Package pdftex.def Info: img/punDelay.png  used on input line 383.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [25 <./img/renderqueue.png>] [26 <./img/timeTR.png> <./img/punDelay.png>]
-<img/graphRTstd.png, id=554, 72.27pt x 145.29282pt>
+<img/graphRTstd.png, id=442, 72.27pt x 145.29282pt>
 File: img/graphRTstd.png Graphic file (type png)
 <use img/graphRTstd.png>
 Package pdftex.def Info: img/graphRTstd.png  used on input line 397.
@@ -1551,7 +1616,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 435--436
 
  []
 
-<img/stdVariations.png, id=577, 232.61906pt x 142.28156pt>
+<img/stdVariations.png, id=465, 232.61906pt x 142.28156pt>
 File: img/stdVariations.png Graphic file (type png)
 <use img/stdVariations.png>
 Package pdftex.def Info: img/stdVariations.png  used on input line 444.
@@ -1562,12 +1627,12 @@ Overfull \hbox (14.35803pt too wide) in paragraph at lines 453--454
 d re-ac-tive be-hav-iors (see [][]4.2.9[][]),
  []
 
-<img/rtSACvsPPO.png, id=592, 171.64125pt x 143.03438pt>
+<img/rtSACvsPPO.png, id=480, 171.64125pt x 143.03438pt>
 File: img/rtSACvsPPO.png Graphic file (type png)
 <use img/rtSACvsPPO.png>
 Package pdftex.def Info: img/rtSACvsPPO.png  used on input line 459.
 (pdftex.def)             Requested size: 250.95476pt x 209.12743pt.
-<img/bcTNoise.png, id=593, 72.27pt x 143.78719pt>
+<img/bcTNoise.png, id=481, 72.27pt x 143.78719pt>
 File: img/bcTNoise.png Graphic file (type png)
 <use img/bcTNoise.png>
 Package pdftex.def Info: img/bcTNoise.png  used on input line 470.
@@ -1587,7 +1652,7 @@ Underfull \hbox (badness 7504) in paragraph at lines 471--471
 Package wrapfig Warning: Collision between wrapping environments on input line 
 478.
 
-<img/bcTNovertrain.png, id=599, 70.76437pt x 143.78719pt>
+<img/bcTNovertrain.png, id=487, 70.76437pt x 143.78719pt>
 File: img/bcTNovertrain.png Graphic file (type png)
 <use img/bcTNovertrain.png>
 Package pdftex.def Info: img/bcTNovertrain.png  used on input line 480.
@@ -1610,17 +1675,17 @@ Package wrapfig Warning: Stationary wrapfigure forced to float on input line 48
 9.
 
 [30 <./img/bcTNoise.png> <./img/bcTNovertrain.png>]
-<img/recurrentBrute.png, id=615, 73.02281pt x 145.29282pt>
+<img/recurrentBrute.png, id=503, 73.02281pt x 145.29282pt>
 File: img/recurrentBrute.png Graphic file (type png)
 <use img/recurrentBrute.png>
 Package pdftex.def Info: img/recurrentBrute.png  used on input line 500.
 (pdftex.def)             Requested size: 125.47737pt x 249.6837pt.
-<img/recurrentCaos.png, id=616, 70.76437pt x 143.78719pt>
+<img/recurrentCaos.png, id=504, 70.76437pt x 143.78719pt>
 File: img/recurrentCaos.png Graphic file (type png)
 <use img/recurrentCaos.png>
 Package pdftex.def Info: img/recurrentCaos.png  used on input line 507.
 (pdftex.def)             Requested size: 125.47737pt x 254.9816pt.
-<img/spawncases.png, id=618, 456.20438pt x 395.22656pt>
+<img/spawncases.png, id=506, 456.20438pt x 395.22656pt>
 File: img/spawncases.png Graphic file (type png)
 <use img/spawncases.png>
 Package pdftex.def Info: img/spawncases.png  used on input line 523.
@@ -1630,7 +1695,7 @@ Package pdftex.def Info: img/spawncases.png  used on input line 523.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [31 <./img/recurrentBrute.png> <./img/recurrentCaos.png>]
-<img/complexity.png, id=626, 76.78688pt x 151.3153pt>
+<img/complexity.png, id=514, 76.78688pt x 151.3153pt>
 File: img/complexity.png Graphic file (type png)
 <use img/complexity.png>
 Package pdftex.def Info: img/complexity.png  used on input line 539.
@@ -1643,15 +1708,24 @@ Package pdftex.def Info: img/complexity.png  used on input line 539.
 
 
 ]
-\openout4 = `report.mtc'.
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18.
 
 \openout4 = `report.mtc'.
 
- (report.mtc6))
+\openout4 = `report.mtc'.
+
+(report.mtc6))
 Underfull \vbox (badness 4291) has occurred while \output is active []
 
  [35]
 [36] (report.bbl
+
+Package xcolor Warning: Incompatible color definition on input line 1.
+
 bibitemlist
 
 Underfull \hbox (badness 10000) in paragraph at lines 4--9
@@ -1674,6 +1748,13 @@ works-
 
 
 ]
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 22--24
 
  []
@@ -1721,6 +1802,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--38
 
 
 ]
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 23--25
 
  []
@@ -1806,6 +1894,253 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--102
  []
 
 ) [42]
+\openout2 = `appendC_reaction.aux'.
+
+ (appendC_reaction.tex
+
+Package xcolor Warning: Incompatible color definition on input line 19.
+
+
+Package xcolor Warning: Incompatible color definition on input line 19.
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 35--50
+ [] 
+ []
+
+[43
+
+
+
+]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 77--92
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 119--134
+ [] 
+ []
+
+[44]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 161--176
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 205--220
+ [] 
+ []
+
+[45]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 249--264
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 293--308
+ [] 
+ []
+
+[46]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 345--360
+ [] 
+ []
+
+[47]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 389--404
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--449
+[]|\T1/lmr/bx/n/10.95 curiosity en-cod-ing
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 433--452
+ [] 
+ []
+
+[48]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 485--504
+ [] 
+ []
+
+[49]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 533--548
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 579--596
+ [] 
+ []
+
+[50]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 625--642
+ [] 
+ []
+
+[51]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 671--688
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 716--733
+ [] 
+ []
+
+[52]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 762--779
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 808--825
+ [] 
+ []
+
+[53]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 852--869
+ [] 
+ []
+
+[54]
+Underfull \hbox (badness 10000) in paragraph at lines 916--916
+[]|\T1/lmr/bx/n/10.95 curiosity en-cod-ing
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 898--919
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 948--969
+ [] 
+ []
+
+[55]
+Underfull \hbox (badness 10000) in paragraph at lines 1016--1016
+[]|\T1/lmr/bx/n/10.95 curiosity en-cod-ing
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 998--1019
+ [] 
+ []
+
+[56]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1046--1067
+ [] 
+ []
+
+[57]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1108--1129
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1162--1183
+ [] 
+ []
+
+[58]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1216--1237
+ [] 
+ []
+
+[59]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1270--1291
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1320--1337
+ [] 
+ []
+
+[60]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1368--1385
+ [] 
+ []
+
+[61]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1414--1431
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1458--1475
+ [] 
+ []
+
+[62]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1502--1519
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1568--1568
+[]|\T1/lmr/bx/n/10.95 curiosity en-cod-ing
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1550--1571
+ [] 
+ []
+
+[63]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1600--1621
+ [] 
+ []
+
+[64]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1648--1669
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1698--1719
+ [] 
+ []
+
+[65]
+Underfull \hbox (badness 10000) in paragraph at lines 1764--1764
+[]|\T1/lmr/bx/n/10.95 curiosity en-cod-ing
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1746--1767
+ [] 
+ []
+
+[66]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1794--1815
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1844--1865
+ [] 
+ []
+
+[67]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1894--1915
+ [] 
+ []
+
+[68]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1944--1967
+ [] 
+ []
+
+) [69] [70
+
+
+]
 Package minitoc Info: I0009
 (minitoc)             Listing minitoc auxiliary files. 
 (minitoc)             Creating the report.maf file.
@@ -1825,27 +2160,27 @@ Package minitoc(hints) Warning: W0024
 \tf@toc=\write6
 \openout6 = `report.toc'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 114.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 114.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 116.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 116.
 (report.aux (dedicatory.aux) (acknowledgments.aux) (abstract.aux)
 (chap01_introduction.aux) (chap02_planning.aux) (chap03_analysis.aux)
 (chap04_development.aux) (chap05_conclusions.aux) (appendA_average.aux)
-(appendB_std.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 114.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 114.
+(appendB_std.aux) (appendC_reaction.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 116.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 116.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: C455542899745E6FB50B0ED087DE1F19;3315.
+(rerunfilecheck)             Checksum: DB7FC9E54F97196C91C1FA0D2BE6E4B4;562.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 114.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 116.
  ) 
 Here is how much of TeX's memory you used:
- 16747 strings out of 481005
- 256028 string characters out of 2900857
- 741045 words of memory out of 3000000
- 31779 multiletter control sequences out of 15000+200000
+ 17201 strings out of 481005
+ 261222 string characters out of 2900857
+ 742045 words of memory out of 3000000
+ 32147 multiletter control sequences out of 15000+200000
  612877 words of font info for 71 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,13n,46p,1340b,505s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1872,9 +2207,9 @@ ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Users/alexc
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/a
 lexc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/U
 sers/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
-Output written on report.pdf (52 pages, 1071852 bytes).
+Output written on report.pdf (80 pages, 1134274 bytes).
 PDF statistics:
- 810 PDF objects out of 1000 (max. 8388607)
- 155 named destinations out of 1000 (max. 500000)
- 560 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 873 PDF objects out of 1000 (max. 8388607)
+ 225 named destinations out of 1000 (max. 500000)
+ 256 words of extra memory for PDF output out of 10000 (max. 10000000)
 

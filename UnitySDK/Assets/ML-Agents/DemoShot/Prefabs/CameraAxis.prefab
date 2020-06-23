@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4416147798560193591}
   - component: {fileID: 4416147798560193590}
   - component: {fileID: 4416147798560193589}
+  - component: {fileID: 3492045616554437001}
   - component: {fileID: 6085637681797830537}
   - component: {fileID: 5129854562543368695}
   - component: {fileID: 2309747964293392778}
@@ -134,9 +135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41fb4bae743a4f4cb6664b2576b68d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botMovement: {fileID: 6085637681797830537}
+  botMovement: {fileID: 3492045616554437001}
   useNeuralNet: 0
---- !u!114 &6085637681797830537
+--- !u!114 &3492045616554437001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,12 +146,61 @@ MonoBehaviour:
   m_GameObject: {fileID: 4416147798560193577}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181cd6db5d1790949a6d244e1e02257f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imprecision: 1.2
+  moveNoiseX: 0
+  moveNoiseY: 0
+  curves:
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  angleX: 0
+  angleY: 0
+  timeClic: 0.95
+  clicVariance: 0.05
+  time: 0
+  perform: 0
+--- !u!114 &6085637681797830537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416147798560193577}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55f6f9975c4264a4891b539085b2f1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 0
+  moveNoiseX: 0
+  moveNoiseY: 0
+  curves: []
+  angleX: 0
+  angleY: 0
+  timeClic: 0.9
   time: 0
-  done: 0
   perform: 0
 --- !u!114 &5129854562543368695
 MonoBehaviour:
@@ -186,13 +236,16 @@ MonoBehaviour:
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
   graphicCanvas: {fileID: 0}
-  agentRange: 0
+  agentDecal: {fileID: 0}
+  botDecal: {fileID: 0}
+  agentType: 3
+  tolerableRange: 0.05
   receiveObservations: 1
   observationBotAgent: 1
   PunFactor: 100
   RewFactor: 25
-  waitForImpulse: 0.25
   demoHeuristic: 1
+  showStd: 1
 --- !u!114 &2309747964293392777
 MonoBehaviour:
   m_ObjectHideFlags: 0

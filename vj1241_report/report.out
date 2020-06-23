@@ -1,48 +1,10 @@
 \BOOKMARK [0][-]{section*.3}{Contents}{}% 1
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 2
-\BOOKMARK [1][-]{section.1.1}{Work Motivation}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.2}{Objectives}{chapter.1}% 4
-\BOOKMARK [1][-]{section.1.3}{Environment and Initial State}{chapter.1}% 5
-\BOOKMARK [0][-]{chapter.2}{Planning and resources evaluation}{}% 6
-\BOOKMARK [1][-]{section.2.1}{Planning}{chapter.2}% 7
-\BOOKMARK [2][-]{subsection.2.1.1}{Simple game creation}{section.2.1}% 8
-\BOOKMARK [2][-]{subsection.2.1.2}{NPC Behavior}{section.2.1}% 9
-\BOOKMARK [2][-]{subsection.2.1.3}{Obtaining the Dataset}{section.2.1}% 10
-\BOOKMARK [2][-]{subsection.2.1.4}{Neural network model and training}{section.2.1}% 11
-\BOOKMARK [2][-]{subsection.2.1.5}{Analysis of results}{section.2.1}% 12
-\BOOKMARK [2][-]{subsection.2.1.6}{Framework standardization}{section.2.1}% 13
-\BOOKMARK [1][-]{section.2.2}{Resource Evaluation}{chapter.2}% 14
-\BOOKMARK [0][-]{chapter.3}{System Analysis and Design}{}% 15
-\BOOKMARK [1][-]{section.3.1}{Requirement Analysis}{chapter.3}% 16
-\BOOKMARK [2][-]{subsection.3.1.1}{Functional Requirements}{section.3.1}% 17
-\BOOKMARK [2][-]{subsection.3.1.2}{Non-functional Requirements}{section.3.1}% 18
-\BOOKMARK [1][-]{section.3.2}{System Design}{chapter.3}% 19
-\BOOKMARK [1][-]{section.3.3}{System Architecture}{chapter.3}% 20
-\BOOKMARK [1][-]{section.3.4}{Interface Design}{chapter.3}% 21
-\BOOKMARK [0][-]{chapter.4}{Work Development and Results}{}% 22
-\BOOKMARK [1][-]{section.4.1}{Game Development}{chapter.4}% 23
-\BOOKMARK [1][-]{section.4.2}{Reactive Behaviors}{chapter.4}% 24
-\BOOKMARK [2][-]{subsection.4.2.1}{Training with Proximal Policy Optimization \(PPO\)}{section.4.2}% 25
-\BOOKMARK [2][-]{subsection.4.2.2}{Unnecessary actions}{section.4.2}% 26
-\BOOKMARK [2][-]{subsection.4.2.3}{Rewards based in tolerable range}{section.4.2}% 27
-\BOOKMARK [2][-]{subsection.4.2.4}{Determinism of the behavior}{section.4.2}% 28
-\BOOKMARK [2][-]{subsection.4.2.5}{Movement memory}{section.4.2}% 29
-\BOOKMARK [2][-]{subsection.4.2.6}{Rewards based in standard deviation}{section.4.2}% 30
-\BOOKMARK [2][-]{subsection.4.2.7}{Rewards based in movement coherence}{section.4.2}% 31
-\BOOKMARK [2][-]{subsection.4.2.8}{PPO hyperparameters}{section.4.2}% 32
-\BOOKMARK [2][-]{subsection.4.2.9}{Training with Soft-Actor Critic \(SAC\)}{section.4.2}% 33
-\BOOKMARK [2][-]{subsection.4.2.10}{SAC hyperparameters}{section.4.2}% 34
-\BOOKMARK [1][-]{section.4.3}{Reaction time}{chapter.4}% 35
-\BOOKMARK [2][-]{subsection.4.3.1}{Render Textures}{section.4.3}% 36
-\BOOKMARK [2][-]{subsection.4.3.2}{Reward systems}{section.4.3}% 37
-\BOOKMARK [2][-]{subsection.4.3.3}{PPO vs. SAC}{section.4.3}% 38
-\BOOKMARK [2][-]{subsection.4.3.4}{Behavioral cloning}{section.4.3}% 39
-\BOOKMARK [2][-]{subsection.4.3.5}{Recurrent memory}{section.4.3}% 40
-\BOOKMARK [2][-]{subsection.4.3.6}{Rare situations}{section.4.3}% 41
-\BOOKMARK [2][-]{subsection.4.3.7}{Complexity of the task}{section.4.3}% 42
-\BOOKMARK [0][-]{chapter.5}{Conclusions and Future Work}{}% 43
-\BOOKMARK [1][-]{section.5.1}{Conclusions}{chapter.5}% 44
-\BOOKMARK [1][-]{section.5.2}{Future work}{chapter.5}% 45
-\BOOKMARK [0][-]{chapter*.37}{Bibliography}{}% 46
-\BOOKMARK [0][-]{appendix.A}{Dynamic average}{}% 47
-\BOOKMARK [0][-]{appendix.B}{Dynamic standard deviation}{}% 48
+\BOOKMARK [0][-]{chapter.2}{Planning and resources evaluation}{}% 3
+\BOOKMARK [0][-]{chapter.3}{System Analysis and Design}{}% 4
+\BOOKMARK [0][-]{chapter.4}{Work Development and Results}{}% 5
+\BOOKMARK [0][-]{chapter.5}{Conclusions and Future Work}{}% 6
+\BOOKMARK [0][-]{chapter*.37}{Bibliography}{}% 7
+\BOOKMARK [0][-]{appendix.A}{Dynamic average}{}% 8
+\BOOKMARK [0][-]{appendix.B}{Dynamic standard deviation}{}% 9
+\BOOKMARK [0][-]{appendix.C}{Reactive movements}{}% 10

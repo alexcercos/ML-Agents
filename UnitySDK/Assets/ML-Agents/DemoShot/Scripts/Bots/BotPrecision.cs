@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotOneMove : IBotMovement
+public class BotPrecision : IBotMovement
 {
+    //Igual que botOneMove pero con imprecision al escoger objetivos
+
     Transform scene;
 
     AgentShoot agentShoot;
+
+    public float imprecision = 1.2f;
 
     public static float FPS = 60f;
 
@@ -26,7 +30,10 @@ public class BotOneMove : IBotMovement
     float currentX, currentY = 0f; //angulo actual
 
 
-    public float timeClic = 0.9f;
+    public float timeClic = 0.95f;
+    public float clicVariance = 0.05f;
+
+    float nextTimeClic = 0.95f;
 
     public float time = 0f;
     public bool perform = false; //trigger (si no es auto)
@@ -42,6 +49,8 @@ public class BotOneMove : IBotMovement
         scene = GameObject.Find("Scene").transform;
 
         agentShoot = GetComponent<AgentShoot>();
+
+        nextTimeClic = timeClic + Random.Range(-clicVariance, clicVariance);
     }
 
     private void Update()
@@ -54,6 +63,7 @@ public class BotOneMove : IBotMovement
         }
         else
         {
+            idle = false;
             SearchForObjective();
             //buscar nuevo target
             xMove = 0f; //reinicia en el siguiente frame
@@ -69,7 +79,7 @@ public class BotOneMove : IBotMovement
         done += 1 / (FPS * time);
 
         if (doClic) doClic = false;
-        if (done >= timeClic && last < timeClic && !idle)
+        if (done >= nextTimeClic && last < nextTimeClic && !idle)
         {
             doClic = true;
         }
@@ -79,16 +89,19 @@ public class BotOneMove : IBotMovement
 
         if (idle)
         {
-            interpX = curves[2].Evaluate(done); //shape X
-            interpY = curves[2].Evaluate(done); //shape Y
+            interpX = curves[0].Evaluate(done); //shape X
+            interpY = curves[0].Evaluate(done); //shape Y
+
+            SearchForObjective();
         }
         else
         {
             interpX = curves[0].Evaluate(done); //shape X
-            interpY = curves[1].Evaluate(done); //shape Y
+            interpY = curves[0].Evaluate(done); //shape Y
         }
 
-        float limitDecay = 2f * (Mathf.Abs(done - 0.5f) - 0.5f); //en 0 y 1 no hay ruido para asegurar que acaba en el sitio
+        //float limitDecay = 2f * (Mathf.Abs(done - 0.5f) - 0.5f); //en 0 y 1 no hay ruido para asegurar que acaba en el sitio
+        float limitDecay = 1f - Mathf.Pow(2f * done - 1f, 2f);
         float timeDecay = Mathf.Clamp((time-0.2f)*3f, 0f, 1f); //movimientos cortos sin ruido
 
         float newX = OutLerp(0f, angleX, interpX) + (Random.Range(-moveNoiseX, moveNoiseX) * limitDecay * timeDecay);
@@ -112,9 +125,12 @@ public class BotOneMove : IBotMovement
 
             cheatRewardsClicked = false;
             perform = false;
+            last = 0f;
             done = 0f;
             currentX = 0f;
             currentY = 0f;
+
+            nextTimeClic = timeClic + Random.Range(-clicVariance, clicVariance);
         }
     }
 
@@ -136,13 +152,13 @@ public class BotOneMove : IBotMovement
 
     public override float MouseX()
     {
-        if (Mathf.Abs(xMove) > 1f) Debug.Log("X overflow: " + xMove);
+        //if (Mathf.Abs(xMove) > 1f) Debug.Log("X overflow: " + xMove);
         return xMove * 2f;
     }
 
     public override float MouseY()
     {
-        if (Mathf.Abs(yMove) > 1f) Debug.Log("Y overflow: " + yMove);
+        //if (Mathf.Abs(yMove) > 1f) Debug.Log("Y overflow: " + yMove);
         return yMove * 2f;
     }
 
@@ -155,15 +171,20 @@ public class BotOneMove : IBotMovement
         float closest = 0.51f;
         foreach (Renderer t in scene.GetComponentsInChildren<Renderer>())
         {
+            
+            if (t.CompareTag("decal")) continue;
             Vector3 screenPos = Camera.main.WorldToViewportPoint(t.transform.position);
             if (screenPos.z > 0f)
             {
                 float dist = Mathf.Abs(screenPos.x - 0.5f);
-                if (dist < closest)
+                float distY = Mathf.Abs(screenPos.y - 0.5f);
+
+
+                if (dist < closest && distY <=0.5f)
                 {
                     closest = dist;
                     Quaternion objective = Quaternion.LookRotation(t.transform.position - transform.position, Vector3.up);
-                    angleX = objective.eulerAngles.y - transform.rotation.eulerAngles.y;
+                    angleX = (objective.eulerAngles.y - transform.rotation.eulerAngles.y);
                     angleY = -objective.eulerAngles.x + transform.rotation.eulerAngles.x;
                 }
             }
@@ -175,8 +196,18 @@ public class BotOneMove : IBotMovement
             time = (Mathf.Pow(4f, closest) - 0.8f)/2f;
 
             idle = false;
+
+            cheatRewardsClicked = false;
+            last = 0f;
+            done = 0f;
+            currentX = 0f;
+            currentY = 0f;
+            interpX = 0f;
+            interpY = 0f;
+
+            nextTimeClic = timeClic + Random.Range(-clicVariance, clicVariance);
         }
-        else
+        else if (!idle)
         {
             // idle
             idle = true;
@@ -185,12 +216,25 @@ public class BotOneMove : IBotMovement
             angleY = Random.Range(-5f, 5f) + transform.rotation.eulerAngles.x;
 
             time = angleX / 90f + Random.Range(-0.1f, 0.1f);
+
+            cheatRewardsClicked = false;
+            last = 0f;
+            done = 0f;
+            currentX = 0f;
+            currentY = 0f;
+            interpX = 0f;
+            interpY = 0f;
         }
 
         if (angleX > 180f) angleX -= 360f;
         if (angleX < -180f) angleX += 360f;
         if (angleY > 180f) angleY -= 360f;
         if (angleY < -180f) angleY += 360f;
+
+        if (closest < 0.51f)
+        {
+            angleX *= Random.Range(1f, imprecision);
+        }
 
         //sacar perform aqui
         perform = true;
@@ -203,39 +247,25 @@ public class BotOneMove : IBotMovement
 
     public float GetCheatRewards(float tolerableRange, float punMultiplier, float rewMultiplier)
     {
-        if (done >= timeClic && last < timeClic && !idle)
+        if (done >= nextTimeClic && last < nextTimeClic && !idle)
         {
-            if (cheatRewardsClicked)
-            {
-                //Debug.Log("Already clicked");
-                return -punMultiplier / 3f;
-            }
-            //Debug.Log("Perfect");
+            if (cheatRewardsClicked) return 0f;
             cheatRewardsClicked = true;
             return rewMultiplier;
         }
         else
         {
-            if (idle)
-            {
-                //Debug.Log("Idle");
-                return -punMultiplier;
-            }
+            if (idle) return -punMultiplier * 2f;
 
             float dist = Mathf.Abs(timeClic - done);
 
-            if (dist <= tolerableRange)
+            if (dist <= clicVariance)
             {
-                //Debug.Log("Close");
                 if (cheatRewardsClicked) return 0f;
                 cheatRewardsClicked = true;
-                return rewMultiplier * dist / tolerableRange;
+                return rewMultiplier * (clicVariance - dist) / clicVariance;
             }
-            else
-            {
-                //Debug.Log("Far");
-                return Mathf.Max(punMultiplier * (tolerableRange - dist) / tolerableRange, -punMultiplier * 3f);
-            }
+            else return Mathf.Max(punMultiplier * (clicVariance - dist) / clicVariance, -punMultiplier * 2f);
         }
         
     }

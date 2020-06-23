@@ -45,7 +45,7 @@ Imitator:
     summary_freq: 1000
     tau: 0.005
     use_recurrent: false
-    vis_encode_type: simple
+    vis_encode_type: resnet
     reward_signals:
         extrinsic:
             strength: 1.0

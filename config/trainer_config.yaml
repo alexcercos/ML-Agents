@@ -40,6 +40,7 @@ Imitator:
     use_recurrent: false
     sequence_length: 128
     memory_size: 32
+    vis_encode_type: resnet
     reward_signals:
         extrinsic:
             strength: 1.0
