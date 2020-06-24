@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.8)  23 JUN 2020 12:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.8)  24 JUN 2020 18:36
 entering extended mode
 **D:/Documents/ml-agents-master/vj1241_report/report.tex
 (D:/Documents/ml-agents-master/vj1241_report/report.tex
@@ -1904,7 +1904,7 @@ Package xcolor Warning: Incompatible color definition on input line 19.
 Package xcolor Warning: Incompatible color definition on input line 19.
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 35--50
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 37--52
  [] 
  []
 
@@ -1913,234 +1913,442 @@ Overfull \hbox (4.03209pt too wide) in paragraph at lines 35--50
 
 
 ]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 77--92
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 79--94
  [] 
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 119--134
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 121--136
  [] 
  []
 
 [44]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 161--176
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 163--178
  [] 
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 205--220
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 207--222
  [] 
  []
 
 [45]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 249--264
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 251--266
  [] 
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 293--308
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 295--310
  [] 
  []
 
 [46]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 345--360
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 347--362
  [] 
  []
 
 [47]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 389--404
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 391--406
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 449--449
+Underfull \hbox (badness 10000) in paragraph at lines 451--451
 []|\T1/lmr/bx/n/10.95 curiosity en-cod-ing
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 433--452
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 435--454
  [] 
  []
 
 [48]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 485--504
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 487--506
  [] 
  []
 
 [49]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 533--548
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 535--550
  [] 
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 579--596
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 581--598
  [] 
  []
 
 [50]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 625--642
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 627--644
  [] 
  []
 
 [51]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 671--688
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 673--690
  [] 
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 716--733
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 718--735
  [] 
  []
 
 [52]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 762--779
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 764--781
  [] 
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 808--825
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 810--827
  [] 
  []
 
 [53]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 852--869
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 854--871
  [] 
  []
 
 [54]
-Underfull \hbox (badness 10000) in paragraph at lines 916--916
+Underfull \hbox (badness 10000) in paragraph at lines 918--918
 []|\T1/lmr/bx/n/10.95 curiosity en-cod-ing
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 898--919
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 900--921
  [] 
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 948--969
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 950--971
  [] 
  []
 
 [55]
-Underfull \hbox (badness 10000) in paragraph at lines 1016--1016
+Underfull \hbox (badness 10000) in paragraph at lines 1018--1018
 []|\T1/lmr/bx/n/10.95 curiosity en-cod-ing
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 998--1019
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1000--1021
  [] 
  []
 
 [56]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1046--1067
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1048--1069
  [] 
  []
 
 [57]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1108--1129
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1110--1131
  [] 
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1162--1183
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1164--1185
  [] 
  []
 
 [58]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1216--1237
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1218--1239
  [] 
  []
 
 [59]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1270--1291
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1272--1293
  [] 
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1320--1337
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1322--1339
  [] 
  []
 
 [60]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1368--1385
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1370--1387
  [] 
  []
 
 [61]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1414--1431
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1416--1433
  [] 
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1458--1475
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1460--1477
  [] 
  []
 
 [62]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1502--1519
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1504--1521
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1568--1568
+Underfull \hbox (badness 10000) in paragraph at lines 1570--1570
 []|\T1/lmr/bx/n/10.95 curiosity en-cod-ing
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1550--1571
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1552--1573
  [] 
  []
 
 [63]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1600--1621
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1602--1623
  [] 
  []
 
 [64]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1648--1669
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1650--1671
  [] 
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1698--1719
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1700--1721
  [] 
  []
 
 [65]
-Underfull \hbox (badness 10000) in paragraph at lines 1764--1764
+Underfull \hbox (badness 10000) in paragraph at lines 1766--1766
 []|\T1/lmr/bx/n/10.95 curiosity en-cod-ing
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1746--1767
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1748--1769
  [] 
  []
 
 [66]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1794--1815
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1796--1817
  [] 
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1844--1865
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1846--1867
  [] 
  []
 
 [67]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1894--1915
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1896--1917
  [] 
  []
 
 [68]
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 1944--1967
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1946--1969
  [] 
  []
 
-) [69] [70
+[69]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1998--2021
+ [] 
+ []
 
 
-]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2051--2074
+ [] 
+ []
+
+
+Underfull \vbox (badness 6428) has occurred while \output is active []
+
+ [70]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2103--2126
+ [] 
+ []
+
+[71]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2155--2178
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2205--2228
+ [] 
+ []
+
+[72]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2257--2280
+ [] 
+ []
+
+[73]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2309--2332
+ [] 
+ []
+
+[74]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2363--2390
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2421--2448
+ [] 
+ []
+
+[75]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2481--2510
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [76]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2541--2566
+ [] 
+ []
+
+[77]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2597--2620
+ [] 
+ []
+
+[78]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2653--2676
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2710--2733
+ [] 
+ []
+
+
+Underfull \vbox (badness 3417) has occurred while \output is active []
+
+ [79]
+Underfull \hbox (badness 10000) in paragraph at lines 2786--2786
+[]|\T1/lmr/bx/n/10.95 curiosity en-cod-ing
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2764--2793
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [80]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2826--2849
+ [] 
+ []
+
+
+Underfull \vbox (badness 7722) has occurred while \output is active []
+
+ [81]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2876--2905
+ [] 
+ []
+
+[82]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2938--2967
+ [] 
+ []
+
+[83]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 3000--3031
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 3064--3095
+ [] 
+ []
+
+[84]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 3126--3155
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [85]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 3186--3209
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [86]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 3238--3261
+ [] 
+ []
+
+[87]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 3288--3311
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 3338--3373
+ [] 
+ []
+
+
+Underfull \vbox (badness 1199) has occurred while \output is active []
+
+ [88]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 3404--3439
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [89]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 3470--3505
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [90]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 3536--3571
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [91]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 3608--3643
+ [] 
+ []
+
+
+Underfull \vbox (badness 3623) has occurred while \output is active []
+
+ [92]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 3675--3710
+ [] 
+ []
+
+
+Underfull \vbox (badness 5359) has occurred while \output is active []
+
+ [93]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 3745--3780
+ [] 
+ []
+
+
+Underfull \vbox (badness 2368) has occurred while \output is active []
+
+ [94]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 3811--3846
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [95])
+[96]
 Package minitoc Info: I0009
 (minitoc)             Listing minitoc auxiliary files. 
 (minitoc)             Creating the report.maf file.
@@ -2177,9 +2385,9 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 116.
  ) 
 Here is how much of TeX's memory you used:
- 17201 strings out of 481005
- 261222 string characters out of 2900857
- 742045 words of memory out of 3000000
+ 17259 strings out of 481005
+ 261767 string characters out of 2900857
+ 749045 words of memory out of 3000000
  32147 multiletter control sequences out of 15000+200000
  612877 words of font info for 71 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2207,9 +2415,9 @@ ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Users/alexc
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/a
 lexc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/U
 sers/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
-Output written on report.pdf (80 pages, 1134274 bytes).
+Output written on report.pdf (106 pages, 1204006 bytes).
 PDF statistics:
- 873 PDF objects out of 1000 (max. 8388607)
- 225 named destinations out of 1000 (max. 500000)
+ 1024 PDF objects out of 1200 (max. 8388607)
+ 283 named destinations out of 1000 (max. 500000)
  256 words of extra memory for PDF output out of 10000 (max. 10000000)
 

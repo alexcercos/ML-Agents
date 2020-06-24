@@ -78,7 +78,7 @@ public class AgentShoot : Agent
 
     public bool demoHeuristic = true;
     public bool showStd = true;
-    public bool clickDiscrete = true;
+    /*[HideInInspector]*/public bool clickDiscrete = false;
 
     private void Start()
     {
@@ -210,6 +210,9 @@ public class AgentShoot : Agent
 
             graphicCanvas.AddAgentPointDown(minX);
             graphicCanvas.AddAgentPointUp(agY);
+
+            graphicCanvas.AddBotAxisPoint(oX, oY);
+            graphicCanvas.AddAgentAxisPoint(minX, agY);
         }
         else if (agentType == AgentType.CLICKONLY) //1 accion (click)
         {
@@ -223,7 +226,8 @@ public class AgentShoot : Agent
             else
                 iClick = Mathf.Clamp(vectorAction[0], -1f, 1f);
 
-
+            graphicCanvas.AddBotAxisPoint(oX, oY);
+            graphicCanvas.AddAgentAxisPoint(minX, agY);
 
             graphicCanvas.AddAgentPointDown(iClick); // click (no movimiento)
 
@@ -303,6 +307,8 @@ public class AgentShoot : Agent
         {
             if (iClick <= 0f) lastClick = Random.Range(-1f, 0f);
             else lastClick = Random.Range(0.001f, 1f);
+
+            hasClicked = iClick > 0f;
         }
         else
             lastClick = iClick;
@@ -370,10 +376,17 @@ public class AgentShoot : Agent
             }
             else if (agentType == AgentType.CLICKONLY) //1 accion (click)
             {
-                if (cameraAgent.GetBotClick())
-                    action[0] = Random.Range(0.2f, 0.7f);
+                if (clickDiscrete)
+                {
+                    action[0] = cameraAgent.GetBotClick() ? 1 : 0;
+                }
                 else
-                    action[0] = Random.Range(-0.8f, -0.5f);
+                {
+                    if (cameraAgent.GetBotClick())
+                        action[0] = Random.Range(0.2f, 0.7f);
+                    else
+                        action[0] = Random.Range(-0.8f, -0.5f);
+                }
             }
 
         }
@@ -765,7 +778,7 @@ public class AgentShoot : Agent
 
     public void ClickRewardsCheatMissed() // Llamado directamente desde el agente
     {
-        AddReward(-PunFactor * 5f);
+        AddReward(-PunFactor * 20f);
     }
 
     public void DynamicAverageAndStd(ref float moveCount, ref float average, ref float std, ref float varz, ref float avgSqrd, float move)

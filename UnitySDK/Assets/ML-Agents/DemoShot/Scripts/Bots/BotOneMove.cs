@@ -203,6 +203,7 @@ public class BotOneMove : IBotMovement
 
     public float GetCheatRewards(float tolerableRange, float punMultiplier, float rewMultiplier)
     {
+        float timeFactor = 1f / Mathf.Clamp(time, 0.2f, 1f);
         if (done >= timeClic && last < timeClic && !idle)
         {
             if (cheatRewardsClicked)
@@ -212,7 +213,7 @@ public class BotOneMove : IBotMovement
             }
             //Debug.Log("Perfect");
             cheatRewardsClicked = true;
-            return rewMultiplier;
+            return rewMultiplier * timeFactor;
         }
         else
         {
@@ -224,17 +225,17 @@ public class BotOneMove : IBotMovement
 
             float dist = Mathf.Abs(timeClic - done);
 
-            if (dist <= tolerableRange)
+            if (dist <= (tolerableRange * timeFactor))
             {
                 //Debug.Log("Close");
                 if (cheatRewardsClicked) return 0f;
                 cheatRewardsClicked = true;
-                return rewMultiplier * dist / tolerableRange;
+                return rewMultiplier * dist / (tolerableRange * timeFactor);
             }
             else
             {
                 //Debug.Log("Far");
-                return Mathf.Max(punMultiplier * (tolerableRange - dist) / tolerableRange, -punMultiplier * 3f);
+                return Mathf.Max(punMultiplier * ((tolerableRange * timeFactor) - dist) / (tolerableRange * timeFactor), -punMultiplier * 3f);
             }
         }
         

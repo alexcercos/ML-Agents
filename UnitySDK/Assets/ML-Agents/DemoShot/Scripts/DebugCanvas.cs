@@ -15,6 +15,10 @@ public class DebugCanvas : MonoBehaviour
     public LineRenderer clickBot;
     public LineRenderer clickAgent;
 
+    public LineRenderer axisBotLine, axisAgentLine;
+
+    public int axisLimit = 20;
+
     private Vector3[] botPoints;
     private Vector3[] agentPointsUp;
     private Vector3[] agentPointsDown;
@@ -24,6 +28,17 @@ public class DebugCanvas : MonoBehaviour
     private Vector3[] avgPoints;
 
     private Vector3[] clickBotPoints, clickAgentPoints;
+
+    private Vector3[] axisBotPoints, axisAgentPoints;
+
+    public GameObject graphImage, axisImage;
+
+    RectTransform graphTransform;
+
+    bool lastShowGraphic = true;
+    public bool showGraphic = true;
+    bool lastShowAxis = false;
+    public bool showAxis = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +54,9 @@ public class DebugCanvas : MonoBehaviour
         clickBotPoints = new Vector3[0];
         clickAgentPoints = new Vector3[0];
 
+        axisBotPoints = new Vector3[0];
+        axisAgentPoints = new Vector3[0];
+
         botLine.SetPositions(botPoints);
         agentLineUp.SetPositions(agentPointsUp);
         agentLineDown.SetPositions(agentPointsDown);
@@ -49,6 +67,87 @@ public class DebugCanvas : MonoBehaviour
 
         clickAgent.SetPositions(clickAgentPoints);
         clickBot.SetPositions(clickBotPoints);
+
+        axisBotLine.SetPositions(axisBotPoints);
+        axisAgentLine.SetPositions(axisBotPoints);
+
+        graphTransform = graphImage.GetComponent<RectTransform>();
+
+        if (graphTransform == null)
+        {
+            throw new System.Exception("Graph Image is not an UI element");
+        }
+
+        lastShowAxis = showAxis;
+        if (showAxis)
+            axisImage.SetActive(true);
+        else
+            axisImage.SetActive(false);
+
+        lastShowGraphic = showGraphic;
+        if (showGraphic)
+            graphImage.SetActive(true);
+        else
+            graphImage.SetActive(false);
+
+        if (showAxis && showGraphic)
+        {
+            graphTransform.anchoredPosition = new Vector2(-220f, -10f);
+        }
+        else
+        {
+            graphTransform.anchoredPosition = new Vector2(-10f, -10f);
+        }
+    }
+
+    private void Update()
+    {
+        if (lastShowGraphic != showGraphic)
+        {
+            lastShowGraphic = showGraphic;
+
+            if (showGraphic)
+            {
+                graphImage.SetActive(true);
+
+                if (showAxis)
+                {
+                    graphTransform.anchoredPosition = new Vector2(-220f, -10f);
+                }
+                else
+                {
+                    graphTransform.anchoredPosition = new Vector2(-10f, -10f);
+                }
+            }
+            else
+            {
+                graphImage.SetActive(false);
+            }
+        }
+
+        if (lastShowAxis != showAxis)
+        {
+            lastShowAxis = showAxis;
+
+            if (showAxis)
+            {
+                axisImage.SetActive(true);
+
+                if (showGraphic)
+                {
+                    graphTransform.anchoredPosition = new Vector2(-220f, -10f);
+                }
+            }
+            else
+            {
+                axisImage.SetActive(false);
+
+                if (showGraphic)
+                {
+                    graphTransform.anchoredPosition = new Vector2(-10f, -10f);
+                }
+            }
+        }
     }
 
     // Update is called once per frame
@@ -117,6 +216,18 @@ public class DebugCanvas : MonoBehaviour
         AddClickLine(ref clickAgent, ref clickAgentPoints, 0.3f);
     }
 
+    public void AddBotAxisPoint(float x, float y)
+    {
+        if (showAxis)
+            AddAxisPoint(ref axisBotLine, ref axisBotPoints, new Vector3(x * 50f, y * 50f, 10f));
+    }
+
+    public void AddAgentAxisPoint(float x, float y)
+    {
+        if (showAxis)
+            AddAxisPoint(ref axisAgentLine, ref axisAgentPoints, new Vector3(x * 50f, y * 50f, 5f));
+    }
+
     public void UpdateClickLine(ref LineRenderer line, ref Vector3[] listPoints)
     {
         if (listPoints.Length>=3 && listPoints[listPoints.Length-1].y > 50f)
@@ -170,6 +281,40 @@ public class DebugCanvas : MonoBehaviour
             for (int i = 0; i < listPoints.Length - 1; i++)
             {
                 newPoints[i + 1] = new Vector3(listPoints[i].x, listPoints[i].y + 1f, listPoints[i].z);
+            }
+            listPoints = newPoints;
+
+            line.positionCount = listPoints.Length;
+            line.SetPositions(listPoints);
+        }
+    }
+
+    private void AddAxisPoint(ref LineRenderer line, ref Vector3[] listPoints, Vector3 point)
+    {
+        if (listPoints.Length < axisLimit)
+        {
+            Vector3[] newPoints = new Vector3[listPoints.Length + 1];
+
+            newPoints[0] = point;
+
+            for (int i = 0; i < listPoints.Length; i++)
+            {
+                newPoints[i + 1] = new Vector3(listPoints[i].x, listPoints[i].y, listPoints[i].z);
+            }
+            listPoints = newPoints;
+
+            line.positionCount = listPoints.Length;
+            line.SetPositions(listPoints);
+        }
+        else
+        {
+            Vector3[] newPoints = new Vector3[listPoints.Length];
+
+            newPoints[0] = point;
+
+            for (int i = 0; i < listPoints.Length - 1; i++)
+            {
+                newPoints[i + 1] = new Vector3(listPoints[i].x, listPoints[i].y, listPoints[i].z);
             }
             listPoints = newPoints;
 
