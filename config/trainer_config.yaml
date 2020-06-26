@@ -34,9 +34,9 @@ Imitator:
     max_steps: 6.0e5
     normalize: false
     num_epoch: 4
-    num_layers: 3
+    num_layers: 2
     summary_freq: 1000
-    time_horizon: 64
+    time_horizon: 32
     use_recurrent: false
     sequence_length: 128
     memory_size: 32

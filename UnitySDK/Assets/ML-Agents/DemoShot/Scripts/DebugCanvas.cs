@@ -162,6 +162,11 @@ public class DebugCanvas : MonoBehaviour
         AddLinePoint(ref botLine, ref botPoints, new Vector3(point * 20f, -50f, -1f));
     }
 
+    public void AddBotPointY(float point) // Reutiliza la linea de std pero con mayor prioridad
+    {
+        AddLinePoint(ref stdHighLine, ref stdHighPoints, new Vector3(point * 20f, -50f, -0.9f));
+    }
+
     public void AddAgentPointUp(float point)
     {
         AddLinePoint(ref agentLineUp, ref agentPointsUp, new Vector3(point * 20f, -50f, 0f));
@@ -189,6 +194,7 @@ public class DebugCanvas : MonoBehaviour
 
     public void AddClickLine(ref LineRenderer line, ref Vector3[] listPoints, float z)
     {
+        if (!showGraphic) return;
         Vector3[] newPoints = new Vector3[listPoints.Length + 3];
 
         newPoints[0] = new Vector3(-25f, -50f, z);
@@ -218,18 +224,17 @@ public class DebugCanvas : MonoBehaviour
 
     public void AddBotAxisPoint(float x, float y)
     {
-        if (showAxis)
-            AddAxisPoint(ref axisBotLine, ref axisBotPoints, new Vector3(x * 50f, y * 50f, 10f));
+        AddAxisPoint(ref axisBotLine, ref axisBotPoints, new Vector3(x * 50f, y * 50f, 10f));
     }
 
     public void AddAgentAxisPoint(float x, float y)
     {
-        if (showAxis)
-            AddAxisPoint(ref axisAgentLine, ref axisAgentPoints, new Vector3(x * 50f, y * 50f, 5f));
+        AddAxisPoint(ref axisAgentLine, ref axisAgentPoints, new Vector3(x * 50f, y * 50f, 5f));
     }
 
     public void UpdateClickLine(ref LineRenderer line, ref Vector3[] listPoints)
     {
+        if (!showGraphic) return;
         if (listPoints.Length>=3 && listPoints[listPoints.Length-1].y > 50f)
         {
             Vector3[] newPoints = new Vector3[listPoints.Length - 3];
@@ -257,6 +262,7 @@ public class DebugCanvas : MonoBehaviour
 
     private void AddLinePoint(ref LineRenderer line, ref Vector3[] listPoints, Vector3 point)
     {
+        if (!showGraphic) return;
         if (listPoints.Length < 100)
         {
             Vector3[] newPoints = new Vector3[listPoints.Length + 1];
@@ -291,6 +297,8 @@ public class DebugCanvas : MonoBehaviour
 
     private void AddAxisPoint(ref LineRenderer line, ref Vector3[] listPoints, Vector3 point)
     {
+        if (!showAxis) return;
+
         if (listPoints.Length < axisLimit)
         {
             Vector3[] newPoints = new Vector3[listPoints.Length + 1];

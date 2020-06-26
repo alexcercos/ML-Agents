@@ -89,15 +89,16 @@ public class BotPrecision : IBotMovement
 
         if (idle)
         {
-            interpX = curves[0].Evaluate(done); //shape X
-            interpY = curves[0].Evaluate(done); //shape Y
+            //Las curvas eran 0 en el apartado de click, 1 en movimiento en los ejes
+            interpX = curves[1].Evaluate(done); //shape X
+            interpY = curves[1].Evaluate(done); //shape Y
 
             SearchForObjective();
         }
         else
         {
-            interpX = curves[0].Evaluate(done); //shape X
-            interpY = curves[0].Evaluate(done); //shape Y
+            interpX = curves[1].Evaluate(done); //shape X
+            interpY = curves[1].Evaluate(done); //shape Y
         }
 
         //float limitDecay = 2f * (Mathf.Abs(done - 0.5f) - 0.5f); //en 0 y 1 no hay ruido para asegurar que acaba en el sitio
@@ -136,6 +137,7 @@ public class BotPrecision : IBotMovement
 
     public override bool Click()
     {
+        
         if (doClic)
             agentShoot.BotClickEvent();
 

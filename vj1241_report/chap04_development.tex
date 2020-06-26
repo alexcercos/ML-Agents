@@ -46,6 +46,8 @@ The first human behavior we would analize is reactions, which can be defined as 
 
 At this first step, the bot will only move in the Y axis, and it will be considered that is always clicking (so the targets would be destroyed whenever the sight touches them).
 
+For more information about the trainings that were made for this section, see Appendix~\ref{app:react}.
+
 \subsection{Training with Proximal Policy Optimization (PPO)}
 \label{sec:trainingPPO}
 
@@ -319,6 +321,8 @@ These parameters were the ones used when training with SAC:
 In this section we will cover the development of bots with a behavior similar to the one presented in last section, but with delayed reactions: when the bot sees a target, it does not react instantly, but takes a few milliseconds to perform the action. This adds more complexity to the behavior and to the neural network, since it needs to receive information from previous frames (Moreover, the reaction time may not be exactly the same every time).
 
 Even though the AIs with actions based in standard deviation (2 outputs to encapsulate a noised movement, see ~\ref{sec:stdrew}) did well modelling imprecise movements, we won't use this method in this section. That's because not only it would add more complexity to the task, but it could add much noise when moves are uncertain (if a bot reacts at 0.1-0.3 seconds, the AI would try to encapsulate a possible jump in all that range, and then if a random point in between was chosen as action each frame, the bot would not do a perfect impulsive movement. Instead, it would do a strange vibration). This feature will be solved with better reward systems (see section ~\ref{sec:rtrewsys}).
+
+For more information about the training sessions performed with the objective of creating agents with reaction time, see Appendix~\ref{app:time}.
 
 \subsection{Render Textures}
 

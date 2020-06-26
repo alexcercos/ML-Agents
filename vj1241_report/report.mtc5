@@ -17,8 +17,8 @@
 {\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Rewards after impulse}{\reset@font\mtcSSSfont 25}{section*.25}}
 {\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Rewards based in coherence and standard deviation}{\reset@font\mtcSSSfont 26}{section*.27}}
 {\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Dynamic average and standard deviation}{\reset@font\mtcSSSfont 27}{section*.29}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.3}PPO vs. SAC}{\reset@font\mtcSSfont 29}{subsection.4.3.3}}
-{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.4}Behavioral cloning}{\reset@font\mtcSSfont 29}{subsection.4.3.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.3}PPO vs. SAC}{\reset@font\mtcSSfont 28}{subsection.4.3.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.4}Behavioral cloning}{\reset@font\mtcSSfont 30}{subsection.4.3.4}}
 {\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.5}Recurrent memory}{\reset@font\mtcSSfont 30}{subsection.4.3.5}}
 {\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.6}Rare situations}{\reset@font\mtcSSfont 31}{subsection.4.3.6}}
 {\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.7}Complexity of the task}{\reset@font\mtcSSfont 32}{subsection.4.3.7}}

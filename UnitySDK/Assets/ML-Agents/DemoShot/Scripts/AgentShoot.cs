@@ -9,6 +9,8 @@ public class AgentShoot : Agent
 
     public GameObject agentDecal, botDecal;
 
+    public float YSensitivity = 1f; //mayor que 0
+
     //public bool agentRange = false;
     public AgentType agentType = AgentType.CLICKONLY;
 
@@ -206,10 +208,13 @@ public class AgentShoot : Agent
         {
             maxX = Mathf.Clamp(vectorAction[0], -1f, 1f);
             minX = maxX;
-            agY = Mathf.Clamp(vectorAction[1], -1f, 1f);
+            agY = Mathf.Clamp(vectorAction[1] / YSensitivity, -1f, 1f);
 
             graphicCanvas.AddAgentPointDown(minX);
             graphicCanvas.AddAgentPointUp(agY);
+
+            graphicCanvas.AddBotPoint(oX);
+            graphicCanvas.AddBotPointY(oY);
 
             graphicCanvas.AddBotAxisPoint(oX, oY);
             graphicCanvas.AddAgentAxisPoint(minX, agY);
@@ -249,6 +254,14 @@ public class AgentShoot : Agent
         //RewardsStdChIndividualAverage(maxX, oX, average, stDesv, RewFactor, PunFactor, 0.0f);
         //DynamicAverageAndStd(ref moveCount, ref average, ref stDesv, ref varianza, ref averageSquared, oX);
 
+        //float distance = Vector2.Distance(new Vector2(oX, oY), new Vector2(minX, agY));
+
+        //Debug.Log("oX= " + oX + " , oY= " + oY + " , bX = " + minX + " , bY = " + agY);
+
+        //RewardsTolerableRange(distance, tolerableRange, 2f, PunFactor, RewFactor);
+
+        AxisRewardAngleMagnitudeTR(tolerableRange, 0.05f, 0.5f, PunFactor, RewFactor, oX, oY, minX, agY);
+
 
         lastX.RemoveAt(59);
         lastX.Insert(0, Mathf.Lerp(minX, maxX, Random.Range(0f, 1f))); // En vez de oX, para que no tenga "chuleta"
@@ -277,7 +290,8 @@ public class AgentShoot : Agent
 
     public void BotClickEvent()
     {
-        graphicCanvas.AddBotClick();
+        if (agentType == AgentType.CLICKONLY)
+            graphicCanvas.AddBotClick();
 
         Instantiate(botDecal, transform.position + transform.forward * 35f, Quaternion.identity);
     }
@@ -372,7 +386,7 @@ public class AgentShoot : Agent
             else if (agentType == AgentType.TWO_AXIS)   //2 acciones (X,Y)
             {
                 action[0] = oX;
-                action[1] = oY;
+                action[1] = oY * YSensitivity;
             }
             else if (agentType == AgentType.CLICKONLY) //1 accion (click)
             {
@@ -502,12 +516,15 @@ public class AgentShoot : Agent
         AddReward(reward / totalSteps);
     }
 
-    public void RewardsTolerableRange(float difference, float tolerableRange, float maxRange)
+    public void RewardsTolerableRange(float difference, float tolerableRange, float maxRange, float punFactor, float rewFactor)
     {
+        float reward = 0f;
         if (difference > tolerableRange)
         {
+
             //Lineales
-            AddReward(-40f * (Mathf.Min(difference, maxRange) - tolerableRange) / (totalSteps * (maxRange - tolerableRange)));
+            reward = -punFactor * (Mathf.Min(difference, maxRange) - tolerableRange) / (totalSteps * (maxRange - tolerableRange));
+            
             //No lineales
             //AddReward(-diffX / (3000f * tolerableRange));
 
@@ -515,10 +532,14 @@ public class AgentShoot : Agent
         else
         {
             //Lineales
-            AddReward(40f * (1f - difference / tolerableRange) / totalSteps);
+            reward = rewFactor * (1f - difference / tolerableRange) / totalSteps;
             //No lineales
             //AddReward(Mathf.Clamp(tolerableRange / (difference + 0.001f), 1f, 10f) / 3000f);
         }
+
+        //Debug.Log(reward);
+
+        AddReward(reward);
     }
 
     public void RewardsStdExponential(float originalX, float minimumX, float maximumX, float stDesvistion, float avg, float coherence, float mulFactor)
@@ -768,6 +789,8 @@ public class AgentShoot : Agent
 
     public void ClickRewardsCheatSheet(float tolerableRange, float punFactor, float rewFactor) // Se llama desde el evento click directamente al agente
     {
+        if (agentType != AgentType.CLICKONLY) return;
+
         //float reward = GetComponent<BotOneMove>().GetCheatRewards(tolerableRange, punFactor, rewFactor);
         float reward = GetComponent<BotPrecision>().GetCheatRewards(tolerableRange, punFactor, rewFactor);
 
@@ -778,7 +801,64 @@ public class AgentShoot : Agent
 
     public void ClickRewardsCheatMissed() // Llamado directamente desde el agente
     {
+        if (agentType != AgentType.CLICKONLY) return;
+
         AddReward(-PunFactor * 20f);
+    }
+
+    public void AxisRewardAngleMagnitudeTR(float angleRange, float magnitudeRange, float maxRange, float punFactor, float rewFactor, float oX, float oY, float aX, float aY)
+    {
+        // Implementacion directa de tolerable range, con distancias lineales
+        // Podria implementarse con distancia radial (para la otra puedo usar directamente la anterior)
+
+        bool zeroDist = false;
+        
+        if ((oX==0f && oY == 0f) || (aX == 0f && aY == 0f))
+        {
+            zeroDist = true;
+        }
+
+        float magnitudeBot = Mathf.Sqrt(oX * oX + oY * oY);
+        float magnitudeAgent = Mathf.Sqrt(aX * aX + aY * aY);
+
+        float angleDistance = 0f; //Si un movimiento es 0, cuenta como el mismo angulo
+        if (!zeroDist)
+        {
+            angleDistance = (Vector2.Angle(new Vector2(oX, oY), new Vector2(aX, aY)) / 180f); //grados decimales
+           
+            //angleDistance = Mathf.Min(angleDistance, (Mathf.PI * 2f) - angleDistance) / Mathf.PI; //angulo absoluto
+
+        }
+
+        //Debug.Log(angleDistance);
+
+        float magnitudeDistance = Mathf.Abs(magnitudeAgent - magnitudeBot);
+
+        float mgValue = 0f;
+        if (magnitudeDistance > magnitudeRange)
+        {
+            mgValue = -(Mathf.Min(magnitudeDistance, maxRange) - magnitudeRange) / (maxRange - magnitudeRange);
+        }
+        else
+        {
+            mgValue = (1f - magnitudeDistance / magnitudeRange);
+        }
+
+        float reward = 0f;
+        if (angleDistance > angleRange)
+        {
+            reward = -punFactor * (2f - mgValue) * (angleDistance - angleRange) / (totalSteps * (1f - angleRange));
+        }
+        else
+        {
+            reward = rewFactor * (Mathf.Min(0f, mgValue)) *(1f - angleDistance / angleRange) / totalSteps;
+        }
+
+        //Debug.Log("mg= " + mgValue + " ad= " + angleDistance);
+
+        //Debug.Log(reward);
+
+        AddReward(reward);
     }
 
     public void DynamicAverageAndStd(ref float moveCount, ref float average, ref float std, ref float varz, ref float avgSqrd, float move)

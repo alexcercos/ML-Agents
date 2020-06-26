@@ -1,0 +1,151 @@
+% ==============================================================================
+% This file is part of the "LaTeX template for writing the Final Degree Work
+% report". It has been developed to aid the students of the Bachelor's Degree in
+% Video Game Design and Development at the Jaume I University.
+%
+% (c) 2019 Sergio Barrachina Mir and José Vte. Martí Avilés
+%
+% The template can be used and distributed under the next license:
+%  Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)
+%  http://creativecommons.org/licenses/by-nc-sa/3.0/
+%  http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode
+%
+% Atom editor configuration follows:
+% !TEX root = ./report.tex
+% !TeX spellcheck = en-US
+% ==============================================================================
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+
+\chapter{Reaction time}
+\label{app:time}
+
+This appendix contains some notes that were taken when (and after) training sessions related to modeling delayed reactive behaviors, or in other words, agents with reaction time.
+
+Any parameter that does not appear in one training is set to default (see ./config/trainer.config file).
+
+Trained models with green titles are considered good or any improvement in the investigation. Models with red titles are considered failures.
+
+Some of the models have not been saved, either because they don't perform well or they perform in much the same way as another model (agent).
+
+Most of the notes should not be taken literally or as certain, as they usually are theories or preliminary conclusions drawn during the training itself.
+
+\section*{\color{green} 09/5 18:55 (5\textunderscore 09\textunderscore 1855)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 8192 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 2.0e-3\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			normalize & true & num epoch & 6\\
+		\hline
+			num layers & 1 & summary freq & 1000\\
+		\hline
+			time horizon & 64 & &\\
+		\hline
+			pretraining strength & 0.8 & pretraining steps & 20000\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.01 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+			gail strength & 0.01 & gail gamma & 0.99\\
+		\hline
+			gail encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Demo path: demos/IndDemo.demo
+
+\vspace{2mm}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 0
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 524000
+
+Time = 5580s
+
+\vspace{2mm}
+
+Speed test using ppo with 3 envs and GPU, same rewards as in 5\textunderscore 09\textunderscore 1643
+
+It works twice as fast, so it can be good for testing (and using SAC for final versions). However, it often gives errors like Out of memory (and other stranger ones that may be caused by overheating).
+
+\section*{\color{green} 12/5 20:00 (5\textunderscore 12\textunderscore 2000)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 4.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e5\\
+		\hline
+			memory size & 256 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 1 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false\\
+		\hline
+			vis encode type & simple & & \\
+		\hline
+			extrinsic strength & 1.5 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.03 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{Frames~\footnote{Frame 0 is the current frame, which is used in every training, the other frames are the n-th previous frame. }: 0, 5, 10, 12, 15, 17, 20, 22, 25, 27, 30, 32, 35, 37, 40, 45, 50, 55, 60, 70, 80}
+
+\vspace{2mm}
+
+\textbf{Render Target Sensor: 21 * (20x20)}
+
+\textbf{Grayscale: true}
+
+Observation space size = 0
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 278000
+
+Time = 17650s
+
+\vspace{2mm}
+
