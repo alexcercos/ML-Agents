@@ -851,7 +851,10 @@ public class AgentShoot : Agent
         }
         else
         {
-            reward = rewFactor * (Mathf.Min(0f, mgValue)) *(1f - angleDistance / angleRange) / totalSteps;
+            if (mgValue > 0f)
+                reward = rewFactor * mgValue * (1f - angleDistance / angleRange) / totalSteps;
+            else
+                reward = punFactor * mgValue * angleDistance / (angleRange * totalSteps * 3f); //penaliza 3 veces menos
         }
 
         //Debug.Log("mg= " + mgValue + " ad= " + angleDistance);
