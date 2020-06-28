@@ -380,7 +380,7 @@ PrefabInstance:
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: demoHeuristic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -427,7 +427,12 @@ PrefabInstance:
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: YSensitivity
-      value: 10
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: agentParameters.maxStep
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8138455702859188159, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -448,8 +453,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: cacb91cd43af1af40a0581715dcf3acd,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2309747964293392777, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: m_BrainParameters.vectorObservationSize
@@ -1048,7 +1052,7 @@ PrefabInstance:
     - target: {fileID: 2309747964675207366, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: demonstrationName
-      value: Test
+      value: ComplexDemo
       objectReference: {fileID: 0}
     - target: {fileID: 2309747964675207366, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1063,11 +1067,16 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: curves.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: curves.Array.data[1].m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: curves.Array.data[2].m_Curve.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
@@ -1143,6 +1152,46 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: curves.Array.data[1].m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: curves.Array.data[2].m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: curves.Array.data[2].m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: curves.Array.data[2].m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: curves.Array.data[2].m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: curves.Array.data[2].m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: curves.Array.data[2].m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: curves.Array.data[2].m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: curves.Array.data[2].m_Curve.Array.data[0].outSlope
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -84,6 +84,8 @@ public class SpawnCases : MonoBehaviour
     {
         timeElapsed = 0f;
 
+        if (Mathf.Abs(cameraYAxis.GetChild(0).rotation.eulerAngles.x) > 20f) return; // No spawnea si esta mirando arriba
+
         //Debug.Log(typeSpawn);
 
         float dist = Random.Range(minDist, maxDist);

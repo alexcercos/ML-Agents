@@ -18,7 +18,7 @@ public class AgentShoot : Agent
 
     public float tolerableRange = 0.05f; //de -1 a 1 es el maximo posible, el rango es positivo>0
 
-    float totalSteps = 1000f;
+    float totalSteps = 500f;
 
     //private float iX = 0f, iY = 0f;
 
@@ -82,8 +82,12 @@ public class AgentShoot : Agent
     public bool showStd = true;
     /*[HideInInspector]*/public bool clickDiscrete = false;
 
+    Transform scene;
+
     private void Start()
     {
+        scene = GameObject.Find("Scene").transform;
+
         cameraAgent = GetComponent<CameraMovement>();
         
         lastX = new List<float>();
@@ -109,16 +113,29 @@ public class AgentShoot : Agent
     {
         //hacer aleatoria la rotacion al resetear
 
-        /*
-        lastX = new List<float>();
-        realX = new List<float>();
+        transform.localRotation = Quaternion.Euler(Random.Range(-89f, 89f), 0f, 0f);
 
+        foreach (Transform child in scene)
+        {
+            Destroy(child.gameObject);
+        }
+
+        lastX = new List<float>();
+        lastY = new List<float>();
+
+        realX = new List<float>();
+        realY = new List<float>();
 
         for (int i = 0; i < 60; i++)
         {
-            lastX.Add(0f);
-            realX.Add(0f);
-        }*/
+            lastX.Add(Random.Range(-1f, 1f));
+            lastY.Add(Random.Range(-1f, 1f));
+            realX.Add(Random.Range(-1f, 1f));
+            realY.Add(Random.Range(-1f, 1f));
+        }
+
+        GetComponent<BotPrecision>().ResetAgent();
+
     }
 
     public override void CollectObservations()

@@ -90,8 +90,8 @@ public class BotPrecision : IBotMovement
         if (idle)
         {
             //Las curvas eran 0 en el apartado de click, 1 en movimiento en los ejes
-            interpX = curves[1].Evaluate(done); //shape X
-            interpY = curves[1].Evaluate(done); //shape Y
+            interpX = curves[2].Evaluate(done); //shape X
+            interpY = curves[2].Evaluate(done); //shape Y
 
             SearchForObjective();
         }
@@ -133,6 +133,18 @@ public class BotPrecision : IBotMovement
 
             nextTimeClic = timeClic + Random.Range(-clicVariance, clicVariance);
         }
+    }
+
+    public void ResetAgent()
+    {
+        cheatRewardsClicked = false;
+        perform = false;
+        last = 0f;
+        done = 0f;
+        currentX = 0f;
+        currentY = 0f;
+
+        nextTimeClic = timeClic + Random.Range(-clicVariance, clicVariance);
     }
 
     public override bool Click()

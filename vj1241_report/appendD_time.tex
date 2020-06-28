@@ -3393,4 +3393,1429 @@ Up to 230000 steps (-20 reward) follows all similar (makes perfect impulses but 
 
 It does not change.
 
-%44
+\section*{\color{red} 07/6 19:47 (6\textunderscore 07\textunderscore 1947)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 128 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 3 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & \textbf{use recurrent} & \textbf{false} \\
+		\hline
+			vis encode type & simple & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 1 * (64x64)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 316000
+
+Time = 11000s
+
+\vspace{2mm}
+
+Training with SAC (without GAIL) and the same initial parameters as in the previous one (also without recurrent and with observations of the agent).
+
+It has reached a good reward but after 107k steps it has fallen (it has remained flat). I think the problem is that the reward is also unbalanced, it should have minimal rewards for getting very close in coherent movements, so that a positive result can be achieved.
+
+\section*{\color{red} 08/6 10:54 (6\textunderscore 08\textunderscore 1054)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 128 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 3 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & simple & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 1 * (64x64)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 161000
+
+Time = 5200s
+
+\vspace{2mm}
+
+Training until I fail, to see the results of before.
+
+It's much worse with SAC, I think that because the coherent movement has no positive reward, it doesn't distinguish when an impulse fails from when a coherent movement succeeds and ends up being fun. In the next one I'll add low rewards to see if it doesn't diverge.
+
+\section*{\color{red} 08/6 12:32 (6\textunderscore 08\textunderscore 1232)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 128 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 3 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & simple & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 1 * (64x64)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 92000
+
+Time = 3200s
+
+\vspace{2mm}
+
+Minimal rewards added. Still not converging, the next time I test PPO but with 3 layers.
+
+\section*{\color{red} 08/6 13:28 (6\textunderscore 08\textunderscore 1328)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 4096 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 2.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 6 & \textbf{num layers} & \textbf{3} \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.01 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 1 * (64x64)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 600000
+
+Time = 13000s
+
+\vspace{2mm}
+
+PPO with the new minimum rewards and 3 layers. It gets the same results as before.
+
+\section*{\color{red} 08/6 13:28 (6\textunderscore 08\textunderscore 1328)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 4096 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & \textbf{learning rate} & \textbf{1.5e-4}\\
+		\hline
+			\textbf{learning rate schedule} & \textbf{constant} & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 6 & \textbf{num layers} & \textbf{3} \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & \textbf{extrinsic gamma} & \textbf{0.8}\\
+		\hline
+			\textbf{curiosity strength} & \textbf{0.02} & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 1 * (64x64)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 76000
+
+Time = 1650s
+
+\vspace{2mm}
+
+Very unbalanced exponential rewards.
+
+\section*{\color{green} 08/6 17:59 (6\textunderscore 08\textunderscore 1759)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 4096 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 1.5e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 6 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 1 * (64x64)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 600000
+
+Time = 13000s
+
+\vspace{2mm}
+
+Rewards with decay from $x^5$ to 1 distance, then linear. It seems that the weight of the penalties stays very high now.
+The result is still similar, but the rewards are much lower.
+
+\section*{\color{green} 08/6 21:52 (6\textunderscore 08\textunderscore 2152)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 4096 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 1.5e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 6 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 1 * (64x64)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 600000
+
+Time = 13000s
+
+\vspace{2mm}
+
+Reward=100, penalty=150. In addition, it receives observations from the bot only. Change decay if it still doesn't work.
+
+Although it still has a lot of noise, the impulses are traced millimetrically (both when the network moves and when it imitates the bot), although it may be because it receives the bot's values as input (they are uniform) in spite of not really being working. If it works well we could start testing with some fixed delay frames (receiving all the following ones as observation) and then increase them.
+
+\section*{\color{green} 09/6 11:19 (6\textunderscore 09\textunderscore 1119)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 4096 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 1.5e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 6 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 1 * (64x64)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 585000
+
+Time = 12750s
+
+\vspace{2mm}
+
+Noise from 0.05 to 0.15, and now receives observations from the agent instead of the bot.
+
+I could try to put the average as a target, instead of the real value (in coherent movements).
+
+The bot adapts to a level similar to the previous bots, the standard deviation is similar in spite of having more noise. You could smooth out the deviation somewhat to make it better suited to the movement (even though it's not exactly a standard deviation).
+
+\section*{\color{red} 09/6 15:03 (6\textunderscore 09\textunderscore 1503)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 4096 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 1.5e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 6 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 1 * (64x64)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 356000
+
+Time = 7700s
+
+\vspace{2mm}
+
+Same parameters as before, but using a reward system that appreciates being closer to the average more than the real movement (it receives rewFactor/10, in a fixed way). It might cause the bot not to be motivated to follow impulses, but I hope it will be more adapted to the average, even if it's too much.
+
+It seems that there is no change, I will increase the amount of reward for successful coherent movement.
+
+\section*{\color{red} 09/6 17:15 (6\textunderscore 09\textunderscore 1715)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 4096 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 1.5e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 6 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 1 * (64x64)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 600000
+
+Time = 13000s
+
+\vspace{2mm}
+
+It now receives the same factor for the coherent as the incoherent (the coherent may be even greater), and the reward and penalty factors are the same (100).
+
+In spite of the changes, it continues to do well on impulses (although it gets worse on the right) and the coherent movement has not changed much. 
+
+\section*{\color{red} 09/6 21:42 (6\textunderscore 09\textunderscore 2142)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 4096 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 1.5e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 6 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 1 * (64x64)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 297000
+
+Time = 6400s
+
+\vspace{2mm}
+
+Doubled the reward factor to 200 but the proportion that receives the consistent reward movement has been halved (0.5).
+
+With these values it does not catch the right impulses well, the results are similar to the previous checkpoint.
+
+Although the impulses are not perfectly modeled, in future tests we could start using bots with delays.
+
+\section*{\color{red} 10/6 11:48 (6\textunderscore 10\textunderscore 1148)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 4096 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & \textbf{learning rate} & \textbf{7.5e-4}\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 6 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 1 * (64x64)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 340000
+
+Time = 7400s
+
+\vspace{2mm}
+
+I've added a consistency factor to the rewards within the average. The factors are 150 of penalty and 50 of reward. It also has a smoothing of deviations, and a higher learning rate.
+
+The result was quite good and rising fast, but diverges at 320k steps (the learning rate schedule was constant, so it was to be expected). Although the right hand impulses were not always right.
+
+\section*{\color{green} 10/6 14:04 (6\textunderscore 10\textunderscore 1404)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 4096 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			\textbf{learning rate schedule} & \textbf{linear} & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 6 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 1 * (64x64)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 600000
+
+Time = 13000s
+
+\vspace{2mm}
+
+Noise at 0.3, same parameters.
+
+Pretty good result, it fits well to the 2 movements, although it makes some impulse from the right loosely.
+
+\section*{\color{green} 10/6 18:54 (6\textunderscore 10\textunderscore 1854)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 4096 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 6 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{Frames: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+
+\vspace{2mm}
+
+\textbf{Render Target Sensor: 10 * (32x32)}
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 600000
+
+Time = 20000s
+
+\vspace{2mm}
+
+0.1 of react time and 0.2 of noise. All other parameters same as above. Now it receives as input the frames 1-2-3-4-5-6-7-8-9 (apart from the current one). The reaction should occur in frame 5-6. It may take longer to train, as it now receives 10 visual inputs instead of 1, and that can generate a lot of noise (it may also be better to give it the last 10 actions as input).
+
+Using 64x64 inputs gives "Cuda out of memory" error, so I have decreased the size to 32 to redo the training.
+
+The bot adapts well to most movements, both coherent and incoherent. However, some rightward impulses are not caught, and some consecutive movements are not as good either.
+
+Training time has increased by 50 percent. Taking into account the amount of processed pixels: 64*64 = 4096, 32*32 * 10 = 10240. That's slightly more than double.
+
+\section*{\color{red} 11/6 12:47 (6\textunderscore 11\textunderscore 1247)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 1024 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 4096 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 6 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Frames: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+\vspace{2mm}
+
+Render Target Sensor: 10 * (32x32)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 173000
+
+Time = 8000s
+
+\vspace{2mm}
+
+0.12 of react time and 0.05 of noise. The render queue has also been optimized. There have been some out of memory failures, so I should see how to increase it.
+
+Failure after several steps (sync error), probably because of the same thing of the memory. 
+
+\section*{\color{red} 11/6 15:40 (6\textunderscore 11\textunderscore 1540)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			\textbf{batch size} & \textbf{512} & beta & 5.0e-3 \\ 
+		\hline
+			\textbf{buffer size} & \textbf{2048} & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			\textbf{num epoch} & \textbf{4} & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Frames: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+\vspace{2mm}
+
+Render Target Sensor: 10 * (32x32)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 291000
+
+Time = 10000s
+
+\vspace{2mm}
+
+The batch size and buffer size have been decreased to check if they consume less memory. Training may be less stable (although the num epoch has been lowered, which should make it more stable at the cost of being slower).
+
+For some reason Unity fails and closes. It happens after optimizing the render targets.
+
+\section*{\color{green} 12/6 10:40 (6\textunderscore 12\textunderscore 1040)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 512 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 2048 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 4 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Frames: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+\vspace{2mm}
+
+Render Target Sensor: 10 * (32x32)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 600000
+
+Time = 20200s
+
+\vspace{2mm}
+
+The error seems to have its origin in the fact that the render targets created are not deleted/destroyed (the garbage collector doesn't collect them). Now I've put the destroy sequence, but if it still fails we'll have to call GC.Collect or Resources.UnloadUnusedAssets too.
+The training is the same as the previous one. It reaches the same score but more slowly.
+
+In this model, the standard deviation is a little bit higher, and the bot tends to adapt to it, so it has more noise than the original one.
+
+\section*{\color{green} 12/6 18:12 (6\textunderscore 12\textunderscore 1812)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 512 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 2048 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 4 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.8\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Frames: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+\vspace{2mm}
+
+Render Target Sensor: 10 * (32x32)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 600000
+
+Time = 19700s
+
+\vspace{2mm}
+
+React time of 0.08 and noise of 0.15. In this bot the spawner has been changed to balance the number of times each case is encountered, for the moment the same amount each of the 4 (chosen at random). Theoretically it should train faster and get a better result. 
+
+The spawns on the right keep failing.
+
+\section*{\color{red} 13/6 10:47 (6\textunderscore 13\textunderscore 1047)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & \textbf{hidden units} & \textbf{256} \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 3 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & simple & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Frames: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+\vspace{2mm}
+
+Render Target Sensor: 10 * (32x32)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 74000
+
+Time = 5000s
+
+\vspace{2mm}
+
+Training with SAC. The proportion of cases has been changed (more or less 50\% left, and 24\% consecutive).
+
+It doesn't work, it stays in the average. It may occur because of receiving rewards in the center.
+
+\section*{\color{red} 13/6 12:24 (6\textunderscore 13\textunderscore 1224)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 3 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & simple & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Frames: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+\vspace{2mm}
+
+Render Target Sensor: 10 * (32x32)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 52000
+
+Time = 3500s
+
+\vspace{2mm}
+
+I have removed the consistency factor on rewards within the average (this will apply to subsequent PPO trainings). In this one it does not receive any reward for getting the coherent movement right (prop. coherent = 0).
+
+Now it doesn't seem to converge. It is kept as it is, the agent serves as an example when the problem is too complex for the number of layers used.
+
+\section*{\color{red} 13/6 13:27 (6\textunderscore 13\textunderscore 1327)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			\textbf{num layers} & \textbf{4} & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & simple & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Frames: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+\vspace{2mm}
+
+Render Target Sensor: 10 * (32x32)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 78000
+
+Time = 5500s
+
+\vspace{2mm}
+
+Same parameters but one more layer in the network. If it doesn't improve the result, the problem may be in the visual encoder.
+
+It follows the same trends but takes longer to get there. I don't know if it could end up converging but it doesn't seem to.
+
+\section*{\color{red} 13/6 15:06 (6\textunderscore 13\textunderscore 1506)}
+
+Trainer: BC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batches per epoch & 10 & batch size & 64 \\ 
+		\hline
+			\textbf{hidden units} & \textbf{256} & learning rate & 1.0e-5 \\ 
+		\hline
+			max steps & 5.0e4 & memory size & 32 \\ 
+		\hline
+			\textbf{num layers} & \textbf{3} & sequence length & 128 \\ 
+		\hline
+			summary freq & 1000 & \textbf{use recurrent} & \textbf{false} \\ 
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{Demo path: demos/R008N015.demo}
+
+Frames: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+\vspace{2mm}
+
+Render Target Sensor: 10 * (32x32)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 11000
+
+Time = 2500s
+
+\vspace{2mm}
+
+Because of an initial error, I believe that recurrent memory does not go well when it receives an observation. At the end it diverges, I'm going to try 4 layers.
+
+\section*{\color{red} 13/6 15:55 (6\textunderscore 13\textunderscore 1555)}
+
+Trainer: BC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batches per epoch & 10 & batch size & 64 \\ 
+		\hline
+			hidden units & 256 & learning rate & 1.0e-5 \\ 
+		\hline
+			max steps & 5.0e4 & memory size & 32 \\ 
+		\hline
+			\textbf{num layers} & \textbf{4} & sequence length & 128 \\ 
+		\hline
+			summary freq & 1000 & use recurrent & false \\ 
+		\hline
+	\end{tabular}
+\end{center}
+
+Demo path: demos/R008N015.demo
+
+Frames: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+\vspace{2mm}
+
+Render Target Sensor: 10 * (32x32)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 17000
+
+Time = 4200s
+
+\vspace{2mm}
+
+It has a very erratic behavior, it doesn't get any impulse right. Special cases make the problem more complex to solve (and I think we will have to change the visual encoder).
+
+\section*{\color{green} 13/6 17:20 (6\textunderscore 13\textunderscore 1720)}
+
+Trainer: BC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batches per epoch & 10 & batch size & 64 \\ 
+		\hline
+			hidden units & 256 & learning rate & 1.0e-5 \\ 
+		\hline
+			max steps & 5.0e4 & memory size & 32 \\ 
+		\hline
+			num layers & 4 & sequence length & 128 \\ 
+		\hline
+			summary freq & 1000 & use recurrent & false \\ 
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{Demo path: demos/R01N015T005.demo}
+
+Frames: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+\vspace{2mm}
+
+Render Target Sensor: 10 * (32x32)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 7000
+
+Time = 1500s
+
+\vspace{2mm}
+
+A time deviation variable has been added (to 0.05). The noise is now 0.15 and the reaction time is 0.1. Only the common case is taken into account in this training, for simplicity.
+
+It seems to work decently, it removes the noise and hits the impulses.
+Note** it had been trained with the bot's observations instead of its own, strange cases occur when it reacts earlier (but receives observations otherwise).
+
+\section*{\color{green} 13/6 18:00 (6\textunderscore 13\textunderscore 1800)}
+
+Trainer: BC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batches per epoch & 10 & batch size & 64 \\ 
+		\hline
+			hidden units & 256 & learning rate & 1.0e-5 \\ 
+		\hline
+			max steps & 5.0e4 & memory size & 32 \\ 
+		\hline
+			num layers & 4 & sequence length & 128 \\ 
+		\hline
+			summary freq & 1000 & use recurrent & false \\ 
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{Demo path: demos/R001N015T014.demo}
+
+Frames: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+\vspace{2mm}
+
+Render Target Sensor: 10 * (32x32)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 7000
+
+Time = 2000s
+
+\vspace{2mm}
+
+Extreme case: it can react in any of the frames it receives (from 0.01 to 0.15). Reaction time at 0.01 (temporary noise 0.14) and noise at 0.15.
+
+When left longer it loses precision.
+
+\section*{\color{green} 13/6 18:43 (6\textunderscore 13\textunderscore 1843)}
+
+Trainer: BC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batches per epoch & 10 & batch size & 64 \\ 
+		\hline
+			hidden units & 256 & learning rate & 1.0e-5 \\ 
+		\hline
+			max steps & 5.0e4 & memory size & 32 \\ 
+		\hline
+			num layers & 4 & sequence length & 128 \\ 
+		\hline
+			summary freq & 1000 & use recurrent & false \\ 
+		\hline
+	\end{tabular}
+\end{center}
+
+Demo path: demos/R001N015T014.demo
+
+Frames: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+\vspace{2mm}
+
+Render Target Sensor: 10 * (32x32)
+
+Grayscale: false
+
+Observation space size = 1
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 2000
+
+Time = 500s
+
+\vspace{2mm}
+
+Training with the same parameters as above but shorter. It has a much better result than the previous ones, from which conclusions could be drawn about how well it models behaviour. The next steps would be to apply it to bots with a higher range (and where the agent does not receive all the frames), probably with a higher number of observations of previous movements, to test other encoders (along with more cases), to check the performance of BC networks against PPOs (SAC did not work out well), etc.
