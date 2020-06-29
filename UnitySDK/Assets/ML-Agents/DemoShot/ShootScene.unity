@@ -395,12 +395,12 @@ PrefabInstance:
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: PunFactor
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: RewFactor
-      value: 300
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -427,12 +427,12 @@ PrefabInstance:
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: YSensitivity
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: agentParameters.maxStep
-      value: 500
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 8138455702859188159, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1081,6 +1081,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
+      propertyPath: shapedTRCurves.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[3].m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[4].m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[5].m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
       propertyPath: imprecision
       value: 1
       objectReference: {fileID: 0}
@@ -1193,6 +1228,461 @@ PrefabInstance:
         type: 3}
       propertyPath: curves.Array.data[2].m_Curve.Array.data[0].outSlope
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[0].value
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[1].time
+      value: 0.04392956
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[1].value
+      value: 0.04696023
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[0].value
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[1].time
+      value: 0.8025738
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[1].value
+      value: 0.7845081
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[1].time
+      value: 0.027238406
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[1].value
+      value: 0.37215257
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[3].m_Curve.Array.data[0].value
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[3].m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[3].m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[3].m_Curve.Array.data[1].value
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[3].m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[3].m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[3].m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[4].m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[4].m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[4].m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[4].m_Curve.Array.data[1].value
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[4].m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[4].m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[4].m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[5].m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[5].m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[5].m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[5].m_Curve.Array.data[1].value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[5].m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[5].m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[5].m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[0].inSlope
+      value: -3.483754
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[0].outSlope
+      value: -3.483754
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[1].inSlope
+      value: -0.08803423
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[1].outSlope
+      value: -0.08803423
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[1].outWeight
+      value: 0.053243846
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[2].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[2].value
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[2].inSlope
+      value: -0.028199002
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[2].outSlope
+      value: -0.028199002
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[2].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[2].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[3].m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[3].m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[3].m_Curve.Array.data[0].inSlope
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[3].m_Curve.Array.data[0].outSlope
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[3].m_Curve.Array.data[1].inSlope
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[3].m_Curve.Array.data[1].outSlope
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[1].inSlope
+      value: 0.8714748
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[1].outSlope
+      value: 0.8714748
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[1].inWeight
+      value: 0.06128254
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[1].outWeight
+      value: 0.29840332
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[2].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[2].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[2].inSlope
+      value: 0.8712463
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[2].outSlope
+      value: 0.8712463
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[2].inWeight
+      value: 0.29704866
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[1].inSlope
+      value: -0.18652841
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[1].outSlope
+      value: -0.18652841
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[1].inWeight
+      value: 0.4203786
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[1].outWeight
+      value: 0.062296275
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[2].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[2].inSlope
+      value: -0.005511394
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[2].outSlope
+      value: -0.005511394
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[2].inWeight
+      value: 0.08798215
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[4].m_Curve.Array.data[1].inSlope
+      value: -0.39558873
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[4].m_Curve.Array.data[1].outSlope
+      value: -0.39558873
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[4].m_Curve.Array.data[1].inWeight
+      value: 0.085585654
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[5].m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[5].m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[5].m_Curve.Array.data[1].inSlope
+      value: -0.2996416
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[5].m_Curve.Array.data[1].outSlope
+      value: -0.2996416
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[5].m_Curve.Array.data[1].inWeight
+      value: 0.080875814
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[2].value
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[4].m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[4].m_Curve.Array.data[0].outWeight
+      value: 0.07094594
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[4].m_Curve.Array.data[0].inSlope
+      value: -0.310965
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[4].m_Curve.Array.data[0].outSlope
+      value: -0.310965
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afa7be1ca8456374d841ef083dc4cc31, type: 3}
@@ -2517,8 +3007,8 @@ MonoBehaviour:
   minDist: 45
   maxDist: 200
   heightDiff: 20
-  commonCase: 0
-  inLeftCase: 0.5
+  commonCase: 0.5
+  inLeftCase: 0
   inRightCase: 0.5
   consecutiveCase: 0
 --- !u!1 &1252828195

@@ -18,7 +18,7 @@ public class AgentShoot : Agent
 
     public float tolerableRange = 0.05f; //de -1 a 1 es el maximo posible, el rango es positivo>0
 
-    float totalSteps = 500f;
+    float totalSteps = 1000f;
 
     //private float iX = 0f, iY = 0f;
 
@@ -69,7 +69,7 @@ public class AgentShoot : Agent
     public float PunFactor = 10f;
     public float RewFactor = 10f;
 
-    
+    BotPrecision botPrecision; // se usa en algunas cheat rewards
 
     /*public*/ float waitForImpulse = 0.25f;
 
@@ -82,11 +82,15 @@ public class AgentShoot : Agent
     public bool showStd = true;
     /*[HideInInspector]*/public bool clickDiscrete = false;
 
+    public bool randomRestart = false;
+
     Transform scene;
 
     private void Start()
     {
         scene = GameObject.Find("Scene").transform;
+
+        botPrecision = GetComponent<BotPrecision>();
 
         cameraAgent = GetComponent<CameraMovement>();
         
@@ -112,30 +116,31 @@ public class AgentShoot : Agent
     public override void AgentReset()
     {
         //hacer aleatoria la rotacion al resetear
-
-        transform.localRotation = Quaternion.Euler(Random.Range(-89f, 89f), 0f, 0f);
-
-        foreach (Transform child in scene)
+        if (randomRestart)
         {
-            Destroy(child.gameObject);
+            transform.localRotation = Quaternion.Euler(Random.Range(-89f, 89f), 0f, 0f);
+
+            foreach (Transform child in scene)
+            {
+                Destroy(child.gameObject);
+            }
+
+            lastX = new List<float>();
+            lastY = new List<float>();
+
+            realX = new List<float>();
+            realY = new List<float>();
+
+            for (int i = 0; i < 60; i++)
+            {
+                lastX.Add(Random.Range(-1f, 1f));
+                lastY.Add(Random.Range(-1f, 1f));
+                realX.Add(Random.Range(-1f, 1f));
+                realY.Add(Random.Range(-1f, 1f));
+            }
+
+            GetComponent<BotPrecision>().ResetAgent();
         }
-
-        lastX = new List<float>();
-        lastY = new List<float>();
-
-        realX = new List<float>();
-        realY = new List<float>();
-
-        for (int i = 0; i < 60; i++)
-        {
-            lastX.Add(Random.Range(-1f, 1f));
-            lastY.Add(Random.Range(-1f, 1f));
-            realX.Add(Random.Range(-1f, 1f));
-            realY.Add(Random.Range(-1f, 1f));
-        }
-
-        GetComponent<BotPrecision>().ResetAgent();
-
     }
 
     public override void CollectObservations()
@@ -277,7 +282,9 @@ public class AgentShoot : Agent
 
         //RewardsTolerableRange(distance, tolerableRange, 2f, PunFactor, RewFactor);
 
-        AxisRewardAngleMagnitudeTR(tolerableRange, 0.05f, 0.5f, PunFactor, RewFactor, oX, oY, minX, agY);
+        //AxisRewardAngleMagnitudeTR(tolerableRange, 0.05f, 0.5f, PunFactor, RewFactor, oX, oY, minX, agY);
+
+        AxisRewardCheatShaped(oX, oY, minX, agY);
 
 
         lastX.RemoveAt(59);
@@ -809,7 +816,7 @@ public class AgentShoot : Agent
         if (agentType != AgentType.CLICKONLY) return;
 
         //float reward = GetComponent<BotOneMove>().GetCheatRewards(tolerableRange, punFactor, rewFactor);
-        float reward = GetComponent<BotPrecision>().GetCheatRewards(tolerableRange, punFactor, rewFactor);
+        float reward = botPrecision.GetCheatRewards(tolerableRange, punFactor, rewFactor);
 
         //Debug.Log(reward);
 
@@ -841,7 +848,7 @@ public class AgentShoot : Agent
         float angleDistance = 0f; //Si un movimiento es 0, cuenta como el mismo angulo
         if (!zeroDist)
         {
-            angleDistance = (Vector2.Angle(new Vector2(oX, oY), new Vector2(aX, aY)) / 180f); //grados decimales
+            angleDistance = (Vector2.Angle(new Vector2(oX, oY), new Vector2(aX, aY)) / 180f); //grados decimales, de -1 a 1
            
             //angleDistance = Mathf.Min(angleDistance, (Mathf.PI * 2f) - angleDistance) / Mathf.PI; //angulo absoluto
 
@@ -880,6 +887,30 @@ public class AgentShoot : Agent
 
         AddReward(reward);
     }
+
+    public void AxisRewardCheatShaped(float oX, float oY, float aX, float aY)
+    {
+        // Get shapes
+        float angleRange = 0f;
+        float punFactor = 0f;
+        float rewFactor = 0f;
+
+
+        botPrecision.GetCheatTRShapedValues(ref angleRange, ref punFactor, ref rewFactor);
+
+        float maxRange = 0.5f; // fija (por ahora)
+
+        float magnitudeRange = angleRange; //depende de angleRange
+
+
+        AxisRewardAngleMagnitudeTR(angleRange, magnitudeRange, maxRange, punFactor * PunFactor, rewFactor * RewFactor, oX, oY, aX, aY);
+    }
+
+
+    /*
+     * =====================================================
+     * =====================================================
+     */
 
     public void DynamicAverageAndStd(ref float moveCount, ref float average, ref float std, ref float varz, ref float avgSqrd, float move)
     {

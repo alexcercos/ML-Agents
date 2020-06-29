@@ -44,6 +44,14 @@ public class BotPrecision : IBotMovement
 
     bool cheatRewardsClicked = false;
 
+    public List<AnimationCurve> shapedTRCurves;
+                                                // 0: idle tolerable range shape
+                                                // 1: idle punish factor
+                                                // 2: idle reward factor
+                                                // 3: seek tolerable range shape
+                                                // 4: seek punish factor
+                                                // 5: seek reward factor
+
     void Start()
     {
         scene = GameObject.Find("Scene").transform;
@@ -68,8 +76,11 @@ public class BotPrecision : IBotMovement
             //buscar nuevo target
             xMove = 0f; //reinicia en el siguiente frame
             yMove = 0f;
+
+            doClic = false;
         }
 
+        
     }
 
     public void PerformMove()
@@ -79,7 +90,7 @@ public class BotPrecision : IBotMovement
         done += 1 / (FPS * time);
 
         if (doClic) doClic = false;
-        if (done >= nextTimeClic && last < nextTimeClic && !idle)
+        else if (done > nextTimeClic && last < nextTimeClic && !idle)
         {
             doClic = true;
         }
@@ -154,6 +165,7 @@ public class BotPrecision : IBotMovement
             agentShoot.BotClickEvent();
 
         return doClic;
+        /*
         if (doClic)
         {
             //Debug.Log("clicked at" + done);
@@ -161,7 +173,7 @@ public class BotPrecision : IBotMovement
             return true;
         }
         else
-            return false;
+            return false;*/
     }
 
     public override float MouseX()
@@ -282,5 +294,22 @@ public class BotPrecision : IBotMovement
             else return Mathf.Max(punMultiplier * (clicVariance - dist) / clicVariance, -punMultiplier * 2f);
         }
         
+    }
+
+    public void GetCheatTRShapedValues(ref float angleRange, ref float punFactor, ref float rewFactor)
+    {
+        if (idle)
+        {
+            //Debug.Log(done);
+            angleRange = shapedTRCurves[0].Evaluate(done);
+            punFactor = shapedTRCurves[1].Evaluate(done);
+            rewFactor = shapedTRCurves[2].Evaluate(done);
+        }
+        else
+        {
+            angleRange = shapedTRCurves[3].Evaluate(done);
+            punFactor = shapedTRCurves[4].Evaluate(done);
+            rewFactor = shapedTRCurves[5].Evaluate(done);
+        }
     }
 }

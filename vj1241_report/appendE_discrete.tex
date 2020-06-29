@@ -18,3 +18,1306 @@
 
 \chapter{Discrete actions}
 \label{app:discrete}
+
+This appendix contains some notes that were taken when (and after) training sessions related to modeling discrete (binary) actions.
+
+Any parameter that does not appear in one training is set to default (see ./config/trainer.config file).
+
+Trained models with green titles are considered good or any improvement in the investigation. Models with red titles are considered failures.
+
+Some of the models have not been saved, either because they don't perform well or they perform in much the same way as another model (agent).
+
+Most of the notes should not be taken literally or as certain, as they usually are theories or preliminary conclusions drawn during the training itself.
+
+\section*{\color{red} 17/6 17:57 (6\textunderscore 17\textunderscore 1757)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 512 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 2048 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 4 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & \textbf{extrinsic gamma} & \textbf{0.99}\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{Render Target Sensor: 64x64}
+
+Grayscale: false
+
+\textbf{Observation space size = 20}
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 294000
+
+Time = 6800s
+
+\vspace{2mm}
+
+Click training (test) with cheat sheet: TR=0.1, pun and rew=10 
+For some reason, the bot doesn't click on compiled trainings, but it does in the editor.
+
+Some incorrect impulses disappear over time, but the rewards seem very unbalanced.
+
+\section*{\color{green} 17/6 19:54 (6\textunderscore 17\textunderscore 1954)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 512 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 2048 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 4 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 600000
+
+Time = 13800s
+
+\vspace{2mm}
+
+15 of punish factor, 100 of reward factor and 0.2 of tolerable range. It improves quite a bit but has no penalty for leaving clicks, so it doesn't hit all of them (and gets a high reward).
+
+\section*{\color{red} 18/6 11:00 (6\textunderscore 18\textunderscore 1100)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 512 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 2048 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 4 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 570000
+
+Time = 12200s
+
+\vspace{2mm}
+
+Training with penalties for failing impulses (-4 * punFactor) added. I don't like very much that it relies on the interpolation variable to see the accuracy because in very short movements it's very difficult to get it right. In next trainings try with SAC or BC, and then think about improving the reward system.
+
+I think the penalty was too high, now it makes too many impulses. Next time I try SAC and less penalty.
+
+\section*{\color{green} 18/6 14:26 (6\textunderscore 18\textunderscore 1426)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			\textbf{num layers} & \textbf{2} & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & simple & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 488000
+
+Time = 17300s
+
+\vspace{2mm}
+
+Training with SAC, 2*punish for leaving impulses and the same parameters. I have also reduced the amount of layers (although maybe one would be enough).
+It hits quite a few impulses, except for very specific (and maybe confusing) cases. It reaches the rewards of 6\textunderscore 17\textunderscore 1954, but with even stricter conditions.
+
+\section*{\color{red} 19/6 10:45 (6\textunderscore 19\textunderscore 1045)}
+
+Trainer: BC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batches per epoch & 10 & batch size & 64 \\ 
+		\hline
+			hidden units & 128 & learning rate & 1.0e-5 \\ 
+		\hline
+			max steps & 5.0e4 & memory size & 32 \\ 
+		\hline
+			num layers & 4 & sequence length & 128 \\ 
+		\hline
+			summary freq & 1000 & use recurrent & false \\ 
+		\hline
+	\end{tabular}
+\end{center}
+
+Demo path: demos/Clicker09.demo
+
+\vspace{2mm}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 50000
+
+Time = 5200s
+
+\vspace{2mm}
+
+I had several ValueErrors because the heuristics created a size 2 action space (not compatible with the real one). 
+
+The model, although it gets some impulses right, is very imprecise. It doesn't seem to improve the SAC or PPO trainings at all.
+
+\section*{\color{green} 19/6 13:11 (6\textunderscore 19\textunderscore 1311)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & simple & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 348000
+
+Time = 12800s
+
+\vspace{2mm}
+
+Tolerable range reduced to 0.1. The reward should be lower than the previous model with SAC, but it will be necessary to check if it is better in practice.
+
+It seems to work well. Comparison with previous model with range 0.2 is missing.
+
+\section*{\color{red} 19/6 19:59 (6\textunderscore 19\textunderscore 1959)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & simple & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 452000
+
+Time = 16000s
+
+\vspace{2mm}
+
+Noise factor of 2 added (calculated differently from other noises). However, I can't get the movement to be stable in Y (it goes in both directions).
+
+At 390k steps it diverges. Then it seems that the graph stays flat.
+
+\section*{\color{red} 22/6 12:13 (6\textunderscore 22\textunderscore 1213)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & simple & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = -
+
+Time = -
+
+\vspace{2mm}
+
+New bot with multiple inaccuracies (BotPrecision): inaccuracy=1.2, noise in X = 0.8, noise in Y = 0.1, timeClic (average) = 0.9, time click variance = 0.1. Targets are now also detected while in idle. The penalties are exaggeratedly large (around 10,000), so I should balance them out in subsequent trainings.
+
+\section*{\color{green} 22/6 12:43 (6\textunderscore 22\textunderscore 1243)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & simple & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 126000
+
+Time = 4500s
+
+\vspace{2mm}
+
+The error was that the agent was getting punishments from the bot that didn't move instead of the new one (it has to be changed in the function of the rewards, since it's a getComponent).
+
+The result is decent as almost any of the previous ones (even if this one has more noise), but sometimes the bot clicks without coming to mind.
+
+\section*{\color{green} 22/6 14:02 (6\textunderscore 22\textunderscore 1402)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			\textbf{vis encode type} & \textbf{resnet} & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 118000
+
+Time = 6200s
+
+\vspace{2mm}
+
+Use of resnet as a visual encoder. It is expected to be slower, but it should also work better.
+
+I think it always acts in front of the target as it destroys it, but it has the potential to act (it does it in the middle). It could end the training being the network that makes the clicks instead of the bot (if I can get the bot not to go crazy by not hitting the target).
+
+I've activated the neural network for a few steps, but it has the problem that if it's the network that determines when to click, the agent's shots are not shown (I don't know if it penalizes or not).
+It works like the previous ones, in the next trainings I will change to half agent control (working well).
+
+The performance of the game when using the net is as good as with other visual encoders (the training is a bit slower), but the result seems to be a bit better.
+
+It causes failures when it doesn't click when playing the neural network, the bot stands pointing at a target but doesn't move. That problem is tried to be solved in the next training.
+
+\section*{\color{red} 22/6 16:03 (6\textunderscore 22\textunderscore 1603)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 65000
+
+Time = 3600s
+
+\vspace{2mm}
+
+Fixed some bugs where the clicks were not displayed as the runtime was programmed. Now the agent can be trained as the main player (although it's not recommended to do it from the beginning).
+
+Switch to neural network control at 40,000 steps.
+
+Be careful to avoid getting stuck on the site if it doesn't respond: penalize strongly and continue after X failures.
+
+The problem of switching is to get stuck if it doesn't respond, maybe if it is trained from the beginning with agent control it will have better results.
+
+\section*{\color{red} 22/6 17:25 (6\textunderscore 22\textunderscore 1725)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 16000
+
+Time = 700s
+
+\vspace{2mm}
+
+Train the bot from the beginning, the number of simultaneous planes has been limited again. Increased penalty for failing to click to 3 times punFactor (now it has worse consequences to leave a click than to fail it).
+
+After several changes it stays at *5 for not clicking and *2 for clicking in idle or too late.
+
+Try PPO in next trainings.
+
+Maybe I could put as an input parameter the last value of the network (to know if it has clicked or not).
+
+\section*{\color{green} 22/6 17:40 (6\textunderscore 22\textunderscore 1740)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+\textbf{Observation space size = 21}
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 71000
+
+Time = 3700s
+
+\vspace{2mm}
+
+Added the last click value as a parameter (if it's higher than 0, it should force the bot to go negative so the next frame can be clicked). I think that in previous trainings it got stuck because when it received only the last image, it considered that it should stay in positive values.
+
+Clicking too much should give a small penalty (sometimes it makes 3 clicks in a row, but it gets 0 points). The result is still much better.
+
+\section*{\color{green} 22/6 18:47 (6\textunderscore 22\textunderscore 1847)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 21
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 245000
+
+Time = 6500s
+
+\vspace{2mm}
+
+PunFactor/3 punishment has been added for over-clicking (it may not have much effect, since the bot has no click memory, or it may force it to perform better).
+
+It has had a crash for unknown reasons (it doesn't show up in the log editor either). However, the reward already seemed to be stagnant for a long time. The model works well.
+
+\section*{\color{red} 23/6 10:13 (6\textunderscore 23\textunderscore 1013)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 512 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 2048 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 4 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 21
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 33000
+
+Time = 770s
+
+\vspace{2mm}
+
+Training with DISCRETE space of action (1 branch of size 2). The rest of the training works the same way. In this case it has a simple encoder, I stop the training to compare it with resnet.
+
+\section*{\color{red} 23/6 10:28 (6\textunderscore 23\textunderscore 102)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 512 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 2048 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 4 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			\textbf{vis encode type} & \textbf{resnet} & &\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 21
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 109000
+
+Time = 2600s
+
+\vspace{2mm}
+
+Change on the encoder to compare performance. Use SAC in discrete space for the next workout.
+
+The reward curve increases but after a number of steps it stays flat (in the graph the agent is stuck at 1, but without clicking).
+
+\section*{\color{red} 23/6 11:18 (6\textunderscore 23\textunderscore 1118)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 21
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 54000
+
+Time = 2750s
+
+\vspace{2mm}
+
+Training with discrete action space and SAC. Before 10000 steps the reward already falls and the agent stagnates and does not improve again.
+
+\section*{\color{red} 23/6 12:06 (6\textunderscore 23\textunderscore 1206)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 21
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 38000
+
+Time = 1800s
+
+\vspace{2mm}
+
+Same training but lastClick is saved as a random number (instead of 0 or 1). Same result.
+
+\section*{\color{red} 23/6 13:05 (6\textunderscore 23\textunderscore 1305)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 21
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 13000
+
+Time = 600s
+
+\vspace{2mm}
+
+Training with continuous values again. A factor has been added whereby movements with short reaction times discount less and give more reward. I don't know how the model can get better or worse with these values. It has learned but somewhat worse, it's not valid because of a failure in the calculation of the new factors.
+
+\section*{\color{green} 23/6 13:17 (6\textunderscore 23\textunderscore 1317)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 21
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 91000
+
+Time = 4600s
+
+\vspace{2mm}
+
+Error corrected. Correct results are obtained, but they are not very different in quality from those that did not take time into account. However, there are times when it acts differently (it stays up while it doesn't have to click, and in a while it goes back down).
+
+\section*{\color{red} 23/6 18:55 (6\textunderscore 23\textunderscore 1855)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 21
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 7000
+
+Time = 250s
+
+\vspace{2mm}
+
+Training with discrete action space but considering that it clicks whenever iClick is 1 (in each frame independently, without depending on whether the previous one was 0).
+
+The initial rewards are very low due to the large amount of clicks it makes, I hope it won't diverge because of that.
+
+In a matter of 5000 steps it has already learned not to make clicks, since not acting is more profitable than constantly failing.
+
+\section*{\color{green} 23/6 19:05 (6\textunderscore 23\textunderscore 1905)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 21
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 66000
+
+Time = 2800s
+
+\vspace{2mm}
+
+PunFactor of 2, RewFactor of 30, and ignoring a click is penalized *20.
+It works well but not better than its continuous motion counterparts, it has more uncounted clicks than the other models (although it usually gets it right when it should).
+
+\section*{\color{red} 24/6 13:06 (6\textunderscore 24\textunderscore 1306)}
+
+Trainer: BC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batches per epoch & 10 & batch size & 64 \\ 
+		\hline
+			hidden units & 128 & learning rate & 1.0e-5 \\ 
+		\hline
+			max steps & 5.0e4 & memory size & 32 \\ 
+		\hline
+			num layers & 4 & sequence length & 128 \\ 
+		\hline
+			summary freq & 1000 & use recurrent & false \\ 
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{Demo path: demos/ClickerDiscrete.demo}
+
+\vspace{2mm}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 21
+
+Action space size = 1
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 22000
+
+Time = 2680s
+
+\vspace{2mm}
+
+Behavioral cloning with discreet movements. It has the problem of learning to act in the next frame (it should be commented in a section) because the demos are 1 frame late, when the target has already been destroyed.
+

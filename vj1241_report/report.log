@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.8)  28 JUN 2020 03:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.8)  29 JUN 2020 12:35
 entering extended mode
 **D:/Documents/ml-agents-master/vj1241_report/report.tex
 (D:/Documents/ml-agents-master/vj1241_report/report.tex
@@ -2884,7 +2884,158 @@ Package xcolor Warning: Incompatible color definition on input line 19.
 
 Package xcolor Warning: Incompatible color definition on input line 19.
 
-) [165] [166
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 37--62
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [165]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 92--117
+ [] 
+ []
+
+[166]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 144--169
+ [] 
+ []
+
+[167]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 198--227
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 255--268
+ [] 
+ []
+
+[168]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 301--330
+ [] 
+ []
+
+[169]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 359--388
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 417--446
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [170]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 473--502
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [171]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 531--560
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [172]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 596--625
+ [] 
+ []
+
+[173]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 658--687
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [174]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 720--749
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [175]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 778--807
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [176]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 836--861
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [177]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 888--915
+ [] 
+ []
+
+[178]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 944--973
+ [] 
+ []
+
+[179]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1000--1029
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1056--1085
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [180]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1112--1141
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [181]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1168--1197
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [182]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1228--1257
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [183]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1285--1298
+ [] 
+ []
+
+[184]) [185] [186
 
 
 ]
@@ -2925,8 +3076,8 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 118.
  ) 
 Here is how much of TeX's memory you used:
- 17456 strings out of 481005
- 264236 string characters out of 2900857
+ 17499 strings out of 481005
+ 264672 string characters out of 2900857
  749045 words of memory out of 3000000
  32169 multiletter control sequences out of 15000+200000
  612877 words of font info for 71 fonts, out of 3000000 for 9000
@@ -2955,9 +3106,9 @@ ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Users/alexc
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/a
 lexc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/U
 sers/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
-Output written on report.pdf (176 pages, 1387891 bytes).
+Output written on report.pdf (196 pages, 1439664 bytes).
 PDF statistics:
- 1445 PDF objects out of 1728 (max. 8388607)
- 438 named destinations out of 1000 (max. 500000)
+ 1561 PDF objects out of 1728 (max. 8388607)
+ 481 named destinations out of 1000 (max. 500000)
  272 words of extra memory for PDF output out of 10000 (max. 10000000)
 

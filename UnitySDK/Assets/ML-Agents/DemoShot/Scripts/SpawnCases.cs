@@ -30,10 +30,33 @@ public class SpawnCases : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float consecutiveCase;
 
+    float lastCommon, lastLeft, lastRight, lastConsecutive;
 
     private void OnValidate()
     {
-        
+        if (lastCommon != commonCase)
+        {
+            RecalculateValues(ref commonCase, ref inLeftCase, ref inRightCase, ref consecutiveCase);
+        }
+        else if (lastLeft != inLeftCase)
+        {
+            RecalculateValues(ref inLeftCase, ref commonCase, ref inRightCase, ref consecutiveCase);
+        }
+        else if (lastRight != inRightCase)
+        {
+            RecalculateValues(ref inRightCase, ref commonCase, ref inLeftCase, ref consecutiveCase);
+        }
+        else if (lastConsecutive != consecutiveCase)
+        {
+            RecalculateValues(ref consecutiveCase, ref inRightCase, ref commonCase, ref inLeftCase);
+        }
+
+        lastCommon = commonCase;
+        lastLeft = inLeftCase;
+        lastRight = inRightCase;
+        lastConsecutive = consecutiveCase;
+
+        /*
         float total = commonCase + inLeftCase + inRightCase + consecutiveCase;
         
         if (total == 0f)
@@ -46,6 +69,39 @@ public class SpawnCases : MonoBehaviour
             inLeftCase /= total;
             inRightCase /= total;
             consecutiveCase /= total;
+        }*/
+    }
+
+    private void RecalculateValues(ref float fixedValue, ref float v1, ref float v2, ref float v3)
+    {
+        float total = v1 + v2 + v3;
+
+        if (total == 0f && fixedValue == 0)
+        {
+            v1 = 1 / 3f;
+            v2 = 1 / 3f;
+            v3 = 1 / 3f;
+        }
+        else if (fixedValue == 1f)
+        {
+            v1 = v2 = v3 = 0f;
+        }
+        else
+        {
+            float rest = 1f - fixedValue;
+            if (total == 0f)
+            {
+                v1 = 1f / 3f * rest;
+                v2 = 1f / 3f * rest;
+                v3 = 1f / 3f * rest;
+            }
+            else
+            {
+                v1 = v1 / total * rest;
+                v2 = v2 / total * rest;
+                v3 = v3 / total * rest;
+            }
+           
         }
     }
 
@@ -83,8 +139,12 @@ public class SpawnCases : MonoBehaviour
     void SpawnPlane(ESpawnCase typeSpawn)
     {
         timeElapsed = 0f;
-
-        if (Mathf.Abs(cameraYAxis.GetChild(0).rotation.eulerAngles.x) > 20f) return; // No spawnea si esta mirando arriba
+        float currentAngle = cameraYAxis.GetChild(0).rotation.eulerAngles.x;
+        if ((currentAngle > 20f) && (360f - currentAngle > 20f))
+        {
+            //Debug.Log(currentAngle);
+            return; // No spawnea si esta mirando arriba
+        }
 
         //Debug.Log(typeSpawn);
 
