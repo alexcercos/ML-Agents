@@ -57,3 +57,5 @@
 \contentsline {appendix}{\chapternumberline {D}Reaction time}{97}{appendix.D}%
 \setcounter {tocdepth}{0}
 \contentsline {appendix}{\chapternumberline {E}Discrete actions}{165}{appendix.E}%
+\setcounter {tocdepth}{0}
+\contentsline {appendix}{\chapternumberline {F}Complex movements}{187}{appendix.F}%

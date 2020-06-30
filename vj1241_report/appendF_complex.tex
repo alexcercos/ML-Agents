@@ -1,0 +1,771 @@
+% ==============================================================================
+% This file is part of the "LaTeX template for writing the Final Degree Work
+% report". It has been developed to aid the students of the Bachelor's Degree in
+% Video Game Design and Development at the Jaume I University.
+%
+% (c) 2019 Sergio Barrachina Mir and José Vte. Martí Avilés
+%
+% The template can be used and distributed under the next license:
+%  Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)
+%  http://creativecommons.org/licenses/by-nc-sa/3.0/
+%  http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode
+%
+% Atom editor configuration follows:
+% !TEX root = ./report.tex
+% !TeX spellcheck = en-US
+% ==============================================================================
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+
+\chapter{Complex movements}
+\label{app:complex}
+
+This appendix contains some notes that were taken when (and after) training sessions related to modeling more complex movements.
+
+Any parameter that does not appear in one training is set to default (see ./config/trainer.config file).
+
+Trained models with green titles are considered good or any improvement in the investigation. Models with red titles are considered failures.
+
+Some of the models have not been saved, either because they don't perform well or they perform in much the same way as another model (agent).
+
+Most of the notes should not be taken literally or as certain, as they usually are theories or preliminary conclusions drawn during the training itself.
+
+\section*{\color{red} 25/6 11:34 (6\textunderscore 25\textunderscore 1134)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 512 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 2048 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 4 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			vis encode type & resnet & &\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+\textbf{Observation space size = 20}
+
+\textbf{Action space size = 2}
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 82000
+
+Time = 2700s
+
+\vspace{2mm}
+
+Noiseless and accurate bot (and movement curve with increasing speed), rewards with tolerable range of 0.15 and factors of 30 (reward and penalty). 
+
+At the beginning it shows a cuda out of memory error that in the last ones didn't show up, I don't know if it could be because the bot is bigger, because of the encoder or because of using the 2 debugs at the same time.
+
+At the end it has failed (GPU sync error). The learning has followed very strange patterns, it always gave values ending in 11 and it has been jumping between 3 concrete rewards: 7211, 7811, 8411 (and once 9011). 
+
+\section*{\color{red} 25/6 12:46 (6\textunderscore 25\textunderscore 1246)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 512 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 2048 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 4 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			vis encode type & resnet & &\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 20000
+
+Time = 700s
+
+\vspace{2mm}
+
+The distance function doesn't seem to be going wrong, now punFactor=10, rewFactor=30 and maxRange=2 (of tolerable range). Out of memory errors still appear.
+
+For some reason it follows the same patterns as before, even with the same times. It fails again as before.
+
+\section*{\color{red} 25/6 13:02 (6\textunderscore 25\textunderscore 1302)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 512 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 2048 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 4 & num layers & 3 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 64 & use recurrent & false\\
+		\hline
+			\textbf{vis encode type} & \textbf{simple} & &\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 64x64
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 29000
+
+Time = 650s
+
+\vspace{2mm}
+
+Change in the encoder. No out of memory errors at first. In the next one I'm going to put resnet again, but with a network with less internal layers.
+
+\section*{\color{red} 25/6 13:22 (6\textunderscore 25\textunderscore 1322)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 512 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 2048 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 4 & \textbf{num layers} & \textbf{2} \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			\textbf{time horizon} & \textbf{32} & use recurrent & false\\
+		\hline
+			\textbf{vis encode type} & \textbf{resnet} & &\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{Render Target Sensor: 32x32}
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 49000
+
+Time = 1000s
+
+\vspace{2mm}
+
+The error was that the cheat rewards missed were added (this always happened).
+
+Training with the same parameters but simpler (and with less time horizon, which could decrease even more in theory).
+
+Image size has been decreased to see if the problem is there (resnet should need then less memory).
+
+It seems recommended to decrease the batch (and buffer) size to improve the performance, I will try it in next trainings.
+
+For some reason, the debug axis lines are "destroyed" (the object disappears) and that causes an error in Unity, we'll have to see where the bug is.
+
+On the other hand, the rewards are very small (even being multiplied by 30, but at the end you divide everything by 1000).
+
+In the end it started to rise, but the axis debug was destroyed.
+The mistake was that the debug's sphere had a collider, and when the bot shot at it, the parent object (the whole axis debug) was destroyed. This shouldn't be a problem now.
+
+\section*{\color{red} 25/6 14:03 (6\textunderscore 25\textunderscore 1403)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 512 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 2048 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 4 & num layers & 2 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 32 & use recurrent & false\\
+		\hline
+			vis encode type & resnet & &\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 291000
+
+Time = 5900s
+
+\vspace{2mm}
+
+Fixed bugs and Rew-Pun factors multiplied by 10 (100-300). 
+
+It goes up slowly but steadily, it may be more optimal to force the bot to have less reward (with the same factors, as before). In the graph it seems to be tending to the same side but with a lot of noise, in this case it would also be convenient to reduce the tolerable range.
+
+\section*{\color{red} 25/6 15:46 (6\textunderscore 25\textunderscore 1546)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 512 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 2048 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 4 & num layers & 2 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 32 & use recurrent & false\\
+		\hline
+			vis encode type & resnet & &\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 480000
+
+Time = 11200s
+
+\vspace{2mm}
+
+RewFactor=PunFactor=300, TR=0.1. It does improve the reward but not so much the behavior. Check how it goes with 2 debug axes.
+
+\section*{\color{red} 25/6 18:59 (6\textunderscore 25\textunderscore 1859)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 248000
+
+Time = 8900s
+
+\vspace{2mm}
+
+It ends up converging to a kind of medium value, but it achieves positive rewards. The result is not very good also because the observations were of the agent (at first almost random, and then very uniform). In the next one reduce the tolerable range and pass pure observations of the bot.
+
+\section*{\color{green} 25/6 21:32 (6\textunderscore 25\textunderscore 2132)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 270000
+
+Time = 9700s
+
+\vspace{2mm}
+
+0.05 of TR and observations of the bot. It has managed to adapt well in a moment, but over 250,000 steps it has started to become unstable. The noise in Y is much higher than the noise in X.
+
+It is considered good because it has been close to a good result (although it does not work well in the editor, since it used bot observations).
+
+\section*{\color{red} 26/6 11:59 (6\textunderscore 26\textunderscore 1159)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 88000
+
+Time = 3100s
+
+\vspace{2mm}
+
+Training with angle-magnitude tolerable range rewards TRAngle = 0.05, TRMagnitude = 0.05, MR = 0.5, punFactor=200, rewFactor=300. 
+
+I think there's some failure in the rewards because it's moving almost the opposite way and getting less negative rewards each time, I'll let it go to see how it goes.
+
+\section*{\color{green} 26/6 13:29 (6\textunderscore 26\textunderscore 1329)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 260000
+
+Time = 9000s
+
+\vspace{2mm}
+
+The problem was in how the arc tangents were applied, so that the opposite one gave the same result as the positive one (-X/-Y==X/Y). Now I use Vector2.Angle to calculate it directly (in decimal).
+
+The final result isn't bad at all but it is quite noisy and slow (and still not out of the bot's observations). I should add sensitivity to the movement in the Y axis (and maybe in the X axis) because the bot has more trouble adjusting to very small numbers.
+
+\section*{\color{green} 26/6 16:12 (6\textunderscore 26\textunderscore 1612)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 187000
+
+Time = 6400s
+
+\vspace{2mm}
+
+Same training as before but with sensitivity of 10 on the Y-axis (has more range of accuracy). Already from the beginning it can be seen that the movements in Y are flatter than in X, I hope that it can adapt to larger ranges of movement in spite of the sensitivity. In next trainings we have to improve the reward system to penalize the distance in magnitude.
+
+The reward curve is quite improved, even though we haven't included magnitude penalties yet.
+
+In the editor, it needs the agent's observations to work well, although it does not become chaotic if left alone (sometimes it can end up looking at the zenith or the ground, but if the agent's observations are put back in, it recovers its position). It is also true that these cases have not yet been trained.
+
+\section*{\color{green} 26/6 20:00 (6\textunderscore 26\textunderscore 2000)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 220000
+
+Time = 8100s
+
+\vspace{2mm}
+
+A penalty has been added for failing the magnitude even if the angle is correct (it is 3 times less than punFactor, although it may have less influence on how the penalty is calculated).
+
+The result is better than the previous ones, but taking into account that we still start from only bot observations. However, it doesn't seem to carry the Y-impulses very well (maybe because it doesn't see many, or because it has too much sensitivity).
+
+Despite adding a penalty, it has achieved much higher rewards.
+
+\section*{\color{green} 27/6 11:16 (6\textunderscore 27\textunderscore 1116)}
+
+Trainer: BC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batches per epoch & 10 & batch size & 64 \\ 
+		\hline
+			hidden units & 128 & learning rate & 1.0e-5 \\ 
+		\hline
+			max steps & 5.0e4 & memory size & 32 \\ 
+		\hline
+			num layers & 4 & sequence length & 128 \\ 
+		\hline
+			summary freq & 1000 & use recurrent & false \\ 
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{Demo path: demos/ComplexDemo.demo}
+
+\vspace{2mm}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 37000
+
+Time = 3400s
+
+\vspace{2mm}
+
+BC training and bot observations. It quickly adapts to the lines.
+
+I should lower the sensitivity parameter in Y (10), and make new demos in which the position of the agent changes randomly (also modify Spawn Cases, so that it does not create planes while looking up/down). It doesn't take very well the impulses to the left at the end.

@@ -15,10 +15,11 @@ A level-1 auxiliary file: appendB_std.aux
 A level-1 auxiliary file: appendC_reaction.aux
 A level-1 auxiliary file: appendD_time.aux
 A level-1 auxiliary file: appendE_discrete.aux
+A level-1 auxiliary file: appendF_complex.aux
 Database file #1: report.bib
 You've used 6 entries,
             2118 wiz_defined-function locations,
-            538 strings with 5067 characters,
+            539 strings with 5086 characters,
 and the built_in function-call counts, 1304 in all, are:
 = -- 122
 > -- 42

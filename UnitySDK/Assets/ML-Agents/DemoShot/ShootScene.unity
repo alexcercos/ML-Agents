@@ -365,7 +365,7 @@ PrefabInstance:
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: receiveObservations
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -380,7 +380,7 @@ PrefabInstance:
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: demoHeuristic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -395,12 +395,12 @@ PrefabInstance:
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: PunFactor
-      value: 300
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: RewFactor
-      value: 125
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2309747964293392778, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -457,7 +457,7 @@ PrefabInstance:
     - target: {fileID: 2309747964293392777, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: m_BrainParameters.vectorObservationSize
-      value: 20
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2309747964293392777, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1097,7 +1097,7 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1232,7 +1232,7 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[0].value
-      value: 0.2
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1242,12 +1242,12 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[1].time
-      value: 0.04392956
+      value: 0.07722149
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[1].value
-      value: 0.04696023
+      value: 0.050448395
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1267,7 +1267,7 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[0].value
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1277,12 +1277,12 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[1].time
-      value: 0.8025738
+      value: 0.41968733
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[1].value
-      value: 0.7845081
+      value: 0.9579821
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1312,12 +1312,12 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[1].time
-      value: 0.027238406
+      value: 0.05201105
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[1].value
-      value: 0.37215257
+      value: 0.47780442
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1442,12 +1442,12 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[0].inSlope
-      value: -3.483754
+      value: -0.25318864
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[0].outSlope
-      value: -3.483754
+      value: -0.25318864
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1457,12 +1457,12 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[1].inSlope
-      value: -0.08803423
+      value: -0.048874535
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[1].outSlope
-      value: -0.08803423
+      value: -0.048874535
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1472,7 +1472,7 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[1].outWeight
-      value: 0.053243846
+      value: 0.058598395
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1487,17 +1487,17 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[2].inSlope
-      value: -0.028199002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[2].outSlope
-      value: -0.028199002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[0].m_Curve.Array.data[2].tangentMode
-      value: 34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1537,12 +1537,12 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[1].inSlope
-      value: 0.8714748
+      value: 0.25800985
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[1].outSlope
-      value: 0.8714748
+      value: 0.25800985
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1552,7 +1552,7 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[1].outWeight
-      value: 0.29840332
+      value: 0.17999952
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1567,12 +1567,12 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[2].inSlope
-      value: 0.8712463
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[1].m_Curve.Array.data[2].outSlope
-      value: 0.8712463
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1582,12 +1582,12 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[1].inSlope
-      value: -0.18652841
+      value: -0.6867027
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[1].outSlope
-      value: -0.18652841
+      value: -0.6867027
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1597,27 +1597,27 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[1].outWeight
-      value: 0.062296275
+      value: 0.061550617
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[2].time
-      value: 1
+      value: 0.75095934
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[2].inSlope
-      value: -0.005511394
+      value: -0.12279865
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[2].outSlope
-      value: -0.005511394
+      value: -0.12279865
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[2].inWeight
-      value: 0.08798215
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1662,7 +1662,7 @@ PrefabInstance:
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
       propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[2].value
-      value: 0.2
+      value: 0.21506526
       objectReference: {fileID: 0}
     - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
         type: 3}
@@ -1684,7 +1684,38 @@ PrefabInstance:
       propertyPath: shapedTRCurves.Array.data[4].m_Curve.Array.data[0].outSlope
       value: -0.310965
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[2].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[3].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[3].value
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[3].inSlope
+      value: 4.5796084
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[3].outSlope
+      value: 4.5796084
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492045616554437001, guid: afa7be1ca8456374d841ef083dc4cc31,
+        type: 3}
+      propertyPath: shapedTRCurves.Array.data[2].m_Curve.Array.data[3].inWeight
+      value: 0.067828104
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8138455702859188159, guid: afa7be1ca8456374d841ef083dc4cc31, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: afa7be1ca8456374d841ef083dc4cc31, type: 3}
 --- !u!1 &126193500
 GameObject:
@@ -2995,7 +3026,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234502301}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40860ad847a3b024abb25a4f4debb383, type: 3}
   m_Name: 

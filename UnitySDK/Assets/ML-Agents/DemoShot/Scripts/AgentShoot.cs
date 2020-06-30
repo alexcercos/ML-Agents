@@ -86,6 +86,8 @@ public class AgentShoot : Agent
 
     Transform scene;
 
+    float momentum = 0f; //de -0.75 a 0.75
+
     private void Start()
     {
         scene = GameObject.Find("Scene").transform;
@@ -174,6 +176,21 @@ public class AgentShoot : Agent
             }
             i = 0;
             while (i < 10)
+            {
+                AddVectorObs(Mathf.Lerp(realY[i], lastY[i], observationBotAgent));
+                i++;
+            }
+        }
+        else if (receiveObservations == ObservationsType.BOTH_REDUCED)
+        {
+            int i = 0;
+            while (i < 3)
+            {
+                AddVectorObs(Mathf.Lerp(realX[i], lastX[i], observationBotAgent));
+                i++;
+            }
+            i = 0;
+            while (i < 3)
             {
                 AddVectorObs(Mathf.Lerp(realY[i], lastY[i], observationBotAgent));
                 i++;
@@ -861,7 +878,7 @@ public class AgentShoot : Agent
         float mgValue = 0f;
         if (magnitudeDistance > magnitudeRange)
         {
-            mgValue = -(Mathf.Min(magnitudeDistance, maxRange) - magnitudeRange) / (maxRange - magnitudeRange);
+            mgValue = -(magnitudeDistance - magnitudeRange) / (maxRange - magnitudeRange); // ahora sin min (distance, range)
         }
         else
         {
@@ -877,8 +894,26 @@ public class AgentShoot : Agent
         {
             if (mgValue > 0f)
                 reward = rewFactor * mgValue * (1f - angleDistance / angleRange) / totalSteps;
+            else if (aX == 0f && aY == 0f)
+                reward = punFactor * mgValue / (angleRange * totalSteps * 1f); //mgValue es negativo
             else
-                reward = punFactor * mgValue * angleDistance / (angleRange * totalSteps * 3f); //penaliza 3 veces menos
+                reward = punFactor * mgValue * angleDistance / (angleRange * totalSteps * 1f); //penaliza 2 veces menos
+        }
+
+
+        // Este fragmento es el del momentum
+        
+        if (reward >= 0f)
+        {
+            reward = (1f + momentum) * reward;
+
+            momentum = Mathf.Clamp(momentum + 0.125f, -0.75f, 0.75f);
+        }
+        else
+        {
+            reward = (1f - momentum) * reward;
+
+            momentum = Mathf.Clamp(momentum - 0.125f, -0.75f, 0.75f);
         }
 
         //Debug.Log("mg= " + mgValue + " ad= " + angleDistance);
@@ -900,7 +935,7 @@ public class AgentShoot : Agent
 
         float maxRange = 0.5f; // fija (por ahora)
 
-        float magnitudeRange = angleRange; //depende de angleRange
+        float magnitudeRange = angleRange / 2f; //depende de angleRange
 
 
         AxisRewardAngleMagnitudeTR(angleRange, magnitudeRange, maxRange, punFactor * PunFactor, rewFactor * RewFactor, oX, oY, aX, aY);
@@ -1140,7 +1175,7 @@ public struct MoveInfo
 
 public enum ObservationsType
 {
-    PREVIOUS25, LAST, NONE, BOTH10FIRST, BOTH10_CLICK
+    PREVIOUS25, LAST, NONE, BOTH10FIRST, BOTH10_CLICK, BOTH_REDUCED
 }
 
 public enum AgentType

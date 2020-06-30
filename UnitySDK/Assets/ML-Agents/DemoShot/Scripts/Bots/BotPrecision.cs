@@ -194,11 +194,13 @@ public class BotPrecision : IBotMovement
 
         //Considerar angulo en Y cuando es idle
 
-        float closest = 0.51f;
+        
+        float closest = 1f; //0.51f
         foreach (Renderer t in scene.GetComponentsInChildren<Renderer>())
         {
             
-            if (t.CompareTag("decal")) continue;
+            //if (t.CompareTag("decal")) continue;
+            /*
             Vector3 screenPos = Camera.main.WorldToViewportPoint(t.transform.position);
             if (screenPos.z > 0f)
             {
@@ -213,11 +215,22 @@ public class BotPrecision : IBotMovement
                     angleX = (objective.eulerAngles.y - transform.rotation.eulerAngles.y);
                     angleY = -objective.eulerAngles.x + transform.rotation.eulerAngles.x;
                 }
+            }*/
+
+            if (t.isVisible)
+            {
+                Quaternion objective = Quaternion.LookRotation(t.transform.position - transform.position, Vector3.up);
+                angleX = (objective.eulerAngles.y - transform.rotation.eulerAngles.y);
+                angleY = -objective.eulerAngles.x + transform.rotation.eulerAngles.x;
+
+                Vector3 screenPos = Camera.main.WorldToViewportPoint(t.transform.position);
+
+                closest = Mathf.Abs(screenPos.x - 0.5f);
             }
         }
         
 
-        if (closest < 0.51f)
+        if (closest < 1f) //0.51f
         {
             time = (Mathf.Pow(4f, closest) - 0.8f)/2f;
 
@@ -257,7 +270,7 @@ public class BotPrecision : IBotMovement
         if (angleY > 180f) angleY -= 360f;
         if (angleY < -180f) angleY += 360f;
 
-        if (closest < 0.51f)
+        if (closest < 1f)
         {
             angleX *= Random.Range(1f, imprecision);
         }
