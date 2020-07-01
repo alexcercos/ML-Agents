@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.8)  1 JUL 2020 01:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.8)  1 JUL 2020 22:14
 entering extended mode
 **D:/Documents/ml-agents-master/vj1241_report/report.tex
 (D:/Documents/ml-agents-master/vj1241_report/report.tex
@@ -3131,7 +3131,210 @@ Overfull \hbox (4.03209pt too wide) in paragraph at lines 732--745
  [] 
  []
 
-[197]) [198]
+[197]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 778--791
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 822--835
+ [] 
+ []
+
+[198]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 868--901
+ [] 
+ []
+
+[199]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 932--965
+ [] 
+ []
+
+[200]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 996--1025
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1058--1085
+ [] 
+ []
+
+[201]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1118--1147
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [202]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1176--1205
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [203]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1232--1261
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [204]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1290--1319
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [205]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1350--1379
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [206]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1406--1435
+ [] 
+ []
+
+[207]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1462--1491
+ [] 
+ []
+
+[208]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1518--1547
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1574--1603
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [209]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1630--1659
+ [] 
+ []
+
+[210]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1686--1715
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1744--1773
+ [] 
+ []
+
+[211]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1800--1829
+ [] 
+ []
+
+[212]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1856--1885
+ [] 
+ []
+
+[213]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1912--1939
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 1968--1997
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [214]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2026--2055
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [215]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2084--2113
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [216]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2144--2173
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [217]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2202--2231
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [218]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2260--2289
+ [] 
+ []
+
+[219]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2318--2347
+ [] 
+ []
+
+[220]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2374--2403
+ [] 
+ []
+
+
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2432--2461
+ [] 
+ []
+
+
+Underfull \vbox (badness 2903) has occurred while \output is active []
+
+ [221]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2490--2519
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [222]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 2548--2577
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [223])
+[224]
 Package minitoc Info: I0009
 (minitoc)             Listing minitoc auxiliary files. 
 (minitoc)             Creating the report.maf file.
@@ -3169,8 +3372,8 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 119.
  ) 
 Here is how much of TeX's memory you used:
- 17546 strings out of 481005
- 265396 string characters out of 2900857
+ 17604 strings out of 481005
+ 265988 string characters out of 2900857
  749045 words of memory out of 3000000
  32180 multiletter control sequences out of 15000+200000
  612877 words of font info for 71 fonts, out of 3000000 for 9000
@@ -3199,9 +3402,9 @@ ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Users/alexc
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/a
 lexc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/U
 sers/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
-Output written on report.pdf (208 pages, 1472229 bytes).
+Output written on report.pdf (234 pages, 1540577 bytes).
 PDF statistics:
- 1635 PDF objects out of 1728 (max. 8388607)
- 507 named destinations out of 1000 (max. 500000)
+ 1789 PDF objects out of 2073 (max. 8388607)
+ 565 named destinations out of 1000 (max. 500000)
  280 words of extra memory for PDF output out of 10000 (max. 10000000)
 

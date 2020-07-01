@@ -769,3 +769,1831 @@ Time = 3400s
 BC training and bot observations. It quickly adapts to the lines.
 
 I should lower the sensitivity parameter in Y (10), and make new demos in which the position of the agent changes randomly (also modify Spawn Cases, so that it does not create planes while looking up/down). It doesn't take very well the impulses to the left at the end.
+
+\section*{\color{red} 27/6 12:40 (6\textunderscore 27\textunderscore 1240)}
+
+Trainer: BC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batches per epoch & 10 & batch size & 64 \\ 
+		\hline
+			hidden units & 128 & learning rate & 1.0e-5 \\ 
+		\hline
+			max steps & 5.0e4 & memory size & 32 \\ 
+		\hline
+			num layers & 4 & sequence length & 128 \\ 
+		\hline
+			summary freq & 1000 & use recurrent & false \\ 
+		\hline
+	\end{tabular}
+\end{center}
+
+Demo path: demos/ComplexDemo.demo
+
+\vspace{2mm}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 9000
+
+Time = 900s
+
+\vspace{2mm}
+
+Changing the observations from bot to agent at 6000 steps has stopped working well. Transitioning from one side to the other, it can be seen that the curve starts to flatten out.
+
+\section*{\color{red} 27/6 12:57 (6\textunderscore 27\textunderscore 1257)}
+
+Trainer: BC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batches per epoch & 10 & batch size & 64 \\ 
+		\hline
+			hidden units & 128 & learning rate & 1.0e-5 \\ 
+		\hline
+			max steps & 5.0e4 & memory size & 32 \\ 
+		\hline
+			num layers & 4 & sequence length & 128 \\ 
+		\hline
+			summary freq & 1000 & use recurrent & false \\ 
+		\hline
+	\end{tabular}
+\end{center}
+
+Demo path: demos/ComplexDemo.demo
+
+\vspace{2mm}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 13000
+
+Time = 1200s
+
+\vspace{2mm}
+
+Sensitivity in Y to 5 (also changed in the demo). Now start from the beginning with observations from the same agent. 
+
+It has been adapting to a kind of midpoint (although it was doing some impulse) but at 9000 steps it already loses control.
+
+\section*{\color{red} 27/6 13:31 (6\textunderscore 27\textunderscore 1331)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+			\textbf{gail strength} & \textbf{0.1} & \textbf{gail gamma} & \textbf{0.99}\\
+		\hline
+			\textbf{gail encoding size} & \textbf{128} & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{Demo path: ./demos/ComplexDemo.demo}
+
+\vspace{2mm}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 470000
+
+Time = 18800s
+
+\vspace{2mm}
+
+Gail with agent's remarks. It takes it quite a few steps to get a good result, in the end it adapts to some of the curves but not with much precision. However, it usually gets the angle of the movements right (not so much the magnitude).
+
+\section*{\color{red} 27/6 18:46 (6\textunderscore 27\textunderscore 1846)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+			\textbf{gail strength} & \textbf{0.05} & gail gamma & 0.99\\
+		\hline
+			gail encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Demo path: ./demos/ComplexDemo.demo
+
+\vspace{2mm}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 135000
+
+Time = 5400s
+
+\vspace{2mm}
+
+Training with less GAIL, in this case with bot observations. It does not improve previous results, even with these observations.
+
+\section*{\color{red} 27/6 20:54 (6\textunderscore 27\textunderscore 2054)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+\textbf{Episode steps = 500}
+
+Total steps = 389000
+
+Time = 13600s
+
+\vspace{2mm}
+
+In this training I will add the agent restart: at the end of each episode (which will be shorter than 1000).
+
+I think I'll also have to restart the bot's movement with the agent reset to make it work.
+
+Maybe the impulses created by restarting the agent are too big for the Y-sensitivity it has right now.
+
+There are parts of the movement line to which it adapts very well, however it tends to ``anticipate'' the next impulse too soon. If I could get it to not finish them so soon it would be a very good result (even taking into account that we still have bot observations).
+
+\section*{\color{red} 29/6 15:28 (6\textunderscore 29\textunderscore 1528)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 512 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 2048 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 4 & num layers & 2 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 32 & use recurrent & false\\
+		\hline
+			vis encode type & resnet & &\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 500
+
+Total steps = 337000
+
+Time = 8000s
+
+\vspace{2mm}
+
+Training with cheat shaped tolerable range, the curves have experimental forms yet. RewFactor = PunFactor = 400. In this case it only creates targets on the right side (half in and half out).
+I haven't changed the Y-sensitivity (still at 5) and that might affect the training somewhat.
+
+It may be necessary to add a way that if it misses the shape at the end (anticipates too much the next move) it won't be rewarded later.
+Also remove the random reset.
+
+It doesn't mislead the angle of the move, but the reward stagnates  at 100 thousand steps.
+
+\section*{\color{red} 29/6 17:48 (6\textunderscore 29\textunderscore 1748)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+\textbf{Episode steps = 1000}
+
+Total steps = 100000
+
+Time = 3600s
+
+\vspace{2mm}
+
+Random reboot and Y-sensitivity have been removed (although this may not have been necessary), and training is also done with SAC. The curves and factors are the same as before.
+
+It tends to stay static in a straight line (as in some previous model), it hits the angle quite well but not the magnitude. I think it needs more penalty factor to be somewhat more effective.
+
+\section*{\color{red} 29/6 18:53 (6\textunderscore 29\textunderscore 1853)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 124000
+
+Time = 4500s
+
+\vspace{2mm}
+
+600 of punish factor and 250 of reward factor, the other parameters remain the same. It's not much better than before, probably because it's easier to get the initial impulse right than to try to gain something from the others. I'm going to try to make sure that if you don't get the last move right, you don't get rewarded on the next one.
+
+\section*{\color{red} 29/6 20:18 (6\textunderscore 29\textunderscore 2018)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 20
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 498000
+
+Time = 17600s
+
+\vspace{2mm}
+
+Corrections in the curves, it should work better now, although I haven't done the thing where I don't get rewarded on the first move if I miss the last one on the previous one.
+
+Learn the angle correctly but not so much the magnitude, it might be necessary to add more exigency there (or a different curve). The amount of observations it receives could be reduced, since 10 previous movements are not necessary to have a clear idea of the movement (3-5 would be enough).
+
+\section*{\color{red} 30/6 08:42 (6\textunderscore 30\textunderscore 0842)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+\textbf{Observation space size = 6}
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 145000
+
+Time = 5000s
+
+\vspace{2mm}
+
+Observations reduced to the last 3 of each axis. The way to detect targets has also been changed to isVisible. 
+
+Momentum variable added, increases the reward if several are combined in a row and decreases it if not. PunFactor = 300 and RewFactor = 125, same curves.
+
+It still matches the angle but not the magnitude.
+
+\section*{\color{red} 30/6 10:13 (6\textunderscore 30\textunderscore 1013)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: 32x32
+
+Grayscale: false
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 71000
+
+Time = 2400s
+
+\vspace{2mm}
+
+I removed a Mathf.Min that limited the penalties by magnitude. It should keep the spawner within the limits of the camera angle, because I'm seeing a lot of repeat shots.
+
+\section*{\color{red} 30/6 10:43 (6\textunderscore 30\textunderscore 1043)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{Render Target Sensor: -}
+
+\textbf{Grayscale: -}
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 87000
+
+Time = 1700s
+
+\vspace{2mm}
+
+Training without spawns and without a camera, the only objective is to imitate movement. All other parameters are the same as before. We will also have to review how the penalty is calculated with magnitude and think about increasing it. It follows the same curve, the next time I try to remove the factor that decreases the magnitude penalties.
+
+\section*{\color{red} 30/6 11:32 (6\textunderscore 30\textunderscore 1132)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 214000
+
+Time = 4300s
+
+\vspace{2mm}
+
+Now there's no discount for failing the magnitude factor. I've also removed the momentum. It doesn't seem to be getting any better.
+
+\section*{\color{red} 30/6 12:46 (6\textunderscore 30\textunderscore 1246)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 123000
+
+Time = 3000s
+
+\vspace{2mm}
+
+Same training as before but using SAC. If it doesn't improve we will have to rethink the shape of the curves or how to give more importance to the magnitude than to the angle. Same result.
+
+\section*{\color{red} 30/6 13:37 (6\textunderscore 30\textunderscore 1337)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 5.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 110000
+
+Time = 2700s
+
+\vspace{2mm}
+
+More pronounced penalty curve. If it does not change, the tolerable range curve will probably have to be modified.
+
+\section*{\color{red} 30/6 14:25 (6\textunderscore 30\textunderscore 1425)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & \textbf{learning rate} & \textbf{7.0e-4}\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 191000
+
+Time = 4500s
+
+\vspace{2mm}
+
+Higher learning rate, 400 punFactor and 100 rewFactor.
+
+\section*{\color{green} 30/6 15:42 (6\textunderscore 30\textunderscore 1542)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 7.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 433000
+
+Time = 11000s
+
+\vspace{2mm}
+
+Modified tolerable range curve, and some other modifications to the other 2. RewFactor=100, PunFactor=500.
+
+Improved quite a bit from the previous ones.
+
+\section*{\color{green} 30/6 18:53 (6\textunderscore 30\textunderscore 1853)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 7.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 260000
+
+Time = 6500s
+
+\vspace{2mm}
+
+Tolerable range curve flatter, small changes in the other 2. Rew=90, Pun=500.
+
+\section*{\color{green} 30/6 20:44 (6\textunderscore 30\textunderscore 2044)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 7.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 339000
+
+Time = 8000s
+
+\vspace{2mm}
+
+Good result like the previous ones, has to anticipate the next movements yet.
+
+\section*{\color{green} 30/6 23:00 (6\textunderscore 30\textunderscore 2300)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 7.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 223000
+
+Time = 5600s
+
+\vspace{2mm}
+
+More reward at the end of the moves, the rest of the curves and parameters remain the same. It manages to make some pretty good moves, but it's far from perfect. In next practice I could try to reverse the reward curve to see how it acts, and use PPO with these rewards.
+
+\section*{\color{red} 01/7 09:03 (7\textunderscore 01\textunderscore 0903)}
+
+Trainer: PPO
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 512 & beta & 5.0e-3 \\ 
+		\hline
+			buffer size & 2048 & epsilon & 0.2 \\
+		\hline
+		  hidden units & 256 & learning rate & 7.5e-4\\
+		\hline
+			learning rate schedule & linear & max steps & 6.0e5\\
+		\hline
+			memory size & 32 & normalize & false\\
+		\hline
+			num epoch & 4 & num layers & 2 \\
+		\hline
+			sequence length & 128 & summary freq & 1000 \\
+		\hline
+			time horizon & 32 & use recurrent & false\\
+		\hline
+			vis encode type & resnet & &\\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.02 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 309000
+
+Time = 6300s
+
+\vspace{2mm}
+
+Same training as 6\textunderscore 30\textunderscore 2300, but using PPO instead of SAC. Compare both models at the end.
+
+The result is much worse than with SAC. It is saved for comparison.
+
+\section*{\color{red} 01/7 10:53 (7\textunderscore 01\textunderscore 1053)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 7.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 78000
+
+Time = 1900s
+
+\vspace{2mm}
+
+Reward factor curve with higher value at the end (in addition to the beginning). The factors remain at: rew=90, pun=500.
+
+It tends to stay flat at the top (although it does some concrete moves well).
+
+\section*{\color{red} 01/7 11:33 (7\textunderscore 01\textunderscore 1133)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 7.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 63000
+
+Time = 1500s
+
+\vspace{2mm}
+
+Flatter tolerable range curve, earlier shape rewards curve and slightly longer penalty curve. Still using momentum, now I've put a variable to control the relationship between the magnitude penalties (the higher it is, the more its importance is reduced, and if it's lower than 1 it's given more value than the angle, for now it's 1).
+
+It seems to be worse than the cases with similar curves.
+
+\section*{\color{green} 01/7 12:01 (7\textunderscore 01\textunderscore 1201)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 7.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 221000
+
+Time = 5500s
+
+\vspace{2mm}
+
+Tolerable range curve scaled up (as before), and the penalty curve restored to the previous shape. The magnitude factor is now 0.75, so it penalizes more.
+
+Pretty good result.
+
+In the next practices I will use 3 more curves to save the best ones.
+
+\section*{\color{green} 01/7 13:41 (7\textunderscore 01\textunderscore 1341)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 7.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 245000
+
+Time = 6200s
+
+\vspace{2mm}
+
+Tolerable range curve with more value at the end, sharper reward curve (only the first move with more value counts practically) and less lengthy penalty curve. Pun=500 and Rew=75.
+
+The result has improved, the next one I'll add more pressure to the penalties.
+
+\section*{\color{red} 01/7 15:29 (7\textunderscore 01\textunderscore 1529)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 7.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 118000
+
+Time = 3000s
+
+\vspace{2mm}
+
+Rew=70, Pun=600. Same curves as in previous practice.
+
+Looks slightly worse than the last one.
+
+\section*{\color{green} 01/7 16:23 (7\textunderscore 01\textunderscore 1623)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 7.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 195000
+
+Time = 5000s
+
+\vspace{2mm}
+
+Tolerable reduced range, but also the penalty factor: PunFactor=400, RewFactor=100. 
+
+Correct result, similar to the previous ones (not saved).
+
+\section*{\color{red} 01/7 17:48 (7\textunderscore 01\textunderscore 1748)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 7.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 95000
+
+Time = 2400s
+
+\vspace{2mm}
+
+Training with the tolerable range demanding of the last one, but factors of 500-75. In addition, the magnitude ratio is 0.5 so it penalizes even more. It does not improve the previous results, the best model so far seems to be 7\textunderscore 01\textunderscore 1341.
+
+\section*{\color{red} 01/7 18:51 (7\textunderscore 01\textunderscore 1851)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 7.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 73000
+
+Time = 1800s
+
+\vspace{2mm}
+
+Same parameters as in 7\textunderscore 01\textunderscore 1341 (Pun=500, Rew=75, useMomentum, magnitude=0.75) but using as space actions the angle of the movement and its magnitude (normalized). I could create a vector of observations that had the last angles and magnitudes (instead of x and y).
+
+The result seems to improve at times, in future trainings use angle and magnitude observations.
+
+\section*{\color{red} 01/7 19:31 (7\textunderscore 01\textunderscore 1931)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 7.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 143000
+
+Time = 3400s
+
+\vspace{2mm}
+
+Now the observations are \textbf{angle-magnitude} (which are also size 6). In theory the problem should be rather more trivial for the neural network, even if the numbers saved from observation are not the exact actions (they are saved already processed and normalized).
+
+It makes some good angles, but only underneath. This may be because at angle 0 the action angles -1 and +1 coincide.
+
+\section*{\color{red} 01/7 20:44 (7\textunderscore 01\textunderscore 2044)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 7.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 62000
+
+Time = 1500s
+
+\vspace{2mm}
+
+Flat curves. The direction of movement in this bot has been reversed (now it goes to the left). The observations have been modified to save the action before processing (keep in mind when testing the agent 7\textunderscore 01\textunderscore 1931).
+
+The movement remains flat, these curves are not useful.
+
+\section*{\color{red} 01/7 21:14 (7\textunderscore 01\textunderscore 2114)}
+
+Trainer: SAC
+
+\begin{center}
+	\begin{tabular}{ | m{4cm} | m{2.5cm}||m{4cm} | m{2.5cm} | } 
+		\hline
+			batch size & 128 & buffer size & 200000 \\ 
+		\hline
+			buffer init steps & 5000 & hidden units & 256 \\
+		\hline
+			init entcoef & 1.0 & learning rate & 7.0e-4\\
+		\hline
+			learning rate schedule & constant & max steps & 6.0e6\\
+		\hline
+			memory size & 32 & normalize & true\\
+		\hline
+			num update & 1 & train interval & 5\\
+		\hline
+			num layers & 2 & time horizon & 64\\
+		\hline
+			sequence length & 128 & summary freq & 1000\\
+		\hline
+			tau & 0.005 & use recurrent & false \\
+		\hline
+			vis encode type & resnet & & \\
+		\hline
+			extrinsic strength & 1.0 & extrinsic gamma & 0.99\\
+		\hline
+			curiosity strength & 0.1 & curiosity gamma & 0.99\\
+		\hline
+			curiosity encoding size & 128 & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Render Target Sensor: -
+
+Grayscale: -
+
+Observation space size = 6
+
+Action space size = 2
+
+\vspace{2mm}
+
+Episode steps = 1000
+
+Total steps = 94000
+
+Time = 2400s
+
+\vspace{2mm}
+
+Modified curves similar to the first ones, pun=600 and rew=75.
+
+The curve stays flat on the average, it doesn't work.

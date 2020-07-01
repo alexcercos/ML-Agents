@@ -250,11 +250,14 @@ public class BotPrecision : IBotMovement
         {
             // idle
             idle = true;
-            angleX = Random.Range(20f, 50f);
+            //angleX = Random.Range(20f, 50f);
+
+            //invertido
+            angleX = Random.Range(-50f, -20f);
 
             angleY = Random.Range(-5f, 5f) + transform.rotation.eulerAngles.x;
 
-            time = angleX / 90f + Random.Range(-0.1f, 0.1f);
+            time = Mathf.Abs(angleX)/ 90f + Random.Range(-0.1f, 0.1f);
 
             cheatRewardsClicked = false;
             last = 0f;
@@ -315,14 +318,14 @@ public class BotPrecision : IBotMovement
         {
             //Debug.Log(done);
             angleRange = shapedTRCurves[0].Evaluate(done);
-            punFactor = shapedTRCurves[1].Evaluate(done);
-            rewFactor = shapedTRCurves[2].Evaluate(done);
+            punFactor = shapedTRCurves[2].Evaluate(done);
+            rewFactor = shapedTRCurves[4].Evaluate(done);
         }
         else
         {
-            angleRange = shapedTRCurves[3].Evaluate(done);
-            punFactor = shapedTRCurves[4].Evaluate(done);
-            rewFactor = shapedTRCurves[5].Evaluate(done);
+            angleRange = shapedTRCurves[6].Evaluate(done);
+            punFactor = shapedTRCurves[7].Evaluate(done);
+            rewFactor = shapedTRCurves[8].Evaluate(done);
         }
     }
 }

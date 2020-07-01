@@ -83,6 +83,12 @@ public class AgentShoot : Agent
     /*[HideInInspector]*/public bool clickDiscrete = false;
 
     public bool randomRestart = false;
+    public bool useMomentum = true;
+
+    public float magnitudeRelation = 1f;
+
+    List<float> lastAngles;
+    List<float> lastMagnitudes;
 
     Transform scene;
 
@@ -113,6 +119,15 @@ public class AgentShoot : Agent
 
         //realImpulse = new Queue<MoveInfo>();
         //agentImpulse = new Queue<MoveInfo>();
+
+        lastAngles = new List<float>();
+        lastMagnitudes = new List<float>();
+
+        for (int i = 0; i < 3; i++)
+        {
+            lastAngles.Add(0f);
+            lastMagnitudes.Add(0f);
+        }
     }
 
     public override void AgentReset()
@@ -139,6 +154,15 @@ public class AgentShoot : Agent
                 lastY.Add(Random.Range(-1f, 1f));
                 realX.Add(Random.Range(-1f, 1f));
                 realY.Add(Random.Range(-1f, 1f));
+            }
+
+            lastAngles = new List<float>();
+            lastMagnitudes = new List<float>();
+
+            for (int i = 0; i < 3; i++)
+            {
+                lastAngles.Add(0f);
+                lastMagnitudes.Add(0f);
             }
 
             GetComponent<BotPrecision>().ResetAgent();
@@ -193,6 +217,21 @@ public class AgentShoot : Agent
             while (i < 3)
             {
                 AddVectorObs(Mathf.Lerp(realY[i], lastY[i], observationBotAgent));
+                i++;
+            }
+        }
+        else if (receiveObservations == ObservationsType.ANGLE_MAG)
+        {
+            int i = 0;
+            while (i < 3)
+            {
+                AddVectorObs(lastAngles[i]);
+                i++;
+            }
+            i = 0;
+            while (i < 3)
+            {
+                AddVectorObs(lastMagnitudes[i]);
                 i++;
             }
         }
@@ -288,6 +327,36 @@ public class AgentShoot : Agent
             }*/
 
             graphicCanvas.UpdateLines();
+        }
+        else if (agentType == AgentType.ANGLE_MAGNITUDE)
+        {
+            float angle = (Mathf.Clamp(vectorAction[0], -1f, 1f) + 1f) * Mathf.PI; // en radianes
+            float magnitude = (Mathf.Clamp(vectorAction[1], -1f, 1f) + 1f) / 2f; // de 0 a 1
+
+            minX = magnitude * Mathf.Cos(angle);
+            maxX = minX;
+            agY = magnitude * Mathf.Sin(angle);
+
+            graphicCanvas.AddAgentPointDown(minX);
+            graphicCanvas.AddAgentPointUp(agY);
+
+            graphicCanvas.AddBotPoint(oX);
+            graphicCanvas.AddBotPointY(oY);
+
+            graphicCanvas.AddBotAxisPoint(oX, oY);
+            graphicCanvas.AddAgentAxisPoint(minX, agY);
+
+
+            /*
+            lastAngles.RemoveAt(2);
+            lastAngles.Insert(0, angle);
+            lastMagnitudes.RemoveAt(2);
+            lastMagnitudes.Insert(0, magnitude);*/
+
+            lastAngles.RemoveAt(2);
+            lastAngles.Insert(0, Mathf.Clamp(vectorAction[0], -1f, 1f));
+            lastMagnitudes.RemoveAt(2);
+            lastMagnitudes.Insert(0, Mathf.Clamp(vectorAction[1], -1f, 1f));
         }
 
         //RewardsStdChIndividualAverage(maxX, oX, average, stDesv, RewFactor, PunFactor, 0.0f);
@@ -395,6 +464,10 @@ public class AgentShoot : Agent
         {
             acts = 1;
         }
+        else if (agentType == AgentType.ANGLE_MAGNITUDE) //1 accion (click)
+        {
+            acts = 2;
+        }
 
         var action = new float[acts];
 
@@ -442,6 +515,21 @@ public class AgentShoot : Agent
                     else
                         action[0] = Random.Range(-0.8f, -0.5f);
                 }
+            }
+            else if (agentType == AgentType.ANGLE_MAGNITUDE)
+            {
+                //float angle = (Mathf.Clamp(vectorAction[0], -1f, 1f) + 1f) * Mathf.PI; // en radianes
+                //float magnitude = (Mathf.Clamp(vectorAction[1], -1f, 1f) + 1f) / 2f; // de 0 a 1
+
+                action[1] = Vector2.Distance(new Vector2(), new Vector2(oX, oY)) * 2f - 1f;
+
+                float angle = Vector2.Angle(new Vector2(1f, 0f), new Vector2(oX, oY));
+
+                if (oY < 0f) angle = 360f-angle;
+
+                action[0] = angle / 180f - 1f;
+
+                //Debug.Log(action[0]);
             }
 
         }
@@ -895,26 +983,29 @@ public class AgentShoot : Agent
             if (mgValue > 0f)
                 reward = rewFactor * mgValue * (1f - angleDistance / angleRange) / totalSteps;
             else if (aX == 0f && aY == 0f)
-                reward = punFactor * mgValue / (angleRange * totalSteps * 1f); //mgValue es negativo
+                reward = punFactor * mgValue / (angleRange * totalSteps * magnitudeRelation); //mgValue es negativo
             else
-                reward = punFactor * mgValue * angleDistance / (angleRange * totalSteps * 1f); //penaliza 2 veces menos
+                reward = punFactor * mgValue * angleDistance / (angleRange * totalSteps * magnitudeRelation); //penaliza 2 veces menos
         }
 
 
         // Este fragmento es el del momentum
+        if (useMomentum)
+        {
+            if (reward >= 0f)
+            {
+                reward = (1f + momentum) * reward;
+
+                momentum = Mathf.Clamp(momentum + 0.125f, -0.75f, 0.75f);
+            }
+            else
+            {
+                reward = (1f - momentum) * reward;
+
+                momentum = Mathf.Clamp(momentum - 0.125f, -0.75f, 0.75f);
+            }
+        }
         
-        if (reward >= 0f)
-        {
-            reward = (1f + momentum) * reward;
-
-            momentum = Mathf.Clamp(momentum + 0.125f, -0.75f, 0.75f);
-        }
-        else
-        {
-            reward = (1f - momentum) * reward;
-
-            momentum = Mathf.Clamp(momentum - 0.125f, -0.75f, 0.75f);
-        }
 
         //Debug.Log("mg= " + mgValue + " ad= " + angleDistance);
 
@@ -1175,10 +1266,10 @@ public struct MoveInfo
 
 public enum ObservationsType
 {
-    PREVIOUS25, LAST, NONE, BOTH10FIRST, BOTH10_CLICK, BOTH_REDUCED
+    PREVIOUS25, LAST, NONE, BOTH10FIRST, BOTH10_CLICK, BOTH_REDUCED, ANGLE_MAG
 }
 
 public enum AgentType
 {
-    IMPULSE, RANGE, TWO_AXIS, CLICKONLY
+    IMPULSE, RANGE, TWO_AXIS, CLICKONLY, ANGLE_MAGNITUDE
 }
