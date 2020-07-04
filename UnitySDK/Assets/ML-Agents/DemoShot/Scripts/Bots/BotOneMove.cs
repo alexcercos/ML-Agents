@@ -80,7 +80,7 @@ public class BotOneMove : IBotMovement
         if (idle)
         {
             interpX = curves[2].Evaluate(done); //shape X
-            interpY = curves[2].Evaluate(done); //shape Y
+            interpY = curves[3].Evaluate(done); //shape Y
         }
         else
         {

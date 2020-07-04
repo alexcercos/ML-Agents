@@ -12,49 +12,46 @@ A level-1 auxiliary file: chap05_conclusions.aux
 The style file: plain.bst
 A level-1 auxiliary file: appendA_average.aux
 A level-1 auxiliary file: appendB_std.aux
-A level-1 auxiliary file: appendC_reaction.aux
-A level-1 auxiliary file: appendD_time.aux
-A level-1 auxiliary file: appendE_discrete.aux
-A level-1 auxiliary file: appendF_complex.aux
+A level-1 auxiliary file: appendC_instructions.aux
 Database file #1: report.bib
-You've used 6 entries,
+You've used 10 entries,
             2118 wiz_defined-function locations,
-            539 strings with 5086 characters,
-and the built_in function-call counts, 1304 in all, are:
-= -- 122
-> -- 42
-< -- 0
-+ -- 19
-- -- 12
-* -- 38
-:= -- 229
-add.period$ -- 22
-call.type$ -- 6
-change.case$ -- 22
+            560 strings with 5592 characters,
+and the built_in function-call counts, 2490 in all, are:
+= -- 234
+> -- 92
+< -- 1
++ -- 39
+- -- 28
+* -- 107
+:= -- 420
+add.period$ -- 32
+call.type$ -- 10
+change.case$ -- 41
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 52
-empty$ -- 133
-format.name$ -- 12
-if$ -- 281
+cite$ -- 10
+duplicate$ -- 97
+empty$ -- 239
+format.name$ -- 28
+if$ -- 539
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 4
-newline$ -- 37
-num.names$ -- 12
-pop$ -- 56
+int.to.str$ -- 10
+missing$ -- 7
+newline$ -- 55
+num.names$ -- 20
+pop$ -- 88
 preamble$ -- 1
-purify$ -- 18
+purify$ -- 34
 quote$ -- 0
-skip$ -- 32
+skip$ -- 69
 stack$ -- 0
-substring$ -- 31
-swap$ -- 6
-text.length$ -- 0
+substring$ -- 96
+swap$ -- 17
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 20
+type$ -- 34
 warning$ -- 0
-while$ -- 12
-width$ -- 7
-write$ -- 66
+while$ -- 24
+width$ -- 12
+write$ -- 105

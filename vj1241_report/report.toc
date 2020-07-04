@@ -12,7 +12,7 @@
 \contentsline {subsection}{\numberline {2.1.4}Neural network model and training}{6}{subsection.2.1.4}%
 \contentsline {subsection}{\numberline {2.1.5}Analysis of results}{7}{subsection.2.1.5}%
 \contentsline {subsection}{\numberline {2.1.6}Framework standardization}{7}{subsection.2.1.6}%
-\contentsline {section}{\numberline {2.2}Resource Evaluation}{8}{section.2.2}%
+\contentsline {section}{\numberline {2.2}Resource Evaluation}{7}{section.2.2}%
 \contentsline {chapter}{\chapternumberline {3}System Analysis and Design}{9}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Requirement Analysis}{9}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Functional Requirements}{9}{subsection.3.1.1}%
@@ -45,17 +45,27 @@
 \contentsline {subsection}{\numberline {4.3.5}Recurrent memory}{30}{subsection.4.3.5}%
 \contentsline {subsection}{\numberline {4.3.6}Rare situations}{31}{subsection.4.3.6}%
 \contentsline {subsection}{\numberline {4.3.7}Complexity of the task}{32}{subsection.4.3.7}%
-\contentsline {chapter}{\chapternumberline {5}Conclusions and Future Work}{35}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Conclusions}{35}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Future work}{36}{section.5.2}%
-\contentsline {chapter}{Bibliography}{37}{chapter*.37}%
-\contentsline {appendix}{\chapternumberline {A}Dynamic average}{39}{appendix.A}%
-\contentsline {appendix}{\chapternumberline {B}Dynamic standard deviation}{41}{appendix.B}%
+\contentsline {section}{\numberline {4.4}Discrete actions}{33}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Bot with shaped movements}{33}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}``Cheat sheet'' rewards}{34}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Discrete and continuous action spaces}{35}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}Models with behavioral cloning}{36}{subsection.4.4.4}%
+\contentsline {subsection}{\numberline {4.4.5}The frame problem}{36}{subsection.4.4.5}%
+\contentsline {section}{\numberline {4.5}Complex movements}{37}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Debug for 2 axis}{37}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Angle-Magnitude reward system}{39}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Cheat sheet for movements}{39}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}Movement interdependency}{41}{subsection.4.5.4}%
+\contentsline {subsection}{\numberline {4.5.5}Trying to improve performance}{42}{subsection.4.5.5}%
+\contentsline {subsubsection}{Mouse sensitivity}{42}{section*.47}%
+\contentsline {subsubsection}{Momentum}{43}{section*.49}%
+\contentsline {subsubsection}{Angle-Magnitude actions}{44}{section*.51}%
+\contentsline {chapter}{\chapternumberline {5}Conclusions and Future Work}{45}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conclusions}{45}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Future work}{47}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Final considerations}{47}{section.5.3}%
+\contentsline {chapter}{Bibliography}{49}{chapter*.53}%
+\contentsline {appendix}{\chapternumberline {A}Dynamic average}{51}{appendix.A}%
+\contentsline {appendix}{\chapternumberline {B}Dynamic standard deviation}{53}{appendix.B}%
 \setcounter {tocdepth}{0}
-\contentsline {appendix}{\chapternumberline {C}Reactive movements}{43}{appendix.C}%
-\setcounter {tocdepth}{0}
-\contentsline {appendix}{\chapternumberline {D}Reaction time}{97}{appendix.D}%
-\setcounter {tocdepth}{0}
-\contentsline {appendix}{\chapternumberline {E}Discrete actions}{165}{appendix.E}%
-\setcounter {tocdepth}{0}
-\contentsline {appendix}{\chapternumberline {F}Complex movements}{187}{appendix.F}%
+\contentsline {appendix}{\chapternumberline {C}Instructions for using the project}{55}{appendix.C}%

@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class DebugCanvas : MonoBehaviour
 {
-    public LineRenderer botLine;
-    public LineRenderer agentLineUp;
-    public LineRenderer agentLineDown;
+    [HideInInspector] public LineRenderer botLine;
+    [HideInInspector] public LineRenderer agentLineUp;
+    [HideInInspector] public LineRenderer agentLineDown;
 
-    public LineRenderer stdLowLine;
-    public LineRenderer stdHighLine;
-    public LineRenderer avgLine;
+    [HideInInspector] public LineRenderer stdLowLine;
+    [HideInInspector] public LineRenderer stdHighLine;
+    [HideInInspector] public LineRenderer avgLine;
 
-    public LineRenderer clickBot;
-    public LineRenderer clickAgent;
+    [HideInInspector] public LineRenderer clickBot;
+    [HideInInspector] public LineRenderer clickAgent;
 
-    public LineRenderer axisBotLine, axisAgentLine;
+    [HideInInspector] public LineRenderer axisBotLine, axisAgentLine;
 
     public int axisLimit = 20;
 
@@ -31,7 +31,8 @@ public class DebugCanvas : MonoBehaviour
 
     private Vector3[] axisBotPoints, axisAgentPoints;
 
-    public GameObject graphImage, axisImage;
+    [HideInInspector] public GameObject graphImage, axisImage;
+    [HideInInspector] public GameObject refGrid;
 
     RectTransform graphTransform;
 
@@ -39,6 +40,8 @@ public class DebugCanvas : MonoBehaviour
     public bool showGraphic = true;
     bool lastShowAxis = false;
     public bool showAxis = false;
+    bool lastShowGrid = true;
+    public bool showGrid = true;
 
     // Start is called before the first frame update
     void Start()
@@ -98,6 +101,12 @@ public class DebugCanvas : MonoBehaviour
         {
             graphTransform.anchoredPosition = new Vector2(-10f, -10f);
         }
+
+        lastShowGrid = showGrid;
+        if (showGrid)
+            refGrid.SetActive(true);
+        else
+            refGrid.SetActive(false);
     }
 
     private void Update()
@@ -146,6 +155,20 @@ public class DebugCanvas : MonoBehaviour
                 {
                     graphTransform.anchoredPosition = new Vector2(-10f, -10f);
                 }
+            }
+        }
+
+        if (lastShowGrid != showGrid)
+        {
+            lastShowGrid = showGrid;
+
+            if (showGrid)
+            {
+                refGrid.SetActive(true);
+            }
+            else
+            {
+                refGrid.SetActive(false);
             }
         }
     }

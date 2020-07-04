@@ -22,3 +22,18 @@
 {\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.5}Recurrent memory}{\reset@font\mtcSSfont 30}{subsection.4.3.5}}
 {\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.6}Rare situations}{\reset@font\mtcSSfont 31}{subsection.4.3.6}}
 {\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.3.7}Complexity of the task}{\reset@font\mtcSSfont 32}{subsection.4.3.7}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {4.4}Discrete actions}{\reset@font\mtcSfont 33}{section.4.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.4.1}Bot with shaped movements}{\reset@font\mtcSSfont 33}{subsection.4.4.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.4.2}``Cheat sheet'' rewards}{\reset@font\mtcSSfont 34}{subsection.4.4.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.4.3}Discrete and continuous action spaces}{\reset@font\mtcSSfont 35}{subsection.4.4.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.4.4}Models with behavioral cloning}{\reset@font\mtcSSfont 36}{subsection.4.4.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.4.5}The frame problem}{\reset@font\mtcSSfont 36}{subsection.4.4.5}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {4.5}Complex movements}{\reset@font\mtcSfont 37}{section.4.5}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.5.1}Debug for 2 axis}{\reset@font\mtcSSfont 37}{subsection.4.5.1}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.5.2}Angle-Magnitude reward system}{\reset@font\mtcSSfont 39}{subsection.4.5.2}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.5.3}Cheat sheet for movements}{\reset@font\mtcSSfont 39}{subsection.4.5.3}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.5.4}Movement interdependency}{\reset@font\mtcSSfont 41}{subsection.4.5.4}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {4.5.5}Trying to improve performance}{\reset@font\mtcSSfont 42}{subsection.4.5.5}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Mouse sensitivity}{\reset@font\mtcSSSfont 42}{section*.47}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Momentum}{\reset@font\mtcSSSfont 43}{section*.49}}
+{\reset@font\mtcSSSfont\mtc@string\contentsline{subsubsection}{\noexpand \leavevmode Angle-Magnitude actions}{\reset@font\mtcSSSfont 44}{section*.51}}

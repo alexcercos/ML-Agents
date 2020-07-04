@@ -432,7 +432,7 @@ public class AgentShoot : Agent
             if (iClick <= 0f) lastClick = Random.Range(-1f, 0f);
             else lastClick = Random.Range(0.001f, 1f);
 
-            hasClicked = iClick > 0f;
+            //hasClicked = iClick > 0f; // Si se activa esta linea, se considera como clic cada vez que vale 1, sino solo el primero
         }
         else
             lastClick = iClick;
@@ -536,6 +536,12 @@ public class AgentShoot : Agent
 
         return action;
     }
+
+    /*
+     * ======================================== 
+     *            REWARD SYSTEMS
+     * ========================================
+     */
 
     public bool ReversedPunish(float minimumX, float maximumX, float punish)
     {

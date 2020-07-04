@@ -26,6 +26,7 @@ In this sections, we will detail which requirements must be acomplished to consi
 \section{Requirement Analysis}
 
 \subsection{Functional Requirements}
+\label{sec:funcReq}
 
 The following must be fulfilled to provide a realistic imitation:
 
@@ -33,10 +34,9 @@ The following must be fulfilled to provide a realistic imitation:
  \item The neural network will be able to play indepently the game
  \item The network will receive as input what is seeing
  \item The network will receive as input immediate past actions and images
- \item The network will output the action made (continuous actions)
- \item The network will output the probability of performing an action (discrete actions)
- \item The network will adapt its actions to reaction times of who is imitating
- \item The network and the real player would not be differentiated when playing
+ \item The network will output the action/s made
+ \item The network will adapt its actions to reaction times of the NPC being imitated
+ \item The network and the NPC would not be differentiated when playing
 \end{itemize}
 
 %======================================================================
@@ -98,6 +98,7 @@ The scene has one custom Academy (ShootAcademy), a Camera and a Spawner that cre
 The classes Academy, Agent, DemoRecorder and Sensor are provided by the ML Agents SDK~\cite{mlagents}.
 
 \section{System Architecture}
+\label{sec:sysarch}
 
 \begin{figure}[h]
   \centering
@@ -112,7 +113,7 @@ ML Agents works using an environment in Unity to train neural networks. The netw
 
 To acknowledge how well is the neural net adapting to the bot movement, the guesses of the bot are displayed in a real time graph alongside the bot's real move. There is also a centered sight to better see how the bot behaves. Figure~\ref{fig:uicomp} shows a complete game window while training.
 
-The graph displays 3 main lines (see Figure~\ref{fig:uigraph}): the red one is the move made by the bot, the blue and green ones are the highest and lowest guess of the bot (since the bot's movements are not perfect, these two lines can vary from being almost touching to being really wide). Other 3 lines in the back display the weighted average move and its standard deviation.
+The graph displays 3 main lines (see Figure~\ref{fig:uigraph}): the red one is the move made by the bot, the blue and green ones are the highest and lowest guess of the bot (since the bot's movements are not perfect, these two lines can vary from being almost touching to being really wide). Other 3 lines are used to show the weighted average move and its standard deviation.
 
 The image at the bottom left is what the neural network receives as input. It helps verify that everything works correctly (Figure ~\ref{fig:uivision}): if the agent action and the NPC action look similar, then it's very likely that the agent would perform well~\footnote{Even though sometimes the agent can look like the NPC that imitates during training, when playing it can behave differently depending on the observations it receives. In section ~\ref{sec:movememory} there is an example on why this phenomenon can happen. }.
 \begin{figure}[h]

@@ -19,7 +19,7 @@ public class CameraMovement : MonoBehaviour
     private float x = 0f, y = 0f;
     bool click = false;
     bool botClick = false;
-
+    
     //Vector3 lastPosition;
     // Start is called before the first frame update
     void Start()

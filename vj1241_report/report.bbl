@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{xor}
 Jayesh~Bapu Ahire.
@@ -24,6 +24,11 @@ OpenAI.
 \newblock https://openai.com/blog/openai-baselines-ppo.
 \newblock Accessed: 2020-04-25.
 
+\bibitem{radford2015unsupervised}
+Alec Radford, Luke Metz, and Soumith Chintala.
+\newblock Unsupervised representation learning with deep convolutional
+  generative adversarial networks, 2015.
+
 \bibitem{sacpolicy}
 Berkeley Artificial~Intelligence Research.
 \newblock Soft actor critic—deep reinforcement learning with real-world
@@ -31,10 +36,25 @@ Berkeley Artificial~Intelligence Research.
 \newblock https://bair.berkeley.edu/blog/2018/12/14/sac/.
 \newblock Accessed: 2020-05-07.
 
+\bibitem{Sammut2010}
+Caude Sammut.
+\newblock {\em Behavioral Cloning}, pages 93--97.
+\newblock Springer US, Boston, MA, 2010.
+
 \bibitem{mlagents}
 Unity.
 \newblock Ml agents documentation.
 \newblock https://github.com/Unity-Technologies/ml-agents.
 \newblock Accessed: 2019-11-22.
+
+\bibitem{zaremba2014recurrent}
+Wojciech Zaremba, Ilya Sutskever, and Oriol Vinyals.
+\newblock Recurrent neural network regularization, 2014.
+
+\bibitem{clasnn}
+G.~P. {Zhang}.
+\newblock Neural networks for classification: a survey.
+\newblock {\em IEEE Transactions on Systems, Man, and Cybernetics, Part C
+  (Applications and Reviews)}, 30(4):451--462, 2000.
 
 \end{thebibliography}

@@ -23,7 +23,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.5}Movement memory}{16}{subsection.4.2.5}\protected@file@percent }
 \newlabel{sec:movememory}{{\M@TitleReference {4.2.5}{Movement memory}}{16}{Movement memory}{subsection.4.2.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces 2 situations that lead to different actions with the same frame\relax }}{17}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:graphTR}{{\M@TitleReference {4.3}{2 situations that lead to different actions with the same frame\relax }}{17}{2 situations that lead to different actions with the same frame\relax }{figure.caption.13}{}}
+\newlabel{fig:exDeterminism}{{\M@TitleReference {4.3}{2 situations that lead to different actions with the same frame\relax }}{17}{2 situations that lead to different actions with the same frame\relax }{figure.caption.13}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.6}Rewards based in standard deviation}{17}{subsection.4.2.6}\protected@file@percent }
 \newlabel{sec:stdrew}{{\M@TitleReference {4.2.6}{Rewards based in standard deviation}}{17}{Rewards based in standard deviation}{subsection.4.2.6}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces A badly trained model while training (up) and playing (down)\relax }}{18}{figure.caption.14}\protected@file@percent }
@@ -63,6 +63,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces Render Queue: see that frame 2 isn't used as input for the neural network. Red arrows mean that the frame (or Render Texture) at the start is copied over the Render Texture at the end.\relax }}{25}{figure.caption.22}\protected@file@percent }
 \newlabel{fig:renderqueue}{{\M@TitleReference {4.12}{Render Queue: see that frame 2 isn't used as input for the neural network. Red arrows mean that the frame (or Render Texture) at the start is copied over the Render Texture at the end.\relax }}{25}{Render Queue: see that frame 2 isn't used as input for the neural network. Red arrows mean that the frame (or Render Texture) at the start is copied over the Render Texture at the end.\relax }{figure.caption.22}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Rewards after impulse}{25}{section*.25}\protected@file@percent }
+\newlabel{sec:afterimpulse}{{\M@TitleReference {4.3.2}{Rewards after impulse}}{25}{Rewards after impulse}{section*.25}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces AI trained with tolerable range rewards. It adapts well to the impulses but not so much to the normal movement.\relax }}{26}{figure.caption.24}\protected@file@percent }
 \newlabel{fig:timeTR}{{\M@TitleReference {4.13}{AI trained with tolerable range rewards. It adapts well to the impulses but not so much to the normal movement.\relax }}{26}{AI trained with tolerable range rewards. It adapts well to the impulses but not so much to the normal movement.\relax }{figure.caption.24}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.14}{\ignorespaces Case when the AI would receive a double punishment when doing an impulse: if not using 2 queues, the agent would have a big punish even though the impulse was correct (the bot can react at either moment)\relax }}{26}{figure.caption.26}\protected@file@percent }
@@ -78,7 +79,10 @@
 \newlabel{fig:stdVariations}{{\M@TitleReference {4.16}{Standard variations and average of the same bot using last 60 values (left), dynamic values (mid) and dynamic values smoothed by a 0.6 interpolation (right)\relax }}{29}{Standard variations and average of the same bot using last 60 values (left), dynamic values (mid) and dynamic values smoothed by a 0.6 interpolation (right)\relax }{figure.caption.30}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.17}{\ignorespaces Comparison between an agent trained with SAC (left) and other trained using PPO (right). The bots in both cases have a reaction time of 0.1 seconds and 0.15 units of noise\relax }}{29}{figure.caption.31}\protected@file@percent }
 \newlabel{fig:rtsacppo}{{\M@TitleReference {4.17}{Comparison between an agent trained with SAC (left) and other trained using PPO (right). The bots in both cases have a reaction time of 0.1 seconds and 0.15 units of noise\relax }}{29}{Comparison between an agent trained with SAC (left) and other trained using PPO (right). The bots in both cases have a reaction time of 0.1 seconds and 0.15 units of noise\relax }{figure.caption.31}{}}
+\citation{Sammut2010}
+\citation{zaremba2014recurrent}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Behavioral cloning}{30}{subsection.4.3.4}\protected@file@percent }
+\newlabel{sec:timeBC}{{\M@TitleReference {4.3.4}{Behavioral cloning}}{30}{Behavioral cloning}{subsection.4.3.4}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.18}{\ignorespaces Model trained with BC in 2000 steps. The bot's impulses appear deformed because the agent is the one playing the game\relax }}{30}{figure.caption.32}\protected@file@percent }
 \newlabel{fig:bcTNoise}{{\M@TitleReference {4.18}{Model trained with BC in 2000 steps. The bot's impulses appear deformed because the agent is the one playing the game\relax }}{30}{Model trained with BC in 2000 steps. The bot's impulses appear deformed because the agent is the one playing the game\relax }{figure.caption.32}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.5}Recurrent memory}{30}{subsection.4.3.5}\protected@file@percent }
@@ -94,26 +98,71 @@
 \citation{xor}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.21}{\ignorespaces Some of the different situations the neural network can encounter in the game\relax }}{32}{figure.caption.35}\protected@file@percent }
 \newlabel{fig:spawncases}{{\M@TitleReference {4.21}{Some of the different situations the neural network can encounter in the game\relax }}{32}{Some of the different situations the neural network can encounter in the game\relax }{figure.caption.35}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.7}Complexity of the task}{32}{subsection.4.3.7}\protected@file@percent }
-\newlabel{sec:complex}{{\M@TitleReference {4.3.7}{Complexity of the task}}{32}{Complexity of the task}{subsection.4.3.7}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.22}{\ignorespaces Neural network that has diverged\relax }}{32}{figure.caption.36}\protected@file@percent }
 \newlabel{fig:complexity}{{\M@TitleReference {4.22}{Neural network that has diverged\relax }}{32}{Neural network that has diverged\relax }{figure.caption.36}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.7}Complexity of the task}{32}{subsection.4.3.7}\protected@file@percent }
+\newlabel{sec:complex}{{\M@TitleReference {4.3.7}{Complexity of the task}}{32}{Complexity of the task}{subsection.4.3.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Discrete actions}{33}{section.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Bot with shaped movements}{33}{subsection.4.4.1}\protected@file@percent }
+\newlabel{sec:botshaped}{{\M@TitleReference {4.4.1}{Bot with shaped movements}}{33}{Bot with shaped movements}{subsection.4.4.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.23}{\ignorespaces Horizontal bot movement (left) obtained when using the curve on the right\relax }}{34}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:onemoveCurve}{{\M@TitleReference {4.23}{Horizontal bot movement (left) obtained when using the curve on the right\relax }}{34}{Horizontal bot movement (left) obtained when using the curve on the right\relax }{figure.caption.37}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}``Cheat sheet'' rewards}{34}{subsection.4.4.2}\protected@file@percent }
+\newlabel{sec:cheatsheetD}{{\M@TitleReference {4.4.2}{``Cheat sheet'' rewards}}{34}{``Cheat sheet'' rewards}{subsection.4.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Discrete and continuous action spaces}{35}{subsection.4.4.3}\protected@file@percent }
+\newlabel{sec:discVScont}{{\M@TitleReference {4.4.3}{Discrete and continuous action spaces}}{35}{Discrete and continuous action spaces}{subsection.4.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.24}{\ignorespaces Discrete action agents: trained with SAC in continuous action space (left), with SAC but in discrete action space (mid) and with behavioral cloning in continuous action space (right). Orange lines correspond to the NPC clicks, and purple ones are click events triggered by the AI\relax }}{36}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:discCases}{{\M@TitleReference {4.24}{Discrete action agents: trained with SAC in continuous action space (left), with SAC but in discrete action space (mid) and with behavioral cloning in continuous action space (right). Orange lines correspond to the NPC clicks, and purple ones are click events triggered by the AI\relax }}{36}{Discrete action agents: trained with SAC in continuous action space (left), with SAC but in discrete action space (mid) and with behavioral cloning in continuous action space (right). Orange lines correspond to the NPC clicks, and purple ones are click events triggered by the AI\relax }{figure.caption.38}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Models with behavioral cloning}{36}{subsection.4.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.5}The frame problem}{36}{subsection.4.4.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.25}{\ignorespaces NPC getting stuck because of the one frame problem\relax }}{37}{figure.caption.39}\protected@file@percent }
+\newlabel{fig:bcStuck}{{\M@TitleReference {4.25}{NPC getting stuck because of the one frame problem\relax }}{37}{NPC getting stuck because of the one frame problem\relax }{figure.caption.39}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Complex movements}{37}{section.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Debug for 2 axis}{37}{subsection.4.5.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.26}{\ignorespaces Movement curves for seeking target (left) and idle (mid). The right picture shows the bot's movement with one seek target in the middle (purple line is vertical move and red line is horizontal move, both have the same shape).\relax }}{38}{figure.caption.40}\protected@file@percent }
+\newlabel{fig:compCurve}{{\M@TitleReference {4.26}{Movement curves for seeking target (left) and idle (mid). The right picture shows the bot's movement with one seek target in the middle (purple line is vertical move and red line is horizontal move, both have the same shape).\relax }}{38}{Movement curves for seeking target (left) and idle (mid). The right picture shows the bot's movement with one seek target in the middle (purple line is vertical move and red line is horizontal move, both have the same shape).\relax }{figure.caption.40}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.27}{\ignorespaces Shaped movement of the bot (red-purple lines) and a continuous movement to the left from one agent (green-blue lines) in both of the debug graphics\relax }}{38}{figure.caption.41}\protected@file@percent }
+\newlabel{fig:debug2axis}{{\M@TitleReference {4.27}{Shaped movement of the bot (red-purple lines) and a continuous movement to the left from one agent (green-blue lines) in both of the debug graphics\relax }}{38}{Shaped movement of the bot (red-purple lines) and a continuous movement to the left from one agent (green-blue lines) in both of the debug graphics\relax }{figure.caption.41}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Angle-Magnitude reward system}{39}{subsection.4.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.28}{\ignorespaces Agent trained with tolerable range, shown in both debug graphs\relax }}{39}{figure.caption.42}\protected@file@percent }
+\newlabel{fig:axisTR}{{\M@TitleReference {4.28}{Agent trained with tolerable range, shown in both debug graphs\relax }}{39}{Agent trained with tolerable range, shown in both debug graphs\relax }{figure.caption.42}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.3}Cheat sheet for movements}{39}{subsection.4.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.29}{\ignorespaces Agent trained with angle-magnitude tolerable range\relax }}{40}{figure.caption.43}\protected@file@percent }
+\newlabel{fig:axisAMTR}{{\M@TitleReference {4.29}{Agent trained with angle-magnitude tolerable range\relax }}{40}{Agent trained with angle-magnitude tolerable range\relax }{figure.caption.43}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.30}{\ignorespaces Curves for tolerable range (left), punish factor (mid) and reward factor (right)\relax }}{41}{figure.caption.44}\protected@file@percent }
+\newlabel{fig:axisCS}{{\M@TitleReference {4.30}{Curves for tolerable range (left), punish factor (mid) and reward factor (right)\relax }}{41}{Curves for tolerable range (left), punish factor (mid) and reward factor (right)\relax }{figure.caption.44}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.31}{\ignorespaces Agent trained with shaped rewards\relax }}{41}{figure.caption.45}\protected@file@percent }
+\newlabel{fig:axisbestCS}{{\M@TitleReference {4.31}{Agent trained with shaped rewards\relax }}{41}{Agent trained with shaped rewards\relax }{figure.caption.45}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.4}Movement interdependency}{41}{subsection.4.5.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.32}{\ignorespaces Agent trained using its own observations\relax }}{42}{figure.caption.46}\protected@file@percent }
+\newlabel{fig:axisInterdep}{{\M@TitleReference {4.32}{Agent trained using its own observations\relax }}{42}{Agent trained using its own observations\relax }{figure.caption.46}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.5}Trying to improve performance}{42}{subsection.4.5.5}\protected@file@percent }
+\newlabel{sec:improving}{{\M@TitleReference {4.5.5}{Trying to improve performance}}{42}{Trying to improve performance}{subsection.4.5.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Mouse sensitivity}{42}{section*.47}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.33}{\ignorespaces Agent with Y sensitivity of 10\relax }}{43}{figure.caption.48}\protected@file@percent }
+\newlabel{fig:axisYsens}{{\M@TitleReference {4.33}{Agent with Y sensitivity of 10\relax }}{43}{Agent with Y sensitivity of 10\relax }{figure.caption.48}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Momentum}{43}{section*.49}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.34}{\ignorespaces Agent that tends to anticipate next movements\relax }}{43}{figure.caption.50}\protected@file@percent }
+\newlabel{fig:axisMomentum}{{\M@TitleReference {4.34}{Agent that tends to anticipate next movements\relax }}{43}{Agent that tends to anticipate next movements\relax }{figure.caption.50}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Angle-Magnitude actions}{44}{section*.51}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.35}{\ignorespaces Agent with angle-magnitude actions (the bot was reversed to avoid crossing the 0-line)\relax }}{44}{figure.caption.52}\protected@file@percent }
+\newlabel{fig:axisAMAS}{{\M@TitleReference {4.35}{Agent with angle-magnitude actions (the bot was reversed to avoid crossing the 0-line)\relax }}{44}{Agent with angle-magnitude actions (the bot was reversed to avoid crossing the 0-line)\relax }{figure.caption.52}{}}
 \@setckpt{chap04_development}{
-\setcounter{page}{34}
+\setcounter{page}{45}
 \setcounter{equation}{0}
 \setcounter{enumi}{0}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
-\setcounter{footnote}{9}
+\setcounter{footnote}{16}
 \setcounter{mpfootnote}{0}
 \setcounter{@memmarkcntra}{0}
 \setcounter{storedpagenumber}{1}
 \setcounter{book}{0}
 \setcounter{part}{0}
 \setcounter{chapter}{4}
-\setcounter{section}{3}
-\setcounter{subsection}{7}
+\setcounter{section}{5}
+\setcounter{subsection}{5}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
@@ -146,17 +195,17 @@
 \setcounter{cmsm@mctr}{0}
 \setcounter{bsm@mctr}{0}
 \setcounter{workm@mctr}{0}
-\setcounter{sheetsequence}{44}
-\setcounter{lastsheet}{230}
-\setcounter{lastpage}{220}
-\setcounter{figure}{22}
+\setcounter{sheetsequence}{55}
+\setcounter{lastsheet}{66}
+\setcounter{lastpage}{56}
+\setcounter{figure}{35}
 \setcounter{lofdepth}{1}
 \setcounter{table}{0}
 \setcounter{lotdepth}{1}
 \setcounter{lstnumber}{1}
 \setcounter{AM@survey}{0}
 \setcounter{Item}{0}
-\setcounter{Hfootnote}{12}
+\setcounter{Hfootnote}{19}
 \setcounter{memhycontfloat}{0}
 \setcounter{Hpagenote}{0}
 \setcounter{bookmark@seq@number}{5}
@@ -169,7 +218,7 @@
 \setcounter{subfigure}{0}
 \setcounter{subtable}{0}
 \setcounter{lstlisting}{0}
-\setcounter{section@level}{2}
+\setcounter{section@level}{3}
 \setcounter{minilofdepth}{2}
 \setcounter{minilotdepth}{2}
 \setcounter{partlofdepth}{2}

@@ -44,6 +44,8 @@ public class BotPrecision : IBotMovement
 
     bool cheatRewardsClicked = false;
 
+    public bool invertIdle = false;
+
     public List<AnimationCurve> shapedTRCurves;
                                                 // 0: idle tolerable range shape
                                                 // 1: idle punish factor
@@ -250,10 +252,15 @@ public class BotPrecision : IBotMovement
         {
             // idle
             idle = true;
-            //angleX = Random.Range(20f, 50f);
 
-            //invertido
-            angleX = Random.Range(-50f, -20f);
+            if (invertIdle)
+            {
+                angleX = Random.Range(-50f, -20f);
+            }
+            else
+            {
+                angleX = Random.Range(20f, 50f);
+            }
 
             angleY = Random.Range(-5f, 5f) + transform.rotation.eulerAngles.x;
 
@@ -318,14 +325,14 @@ public class BotPrecision : IBotMovement
         {
             //Debug.Log(done);
             angleRange = shapedTRCurves[0].Evaluate(done);
-            punFactor = shapedTRCurves[2].Evaluate(done);
-            rewFactor = shapedTRCurves[4].Evaluate(done);
+            punFactor = shapedTRCurves[1].Evaluate(done);
+            rewFactor = shapedTRCurves[2].Evaluate(done);
         }
         else
         {
-            angleRange = shapedTRCurves[6].Evaluate(done);
-            punFactor = shapedTRCurves[7].Evaluate(done);
-            rewFactor = shapedTRCurves[8].Evaluate(done);
+            angleRange = shapedTRCurves[3].Evaluate(done);
+            punFactor = shapedTRCurves[4].Evaluate(done);
+            rewFactor = shapedTRCurves[5].Evaluate(done);
         }
     }
 }
