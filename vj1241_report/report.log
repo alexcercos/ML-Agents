@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.8)  4 JUL 2020 01:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.8)  5 JUL 2020 22:28
 entering extended mode
 **D:/Documents/ml-agents-master/vj1241_report/report.tex
 (D:/Documents/ml-agents-master/vj1241_report/report.tex
@@ -1219,7 +1219,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 ]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
-2.
+3.
 
 ("C:\Users\alexc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ts1lmr.fd"
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1300,31 +1300,26 @@ File: img/systemArchitecture.png Graphic file (type png)
 <use img/systemArchitecture.png>
 Package pdftex.def Info: img/systemArchitecture.png  used on input line 105.
 (pdftex.def)             Requested size: 334.60422pt x 181.85867pt.
-<img/uiComplete.png, id=306, 963.6pt x 541.27219pt>
+
+Underfull \vbox (badness 3449) has occurred while \output is active []
+
+ [11 <./img/systemArchitecture.png>]
+<img/uiComplete.png, id=314, 963.6pt x 541.27219pt>
 File: img/uiComplete.png Graphic file (type png)
 <use img/uiComplete.png>
-Package pdftex.def Info: img/uiComplete.png  used on input line 121.
-(pdftex.def)             Requested size: 376.42575pt x 211.44218pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<img/uiGraph.png, id=307, 152.82094pt x 152.06813pt>
+Package pdftex.def Info: img/uiComplete.png  used on input line 124.
+(pdftex.def)             Requested size: 334.60422pt x 187.95319pt.
+<img/uiGraph.png, id=315, 152.82094pt x 152.06813pt>
 File: img/uiGraph.png Graphic file (type png)
 <use img/uiGraph.png>
-Package pdftex.def Info: img/uiGraph.png  used on input line 129.
+Package pdftex.def Info: img/uiGraph.png  used on input line 132.
 (pdftex.def)             Requested size: 125.47737pt x 124.85909pt.
-<img/uiVision.png, id=308, 91.09032pt x 85.06781pt>
+<img/uiVision.png, id=316, 91.09032pt x 85.06781pt>
 File: img/uiVision.png Graphic file (type png)
 <use img/uiVision.png>
-Package pdftex.def Info: img/uiVision.png  used on input line 136.
+Package pdftex.def Info: img/uiVision.png  used on input line 139.
 (pdftex.def)             Requested size: 125.47737pt x 117.186pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) [11 <./img/systemArchitecture.png>] [12
-
- <./img/uiComplete.png> <./img/uiGraph.png> <./img/uiVision.png>]
+) [12 <./img/uiComplete.png> <./img/uiGraph.png> <./img/uiVision.png>]
 \openout2 = `chap04_development.aux'.
 
  (chap04_development.tex
@@ -1342,17 +1337,16 @@ Package xcolor Warning: Incompatible color definition on input line 18.
 
 
 
-]
-<img/rewTR.png, id=336, 409.53pt x 380.17032pt>
+] [14]
+<img/rewTR.png, id=341, 409.53pt x 380.17032pt>
 File: img/rewTR.png Graphic file (type png)
 <use img/rewTR.png>
-Package pdftex.def Info: img/rewTR.png  used on input line 68.
+Package pdftex.def Info: img/rewTR.png  used on input line 70.
 (pdftex.def)             Requested size: 146.39133pt x 135.89825pt.
- [14]
 <img/graphsTR.png, id=346, 264.99pt x 142.28156pt>
 File: img/graphsTR.png Graphic file (type png)
 <use img/graphsTR.png>
-Package pdftex.def Info: img/graphsTR.png  used on input line 88.
+Package pdftex.def Info: img/graphsTR.png  used on input line 90.
 (pdftex.def)             Requested size: 376.42575pt x 202.13022pt.
 
 
@@ -1362,7 +1356,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <img/exampleDet.png, id=357, 368.87813pt x 286.06876pt>
 File: img/exampleDet.png Graphic file (type png)
 <use img/exampleDet.png>
-Package pdftex.def Info: img/exampleDet.png  used on input line 102.
+Package pdftex.def Info: img/exampleDet.png  used on input line 104.
 (pdftex.def)             Requested size: 376.42575pt x 291.92159pt.
 
 
@@ -1377,122 +1371,105 @@ Package pdftex.def Info: img/graphsMemory.png  used on input line 116.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [16 <./img/graphsTR.png>]
-<img/graphSTD.png, id=367, 73.02281pt x 75.28125pt>
+<img/graphSTD.png, id=366, 73.02281pt x 75.28125pt>
 File: img/graphSTD.png Graphic file (type png)
 <use img/graphSTD.png>
-Package pdftex.def Info: img/graphSTD.png  used on input line 135.
+Package pdftex.def Info: img/graphSTD.png  used on input line 134.
 (pdftex.def)             Requested size: 83.64944pt x 86.24422pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--136
+Underfull \hbox (badness 10000) in paragraph at lines 135--135
 []\T1/lmr/m/n/10.95 Figure 4.5:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--136
+Underfull \hbox (badness 10000) in paragraph at lines 135--135
 \T1/lmr/m/n/10.95 and stan-dard
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--136
+Underfull \hbox (badness 10000) in paragraph at lines 135--135
 \T1/lmr/m/n/10.95 de-vi-a-tions of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--136
+Underfull \hbox (badness 10000) in paragraph at lines 135--135
 \T1/lmr/m/n/10.95 an ir-reg-u-lar
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 132--138
-\T1/lmr/m/n/10.95 how co-her-ent is a move in a given con-text.
- []
-
-
-Underfull \vbox (badness 3826) has occurred while \output is active []
-
- [17 <./img/exampleDet.png>]
-<img/stdPrecision.png, id=374, 570.63188pt x 365.86688pt>
+[17 <./img/exampleDet.png> <./img/graphSTD.png>]
+<img/stdPrecision.png, id=375, 570.63188pt x 365.86688pt>
 File: img/stdPrecision.png Graphic file (type png)
 <use img/stdPrecision.png>
-Package pdftex.def Info: img/stdPrecision.png  used on input line 147.
+Package pdftex.def Info: img/stdPrecision.png  used on input line 152.
 (pdftex.def)             Requested size: 125.47737pt x 80.45187pt.
-<img/stdFactors.png, id=375, 569.87906pt x 210.03468pt>
+<img/stdFactors.png, id=376, 569.87906pt x 210.03468pt>
 File: img/stdFactors.png Graphic file (type png)
 <use img/stdFactors.png>
-Package pdftex.def Info: img/stdFactors.png  used on input line 154.
+Package pdftex.def Info: img/stdFactors.png  used on input line 159.
 (pdftex.def)             Requested size: 125.47737pt x 46.24301pt.
-<img/stdDevfactor.png, id=376, 392.96812pt x 463.7325pt>
+<img/stdDevfactor.png, id=377, 392.96812pt x 463.7325pt>
 File: img/stdDevfactor.png Graphic file (type png)
 <use img/stdDevfactor.png>
-Package pdftex.def Info: img/stdDevfactor.png  used on input line 161.
+Package pdftex.def Info: img/stdDevfactor.png  used on input line 166.
 (pdftex.def)             Requested size: 125.47737pt x 148.07193pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 167--167
 \T1/lmr/m/n/10 by Pow(2,(1-coherence)),
  []
 
-
-Package wrapfig Warning: Collision between wrapping environments on input line 
-169.
-
-<img/graphsSTDrew.png, id=377, 71.51718pt x 143.78719pt>
+[18 <./img/graphsMemory.png> <./img/stdPrecision.png> <./img/stdFactors.png> <.
+/img/stdDevfactor.png>]
+<img/graphsSTDrew.png, id=387, 71.51718pt x 143.78719pt>
 File: img/graphsSTDrew.png Graphic file (type png)
 <use img/graphsSTDrew.png>
-Package pdftex.def Info: img/graphsSTDrew.png  used on input line 171.
+Package pdftex.def Info: img/graphsSTDrew.png  used on input line 178.
 (pdftex.def)             Requested size: 83.64944pt x 168.18205pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--172
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
 []\T1/lmr/m/n/10.95 Figure 4.7:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--172
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
 |\T1/lmr/m/n/10.95 Trained model
  []
 
 
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 17
-6.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 17
-9.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
-0.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
-1.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
-2.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
-3.
-
-[18 <./img/graphsMemory.png> <./img/graphSTD.png>]
-
 Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
 4.
 
-[19 <./img/stdPrecision.png> <./img/stdFactors.png> <./img/stdDevfactor.png> <.
-/img/graphsSTDrew.png>]
-<img/graphsCoherence.png, id=397, 167.12437pt x 142.28156pt>
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
+5.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
+6.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
+7.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
+8.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 18
+9.
+
+<img/graphsCoherence.png, id=391, 167.12437pt x 142.28156pt>
 File: img/graphsCoherence.png Graphic file (type png)
 <use img/graphsCoherence.png>
-Package pdftex.def Info: img/graphsCoherence.png  used on input line 201.
+Package pdftex.def Info: img/graphsCoherence.png  used on input line 206.
 (pdftex.def)             Requested size: 167.2989pt x 142.44185pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 237--238
+[19 <./img/graphsSTDrew.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 242--243
 []|\T1/lmr/m/n/10.95 0.0005 (not
  []
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 217--244
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 222--249
  [] 
  []
 
@@ -1500,30 +1477,33 @@ Overfull \hbox (4.03209pt too wide) in paragraph at lines 217--244
 <img/PpoSac.png, id=411, 371.13657pt x 264.23718pt>
 File: img/PpoSac.png Graphic file (type png)
 <use img/PpoSac.png>
-Package pdftex.def Info: img/PpoSac.png  used on input line 255.
+Package pdftex.def Info: img/PpoSac.png  used on input line 260.
 (pdftex.def)             Requested size: 250.95476pt x 178.67494pt.
 <img/graphSacPpo.png, id=413, 167.12437pt x 142.28156pt>
 File: img/graphSacPpo.png Graphic file (type png)
 <use img/graphSacPpo.png>
-Package pdftex.def Info: img/graphSacPpo.png  used on input line 264.
+Package pdftex.def Info: img/graphSacPpo.png  used on input line 269.
 (pdftex.def)             Requested size: 250.95476pt x 213.6693pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (4.03209pt too wide) in paragraph at lines 275--308
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [21 <./img/PpoSac.png>]
+Overfull \hbox (4.03209pt too wide) in paragraph at lines 282--315
  [] 
  []
 
-[21 <./img/PpoSac.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Underfull \vbox (badness 7631) has occurred while \output is active []
 
  [22 <./img/graphSacPpo.png>]
 <img/rendersensor.png, id=431, 405.76593pt x 98.61844pt>
 File: img/rendersensor.png Graphic file (type png)
 <use img/rendersensor.png>
-Package pdftex.def Info: img/rendersensor.png  used on input line 337.
+Package pdftex.def Info: img/rendersensor.png  used on input line 344.
 (pdftex.def)             Requested size: 250.95476pt x 60.9938pt.
 
 
@@ -1533,8 +1513,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <img/renderqueue.png, id=441, 471.26062pt x 401.24907pt>
 File: img/renderqueue.png Graphic file (type png)
 <use img/renderqueue.png>
-Package pdftex.def Info: img/renderqueue.png  used on input line 351.
-(pdftex.def)             Requested size: 376.42575pt x 320.50375pt.
+Package pdftex.def Info: img/renderqueue.png  used on input line 358.
+(pdftex.def)             Requested size: 397.3397pt x 338.31429pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1542,175 +1522,164 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <img/timeTR.png, id=445, 156.585pt x 144.54pt>
 File: img/timeTR.png Graphic file (type png)
 <use img/timeTR.png>
-Package pdftex.def Info: img/timeTR.png  used on input line 369.
+Package pdftex.def Info: img/timeTR.png  used on input line 376.
 (pdftex.def)             Requested size: 250.95476pt x 231.65906pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[24 <./img/rendersensor.png>]
-<img/punDelay.png, id=458, 73.02281pt x 47.42719pt>
+[24 <./img/rendersensor.png>] [25 <./img/renderqueue.png>]
+<img/punDelay.png, id=465, 73.02281pt x 47.42719pt>
 File: img/punDelay.png Graphic file (type png)
 <use img/punDelay.png>
-Package pdftex.def Info: img/punDelay.png  used on input line 383.
+Package pdftex.def Info: img/punDelay.png  used on input line 390.
 (pdftex.def)             Requested size: 125.47737pt x 81.50296pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[25 <./img/renderqueue.png>] [26 <./img/timeTR.png> <./img/punDelay.png>]
-<img/graphRTstd.png, id=474, 72.27pt x 145.29282pt>
+ [26 <./img/timeTR.png> <./img/punDelay.png>]
+<img/graphRTstd.png, id=473, 72.27pt x 145.29282pt>
 File: img/graphRTstd.png Graphic file (type png)
 <use img/graphRTstd.png>
-Package pdftex.def Info: img/graphRTstd.png  used on input line 397.
+Package pdftex.def Info: img/graphRTstd.png  used on input line 404.
 (pdftex.def)             Requested size: 83.64944pt x 168.17839pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 398--398
+Underfull \hbox (badness 10000) in paragraph at lines 405--405
 []\T1/lmr/m/n/10.95 Figure 4.15:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 398--398
+Underfull \hbox (badness 10000) in paragraph at lines 405--405
 |\T1/lmr/m/n/10.95 Model trained
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 398--398
+Underfull \hbox (badness 10000) in paragraph at lines 405--405
 \T1/lmr/m/n/10.95 with 0.1 sec-
  []
 
 
-Underfull \hbox (badness 3872) in paragraph at lines 398--398
+Underfull \hbox (badness 3872) in paragraph at lines 405--405
 \T1/lmr/m/n/10.95 time us-ing this
  []
 
 
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 40
-3.
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 41
+0.
 
 
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 40
-4.
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 41
+1.
 
 
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 40
-5.
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 41
+2.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 423--424
+Underfull \hbox (badness 10000) in paragraph at lines 430--431
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 423--424
+Underfull \hbox (badness 10000) in paragraph at lines 430--431
 
  []
 
 [27 <./img/graphRTstd.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 435--436
+Underfull \hbox (badness 10000) in paragraph at lines 442--443
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 435--436
+Underfull \hbox (badness 10000) in paragraph at lines 442--443
 
  []
 
 <img/stdVariations.png, id=497, 232.61906pt x 142.28156pt>
 File: img/stdVariations.png Graphic file (type png)
 <use img/stdVariations.png>
-Package pdftex.def Info: img/stdVariations.png  used on input line 444.
+Package pdftex.def Info: img/stdVariations.png  used on input line 451.
 (pdftex.def)             Requested size: 250.95476pt x 153.50113pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (14.35803pt too wide) in paragraph at lines 453--454
+Overfull \hbox (14.35803pt too wide) in paragraph at lines 460--461
 []\T1/lmr/m/n/10.95 Even though SAC was more ef-fec-tive mod-el-ing non de-laye
 d re-ac-tive be-hav-iors (see [][]4.2.9[][]),
  []
 
-<img/rtSACvsPPO.png, id=501, 171.64125pt x 143.03438pt>
+[28]
+<img/rtSACvsPPO.png, id=511, 171.64125pt x 143.03438pt>
 File: img/rtSACvsPPO.png Graphic file (type png)
 <use img/rtSACvsPPO.png>
-Package pdftex.def Info: img/rtSACvsPPO.png  used on input line 459.
+Package pdftex.def Info: img/rtSACvsPPO.png  used on input line 466.
 (pdftex.def)             Requested size: 250.95476pt x 209.12743pt.
-[28]
-<img/bcTNoise.png, id=512, 72.27pt x 143.78719pt>
+ [29 <./img/stdVariations.png> <./img/rtSACvsPPO.png>]
+<img/bcTNoise.png, id=518, 72.27pt x 143.78719pt>
 File: img/bcTNoise.png Graphic file (type png)
 <use img/bcTNoise.png>
-Package pdftex.def Info: img/bcTNoise.png  used on input line 471.
+Package pdftex.def Info: img/bcTNoise.png  used on input line 478.
 (pdftex.def)             Requested size: 83.64944pt x 166.43562pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 472--472
+Underfull \hbox (badness 10000) in paragraph at lines 479--479
 []\T1/lmr/m/n/10.95 Figure 4.18: |Model
  []
 
 
-Underfull \hbox (badness 7504) in paragraph at lines 472--472
+Underfull \hbox (badness 7504) in paragraph at lines 479--479
 \T1/lmr/m/n/10.95 the agent is the one
  []
 
 
-Underfull \vbox (badness 2653) has occurred while \output is active []
-
- [29 <./img/stdVariations.png> <./img/rtSACvsPPO.png>]
-
 Package wrapfig Warning: Collision between wrapping environments on input line 
-479.
+486.
 
 <img/bcTNovertrain.png, id=520, 70.76437pt x 143.78719pt>
 File: img/bcTNovertrain.png Graphic file (type png)
 <use img/bcTNovertrain.png>
-Package pdftex.def Info: img/bcTNovertrain.png  used on input line 481.
+Package pdftex.def Info: img/bcTNovertrain.png  used on input line 488.
 (pdftex.def)             Requested size: 83.64944pt x 169.98334pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 482--482
+Underfull \hbox (badness 10000) in paragraph at lines 489--489
 []\T1/lmr/m/n/10.95 Figure 4.19: |Model
  []
 
 
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 48
-6.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 48
-8.
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 49
+3.
 
 
 Package wrapfig Warning: Stationary wrapfigure forced to float on input line 49
-0.
+5.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 49
+7.
 
 [30 <./img/bcTNoise.png> <./img/bcTNovertrain.png>]
-<img/recurrentBrute.png, id=539, 73.02281pt x 145.29282pt>
+<img/recurrentBrute.png, id=538, 73.02281pt x 145.29282pt>
 File: img/recurrentBrute.png Graphic file (type png)
 <use img/recurrentBrute.png>
-Package pdftex.def Info: img/recurrentBrute.png  used on input line 501.
+Package pdftex.def Info: img/recurrentBrute.png  used on input line 508.
 (pdftex.def)             Requested size: 125.47737pt x 249.6837pt.
-<img/recurrentCaos.png, id=540, 70.76437pt x 143.78719pt>
+<img/recurrentCaos.png, id=539, 70.76437pt x 143.78719pt>
 File: img/recurrentCaos.png Graphic file (type png)
 <use img/recurrentCaos.png>
-Package pdftex.def Info: img/recurrentCaos.png  used on input line 508.
+Package pdftex.def Info: img/recurrentCaos.png  used on input line 515.
 (pdftex.def)             Requested size: 125.47737pt x 254.9816pt.
-<img/spawncases.png, id=542, 456.20438pt x 395.22656pt>
+ [31 <./img/recurrentBrute.png> <./img/recurrentCaos.png>]
+<img/spawncases.png, id=547, 456.20438pt x 395.22656pt>
 File: img/spawncases.png Graphic file (type png)
 <use img/spawncases.png>
-Package pdftex.def Info: img/spawncases.png  used on input line 524.
+Package pdftex.def Info: img/spawncases.png  used on input line 531.
 (pdftex.def)             Requested size: 250.95476pt x 217.40543pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[31 <./img/recurrentBrute.png> <./img/recurrentCaos.png>]
-<img/complexity.png, id=550, 76.78688pt x 151.3153pt>
+<img/complexity.png, id=549, 76.78688pt x 151.3153pt>
 File: img/complexity.png Graphic file (type png)
 <use img/complexity.png>
-Package pdftex.def Info: img/complexity.png  used on input line 535.
+Package pdftex.def Info: img/complexity.png  used on input line 542.
 (pdftex.def)             Requested size: 83.64944pt x 164.8496pt.
  [32 <./img/spawncases.png> <./img/complexity.png>]
 <img/botMoveCurve.png, id=562, 283.0575pt x 173.14688pt>
 File: img/botMoveCurve.png Graphic file (type png)
 <use img/botMoveCurve.png>
-Package pdftex.def Info: img/botMoveCurve.png  used on input line 565.
+Package pdftex.def Info: img/botMoveCurve.png  used on input line 572.
 (pdftex.def)             Requested size: 250.95476pt x 153.5137pt.
 
 
@@ -1720,74 +1689,63 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <img/gphDiscActions.png, id=582, 243.15843pt x 152.06813pt>
 File: img/gphDiscActions.png Graphic file (type png)
 <use img/gphDiscActions.png>
-Package pdftex.def Info: img/gphDiscActions.png  used on input line 610.
+Package pdftex.def Info: img/gphDiscActions.png  used on input line 617.
 (pdftex.def)             Requested size: 355.51817pt x 222.33781pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[35]
+ [35]
 <img/bcStuck.png, id=593, 77.53969pt x 152.82094pt>
 File: img/bcStuck.png Graphic file (type png)
 <use img/bcStuck.png>
-Package pdftex.def Info: img/bcStuck.png  used on input line 629.
+Package pdftex.def Info: img/bcStuck.png  used on input line 636.
 (pdftex.def)             Requested size: 83.64944pt x 164.86224pt.
  [36 <./img/gphDiscActions.png>]
 <img/gphCompActions.png, id=604, 459.96844pt x 164.86594pt>
 File: img/gphCompActions.png Graphic file (type png)
 <use img/gphCompActions.png>
-Package pdftex.def Info: img/gphCompActions.png  used on input line 648.
+Package pdftex.def Info: img/gphCompActions.png  used on input line 655.
 (pdftex.def)             Requested size: 334.60422pt x 119.93854pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<img/debug2axis.png, id=605, 233.37187pt x 152.06813pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [37 <./img/bcStuck.png>]
+<img/debug2axis.png, id=613, 233.37187pt x 152.06813pt>
 File: img/debug2axis.png Graphic file (type png)
 <use img/debug2axis.png>
-Package pdftex.def Info: img/debug2axis.png  used on input line 659.
+Package pdftex.def Info: img/debug2axis.png  used on input line 668.
 (pdftex.def)             Requested size: 334.60422pt x 218.05673pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[37 <./img/bcStuck.png>]
-Underfull \vbox (badness 2065) has occurred while \output is active []
-
  [38 <./img/gphCompActions.png> <./img/debug2axis.png>]
 <img/axisTR.png, id=621, 235.63031pt x 152.82094pt>
 File: img/axisTR.png Graphic file (type png)
 <use img/axisTR.png>
-Package pdftex.def Info: img/axisTR.png  used on input line 674.
+Package pdftex.def Info: img/axisTR.png  used on input line 683.
 (pdftex.def)             Requested size: 334.60422pt x 217.0142pt.
 <img/axisAMTR.png, id=623, 235.63031pt x 152.82094pt>
 File: img/axisAMTR.png Graphic file (type png)
 <use img/axisAMTR.png>
-Package pdftex.def Info: img/axisAMTR.png  used on input line 683.
+Package pdftex.def Info: img/axisAMTR.png  used on input line 692.
 (pdftex.def)             Requested size: 334.60422pt x 217.0142pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[39 <./img/axisTR.png>]
-<img/axisCS.png, id=635, 737.75626pt x 244.66406pt>
+[39 <./img/axisTR.png>] [40 <./img/axisAMTR.png>]
+<img/axisCS.png, id=642, 737.75626pt x 244.66406pt>
 File: img/axisCS.png Graphic file (type png)
 <use img/axisCS.png>
-Package pdftex.def Info: img/axisCS.png  used on input line 698.
+Package pdftex.def Info: img/axisCS.png  used on input line 707.
 (pdftex.def)             Requested size: 418.25368pt x 138.70583pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[40 <./img/axisAMTR.png>]
-<img/axisBestCS.png, id=646, 236.38312pt x 151.3153pt>
+<img/axisBestCS.png, id=644, 236.38312pt x 151.3153pt>
 File: img/axisBestCS.png Graphic file (type png)
 <use img/axisBestCS.png>
-Package pdftex.def Info: img/axisBestCS.png  used on input line 707.
+Package pdftex.def Info: img/axisBestCS.png  used on input line 716.
 (pdftex.def)             Requested size: 250.95476pt x 160.64742pt.
-<img/axisInterdep.png, id=647, 237.13594pt x 152.82094pt>
+<img/axisInterdep.png, id=645, 237.13594pt x 152.82094pt>
 File: img/axisInterdep.png Graphic file (type png)
 <use img/axisInterdep.png>
-Package pdftex.def Info: img/axisInterdep.png  used on input line 718.
+Package pdftex.def Info: img/axisInterdep.png  used on input line 727.
 (pdftex.def)             Requested size: 250.95476pt x 161.7329pt.
 
 
@@ -1797,32 +1755,28 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <img/axisYsens.png, id=654, 234.1247pt x 152.06813pt>
 File: img/axisYsens.png Graphic file (type png)
 <use img/axisYsens.png>
-Package pdftex.def Info: img/axisYsens.png  used on input line 738.
+Package pdftex.def Info: img/axisYsens.png  used on input line 747.
 (pdftex.def)             Requested size: 250.95476pt x 163.00829pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [42 <./img/axisInterdep.png>]
-<img/axisMomentum.png, id=666, 234.1247pt x 152.82094pt>
+<img/axisMomentum.png, id=664, 234.1247pt x 152.82094pt>
 File: img/axisMomentum.png Graphic file (type png)
 <use img/axisMomentum.png>
-Package pdftex.def Info: img/axisMomentum.png  used on input line 751.
+Package pdftex.def Info: img/axisMomentum.png  used on input line 758.
 (pdftex.def)             Requested size: 250.95476pt x 163.81523pt.
-
-Underfull \vbox (badness 2846) has occurred while \output is active []
-
  [43 <./img/axisYsens.png> <./img/axisMomentum.png>]
 <img/axisAMact.png, id=675, 234.8775pt x 150.5625pt>
 File: img/axisAMact.png Graphic file (type png)
 <use img/axisAMact.png>
-Package pdftex.def Info: img/axisAMact.png  used on input line 764.
+Package pdftex.def Info: img/axisAMact.png  used on input line 773.
 (pdftex.def)             Requested size: 250.95476pt x 160.86823pt.
 ) [44 <./img/axisAMact.png>]
 \openout2 = `chap05_conclusions.aux'.
 
-
-(chap05_conclusions.tex
+ (chap05_conclusions.tex
 
 Package xcolor Warning: Incompatible color definition on input line 18.
 
@@ -2076,7 +2030,7 @@ Here is how much of TeX's memory you used:
  32261 multiletter control sequences out of 15000+200000
  613497 words of font info for 73 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,13n,46p,1382b,505s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,13n,46p,1382b,497s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc
 }{C:/Users/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc
 }{C:/Users/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit
@@ -2102,7 +2056,7 @@ Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Users/alexc/A
 ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/ale
 xc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Use
 rs/alexc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
-Output written on report.pdf (66 pages, 1197528 bytes).
+Output written on report.pdf (66 pages, 1197566 bytes).
 PDF statistics:
  895 PDF objects out of 1000 (max. 8388607)
  212 named destinations out of 1000 (max. 500000)

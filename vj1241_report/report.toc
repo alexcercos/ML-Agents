@@ -25,14 +25,14 @@
 \contentsline {section}{\numberline {4.2}Reactive Behaviors}{14}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Training with Proximal Policy Optimization (PPO)}{14}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Unnecessary actions}{14}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Rewards based in tolerable range}{14}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.3}Rewards based in tolerable range}{15}{subsection.4.2.3}%
 \contentsline {subsection}{\numberline {4.2.4}Determinism of the behavior}{15}{subsection.4.2.4}%
 \contentsline {subsection}{\numberline {4.2.5}Movement memory}{16}{subsection.4.2.5}%
 \contentsline {subsection}{\numberline {4.2.6}Rewards based in standard deviation}{17}{subsection.4.2.6}%
 \contentsline {subsection}{\numberline {4.2.7}Rewards based in movement coherence}{19}{subsection.4.2.7}%
 \contentsline {subsection}{\numberline {4.2.8}PPO hyperparameters}{20}{subsection.4.2.8}%
 \contentsline {subsection}{\numberline {4.2.9}Training with Soft-Actor Critic (SAC)}{20}{subsection.4.2.9}%
-\contentsline {subsection}{\numberline {4.2.10}SAC hyperparameters}{21}{subsection.4.2.10}%
+\contentsline {subsection}{\numberline {4.2.10}SAC hyperparameters}{22}{subsection.4.2.10}%
 \contentsline {section}{\numberline {4.3}Reaction time}{23}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Render Textures}{23}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Reward systems}{24}{subsection.4.3.2}%
@@ -50,11 +50,11 @@
 \contentsline {subsection}{\numberline {4.4.2}``Cheat sheet'' rewards}{34}{subsection.4.4.2}%
 \contentsline {subsection}{\numberline {4.4.3}Discrete and continuous action spaces}{35}{subsection.4.4.3}%
 \contentsline {subsection}{\numberline {4.4.4}Models with behavioral cloning}{36}{subsection.4.4.4}%
-\contentsline {subsection}{\numberline {4.4.5}The frame problem}{36}{subsection.4.4.5}%
+\contentsline {subsection}{\numberline {4.4.5}The frame problem}{37}{subsection.4.4.5}%
 \contentsline {section}{\numberline {4.5}Complex movements}{37}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Debug for 2 axis}{37}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.1}Debug for 2 axis}{38}{subsection.4.5.1}%
 \contentsline {subsection}{\numberline {4.5.2}Angle-Magnitude reward system}{39}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Cheat sheet for movements}{39}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.3}Cheat sheet for movements}{40}{subsection.4.5.3}%
 \contentsline {subsection}{\numberline {4.5.4}Movement interdependency}{41}{subsection.4.5.4}%
 \contentsline {subsection}{\numberline {4.5.5}Trying to improve performance}{42}{subsection.4.5.5}%
 \contentsline {subsubsection}{Mouse sensitivity}{42}{section*.47}%

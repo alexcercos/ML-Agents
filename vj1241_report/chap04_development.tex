@@ -60,6 +60,8 @@ That is caused because when training the AI is overfitted with demonstrations wi
 
 Therefore, in this case the neural network would only have 1 action output: the X axis movement.
 
+\pagebreak
+
 \subsection{Rewards based in tolerable range}
 \label{sec:tolrange}
 
@@ -109,14 +111,14 @@ This issue is solved by making the bot behavior deterministic or adding a moveme
 \subsection{Movement memory}
 \label{sec:movememory}
 
-In order to prepare the bot to have reaction times, 25 previous moves distributed in the last 2 seconds are added as observations. What move is added as observation is critical.
-
 \begin{figure}[h]
   \centering
 		\includegraphics[width=.5\textwidth]{img/graphsMemory.png}
   \caption{A badly trained model while training (up) and playing (down)}
   \label{fig:graphMem}
 \end{figure}
+
+In order to prepare the bot to have reaction times, 25 previous moves distributed in the last 2 seconds are added as observations. What move is added as observation is critical.
 
 If the real bot movement is added, the bot reaches high rewards very quickly but doesn't learn to imitate the bot: that's because the neural network learns to ``mimic'' the last move made by the bot, so it has high chance of reward with only one important observation. When playing the game with the trained neural network, it would not move (in the beginning, all the previous moves are 0) until it starts moving in one or another direction at maximum speed (See Figure~\ref{fig:graphMem}). This happens when the movement starts increasing in value due to impressions in the returned action of the neural network that make it believe that it is accelerating in movement.
 
@@ -127,15 +129,18 @@ A better approximation would be interpolating the real move with the neural netw
 \subsection{Rewards based in standard deviation}
 \label{sec:stdrew}
 
-Since trained models using the methods explained in the previous sections tend to return the most common value, movements with more noise or imprecissions would not be produced correctly by the AI: when training, the AI could guess a move some units below the average of the previous moves but the NPC could have done a move the same units above the average, causing the network to be penalized, and causing the AI movement to converge to the average movement. To model these kind of noises more precisely, the actions and rewards should be changed.
-
-In this section we propose a reward system based on standard deviations (Figure~\ref{fig:stdexample}): the relation between standard deviation, average and the actual move would determine how coherent is a move in a given context.
-\begin{wrapfigure}{r}{0.2\textwidth}
+\begin{wrapfigure}[9]{r}{0.2\textwidth}
     \centering
     \includegraphics[width=0.2\textwidth]{img/graphSTD.png}
 		\caption{Weighted average and standard deviations of an irregular movement}
 		\label{fig:stdexample}
 \end{wrapfigure}
+
+Since trained models using the methods explained in the previous sections tend to return the most common value, movements with more noise or imprecissions would not be produced correctly by the AI: when training, the AI could guess a move some units below the average of the previous moves but the NPC could have done a move the same units above the average, causing the network to be penalized, and causing the AI movement to converge to the average movement. To model these kind of noises more precisely, the actions and rewards should be changed.
+
+\pagebreak
+
+In this section we propose a reward system based on standard deviations (Figure~\ref{fig:stdexample}): the relation between standard deviation, average and the actual move would determine how coherent is a move in a given context.
 
 The \emph{coherence} of a movement can be defined as how centered it is, in relation to the average. A movement with maximum coherence (1) would be the exact average, a movement at a standard deviation distance would have coherence 0, and movements outside of the standard deviations would be considered ``incoherent''. Then, default movement with noise would be coherent moves, and impulses would be incoherent.
 
@@ -166,14 +171,14 @@ To model the behavior, the agent would do 2 actions instead of one: a maximum an
 		\label{fig:stdshapes}
 \end{figure}
 
-\begin{wrapfigure}{r}{0.2\textwidth}
+Coherent moves give higher punishments if failing and smaller rewards, and incoherent moves (impulses) give high rewards. Given a maximum and minimum values (actions provided by the neural network), the real move, the average of the last 25 moves, its standard deviation and the coherence parameter explained in this section, the reward system follows these rules:
+
+\begin{wrapfigure}[16]{r}{0.2\textwidth}
     \centering
     \includegraphics[width=0.2\textwidth]{img/graphsSTDrew.png}
 		\caption{Trained model using SD rewards}
 		\label{fig:stdrewards}
 \end{wrapfigure}
-
-Coherent moves give higher punishments if failing and smaller rewards, and incoherent moves (impulses) give high rewards. Given a maximum and minimum values (actions provided by the neural network), the real move, the average of the last 25 moves, its standard deviation and the coherence parameter explained in this section, the reward system follows these rules:
 
 \begin{itemize}
  \item \emph{Coherence} is inversely proportional to the \emph{reward factor}, and directly proportional to the \emph{punish factor}: high coherence means lower rewards and higher punishes.
@@ -207,7 +212,7 @@ The punishments in coherent moves are calculated multiplying the punish factor, 
 
 The rewards in incoherent moves are calculated using the reward factor, the opposite to coherence and the precision factor shown in section~\ref{sec:stdrew}.
 
-Models trained with this system adapt better to both coherent and incoherent moves, however they need high learning rate and at least 300000 steps to see acceptable results (see Figure~\ref{fig:precisionR}). However, a learning rate higher~\footnote{Learning rate is an hyperparameter that defines the strength of each gradient descent update step} than 1e-2 can easily lead to unstable models that don't learn at all.
+Models trained with this system adapt better to both coherent and incoherent moves, however they need high learning rate and at least 300000 steps to see acceptable results (see Figure~\ref{fig:precisionR}). Nevertheless, a learning rate higher~\footnote{Learning rate is an hyperparameter that defines the strength of each gradient descent update step} than 1e-2 can easily lead to unstable models that don't learn at all.
 
 \subsection{PPO hyperparameters}
 
@@ -267,6 +272,8 @@ As final result, Figure~\ref{fig:graphPS} shows a comparison between both traine
 \end{figure}
 
 Another aspect to take into account is how both methods can be applied using GPUs to boost the training process. SAC makes better use of the GPU: by training with 3 environments in parallel the training speed doubles (being equally fast as PPO using CPU) and also improves its efficiency. PPO training using GPU and 3 environments is almost 2.5 times faster than with CPU or GPU-SAC, but is more likely to produce an application crash than any other training method (because of GPU overheating or running out of memory).
+
+\pagebreak
 
 \subsection{SAC hyperparameters}
 
@@ -348,7 +355,7 @@ Other more optimal and safe~\footnote{Even though this method is safer, it is im
 
 \begin{figure}[h]
   \centering
-		\includegraphics[width=.9\textwidth]{img/renderqueue.png}
+		\includegraphics[width=.95\textwidth]{img/renderqueue.png}
   \caption{Render Queue: see that frame 2 isn't used as input for the neural network. Red arrows mean that the frame (or Render Texture) at the start is copied over the Render Texture at the end.}
   \label{fig:renderqueue}
 \end{figure}
@@ -392,7 +399,7 @@ Like Tolerable Range rewards, this method has been applied to uniform reaction t
 
 This method differentiates between coherent and incoherent moves: when the bot's movement is coherent (it is inside the average$\pm$standard deviation range), the AI receives a consistent reward if its move is also inside that range, if not, it receives a punish that gets higher when the relative distance to that range increases. When the bot's movement is incoherent (impulse) there are 3 options:
 
-\begin{wrapfigure}{rH}{0.2\textwidth}
+\begin{wrapfigure}[19]{rH}{0.2\textwidth}
     \centering
     \includegraphics[width=0.2\textwidth]{img/graphRTstd.png}
 		\caption{Model trained with 0.1 seconds of reaction time using this method}
@@ -476,7 +483,7 @@ At this point, even though PPO performs better, both methods still fail at perfo
 
 Behavioral Cloning~\cite{Sammut2010} is the simplest algorithm provided by ML Agents in terms of difficulty to adjust: it directly copies the actions given in a demo (which can be recorded in the editor). However, it has its limitations: since it doesn't depend on environment rewards, the programmer cannot modify its behavior with reinforcement learning. Also, depending on the task, agents trained using these methods can have chaotic behaviors.
 
-\begin{wrapfigure}[17]{rH}{0.3\textwidth}
+\begin{wrapfigure}[13]{rH}{0.3\textwidth}
     \centering
     \includegraphics[width=0.2\textwidth]{img/bcTNovertrain.png}
 		\caption{Model trained with BC in 7000 steps}
@@ -530,7 +537,7 @@ Those rarer cases often suppose a harder task to solve by the neural network, bu
 
 To improve the performance of the network, we can generate some rare cases in purpose: instead of spawning targets randomly, they can be spawned in the right side of the field of view, or two targets can be spawned next to each other, etc. Then, how often each case occurs can be adjusted manually.
 
-\begin{wrapfigure}[9]{rH}{0.25\textwidth}
+\begin{wrapfigure}[10]{rH}{0.25\textwidth}
     \centering
     \includegraphics[width=0.2\textwidth]{img/complexity.png}
 		\caption{Neural network that has diverged}
@@ -554,7 +561,7 @@ Discrete actions are those that can be represented by whole or boolean values (f
 \subsection{Bot with shaped movements} %describir el movimiento (+imagen)
 \label{sec:botshaped}
 
-To create a more complex environment in which the neural network could learn to imitate the clicks of a bot, it was necessary to implement an NPC that could perform more complicated movements than in the previous sections. The initial goal was to create a bot that could target a target with constant speed and in a given time.
+To create a more complex environment in which the neural network could learn to imitate the clicks of a bot, it was necessary to implement an NPC that could perform more complicated movements than in the previous sections. The initial goal was to create a bot that could follow a target with constant speed and in a given time.
 
 In the project, it corresponds to the ``BotOneMove'' script. This bot is capable of choosing targets and directing them in a certain way, which can be edited using Unity animation curves.
 
@@ -575,9 +582,9 @@ In our trainings, we have used a curve that exceeds the upper limits, and in whi
 \subsection{``Cheat sheet'' rewards} %explicar como funciona el sistema de recompensas, incorporar SAC y PPO
 \label{sec:cheatsheetD}
 
-As we have seen in the section~\ref{sec:afterimpulse} with movement queues, not giving instant rewards but a time later can make it difficult to learn the neural network, plus it is more difficult to balance rewards in these cases where there is randomness in the exact moment an event occurs.
+As we have seen in the section~\ref{sec:afterimpulse} with movement queues, not giving instant rewards but a time later can make it difficult to learn the neural network, plus it is harder to balance rewards in these cases where there is randomness in the exact moment an event occurs.
 
-To solve these problems and at the same time accelerate the learning process we have designed the ``cheat sheet rewards''. These rewards are based on that the NPC itself is the one that determines the accuracy with which the agent has performed the action of clicking, and it does it before (or after) the NPC has performed it. The reward is calculated using a simple tolerable range (See~\ref{sec:tolrange}) by comparing the difference between the interpolation value in the frame the bot action is performed and the interpolation value at which the agent would perform the action.
+To solve these problems and at the same time accelerate the learning process we have designed the ``cheat sheet rewards''. These rewards are based on that the NPC itself is the one that determines the accuracy with which the agent has performed the action of clicking, and it does that before (or after) the NPC has performed it. The reward is calculated using a simple tolerable range (See~\ref{sec:tolrange}) by comparing the difference between the interpolation value in the frame the bot action is performed and the interpolation value at which the agent would perform the action.
 
 Whenever the AI or the NPC performs a click action, an event is triggered. There are several factors to consider when using these rewards:
 \begin{itemize}
@@ -649,6 +656,8 @@ In this section we try to create an agent that imitates a more complex movement.
   \caption{Movement curves for seeking target (left) and idle (mid). The right picture shows the bot's movement with one seek target in the middle (purple line is vertical move and red line is horizontal move, both have the same shape).}
   \label{fig:compCurve}
 \end{figure}
+
+\pagebreak
 
 \subsection{Debug for 2 axis} %describir un poco el debug (+imagen)
 
@@ -744,14 +753,14 @@ The sensitivity of the mouse was intended to give the bot more precision in vert
 
 \subsubsection{Momentum}
 
-When using the reward curves shown in Figure~\ref{fig:axisCS}, the agents usually ``anticipated'' the next move instead of ending the current move well (see Figure~\ref{fig:axisMomentum}). This was because the first frame of a move offered a much higher and easier reward than the last. \emph{Momentum} is a variable that oscillates between -0.75 and 0.75: starting at 0, when the agent receives a positive reward, the momentum is increased by 0.125, if it receives a negative reward, it is decreased. For example, a momentum of 0.75 causes positive rewards to be multiplied by 1.75, and negative rewards by 0.25 (and the opposite happens with negative momentum). Then, if the agent fails some consecutive actions in the last frames of a movement, the punishments are increased stepwise and the reward obtained in the first frame of the next movement is reduced considerably (depending on how many consecutive actions the agent has failed before).
-
 \begin{figure}[h]
   \centering
 		\includegraphics[width=.6\textwidth]{img/axisMomentum.png}
   \caption{Agent that tends to anticipate next movements}
   \label{fig:axisMomentum}
 \end{figure}
+
+When using the reward curves shown in Figure~\ref{fig:axisCS}, the agents usually ``anticipated'' the next move instead of ending the current move well (see Figure~\ref{fig:axisMomentum}). This was because the first frame of a move offered a much higher and easier reward than the last. \emph{Momentum} is a variable that oscillates between -0.75 and 0.75: starting at 0, when the agent receives a positive reward, the momentum is increased by 0.125, if it receives a negative reward, it is decreased. For example, a momentum of 0.75 causes positive rewards to be multiplied by 1.75, and negative rewards by 0.25 (and the opposite happens with negative momentum). Then, if the agent fails some consecutive actions in the last frames of a movement, the punishments are increased stepwise and the reward obtained in the first frame of the next movement is reduced considerably (depending on how many consecutive actions the agent has failed before).
 
 The effectiveness of this parameter is difficult to be appreciated, however, the best results obtained in this section were trained using momentum.
 
