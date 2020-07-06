@@ -12,8 +12,10 @@ public class Spawn : MonoBehaviour
     public float timeBetweenSpawn = 2.0f;
     float timeElapsed = 0f;
 
-    public float minDist = 30f;
-    public float maxDist = 400f;
+    [HideInInspector] public float minDist = 45f;
+    [HideInInspector]  public float maxDist = 200f;
+
+    public float heightDiff = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +39,7 @@ public class Spawn : MonoBehaviour
         float dist = Random.Range(minDist, maxDist);
         float angle = Random.Range(0f, 360f);
 
-        GameObject newPlane = Instantiate(plane, new Vector3(0f, 0f, dist), transform.rotation, transform);
+        GameObject newPlane = Instantiate(plane, new Vector3(0f, Random.Range(-heightDiff, heightDiff), dist), transform.rotation, transform);
         newPlane.transform.RotateAround(transform.position, Vector3.up, angle);
 
         timeElapsed = 0f;

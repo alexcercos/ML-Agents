@@ -13,10 +13,10 @@ public class SpawnCases : MonoBehaviour
 
     public int maxPlanes = 3;
 
-    public float minDist = 30f;
-    public float maxDist = 400f;
+    [HideInInspector] public float minDist = 45f;
+    [HideInInspector] public float maxDist = 200f;
 
-    public float heightDiff = 20f;
+    public float heightDiff = 0f;
 
     float cameraFOV = 60f; //FOV horizontal, comprobado a mano (en realidad es 63.7 pero se desprecia la diferencia)
     

@@ -265,6 +265,8 @@ public class AgentShoot : Agent
                 graphicCanvas.AddStdHighPoint(average + stDesv);
                 graphicCanvas.AddStdLowPoint(average - stDesv);
             }
+
+            DynamicAverageAndStd(ref moveCount, ref average, ref stDesv, ref varianza, ref averageSquared, oX);
         }
         else if (agentType == AgentType.RANGE)      //2 acciones (X)
         {
@@ -281,6 +283,8 @@ public class AgentShoot : Agent
                 graphicCanvas.AddStdHighPoint(average + stDesv);
                 graphicCanvas.AddStdLowPoint(average - stDesv);
             }
+
+            DynamicAverageAndStd(ref moveCount, ref average, ref stDesv, ref varianza, ref averageSquared, oX);
         }
         else if (agentType == AgentType.TWO_AXIS)   //2 acciones (X,Y)
         {
@@ -360,7 +364,7 @@ public class AgentShoot : Agent
         }
 
         //RewardsStdChIndividualAverage(maxX, oX, average, stDesv, RewFactor, PunFactor, 0.0f);
-        //DynamicAverageAndStd(ref moveCount, ref average, ref stDesv, ref varianza, ref averageSquared, oX);
+        
 
         //float distance = Vector2.Distance(new Vector2(oX, oY), new Vector2(minX, agY));
 
@@ -370,7 +374,7 @@ public class AgentShoot : Agent
 
         //AxisRewardAngleMagnitudeTR(tolerableRange, 0.05f, 0.5f, PunFactor, RewFactor, oX, oY, minX, agY);
 
-        AxisRewardCheatShaped(oX, oY, minX, agY);
+        //AxisRewardCheatShaped(oX, oY, minX, agY);
 
 
         lastX.RemoveAt(59);
@@ -926,12 +930,15 @@ public class AgentShoot : Agent
     {
         if (agentType != AgentType.CLICKONLY) return;
 
-        //float reward = GetComponent<BotOneMove>().GetCheatRewards(tolerableRange, punFactor, rewFactor);
-        float reward = botPrecision.GetCheatRewards(tolerableRange, punFactor, rewFactor);
+        if (botPrecision!=null)
+        {
+            //float reward = GetComponent<BotOneMove>().GetCheatRewards(tolerableRange, punFactor, rewFactor);
+            float reward = botPrecision.GetCheatRewards(tolerableRange, punFactor, rewFactor);
 
-        //Debug.Log(reward);
+            //Debug.Log(reward);
 
-        AddReward(reward);
+            AddReward(reward);
+        }
     }
 
     public void ClickRewardsCheatMissed() // Llamado directamente desde el agente
@@ -1022,20 +1029,23 @@ public class AgentShoot : Agent
 
     public void AxisRewardCheatShaped(float oX, float oY, float aX, float aY)
     {
-        // Get shapes
-        float angleRange = 0f;
-        float punFactor = 0f;
-        float rewFactor = 0f;
+        if (botPrecision!=null)
+        {
+            // Get shapes
+            float angleRange = 0f;
+            float punFactor = 0f;
+            float rewFactor = 0f;
+
+            botPrecision.GetCheatTRShapedValues(ref angleRange, ref punFactor, ref rewFactor);
+
+            float maxRange = 0.5f; // fija (por ahora)
+
+            float magnitudeRange = angleRange / 2f; //depende de angleRange
 
 
-        botPrecision.GetCheatTRShapedValues(ref angleRange, ref punFactor, ref rewFactor);
-
-        float maxRange = 0.5f; // fija (por ahora)
-
-        float magnitudeRange = angleRange / 2f; //depende de angleRange
-
-
-        AxisRewardAngleMagnitudeTR(angleRange, magnitudeRange, maxRange, punFactor * PunFactor, rewFactor * RewFactor, oX, oY, aX, aY);
+            AxisRewardAngleMagnitudeTR(angleRange, magnitudeRange, maxRange, punFactor * PunFactor, rewFactor * RewFactor, oX, oY, aX, aY);
+        }
+        
     }
 
 
