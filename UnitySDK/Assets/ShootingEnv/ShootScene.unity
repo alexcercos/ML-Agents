@@ -1643,7 +1643,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234502301}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b20a64c846f2ab46bf9333329bf0abb, type: 3}
   m_Name: 
@@ -1661,7 +1661,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234502301}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40860ad847a3b024abb25a4f4debb383, type: 3}
   m_Name: 
@@ -1672,10 +1672,10 @@ MonoBehaviour:
   maxPlanes: 3
   minDist: 45
   maxDist: 200
-  heightDiff: 30
-  commonCase: 0
+  heightDiff: 0
+  commonCase: 1
   inLeftCase: 0
-  inRightCase: 1
+  inRightCase: 0
   consecutiveCase: 0
 --- !u!1 &1252828195
 GameObject:
@@ -3122,7 +3122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2108969470421539339
 Transform:
   m_ObjectHideFlags: 0
@@ -3295,12 +3295,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 25
+    vectorObservationSize: 6
     numStackedVectorObservations: 1
-    vectorActionSize: 01000000
+    vectorActionSize: 02000000
     vectorActionDescriptions: []
-    vectorActionSpaceType: 0
-  m_Model: {fileID: 0}
+    vectorActionSpaceType: 1
+  m_Model: {fileID: 5022602860645237092, guid: 5fd9dd2855a838c469f864d800cab8ae, type: 3}
   m_InferenceDevice: 1
   m_UseHeuristic: 0
   m_BehaviorName: Imitator
@@ -3327,13 +3327,13 @@ MonoBehaviour:
   botDecal: {fileID: 4702922999700546016, guid: 6c2e7892f8734ac409e0519b13528bd8,
     type: 3}
   YSensitivity: 1
-  agentType: 0
+  agentType: 2
   tolerableRange: 0.05
-  receiveObservations: 0
-  observationBotAgent: 0
+  receiveObservations: 5
+  observationBotAgent: 1
   PunFactor: 600
   RewFactor: 75
-  demoHeuristic: 0
+  demoHeuristic: 1
   showStd: 0
   clickDiscrete: 0
   randomRestart: 0
@@ -3360,7 +3360,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4416147798648197489}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 181cd6db5d1790949a6d244e1e02257f, type: 3}
   m_Name: 
@@ -3669,7 +3669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41fb4bae743a4f4cb6664b2576b68d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botMovement: {fileID: 3492045616600499409}
+  botMovement: {fileID: 6085637681701436113}
   useNeuralNet: 0
 --- !u!81 &4416147798648197486
 AudioListener:
@@ -3762,8 +3762,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderTexture: {fileID: 8400000, guid: e530950839451c544aecb1ecab8532c5, type: 2}
   sensorName: RenderTextureSensor
-  width: 32
-  height: 32
+  width: 64
+  height: 64
   grayscale: 0
 --- !u!4 &4485411416245258254
 Transform:
@@ -3886,8 +3886,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  reactTime: 0.25
-  noise: 0.15
+  reactTime: 0
+  noise: 0
   tempNoise: 0
 --- !u!114 &6085637681701436113
 MonoBehaviour:
@@ -3896,7 +3896,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4416147798648197489}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55f6f9975c4264a4891b539085b2f1f0, type: 3}
   m_Name: 
