@@ -44,7 +44,11 @@ public class PresController : MonoBehaviour
         {
             cameraAxis[active].SetActive(false);
 
-            active = (active - 1) % cameraAxis.Count;
+            active = (active - 1);
+
+            if (active < 0) active += cameraAxis.Count;
+
+            Debug.Log(active);
             
             //reiniciar cosas
             ResetEnvironment(cameraAxis[active]); //camera axis se activa dentro
@@ -62,11 +66,26 @@ public class PresController : MonoBehaviour
         float height = 0f;
         bool invert = false;
 
-        cameraAxis.transform.GetChild(0).GetComponent<AgentShoot>().GetDirectionAndHeight(ref invert, ref height);
+        bool turnOff = false;
 
-        scene.GetComponent<SpawnCases>().ResetSpawner(height, invert, cameraAxis.transform);
+        cameraAxis.transform.GetChild(0).GetComponent<AgentShoot>().GetDirectionAndHeight(ref invert, ref height, ref turnOff);
 
-        scene.GetComponent<Spawn>().ResetSpawner(height);
+        if (turnOff)
+        {
+            scene.GetComponent<SpawnCases>().enabled = false;
+
+            scene.GetComponent<Spawn>().enabled = false;
+        }
+        else
+        {
+            scene.GetComponent<SpawnCases>().enabled = true;
+
+            scene.gameObject.SetActive(true);
+
+            scene.GetComponent<SpawnCases>().ResetSpawner(height, invert, cameraAxis.transform);
+
+            scene.GetComponent<Spawn>().ResetSpawner(height);
+        }
 
         foreach (Transform child in scene)
         {

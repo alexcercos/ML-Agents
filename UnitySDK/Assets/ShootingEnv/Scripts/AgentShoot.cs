@@ -1296,8 +1296,15 @@ public class AgentShoot : Agent
     //-------------------------------------
 
 
-    public void GetDirectionAndHeight(ref bool invertSpawn, ref float maxHeight)
+    public void GetDirectionAndHeight(ref bool invertSpawn, ref float maxHeight, ref bool turnOff)
     {
+        if (agentType != AgentType.TWO_AXIS)
+        {
+            turnOff = false;
+        }
+        else
+            turnOff = true;
+
         if (agentType == AgentType.IMPULSE || agentType == AgentType.RANGE)
         {
             invertSpawn = false;
@@ -1308,6 +1315,7 @@ public class AgentShoot : Agent
         {
             botPrecision = GetComponent<BotPrecision>();
 
+            
             if (botPrecision!=null && botPrecision.isActiveAndEnabled && botPrecision.invertIdle)
             {
                 invertSpawn = false;
