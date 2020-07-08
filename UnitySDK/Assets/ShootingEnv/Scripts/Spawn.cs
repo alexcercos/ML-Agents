@@ -45,4 +45,10 @@ public class Spawn : MonoBehaviour
         timeElapsed = 0f;
         currentPlanes++;
     }
+
+    public void ResetSpawner(float height)
+    {
+        timeElapsed = 0f;
+        heightDiff = height;
+    }
 }

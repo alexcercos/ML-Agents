@@ -130,6 +130,31 @@ public class AgentShoot : Agent
         }
     }
 
+    public void HardReset()
+    {
+        lastX = new List<float>();
+        lastY = new List<float>();
+
+
+        realX = new List<float>();
+        realY = new List<float>();
+
+        for (int i = 0; i < 60; i++)
+        {
+            lastX.Add(0f);
+            lastY.Add(0f);
+            realX.Add(0f);
+            realY.Add(0f);
+        }
+
+        transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+
+        foreach (Transform child in scene)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
     public override void AgentReset()
     {
         //hacer aleatoria la rotacion al resetear
@@ -246,6 +271,8 @@ public class AgentShoot : Agent
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         //comparar la del bot con la del agente
+
+        if (cameraAgent == null) cameraAgent = GetComponent<CameraMovement>();
 
         oX = cameraAgent.GetBotX(); // Se usa para recompensas solo
 
@@ -1264,6 +1291,34 @@ public class AgentShoot : Agent
 
         //return -1f / (difference - 2.25f) + 1f;
         return Mathf.Pow(2, difference / std + 1) - 4;
+    }
+
+    //-------------------------------------
+
+
+    public void GetDirectionAndHeight(ref bool invertSpawn, ref float maxHeight)
+    {
+        if (agentType == AgentType.IMPULSE || agentType == AgentType.RANGE)
+        {
+            invertSpawn = false;
+
+            maxHeight = 0f;
+        }
+        else
+        {
+            botPrecision = GetComponent<BotPrecision>();
+
+            if (botPrecision!=null && botPrecision.isActiveAndEnabled && botPrecision.invertIdle)
+            {
+                invertSpawn = false;
+            }
+            else
+            {
+                invertSpawn = true;
+            }
+
+            maxHeight = 30f;
+        }
     }
     
 }

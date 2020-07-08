@@ -19,6 +19,8 @@ public class SpawnCases : MonoBehaviour
     public float heightDiff = 0f;
 
     float cameraFOV = 60f; //FOV horizontal, comprobado a mano (en realidad es 63.7 pero se desprecia la diferencia)
+
+    public bool invertCommons = false;
     
 
     [Range(0.0f, 1.0f)]
@@ -165,12 +167,20 @@ public class SpawnCases : MonoBehaviour
         else
         {
             //if (typeSpawn == ESpawnCase.CONSECUTIVE)
-            angle = Random.Range(left - 10f, left - 30f); //por fuera
+
+            if (invertCommons)
+                angle = Random.Range(right + 10f, right + 30f); //por fuera
+            else
+                angle = Random.Range(left - 30f, left - 10f);
 
             GameObject newPlaneExtra = Instantiate(plane, new Vector3(0f, Random.Range(-heightDiff, heightDiff), dist), transform.rotation, transform);
             newPlaneExtra.transform.RotateAround(transform.position, Vector3.up, angle);
 
-            angle = angle - Random.Range(0f, cameraFOV / 2f); //Vuelve a spawnear consecutivo
+            if (invertCommons)
+                angle = angle + Random.Range(0f, cameraFOV / 2f); //Vuelve a spawnear consecutivo
+            else
+                angle = angle - Random.Range(0f, cameraFOV / 2f);
+
             dist = Random.Range(minDist, maxDist);
 
             if (typeSpawn == ESpawnCase.OUTLEFT)
@@ -182,6 +192,17 @@ public class SpawnCases : MonoBehaviour
         GameObject newPlane = Instantiate(plane, new Vector3(0f, Random.Range(-heightDiff, heightDiff), dist), transform.rotation, transform);
         newPlane.transform.RotateAround(transform.position, Vector3.up, angle);
 
+    }
+
+    public void ResetSpawner(float height, bool invert, Transform newCamera)
+    {
+        timeElapsed = 0f;
+
+        heightDiff = height;
+
+        invertCommons = invert;
+
+        cameraYAxis = newCamera;
     }
 }
 

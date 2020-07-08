@@ -62,6 +62,10 @@ public class CameraMovement : MonoBehaviour
         {
             useNeuralNet = !useNeuralNet;
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            nnAgent.HardReset();
+        }
 
         if (useNeuralNet)
         {

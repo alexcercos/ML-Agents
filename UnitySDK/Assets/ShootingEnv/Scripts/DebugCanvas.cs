@@ -12,8 +12,7 @@ public class DebugCanvas : MonoBehaviour
     [HideInInspector] public LineRenderer stdHighLine;
     [HideInInspector] public LineRenderer avgLine;
 
-    [HideInInspector] public LineRenderer clickBot;
-    [HideInInspector] public LineRenderer clickAgent;
+    [HideInInspector] public LineRenderer clickBot, clickAgent;
 
     [HideInInspector] public LineRenderer axisBotLine, axisAgentLine;
 
@@ -111,6 +110,19 @@ public class DebugCanvas : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            showGraphic = !showGraphic;
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            showAxis = !showAxis;
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            showGrid = !showGrid;
+        }
+
         if (lastShowGraphic != showGraphic)
         {
             lastShowGraphic = showGraphic;
@@ -352,5 +364,26 @@ public class DebugCanvas : MonoBehaviour
             line.positionCount = listPoints.Length;
             line.SetPositions(listPoints);
         }
+    }
+
+    void ResetLine(ref LineRenderer line, ref Vector3[] listPoints)
+    {
+        listPoints = new Vector3[0];
+        line.positionCount = listPoints.Length;
+        line.SetPositions(listPoints);
+    }
+
+    public void ResetAllLines()
+    {
+        ResetLine(ref botLine, ref botPoints);
+        ResetLine(ref agentLineUp, ref agentPointsUp);
+        ResetLine(ref agentLineDown, ref agentPointsDown);
+        ResetLine(ref stdLowLine, ref stdLowPoints);
+        ResetLine(ref stdHighLine, ref stdHighPoints);
+        ResetLine(ref avgLine, ref avgPoints);
+        ResetLine(ref clickBot, ref clickBotPoints);
+        ResetLine(ref clickAgent, ref clickAgentPoints);
+        ResetLine(ref axisBotLine, ref axisBotPoints);
+        ResetLine(ref axisAgentLine, ref axisAgentPoints);
     }
 }
